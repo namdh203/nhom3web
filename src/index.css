@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  background: #985bda !important;
+  background: white !important;
   min-height: 100vh;
   display: flex;
   font-weight: 400;
@@ -45,6 +45,10 @@ html,
 }
 
 .auth-inner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
   width: 450px;
   margin: auto;
   background: #ffffff;
@@ -81,4 +85,25 @@ html,
 
 .forgot-password a {
   color: #0a0478;
+}
+
+.home-wrapper {
+  width: 100%;  
+  background-color: #ffffff;
+}
+
+.home-banner {
+  width: 100%;
+  /* height: 50%; */
+}
+
+.home-rcm {
+  margin: 30px 0;
+}
+
+.rcm-title {
+  text-align: left;
+  font-size: 28px;
+  color: black;
+  margin: 20px 0;
 }

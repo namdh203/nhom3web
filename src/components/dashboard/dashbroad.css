@@ -1,0 +1,114 @@
+
+.brcm-card_inter {
+    background-color: rgb(1, 198, 132);
+}
+
+.brcm-card_choice>h1 {
+    font-size: 14px;
+    color: white;
+    align-items: center;
+    line-height: 16px;
+    margin-bottom: 0
+}
+
+.brcm-card_choice {
+    border-right-width: 0.5px;
+    border-color: white;
+    border-right-style: solid;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column
+}
+
+.brcm-card_choice:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+
+.brcm-card_img {
+    border-radius: 7px 7px 0 0;
+}
+
+.brcm-card_inter {
+    border-radius: 0 0 7px 7px;
+}
+
+.last-choice {
+    border-right-style: none;
+}
+
+.rcm-title {
+    margin-top: 60px
+}
+
+.rcm-card_img {
+    border-radius: 7px;
+    box-shadow: 5px 10px 18px #888888;
+}
+
+.rcm-card_wrapper:hover {
+    transform: scale(1.05, 1.05);
+    cursor: pointer;
+}
+
+.rcm-tutorial {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.rcm-tutorial:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.rcm-tutorial_img {
+    border-radius: 15px 15px 0 0;
+}
+
+.rcm-tutorial_btn {
+    background-color: rgb(1, 198, 132);
+    height: 70px;
+    /* flex-direction: column; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 0 0 15px 15px
+}
+
+.rcm-tutorial_btn>h2 {
+    font-size: 25px;
+    color: white;
+    align-items: center;
+    line-height: 25px;
+    margin-bottom: 0;
+}
+
+.footer-aboutus {
+    /* border-style: solid; */
+    text-align: left;
+    padding: 30px;
+    /* border-radius: 10px; */
+    /* background-color: rgb(171, 248, 171); */
+    color: white;
+    margin-bottom: 50px;
+    border-bottom-style: solid;
+    border-bottom-width: 0.25px;
+    border-bootom-color: rgba(255, 255, 255, 0.05)
+}
+
+.aboutus-info {
+    margin-bottom: 0;
+}
+
+.aboutus-logo {
+    margin-top: 0;
+    width: 30%;
+}
+
+.footer-wrapper {
+    background-color: black;
+    color: white;
+    padding: 50px;
+}
