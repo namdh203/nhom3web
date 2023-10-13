@@ -5,18 +5,18 @@ export default function RcmBlock(props) {
     return (
         <>
             <h2 className="rcm-title">{props.title}</h2>
-            <div className='row gx-4'>
-                <div className='col col-md-3 col-sm-4'>
-                    <RcmCard src="https://pyt-images.imgix.net/images/activity/2-min.png?dpr=1&auto=format,compress,enhance&q=40"/>
+            <div className='row g-4'>
+                <div className='col col-md-4 col-sm-6'>
+                    <RcmCard name="Uluwatu temple" desc="Packages" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/4b/00/b2/uluwatu-temple-as-seen.jpg?w=500&h=-1&s=1"/>
                 </div>
-                <div className="col col-md-3 col-sm-4">
-                    <RcmCard src="https://pyt-images.imgix.net/images/activity/Eur2-min.png?dpr=1&auto=format,compress,enhance&q=40"/>
+                <div className="col col-md-4 col-sm-6">
+                    <RcmCard name="Tirta Gangga" desc="Packages" src="https://a.cdn-hotels.com/gdcs/production153/d558/3484c783-ac9e-422f-96de-3c54f81f7e98.jpg"/>
                 </div>
-                <div className='col col-md-3 col-sm-4'>
+                {/* <div className='col col-md-3 col-sm-4'>
                     <RcmCard src="https://pyt-images.imgix.net/images/activity/Thailand1-min.png?dpr=1&auto=format,compress,enhance&q=40"/>
-                </div>
-                <div className="col col-md-3 col-sm-4">
-                    <RcmCard src="https://pyt-images.imgix.net/images/activity/Singa4-min.png?dpr=1&auto=format,compress,enhance&q=40"/>
+                </div> */}
+                <div className="col col-md-4 col-sm-6">
+                    <RcmCard name="Lempuyang" desc="Packages" src="https://therunawayfamily.com/wp-content/uploads/2023/06/gates-of-heaven-bali.jpg"/>
                 </div>
             </div>
         </>
