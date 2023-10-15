@@ -28,10 +28,6 @@
     box-shadow: 5px 0px 15px rgb(0, 0, 0);
 }
 
-.last-choice {
-    border-right-style: none;
-}
-
 .brcm-card_info-wrapper {
     text-align: left;
     display: flex;

@@ -9,6 +9,7 @@ export default function SearchBar() {
                 <div className="search-input_wrapper">
                     <input type='text' className="search-input" placeholder='Where do you want to go?'/>
                 </div>
+                {/* <button className="search-btn">Search</button> */}
             </div>
         </>
     )
