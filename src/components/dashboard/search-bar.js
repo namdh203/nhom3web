@@ -1,5 +1,5 @@
 import React from 'react'
-import "./dashbroad.css"
+import "./search-bar.css"
 
 export default function SearchBar() {
     return (

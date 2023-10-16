@@ -1,11 +1,11 @@
 import React from 'react';
 import "./dashbroad.css"
-import MdRcmCard from "./medium_rcm_card.js"
+import MdRcmCard from "./md_rcm_card.js"
 
 
 export default function MdRcmBlock(props) {
     return (
-        <>
+        <div className="rcm-block">
             <h2 className="rcm-title">{props.title}</h2>
             <div className="container-md">
                 <div className="row gx-5">
@@ -20,6 +20,6 @@ export default function MdRcmBlock(props) {
                     </div> */}
                 </div>
             </div>
-        </>
+        </div>
     )
 }

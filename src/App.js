@@ -12,9 +12,10 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-          <div className="container-md">
-            <Link className="navbar-brand" to={'/'}>Travelam</Link>
+        <nav className="navbar navbar-expand-lg navbar-light fixed-top navbar-wrapper">
+            <Link className="navbar-brand" to={'/'}>
+              <img src="https://i.imgur.com/OnZQimp.png" alt="logo" />
+            </Link>
             <SearchBar />
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav ml-auto">
@@ -22,7 +23,6 @@ function App() {
                 <li className="nav-item" onClick={showAuth}><Link className="nav-link" to={'/sign-up'}><i class="fa-solid fa-user-plus sign-up-logo"></i></Link></li>
               </ul>
             </div>
-          </div>
         </nav>
         <div className='home-wrapper'>
           <Dashboard />

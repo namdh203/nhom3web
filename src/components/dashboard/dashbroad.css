@@ -1,64 +1,17 @@
-.banner-info {
-    text-align: justify;
-    padding: 0 75px;
-    position: absolute;
-    transform: translateY(-175px);
-    color: white;
-    z-index: 3;
-}
-
-.banner-header {
-    font-size: 50px;
-}
-
-.banner-arrow {
-    scale: 5;
-    position: absolute;
-    top: 50%;
-    /* transform: translateY(-50%); */
-    transform: translate(6px, -50%);
-    color: white;
-    display: none;
-}
-
-.banner-forward {
-    /* height: 100px; */
-    position: absolute;
-    top: 56px;
-    right: 0;
-    height: calc(100% - 56px);
-    width: 75px;
-    text-align: center;
-    align-items: center;
-}
-
-.banner-forward:hover,
-.banner-backward:hover {
-    background-color: rgba(0, 0, 0, 0.2);
-
-    i {
-        display: flex;
-    }
-}
-
-/* 
-.banner-backward:hover {
-    background-color: rgba(0, 0, 0, 0.2);
-} */
-
-.banner-backward {
-    /* height: 100px; */
-    position: absolute;
-    top: 56px;
-    left: 0;
-    height: calc(100% - 56px);
-    width: 75px;
-    text-align: center;
-    align-items: center;
-}
-
 .rcm-title {
-    margin-top: 60px
+    text-align: left;
+    font-size: 28px;
+    color: black;
+    margin: 0 100px 20px;
+}
+  
+.rcm-block {
+    padding: 50px 0;
+    /* width: 100% !important; */
+}
+
+.rcm-body {
+    margin: 0;
 }
 
 /* Tutorial */
@@ -95,73 +48,6 @@
     margin-bottom: 0;
 }
 
-/* Footer */
-
-.footer-aboutus {
-    /* border-style: solid; */
-    text-align: left;
-    padding: 30px;
-    /* border-radius: 10px; */
-    /* background-color: rgb(171, 248, 171); */
-    color: white;
-    margin-bottom: 50px;
-    border-bottom-style: solid;
-    border-bottom-width: 0.25px;
-    border-bootom-color: rgba(255, 255, 255, 0.05)
-}
-
-.aboutus-info {
-    margin-bottom: 0;
-}
-
-.aboutus-logo {
-    margin-top: 0;
-    width: 30%;
-}
-
-.footer-wrapper {
-    background-color: black;
-    color: white;
-    padding: 50px;
-}
-
-/* Search Bar */
-.search-wrapper {
-    background-color: white;
-    border: none;
-    box-shadow: 5px 2px 10px rgb(0, 0, 0, 0.2);
-    width: 100%;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    border-radius: 5px;
-    padding: 0 16px;
-    margin: 0 10px;
-}
-
-.search-input_wrapper {
-    height: 100%;
-    flex: 1;
-}
-
-.search-input {
-    height: 100%;
-    width: 100%;
-    outline: none;
-    border: none;
-    font-size: 16px;
-    padding: 0 16px;
-    line-height: 40px;
-    color: rgb(165, 160, 160)
-}
-
-.search-logo {
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    color: rgb(202, 197, 197)
-}
-
 /* .search-btn {
     height: 100%;
     padding: 0 5px;
@@ -171,17 +57,17 @@
 
 .rcm-vertical-menu {
     width: 200px;
-    /* height: 500px; */
+    height: calc(100% - 56px);
     background-color: rgb(179, 252, 179);
     position: fixed;
-    top: 50%;
+    top: calc(50% + 32px);
     left: 0;
-    transform: translateY(-50%);
+    transform: translate(-100%, -50%);
     /* transform: translate3d(-240px, 0, 0); */
-    border-radius: 0 15px 15px 0;
+    border-radius: 0 0 15px 0;
     padding: 0px 0 15px;
     /* animation: move_btn 2s forwards; */
-    z-index: 4;
+    z-index: 2000;
 }
 
 .rcm-menu_choice {
@@ -197,11 +83,9 @@
     /* padding: 0 20px; */
     border-bottom-style: solid;
     border-bottom-width: 0.5px;
-}
-
-.rcm-menu_choice>div {
     background-color: rgb(179, 252, 179);
 }
+
 
 .rcm-menu_choice>div:hover {
     background-color: rgba(0, 0, 0, 0.2);
@@ -241,7 +125,8 @@
     transform: translate(-50%, -50%);
 }
 
-.active, .active>div {
+.active,
+.active>div {
     background-color: rgb(108, 214, 108);
 }
 
@@ -253,14 +138,14 @@
 
     to {
         /* opacity: 1;  */
-        transform: translate3d(-200px, -50%, 0)
+        transform: translate3d(-100%, -50%, 0)
     }
 }
 
 @keyframes move_btn_backward {
     from {
         /* opacity: 0;  */
-        transform: translate3d(-200px, -50%, 0)
+        transform: translate3d(-100%, -50%, 0)
     }
 
     to {
@@ -270,5 +155,29 @@
 }
 
 .hidden {
+    display: none;
+}
+
+.odd {
+    background-color: white;
+}
+
+.even {
+    background-color: rgb(182, 236, 182);
+}
+
+.margin-block {
+    height: 180px;
+}
+
+.black-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    opacity: 0.4;
+    z-index: 500;
     display: none;
 }

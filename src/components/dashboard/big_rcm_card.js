@@ -1,5 +1,5 @@
 import React from 'react'
-import "./special_rcm_block.css"
+import "./big_rcm_block.css"
 
 export default function BigRcmCard(props) {
     return (
