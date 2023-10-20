@@ -1,5 +1,5 @@
 import './App.css'
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Login from './components/login/login'
 import SignUp from './components/login/signup'
@@ -7,10 +7,12 @@ import Dashboard from './components/dashboard/dashboard'
 import showAuth from './components/dashboard/dashboard.style'
 import Footer from './components/dashboard/footer'
 import SearchBar from './components/dashboard/search-bar'
+import Users from './components/users'
 
 function App() {
   return (
     <Router>
+      <Users></Users>
       <div className="App">
         <nav className="navbar navbar-expand-lg navbar-light fixed-top navbar-wrapper">
             <Link className="navbar-brand" to={'/'}>
