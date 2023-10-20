@@ -71,16 +71,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 ## How to run the server:
-Run backend (expressjs): 
+Run backend (expressjs):\ 
     - Run command "cd server"\
     - If you haven't installed packages yet, run command "npm install"\
     - Run command "npm run dev"\
-Run fronted (react):
+Run fronted (react):\
     - Open new terminal tab\
     - Run command "cd client"\
     - If you haven't installed packages yet, run command "npm install"\
     - Run command "npm run build"\
     - Run command "npm start"\
-How to change port:
+How to change port:\
     - Change port in server/server.js\
     - Change port in client/package.json, there is "proxy" key, change its value.\
