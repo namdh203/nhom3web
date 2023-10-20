@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  background: #985bda !important;
+  background: white !important;
   min-height: 100vh;
   display: flex;
   font-weight: 400;
@@ -32,9 +32,24 @@ html,
   height: 100%;
 }
 
+.auth-wrapper {
+  z-index: 1500 !important;
+}
+
 .navbar-light {
-  background-color: #ffffff;
-  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  background-color: lightgreen;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-nav {
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-wrapper {
+  padding: 0 20px !important
 }
 
 .auth-wrapper {
@@ -42,9 +57,15 @@ html,
   justify-content: center;
   flex-direction: column;
   text-align: left;
+  width: 100px;
+  position: relative;
 }
 
 .auth-inner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
   width: 450px;
   margin: auto;
   background: #ffffff;
@@ -52,6 +73,7 @@ html,
   padding: 40px 55px 45px 55px;
   border-radius: 15px;
   transition: all 0.3s;
+  z-index: 10;
 }
 
 .auth-wrapper .form-control:focus {
@@ -64,6 +86,10 @@ html,
   margin: 0;
   line-height: 1;
   padding-bottom: 20px;
+}
+
+.sign-in-logo, .sign-up-logo {
+  color: white;
 }
 
 .custom-control-label {
@@ -81,4 +107,8 @@ html,
 
 .forgot-password a {
   color: #0a0478;
+}
+
+.navbar-brand>img {
+  width: 150px !important;
 }
