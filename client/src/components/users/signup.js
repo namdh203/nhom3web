@@ -1,9 +1,41 @@
 import React, { Component } from 'react'
+import { register } from './UserFunction.js'
 
 export default class SignUp extends Component {
+    constructor() {
+        super()
+        this.state = {
+          first_name: "a",
+          last_name: "a",
+          email: "a@gmail.com",
+          password: "a",
+          errors: {}
+        }
+
+        this.onChange = this.onChange.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
+      }
+
+      onChange(e) {
+        this.setState({ [e.target.name]: e.target.value })
+      }
+      onSubmit(e) {
+        e.preventDefault()
+
+        const newUser = {
+          first_name: this.state.first_name,
+          last_name: this.state.last_name,
+          email: this.state.email,
+          password: this.state.password
+        }
+
+        register(newUser).then(res => {
+        })
+      }
+
     render() {
         return (
-            <form>
+            <form onSubmit={this.onSubmit}>
                 <h3>Sign Up</h3>
 
                 <div className="mb-3">
@@ -12,11 +44,19 @@ export default class SignUp extends Component {
                         type="text"
                         className="form-control"
                         placeholder="First name"
+                        value={this.state.first_name}
+                        onChange={this.onChange}
                     />
                 </div>
                 <div className="mb-3">
                     <label>Last name</label>
-                    <input type="text" className="form-control" placeholder="Last name" />
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Last name"
+                        value={this.state.last_name}
+                        onChange={this.onChange}
+                    />
                 </div>
                 <div className="mb-3">
                     <label>Email address</label>
@@ -24,6 +64,8 @@ export default class SignUp extends Component {
                         type="email"
                         className="form-control"
                         placeholder="Enter email"
+                        value={this.state.email}
+                        onChange={this.onChange}
                     />
                 </div>
                 <div className="mb-3">
@@ -32,6 +74,8 @@ export default class SignUp extends Component {
                         type="password"
                         className="form-control"
                         placeholder="Enter password"
+                        value={this.state.password}
+                        onChange={this.onChange}
                     />
                 </div>
                 <div className="d-grid">
