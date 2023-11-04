@@ -5,8 +5,8 @@ export default class Login extends Component {
     constructor() {
         super()
         this.state = {
-            email: 'a@gmail.com',
-            password: 'a',
+            email: '',
+            password: '',
             errors: {}
         }
 
@@ -39,6 +39,7 @@ export default class Login extends Component {
                     <input
                         type="email"
                         className="form-control"
+                        name="email"
                         placeholder="Enter email"
                         value={this.state.email}
                         onChange={this.onChange}
@@ -49,6 +50,7 @@ export default class Login extends Component {
                     <input
                         type="password"
                         className="form-control"
+                        name="password"
                         placeholder="Enter password"
                         value={this.state.password}
                         onChange={this.onChange}

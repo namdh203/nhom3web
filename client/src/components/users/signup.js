@@ -5,10 +5,10 @@ export default class SignUp extends Component {
     constructor() {
         super()
         this.state = {
-          first_name: "a",
-          last_name: "a",
-          email: "a@gmail.com",
-          password: "a",
+          first_name: "",
+          last_name: "",
+          email: "",
+          password: "",
           errors: {}
         }
 
@@ -30,6 +30,8 @@ export default class SignUp extends Component {
         }
 
         register(newUser).then(res => {
+            // rotes to sign-in
+            window.location.href = `/sign-in`;
         })
       }
 
@@ -43,6 +45,7 @@ export default class SignUp extends Component {
                     <input
                         type="text"
                         className="form-control"
+                        name="first_name"
                         placeholder="First name"
                         value={this.state.first_name}
                         onChange={this.onChange}
@@ -53,6 +56,7 @@ export default class SignUp extends Component {
                     <input
                         type="text"
                         className="form-control"
+                        name="last_name"
                         placeholder="Last name"
                         value={this.state.last_name}
                         onChange={this.onChange}
@@ -63,6 +67,7 @@ export default class SignUp extends Component {
                     <input
                         type="email"
                         className="form-control"
+                        name="email"
                         placeholder="Enter email"
                         value={this.state.email}
                         onChange={this.onChange}
@@ -73,6 +78,7 @@ export default class SignUp extends Component {
                     <input
                         type="password"
                         className="form-control"
+                        name="password"
                         placeholder="Enter password"
                         value={this.state.password}
                         onChange={this.onChange}
