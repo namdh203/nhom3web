@@ -1,0 +1,27 @@
+.footer-aboutus {
+    /* border-style: solid; */
+    text-align: left;
+    padding: 30px;
+    /* border-radius: 10px; */
+    /* background-color: rgb(171, 248, 171); */
+    color: white;
+    margin-bottom: 50px;
+    border-bottom-style: solid;
+    border-bottom-width: 0.25px;
+    border-bootom-color: rgba(255, 255, 255, 0.05)
+}
+
+.aboutus-info {
+    margin-bottom: 0;
+}
+
+.aboutus-logo {
+    margin-top: 0;
+    width: 30%;
+}
+
+.footer-wrapper {
+    background-color: black;
+    color: white;
+    padding: 50px;
+}
