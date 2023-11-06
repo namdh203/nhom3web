@@ -1,0 +1,62 @@
+.tour-detail_wrapper {
+    padding: 0px 0 40px;
+    background-color: rgb(238, 234, 234);
+}
+
+.schedule {
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.schedule>h1 {
+    /* text-align: left; */
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: 600;   
+    margin-bottom: 20px;
+    /* border-bottom: solid 0.025px #333;  */
+}
+
+.schedule.full {
+    /* background-color: red; */
+    padding-left: 40px; 
+}
+
+.tour-cost {
+    margin-top: 10px;
+    padding: 7px;
+    background-color: rgb(32, 175, 32);
+    border-radius: 10px;
+    border: 0.1px solid gray;
+    user-select: none;
+}
+
+.tour-cost > h1 {
+    margin: 0;
+    font-size: 28px;
+    line-height: 32px;
+    color: black
+}
+
+.tour-cost:hover {
+    opacity: 0.5;
+    cursor: pointer;
+    h1 {
+        color: white
+    }
+}
+
+.brief-dest {
+    font-weight: 600;
+}
+
+.schedule.brief>h1 {
+    border-bottom: 0.5px rgb(219, 213, 213) solid
+}
+
+.detail-header {
+    text-align: left;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}

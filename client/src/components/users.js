@@ -22,8 +22,8 @@ class Users extends Component {
       <div>
         <h1>Users Component</h1>
         <ul>
-          // map while return a new array without modifying origin array (not callback)
-          // foreach return nothing but modifying origin array
+          {/* // map while return a new array without modifying origin array (not callback)
+          // foreach return nothing but modifying origin array */}
           {this.state.users.map((user) => (
             <li>
               Username {user.username}, Age: {user.age}
