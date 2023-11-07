@@ -19,7 +19,7 @@
     width: 100%;
     height: 100% !important;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 20px 20px 0 0;
     /* height: 50%; */
 }
 
@@ -90,10 +90,12 @@
     /* text-overflow: ellipsis; */
     /* white-space: nowrap; */
     margin-bottom: 20px;
+    padding: 0 20px;
 }
 
 .tour-desc {
     margin-bottom: 40px;
+    padding: 10px 20px;
 }
 
 .tour-desc>span {
@@ -102,21 +104,4 @@
     line-height: 32px;
     font-weight: 600;   
     margin-bottom: 20px;
-}
-
-.short-info {
-    text-align: left;
-}
-
-.short-info_header {
-    margin-top: 20px;
-    font-size: 28px;
-}
-
-.short-info>p {
-    padding: 0 20px;
-}
-
-.short-info>p>i {
-    color: green
 }

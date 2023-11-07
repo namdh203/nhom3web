@@ -30,6 +30,13 @@ export default class Login extends Component {
 
         login(user).then(res => {
             console.log(res)
+            const body = document.body
+            const nav_items = body.querySelectorAll(".nav-item")
+            for (let i = 0; i < nav_items.length; i++) {
+                nav_items[i].style.display = "none"
+            }   
+            window.location.href = "/"
+
         })
     }
 

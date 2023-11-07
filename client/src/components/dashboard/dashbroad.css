@@ -2,12 +2,13 @@
     text-align: left;
     font-size: 28px;
     color: black;
-    margin: 0 100px 20px;
+    margin: 0 20px 20px;
 }
-  
+
 .rcm-block {
     padding: 50px 0;
     /* width: 100% !important; */
+    border-bottom: 0.025px rgb(212, 199, 199) solid;
 }
 
 .rcm-body {
@@ -180,4 +181,33 @@
     opacity: 0.4;
     z-index: 500;
     display: none;
+}
+
+.home-rcm_sidebar {
+    margin: 50px 0;
+    text-align: left;
+    /* border-radius: 10px; */
+    border-right: 0.025px rgb(212, 199, 199)     solid;
+}
+
+.rcm-sidebar_header {
+    /* text-align: left; */
+    font-size: 28px;
+    color: black;
+    margin-bottom: 30px;
+}
+
+.rcm-sidebar_list>p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.rcm-sidebar_list>p:hover {
+    cursor: pointer;
+    color: rgb(161, 240, 161)
+}
+
+.rcm-sidebar_list>.chosenList {
+    color: rgb(1, 194, 1)
 }
