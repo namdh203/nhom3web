@@ -6,6 +6,10 @@
   "scripts": {
     "start-server": "cd server && npm run dev",
     "start-client": "cd client && npm start",
-    "start-root": "concurrently \"npm run start-client\" \"npm run start-server\""
+    "start-root": "concurrently \"npm run start-client\" \"npm run start-server\"",
+
+    "install-server": "cd server && npm install",
+    "install-client": "cd client && npm install",
+    "install-all": "concurrently \"npm install\" \"npm run install-server\" \"npm run install-client\""
   }
 }
