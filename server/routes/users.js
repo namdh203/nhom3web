@@ -57,6 +57,7 @@ users.post('/login', (req, res) => {
                         expiresIn: 1440
                     })
                     res.send(token)
+                    // console.log(res)
                 }
             } else {
                 res.status(400).json({ error: 'User does not exist' })

@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { login } from './UserFunction.js'
+import { Link } from "react-router-dom"
+import "../../App.css"
+import "../dashboard/dashboard.js"
 
 export default class Login extends Component {
     constructor() {
@@ -26,17 +29,29 @@ export default class Login extends Component {
         }
 
         login(user).then(res => {
-            window.location.href = `/`;
             console.log(res)
+            const body = document.body
+            const nav_items = body.querySelectorAll(".nav-item")
+            for (let i = 0; i < nav_items.length; i++) {
+                nav_items[i].style.display = "none"
+            }   
+            window.location.href = "/"
+
         })
     }
+
     render() {
         return (
             <div className="auth-wrapper">
+                <Link className="dashboard-link" to={"/"}>
+                    <div className="black-layer" style={{
+                        "z-index": "9",
+                        display: "flex"
+                    }}></div>
+                </Link>
                 <div className="auth-inner">
                     <form onSubmit={this.onSubmit}>
                         <h3>Sign In</h3>
-
                         <div className="mb-3">
                             <label>Email address</label>
                             <input
@@ -72,9 +87,9 @@ export default class Login extends Component {
                                 <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
                             </div>
                         </div>
-                        <p className="forgot-password text-right">
-                            Didn't <a href="sign-up"> Register?</a>
-                        </p>
+                        {/* <p className="forgot-password text-right">
+                    Forgot <a href="#">password?</a>
+                </p> */}
                     </form>
                 </div>
             </div>

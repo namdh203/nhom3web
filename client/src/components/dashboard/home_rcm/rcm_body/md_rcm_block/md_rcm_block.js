@@ -1,5 +1,5 @@
 import React from 'react';
-import "./dashbroad.css"
+import "../../../dashbroad.css"
 import MdRcmCard from "./md_rcm_card.js"
 
 

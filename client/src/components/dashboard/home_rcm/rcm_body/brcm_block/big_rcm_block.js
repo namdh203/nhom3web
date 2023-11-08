@@ -1,9 +1,9 @@
 import React from 'react';
 import BigRcmCard from "./big_rcm_card"
-import "./dashbroad.css"
+import "../../../dashbroad.css"
 
 
-export default function SpecialRcmBlock(props) {
+export default function BigRcmBlock(props) {
     return (
         <div className="rcm-block">
             <h2 className="rcm-title">{props.title}</h2>

@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { register } from './UserFunction.js'
+import { Link } from 'react-router-dom'
+import '../../App.css'
+import "../dashboard/dashboard.js"
 
 export default class SignUp extends Component {
     constructor() {
@@ -30,14 +33,21 @@ export default class SignUp extends Component {
         }
 
         register(newUser).then(res => {
-            // routes to sign-in
+            // rotes to sign-in
             window.location.href = `/sign-in`;
         })
     }
 
+
     render() {
         return (
             <div className="auth-wrapper">
+                <Link className="dashboard-link" to={"/"}>
+                    <div className="black-layer" style={{
+                        "z-index": "9",
+                        display: "flex"
+                    }}></div>
+                </Link>
                 <div className="auth-inner">
                     <form onSubmit={this.onSubmit}>
                         <h3>Sign Up</h3>
