@@ -22,12 +22,16 @@ DROP TABLE IF EXISTS Tour;
 CREATE TABLE IF NOT EXISTS Tour (
   tourID INT NOT NULL,
   title VARCHAR(50),
-  description VARCHAR(255), -- Adjust the size to your needs
+  description VARCHAR(255),
   duration INT,
   price DOUBLE,
-  priceCurrency VARCHAR(255), -- Adjust the size to your needs
+  priceCurrency VARCHAR(255),
   startDate DATE,
   endDate DATE,
+  description MEDIUMTEXT,
+  additionalInfo TEXT,
+  demoImage MEDIUMTEXT,
+  voting INT,
   PRIMARY KEY (tourID)
 );
 
@@ -43,9 +47,11 @@ CREATE TABLE IF NOT EXISTS Tour_destinations (
 DROP TABLE IF EXISTS Destination;
 CREATE TABLE IF NOT EXISTS Destination (
   destID INT NOT NULL,
-  name VARCHAR(255), -- Adjust the size to your needs
+  name VARCHAR(255),
   countryID INT NOT NULL,
-  description VARCHAR(255), -- Adjust the size to your needs
+  description MEDIUMTEXT,
+  additionalInfo TEXT,
+  demoImage MEDIUMTEXT,
   PRIMARY KEY (destID)
 );
 
@@ -60,6 +66,9 @@ CREATE TABLE IF NOT EXISTS Accommodation (
   address VARCHAR(255), -- Adjust the size to your needs
   telephoneNo VARCHAR(15), -- Adjust the size to your needs
   contactEmail VARCHAR(255), -- Adjust the size to your needs
+  description MEDIUMTEXT,
+  additionalInfo TEXT,
+  demoImage MEDIUMTEXT,
   PRIMARY KEY (accomID)
 );
 
@@ -81,8 +90,11 @@ CREATE TABLE IF NOT EXISTS Transportation (
   startTime DATE,
   endTime DATE,
   price DOUBLE,
-  priceCurrency VARCHAR(255), -- Adjust the size to your needs
-  type VARCHAR(255), -- Adjust the size to your needs
+  priceCurrency VARCHAR(255), 
+  type VARCHAR(255),
+  description MEDIUMTEXT,
+  additionalInfo TEXT,
+  demoImage MEDIUMTEXT,
   PRIMARY KEY (transID)
 );
 
@@ -120,6 +132,9 @@ CREATE TABLE IF NOT EXISTS Restaurant (
   name VARCHAR(255), -- Adjust the size to your needs
   address VARCHAR(255), -- Adjust the size to your needs
   telephoneNo VARCHAR(15), -- Adjust the size to your needs
+  description MEDIUMTEXT,
+  additionalInfo TEXT,
+  demoImage MEDIUMTEXT,
   PRIMARY KEY (restID)
 );
 
@@ -151,6 +166,9 @@ CREATE TABLE IF NOT EXISTS Activity (
   name VARCHAR(50), -- Adjust the size to your needs
   destID INT NOT NULL,
   type VARCHAR(255), -- Adjust the size to your needs
+  description MEDIUMTEXT,
+  additionalInfo TEXT,
+  demoImage MEDIUMTEXT,
   PRIMARY KEY (activityID)
 );
 
