@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize')
 const db = require('../database/db')
 
+const Destination = require('../models/destination')
+
 const Country = db.sequelize.define(
     'country',
     {
@@ -32,6 +34,7 @@ const Country = db.sequelize.define(
     }
 
 )
+
 
 Country.sync({alter: true}).then((data) => {
     console.log("Table synced successful!")

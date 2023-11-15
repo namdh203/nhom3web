@@ -40,6 +40,10 @@ const Destination = db.sequelize.define(
   }
 )
 
+
+Country.hasMany(Destination, { foreignKey: 'tour_id' });
+Destination.belongsTo(Tour, { foreignKey: 'tour_id', targetKey: 'id' });
+
 Destination.sync({alter : true}).then((data) => {
   console.log("Table and model synced successful!");
 }).catch((err) => {
