@@ -7,6 +7,7 @@ import Dashboard from './components/dashboard/dashboard'
 import Footer from './components/dashboard/footer/footer'
 import SearchBar from './components/dashboard/search_bar/search-bar'
 import TourInfo from './components/tourinfo/tour_info'
+import CountryInfo from './components/countryinfo/country_info'
 
 function App() {
   // const [isLogin, setIsLogin] = useState(false)
@@ -18,7 +19,7 @@ function App() {
       <div className="App">
         <nav className="navbar navbar-expand-lg navbar-light fixed-top navbar-wrapper">
           <Link className="navbar-brand" to={'/'}>
-            <img  className="logo" src="https://i.imgur.com/OnZQimp.png" alt="logo" onClick={showDashBoard}/>
+            <img  className="logo" src="https://imgur.com/a/VPWZ1ay" alt="logo" onClick={showDashBoard}/>
           </Link>
           <SearchBar />
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -40,6 +41,7 @@ function App() {
             <SignUp />
           </>}/>
           <Route path="/tour/bali-tour" element={<TourInfo title="Bali Tour" banner="https://s3-hn-2.cloud.cmctelecom.vn/tapchicongthuong.vn/tcct-media/20/2/4/8.-den-uluwatu--.jpg"/>}/>
+          <Route path="/country" element={<CountryInfo name="Bali"/>}/>
         </Routes>
         <div className="footer-wrapper">
           <Footer />

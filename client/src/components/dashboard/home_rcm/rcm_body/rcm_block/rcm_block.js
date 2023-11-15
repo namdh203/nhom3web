@@ -1,26 +1,48 @@
 import React from 'react';
 import RcmCard from './rcm_card';
+import { getMdRcmData2, getPopularCountry2 } from '../RcmbodyFunction';
 
-export default function RcmBlock(props) {
-    return (
-        <div className="rcm-block">
-            <h2 className="rcm-title">{props.title}</h2>
-            <div className="container-md">
-                <div className='row g-4'>
-                    <div className='col col-md-3 col-sm-6'>
-                        <RcmCard name="Uluwatu temple" desc="Packages" url = "/tour/bali-tour" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/4b/00/b2/uluwatu-temple-as-seen.jpg?w=500&h=-1&s=1"/>
-                    </div>
-                    <div className="col col-md-3 col-sm-6">
-                        <RcmCard name="Tirta Gangga" desc="Packages" url = "/tour/bali-tour" src="https://a.cdn-hotels.com/gdcs/production153/d558/3484c783-ac9e-422f-96de-3c54f81f7e98.jpg"/>
-                    </div>
-                    <div className="col col-md-3 col-sm-6">
-                        <RcmCard name="Lempuyang" desc="Packages" url = "/tour/bali-tour" src="https://therunawayfamily.com/wp-content/uploads/2023/06/gates-of-heaven-bali.jpg"/>
-                    </div>
-                    <div className="col col-md-3 col-sm-6">
-                        <RcmCard name="Lempuyang" desc="Packages" url = "/tour/bali-tour" src="https://therunawayfamily.com/wp-content/uploads/2023/06/gates-of-heaven-bali.jpg"/>
+export default class RcmBlock extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            tourData: [],
+            country_name: "France",
+            country_id: 6
+        }
+    }
+
+    componentDidMount() {
+        getPopularCountry2().then(res => {
+            const id = res.id;
+            this.setState({ 'country_name': res.countryName, 'country_id': res.id }, id => {
+                getMdRcmData2(this.state.country_id).then(res => {
+                    this.setState({ 'tourData': res })
+                }).catch(err => {
+                    console.log('error: ' + err)
+                })
+            });
+
+        }).catch(error => {
+            console.error('Error:', error);
+        })
+    }
+
+    render() {
+        console.log(this.state.country_name, this.state.country_id, this.state.tourData)
+        return (
+            <div className="rcm-block">
+                <h2 className="rcm-title">{this.state.country_name}</h2>
+                <div className="container-md">
+                    <div className='row g-4'>
+                        {this.state.tourData.slice(0, 4).map((tour) => (
+                            <div className='col col-md-3 col-sm-6'>
+                                <RcmCard name={tour.title} desc="Packages" url="/tour/bali-tour" src={tour.demoImage} />
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
 }

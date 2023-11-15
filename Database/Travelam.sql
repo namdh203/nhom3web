@@ -28,6 +28,8 @@ CREATE TABLE IF NOT EXISTS Tour (
   priceCurrency VARCHAR(255), -- Adjust the size to your needs
   startDate DATE,
   endDate DATE,
+  additionInfo VARCHAR(255),
+  demoImage VARCHAR(255)
   PRIMARY KEY (tourID)
 );
 
@@ -46,6 +48,8 @@ CREATE TABLE IF NOT EXISTS Destination (
   name VARCHAR(255), -- Adjust the size to your needs
   countryID INT NOT NULL,
   description VARCHAR(255), -- Adjust the size to your needs
+  additionInfo VARCHAR(255),
+  demoImage VARCHAR(255),
   PRIMARY KEY (destID)
 );
 
@@ -109,6 +113,9 @@ DROP TABLE IF EXISTS Country;
 CREATE TABLE IF NOT EXISTS Country (
   countryID INT NOT NULL,
   countryName VARCHAR(255), -- Adjust the size to your needs
+  description VARCHAR(255),
+  additionInfo VARCHAR(255),
+  demoImage VARCHAR(255),
   PRIMARY KEY (countryID)
 );
 

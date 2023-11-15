@@ -13,8 +13,12 @@ app.use(
   })
 )
 
+
 const Users = require("./routes/users");
 app.use("/users", Users);
+
+const Tours = require("./routes/tours");
+app.use("/tours", Tours)
 
 app.listen(port, () => {
     console.log(`Server start on port ${port}`);

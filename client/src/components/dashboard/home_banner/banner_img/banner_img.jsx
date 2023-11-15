@@ -4,8 +4,16 @@ import "../home_banner.css"
 export default class BannerImg extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            banner_url: "",
+            banner_name: "",
+            banner_desc: ""
+        }
     }
+
+    // componentDidMount() {
+    //     this.fetchData();
+    // }
 
     render() {
         return (

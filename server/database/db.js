@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = {}
 // Database: Travelam (testingdbuser for test)
-const sequelize = new Sequelize('testingdbuser', 'root', '@Ttg123456', {
+const sequelize = new Sequelize('travelam', 'root', '@Ttg123456', {
   host: 'localhost',
   dialect: 'mysql',
 
