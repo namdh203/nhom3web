@@ -1,14 +1,14 @@
 {
   "dependencies": {
     "antd": "^5.11.0",
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "react-icon": "^1.0.0"
   },
   "scripts": {
     "start-server": "cd server && npm run dev",
     "start-client": "cd client && npm start",
     "install-server": "cd server && npm install",
     "install-client": "cd client && npm install",
-
     "start-root": "concurrently \"npm run start-client\" \"npm run start-server\"",
     "install-all": "concurrently \"npm run install-client\" \"npm run install-server\""
   }

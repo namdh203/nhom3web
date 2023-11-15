@@ -21,7 +21,10 @@ class TourDestination extends React.Component {
                     <div className="tour-dest_header">{this.props.header}</div>
                     <div className="tour-dest_info row gx-4">
                         <div className="label col col-md-2">Accom:</div>
-                        <div className="detail col col-md-10">Anantara Uluwatu Bali Resort, Budget Accommodation, Private Villas, Karma Kandara, Bulgari Resort Bali, Alila Villas Uluwatu.</div>
+                        <div className="detail col col-md-10">
+                            <a href="../accomodation/hotel">Anantara Uluwatu Bali Resort, </a>
+                            <span>Budget Accommodation, Private Villas, Karma Kandara, Bulgari Resort Bali, Alila Villas Uluwatu.</span>
+                        </div>
                     </div>
                     <div className="tour-dest_info row gx-4">
                         <div className="label col col-md-2">Transportation:</div>
