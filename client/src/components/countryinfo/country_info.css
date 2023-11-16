@@ -8,17 +8,26 @@
     font-size: 24px;
     font-weight: 600;
     align-items: center;
-    line-height: 70px;
-    margin-bottom: 0;
+    margin-bottom: 0px;
+}
+
+.country-header_wrapper>p {
+    text-align: left;
+    font-size: 16px;
+    font-weight: 400;
+    align-items: center;
+    margin-bottom: 0px;
 }
 
 .country-header_wrapper {
-    padding: 0 100px;
+    padding: 20px 100px 10px;
+    background-color: rgb(10, 55, 77);
+    color: white
 }
 
 .country-banner_wrapper {
     position: relative;
-    height: 450px;
+    height: 510px;
     /* margin-bottom: 30px; */
 }
 
@@ -29,15 +38,24 @@
     /* border-radius: 20px 20px 0 0; */
     /* height: 50%; */
 }
+.country-desc > p {
+    text-align: justify;
+    font-size: 20px;
+}
 
-.country-desc, .suggest-tour {
+.country-addition {
+    font-size: 20px;
+}
+
+.country-desc, .suggest-tour, .country-addition{
     /* padding: 0 100px; */
     text-align: left;
     margin-top: 50px;
+    
 }
 
-.suggest-tour>h2, .country-desc>h2 {
-    font-size: 24px;
+.suggest-tour>h2, .country-desc>h2, .country-addition > h2 {
+    font-size: 28px;
     font-weight: 400;
 }
 
@@ -48,7 +66,12 @@
 .suggest-card_wrapper {
     border-radius: 10px;
     margin-top: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
     
+}
+
+.suggest-card_wrapper:hover {
+    scale: 1.04;
 }
 
 .suggest-img {
@@ -57,7 +80,7 @@
 }
 
 .sg-desc {
-    background-color: white;
+    background-color: rgb(255, 245, 245);
     padding: 20px;
 }
 
@@ -86,4 +109,19 @@
 .sg-book:hover {
     cursor: pointer;
     opacity: 0.4;
+}
+
+.country-addition {
+    text-align: left;
+    /* height: 200px;
+    overflow:-moz-hidden-unscrollable; */
+}
+
+.country-addition > p > i {
+    color: green
+}
+
+.sg-info > label {
+    font-weight: 600;
+    margin: 2.5px 0; 
 }

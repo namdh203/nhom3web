@@ -3,12 +3,60 @@ import "../../index.css"
 import "../tourinfo/tour_info.css"
 import "./country_info.css"
 import SuggestCard from './suggest_card'
+import { getCountryData, getTourData } from './CountryFunction'
+import { Carousel } from 'antd';
 
 export default class CountryInfo extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            countryData: {},
+            tourData: []
+        }
+
+        this.onChange = this.onChange.bind(this)
     }
+
+    componentDidMount() {
+        const currentURL = window.location.href;
+
+        const url = new URL(currentURL);
+
+        const id = url.searchParams.get("id");
+        // const name = url.searchParams.get("name");
+
+        getCountryData(id).then(res => {
+            this.setState({ "countryData": res }, () => {
+                const body = document.body;
+                const addition_info = body.querySelector(".country-addition")
+
+                var info = "<h2>Addition Info:</h2>"
+
+                let len_ = this.state.countryData.additionInfo.length
+
+                for (let i = 0; i < Math.min(len_, 6); i++) {
+                    const opt_info = this.state.countryData.additionInfo[i]
+                    info = info + `<p><i class="fa-solid fa-check"></i>        ${opt_info}</p>`
+                }
+
+                addition_info.innerHTML = info
+            })
+        }).catch(err => {
+            console.log('err: ', err)
+        })
+
+        getTourData(id).then(res => {
+            this.setState({ 'tourData': res })
+        })
+            .catch(err => {
+                console.log('err: ', err)
+            })
+
+    }
+
+    onChange = (currentSlide) => {
+        console.log(currentSlide);
+    };
 
     render() {
         return (
@@ -16,67 +64,35 @@ export default class CountryInfo extends React.Component {
                 <div className="buffer-block" style={{ 'height': '54px' }}></div>
                 <div className="country-header_wrapper">
                     <h2 className="country-header">
-                        {this.props.name} Tour
+                        {this.state.countryData.countryName} Tour
                     </h2>
+                    <p style={{ "margin": "0" }}>Best packages in {this.state.countryData.countryName}</p>
                 </div>
                 <div className="country-info_wrapper">
 
-                    <div className="country-banner_wrapper">
-                        <img src="https://lp-cms-production.imgix.net/2023-01/GettyImages-827446284.jpg?auto=format&w=1920&h=640&fit=crop&crop=faces,edges&q=75" className="img-fluid country-banner" alt="Responsive" />
-                    </div>
-                    <div className="main-info" style={{ "border-radius": "0", "margin-bottom": "0" }}>
-                        <div className="row" style={{ 'height': '100%' }}>
-                            <div className="main-info_item-wrapper col col-md-2 col-sm-6">
-                                <div className="main-info_item">
-                                    <h3>DURATION</h3>
-                                    <p>5-7 days</p>
-                                </div>
+                    {/* <img src={this.state.countryData.demoImage} className="img-fluid country-banner" alt="Responsive" /> */}
+                    <Carousel afterChange={this.onChange} style={{ width: "100%" }}>
+                        {this.state.tourData.map((tour) => (
+                            <div className="country-banner_wrapper">
+                                <img src={tour.demoImage} className="img-fluid country-banner" alt="Responsive" />
                             </div>
-                            <div className="main-info_item-wrapper col col-md-2 col-sm-6">
-                                <div className="main-info_item">
-                                    <h3>PRIZE</h3>
-                                    <p>$30-$40</p>
-                                </div>
-                            </div>
-                            <div className="main-info_item-wrapper col col-md-2 col-sm-6"></div>
-                            <div className="main-info_item-wrapper col col-md-2 col-sm-6"></div>
-                            <div className="main-info_item-wrapper col col-md-2 col-sm-6"></div>
+                        ))}
+                    </Carousel>
 
-                            <div className="main-info_item-wrapper voting col col-md-2 col-sm-12">
-                                <div className="main-info_item voting">
-                                    <h3>VOTING</h3>
-                                    <div>
-                                        <i class="fa-regular fa-star"></i>
-                                        <i class="fa-regular fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="container-md" style={{"padding-bottom":"50px"}}>
+                    <div className="container-md" style={{ "padding-bottom": "50px" }}>
                         <div className="country-desc">
                             <h2>Description</h2>
 
-                            <p>A Bali tour promises an immersive journey into a realm of enchanting landscapes and rich cultural heritage. Nestled in the Indonesian archipelago, Bali captivates visitors with its lush green rice terraces, volcanic mountains, and pristine beaches. The island's natural beauty is complemented by a vibrant culture steeped in Hindu traditions. Travelers can witness traditional Balinese ceremonies, such as the mesmerizing dance performances and religious rituals at ancient temples like Uluwatu and Tanah Lot. Bali's cultural tapestry is woven into its daily life, from vibrant markets to art galleries showcasing the island's artistic prowess.</p>
+                            <p>{this.state.countryData.description}</p>
+                        </div>
+                        <div className="country-addition">
 
-                            <p>The allure of Bali extends beyond its cultural facets to its sun-kissed beaches that are nothing short of paradisiacal. From the bustling shores of Kuta to the serene stretches of Seminyak, Bali offers a spectrum of coastal experiences. Visitors can indulge in water activities like surfing, snorkeling, or simply unwind on the sands to soak in the tropical ambiance. Each beach has its own unique charm, whether it's the lively atmosphere of Seminyak, the surfing haven of Uluwatu, or the tranquil shores of Sanur. Bali's coastal allure complements its inland wonders, creating a diverse and unforgettable travel experience.</p>
-
-                            <p className="last">In addition to its cultural and coastal treasures, Bali entices adventurers with its lush interior. Explore the picturesque Ubud, surrounded by terraced rice fields and dense jungles. Discover hidden waterfalls, trek through the verdant landscapes, or visit the Bali Swing for an adrenaline-pumping experience with breathtaking views. The island's diverse topography offers a perfect blend of relaxation and exploration, making a Bali tour an immersive and unforgettable escape into paradise.</p>
                         </div>
                         <div className="suggest-tour row">
-                            <h2 style={{"margin": 0}}>Tour Suggestions</h2>
-                            <SuggestCard></SuggestCard>
-                            <SuggestCard></SuggestCard>
-                            <SuggestCard></SuggestCard>
+                            <h2 style={{ "margin": 0 }}>Tour Suggestions</h2>
+                            {this.state.tourData.slice(0, 3).map((tour) => (
+                                <SuggestCard tour={tour}></SuggestCard>
+                            ))}
 
 
                         </div>

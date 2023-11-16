@@ -312,3 +312,352 @@ use travelam;
 -- ('Romantic Paris Nights', 'Embark on a romantic Seine River cruise and enjoy a mesmerizing night tour of the Eiffel Tower, experiencing the enchanting beauty of Paris at night.', 4, 40.0, 'USD', '2024-08-10', '2024-08-13', 'City lights, Romantic atmosphere', 'https://example.com/romantic_nights_tour.jpg', 8000);
 
 -- INSERT INTO tour_dest (tour_id, dest_id) VALUES (23, 3), (23, 2), (23, 11);
+
+-- UPDATE Country
+-- SET description = 'The United States of America, often referred to as the USA, is a vast and dynamic nation encompassing 50 states, each with its own distinct character. From the towering skyscrapers of Manhattan to the sun-drenched beaches of California, the USA is a land of contrasts and opportunities. Immerse yourself in the cultural diversity of cities like Los Angeles, experience the historical significance of Washington, D.C., and explore the natural wonders of Yellowstone National Park. Whether you are drawn to the glamour of Hollywood, the tech innovation of Silicon Valley, or the jazz-filled streets of New Orleans, the USA has something to offer every traveler.',
+--     additionInfo = 'Best tourism, good vibe, friendly locals, delicious food, interesting adventures, smart transportation, clean hotel, diverse landscapes, cultural melting pot, economic powerhouse, Hollywood, Silicon Valley, jazz, Yellowstone National Park'
+-- WHERE id = 1;
+
+-- UPDATE Country
+-- SET description = 'Japan, an archipelago in East Asia, is a captivating blend of ancient traditions and cutting-edge modernity. From the historic shrines of Kyoto to the neon-lit streets of Tokyo, Japan invites you on a journey through time. Indulge in the artistry of traditional tea ceremonies, witness the breathtaking beauty of Mount Fuji, and navigate the bustling markets of Osaka. With a deep appreciation for nature and a commitment to technological advancement, Japan offers a unique and harmonious travel experience.',
+--     additionInfo = 'Best tourism, good vibe, friendly locals, delicious food, interesting adventures, smart transportation, clean hotel, rich history, technological innovation, traditional arts, tea ceremonies, Mount Fuji, Osaka markets'
+-- WHERE id = 2;
+
+-- UPDATE Country
+-- SET description = 'Australia, the land Down Under, is a continent of diverse landscapes and vibrant culture. From the otherworldly beauty of the Outback to the pristine beaches of the Gold Coast, Australia is a playground for nature lovers and adventure seekers alike. Dive into the Great Barrier Reefs mesmerizing underwater world, explore the ancient Indigenous heritage, and savor the multicultural flavors of Melbournes culinary scene. Australias laid-back lifestyle, friendly locals, and commitment to environmental conservation make it a destination that leaves a lasting impact.',
+--     additionInfo = 'Best tourism, good vibe, friendly locals, delicious food, interesting adventures, smart transportation, clean hotel, unique wildlife, beautiful landscapes, vibrant cities, Great Barrier Reef, Indigenous heritage, Melbourne cuisine'
+-- WHERE id = 3;
+
+-- UPDATE Country
+-- SET description = 'Brazil, the largest country in South America, is a kaleidoscope of colors, rhythms, and natural wonders. From the pulsating energy of Rio de Janeiros Carnival to the tranquility of the Amazon rainforest, Brazil offers a sensory journey like no other. Engage in the lively samba dance, taste the diverse flavors of Brazilian cuisine, and witness the awe-inspiring Iguazu Falls. With a melting pot of cultures and a passion for celebration, Brazil invites you to experience its warmth, vitality, and breathtaking landscapes.',
+--     additionInfo = 'Best tourism, good vibe, friendly locals, delicious food, interesting adventures, smart transportation, clean hotel, diverse culture, Amazon rainforest, carnival celebrations, samba, Iguazu Falls, vibrant landscapes'
+-- WHERE id = 4;
+
+-- UPDATE Country
+-- SET description = 'South Africa, a rainbow nation at the southern tip of Africa, is a treasure trove of natural beauty and cultural heritage. From the majestic Table Mountain overlooking Cape Town to the wild savannas of Kruger National Park, South Africa boasts a diverse tapestry of landscapes. Embark on thrilling wildlife safaris, delve into the history of apartheid in Johannesburg, and relax on the golden beaches of Durban. The warmth and friendliness of the locals add an extra layer of charm to the rich, multicultural experience awaiting you in South Africa.',
+--     additionInfo = 'Best tourism, good vibe, friendly locals, delicious food, interesting adventures, smart transportation, clean hotel, diverse landscapes, wildlife safaris, cultural heritage, friendly locals, Table Mountain, apartheid history, Durban beaches'
+-- WHERE id = 5;
+
+-- UPDATE Country
+-- SET description = 'France, the epitome of sophistication and romance, is a country that invites you to savor the finer things in life. From the enchanting boulevards of Paris to the rolling vineyards of Bordeaux, France is a celebration of art, culture, and culinary excellence. Indulge in the exquisite flavors of French cuisine, admire the masterpieces at the Louvre, and stroll through charming villages in Provence. With a legacy of artistic brilliance, architectural marvels, and a culinary heritage that tantalizes the taste buds, France is a destination that promises an unforgettable journey.',
+--     additionInfo = 'Best tourism, good vibe, friendly locals, delicious food, interesting adventures, smart transportation, clean hotel, romantic ambiance, exquisite cuisine, art, Louvre, Provence, Bordeaux vineyards'
+-- WHERE id = 6;
+
+-- UPDATE Country
+-- SET additionInfo = 'Diverse landscapes, vibrant cities, iconic landmarks, cultural festivals, outdoor adventures, diverse cuisine, historical significance, world-class entertainment, technological innovation, entrepreneurial spirit, national parks'
+-- WHERE id = 1;
+
+-- UPDATE Country
+-- SET additionInfo = 'Zen gardens, traditional arts, futuristic technology, efficient public transportation, cherry blossom festivals, anime culture, onsens, capsule hotels, polite etiquette, Shinto shrines, karaoke culture'
+-- WHERE id = 2;
+
+-- UPDATE Country
+-- SET additionInfo = 'Aboriginal culture, surfing paradise, unique wildlife encounters, multicultural communities, Indigenous art, outdoor barbecue culture, sports enthusiasm, Great Ocean Road, eco-friendly initiatives, adventurous activities, wine regions'
+-- WHERE id = 3;
+
+-- UPDATE Country
+-- SET additionInfo = 'Carnival spirit, Amazon river cruises, caipirinha cocktails, football passion, diverse music genres, colorful street art, tropical rainforest adventures, diverse ecosystems, traditional churrasco, vibrant street markets, Capoeira'
+-- WHERE id = 4;
+
+-- UPDATE Country
+-- SET additionInfo = 'Township experiences, Big Five safaris, Nelson Mandelas legacy, diverse languages, Cape Winelands, apartheid history tours, Garden Route exploration, rugby culture, Biltong snacks, stunning coastal drives, Zulu traditions'
+-- WHERE id = 5;
+
+-- UPDATE Country
+-- SET additionInfo = 'Fashion capital, culinary excellence, vineyard tours, French Riviera glamour, literary history, artistic inspiration, canal cruises, high-speed trains, charming cafes, historic chateaux, sophisticated shopping'
+-- WHERE id = 6;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Paris, the capital of France, is an enchanting city that beckons with its timeless beauty and cultural richness. Beyond its iconic landmarks, Paris is a tapestry of art, history, and culinary delights. Stroll along the Seine River, immerse yourself in world-renowned museums, and savor the exquisite flavors of French cuisine in charming bistros. From the historic cobblestone streets of Le Marais to the grandeur of the Notre-Dame Cathedral, Paris is a city that captures the hearts of all who visit.',
+--     additionInfo = 'Best experience, Delicious food, Art museums, River Seine cruises, Champs-Élysées shopping, Literary history, Fashion districts, Romantic ambiance'
+-- WHERE id = 1;
+
+-- UPDATE Destination
+-- SET
+--     description = 'The Louvre Museum, situated on the right bank of the Seine River in Paris, is a masterpiece in itself. As you step into the grand courtyard of the Louvre, you are transported into a world of artistic wonders spanning centuries. Housing over 35,000 works of art, including the enigmatic Mona Lisa, the Louvre invites you on a journey through human creativity. From the intricacies of ancient civilizations to the brushstrokes of the Renaissance, each gallery holds a story waiting to be discovered.',
+--     additionInfo = 'Art masterpiece collection, Historical significance, Guided tours, Interactive exhibits, Architectural marvels, Sculpture garden, Art workshops'
+-- WHERE id = 2;
+
+-- UPDATE Destination
+-- SET
+--     description = 'The Palace of Versailles, a testament to opulence and royal grandeur, stands as an emblem of France\'s golden age. This architectural marvel, nestled in the picturesque suburbs of Paris, invites you to step back in time. Explore the grandeur of the palace, stunning gardens, and Hall of Mirrors. Step back in time to an era of royal extravagance and discover the stories behind this architectural masterpiece.',
+--     additionInfo = 'Royal history, Ornate gardens, Musical fountain shows, Carriage museum, Private apartments tour, Nighttime events, Marie Antoinette\'s estate'
+-- WHERE id = 3;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Montmartre, the bohemian heart of Paris, is a neighborhood that resonates with artistic energy and romantic allure. As you ascend the cobblestone streets to the summit, you\'ll be greeted by the iconic Basilica of the Sacred Heart, offering panoramic views of the city below. Wander through narrow alleys adorned with vibrant street art, pause at bustling cafés where Picasso once sought inspiration, and feel the heartbeat of Parisian creativity. Montmartre is not merely a place; it\'s an artistic symphony that continues to captivate.',
+--     additionInfo = 'Artistic atmosphere, Cafés, Street performers, Art studios, Bohemian markets, Moulin Rouge cabaret, Local galleries, Hidden gems'
+-- WHERE id = 4;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Sainte-Chapelle, a jewel of Gothic architecture nestled within the heart of Paris, is a testament to the divine beauty of stained glass. Commissioned by King Louis IX, this celestial sanctuary invites you into a realm of kaleidoscopic light and intricate craftsmanship. As sunlight dances through the vibrant panes, biblical stories come to life in a breathtaking display. Sainte-Chapelle is more than a religious edifice; it\'s a luminous testament to the intersection of faith and art, where the divine meets the mortal gaze.',
+--     additionInfo = 'Architectural beauty, Stained glass art, Guided tours, Classical music concerts, Spiritual retreat, Historical significance, Illuminated evenings'
+-- WHERE id = 5;
+
+-- UPDATE Destination
+-- SET
+--     description = 'The Statue of Liberty, standing tall on Liberty Island in New York Harbor, is a beacon of freedom and democracy. Gifted by France to the United States, Lady Liberty has become an enduring symbol of hope and resilience. As you approach her, marvel at the intricate details of her crown and torch. Embark on a journey to the crown for unparalleled views of the city skyline. The Statue of Liberty is not merely a monument; she is a guardian, watching over the dreams and aspirations of all who gaze upon her.',
+--     additionInfo = 'Historical landmark, Immigration symbol, Liberty Island ferry, Crown access tour, Ellis Island Museum, Statue of Liberty Museum, Nighttime illumination, Educational programs'
+-- WHERE id = 6;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Grand Canyon National Park, a geological masterpiece carved by the mighty Colorado River, is a testament to the Earth\'s enduring beauty. As you stand on the rim, the vastness of the canyon unfolds before you, revealing a kaleidoscope of colors and rock formations that defy imagination. Whether you embark on a challenging hike down into the canyon or simply savor the views from the rim, the Grand Canyon is a journey through time, where each layer of rock tells a story millions of years in the making.',
+--     additionInfo = 'Spectacular views, Hiking trails, Colorado River rafting, Havasu Falls trek, Star-gazing programs, Grand Canyon Village, Wildlife photography, South Rim viewpoints'
+-- WHERE id = 7;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Disneyland Resort in California, the magical kingdom where dreams come to life, is a celebration of joy and fantasy. As you step through the iconic gates, you\'re transported into a world of enchanting rides, captivating shows, and beloved Disney characters. From the whimsical spires of Sleeping Beauty Castle to the futuristic allure of Tomorrowland, Disneyland is a realm where imagination knows no bounds. It\'s not just an amusement park; it\'s a sanctuary of wonder and delight for the young and young at heart.',
+--     additionInfo = 'Family-friendly, Magical atmosphere, Character meet-and-greets, Parades, Nighttime spectaculars, Dining with Disney characters, Exclusive experiences, Thrilling rides'
+-- WHERE id = 8;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Yellowstone Falls, a mesmerizing cascade within the heart of Yellowstone National Park, is nature\'s symphony of power and beauty. Whether you witness the thunderous roar of the Lower Falls or the delicate veil of the Upper Falls, each moment is a testament to the park\'s diverse and awe-inspiring ecosystem. Hike along the scenic trails, marvel at the geothermal wonders, and embrace the serenity of the wilderness. Yellowstone Falls is not just a waterfall; it\'s a poetic expression of nature\'s grandeur.',
+--     additionInfo = 'Scenic beauty, Wildlife spotting, Hiking trails, Geothermal features, Yellowstone River, Artist Point, Canyon Village, Photography opportunities'
+-- WHERE id = 9;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Miami Beach, a vibrant coastal paradise on the shores of Florida, is a sensory delight of sun, sea, and style. As you sink your toes into the white sandy beaches, the vibrant energy of Miami comes alive. From the iconic pastel-hued Art Deco architecture to the lively nightlife of South Beach, Miami Beach is a fusion of relaxation and excitement. Indulge in the cultural mosaic of Cuban influences, savor exquisite cuisine, and let the rhythmic beats of the city guide your every step.',
+--     additionInfo = 'Beach paradise, Art Deco district, Water sports, Ocean Drive nightlife, Cuban cuisine, Wynwood Walls art district, Boat tours, Fashion boutiques'
+-- WHERE id = 10;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Tokyo Disneyland, nestled in the bustling metropolis of Tokyo, is a spellbinding fusion of Japanese hospitality and Disney magic. As you explore the park, encounter unique attractions, parades, and the enchanting Cinderella Castle. Immerse yourself in the vibrant atmosphere of Japanese Disney culture, where tradition and fantasy harmoniously coexist. Tokyo Disneyland is not just an amusement park; it\'s a cultural crossroads where the East meets the enchantment of the West.',
+--     additionInfo = 'Japanese Disney magic, Character meet-ups, Traditional snacks, Tokyo Disneyland Hotel, Nighttime spectaculars, Seasonal events, Disney merchandise, Parade viewing spots'
+-- WHERE id = 11;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Mount Fuji, Japan\'s iconic and sacred peak, stands as a silent sentinel against the horizon. As you venture closer, the symmetrical perfection of Mount Fuji unfolds, inviting you to explore its cultural significance and breathtaking landscapes. Whether you embark on a pilgrimage hike, witness the sunrise from the summit, or simply admire the mountain from afar, Mount Fuji is a spiritual journey and a testament to Japan\'s deep connection with nature.',
+--     additionInfo = 'Cultural landmark, Hiking adventure, Fuji Five Lakes, Hot springs, Cherry blossom viewing, Cultural festivals, Fuji Subaru Line 5th Station, Mount Fuji museums'
+-- WHERE id = 12;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Kyoto Temples, scattered throughout the ancient city of Kyoto, are living testaments to Japan\'s rich cultural heritage. As you meander through the historic lanes, each temple unveils a chapter of Japanese history, adorned with serene Zen gardens and sacred rituals. Immerse yourself in the tranquility of these spiritual sanctuaries, where the echoes of prayer and the fragrance of incense create an atmosphere of timeless beauty and contemplation.',
+--     additionInfo = 'Historical temples, Zen gardens, Tea ceremonies, Gion district, Traditional crafts, Maiko and Geisha culture, Arashiyama Bamboo Grove, Kimono rental'
+-- WHERE id = 13;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Osaka Castle, a formidable fortress rising in the heart of Osaka, is a testament to Japan\'s feudal past and architectural prowess. Traverse through time as you explore the castle\'s towering walls, visit the museum, and ascend to the observation deck for panoramic views of Osaka. Immerse yourself in the historical narrative of samurai legends and vibrant cultural traditions that make Osaka Castle an enduring symbol of Japan\'s resilience and grandeur.',
+--     additionInfo = 'Historical landmark, Museum visit, Cherry blossom season, Nishinomaru Garden, Osaka Castle Park, Samurai and ninja experiences, Osaka Museum of History, Castle illumination'
+-- WHERE id = 14;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Hiroshima Peace Memorial, also known as the Atomic Bomb Dome, stands as a poignant tribute to the resilience of the human spirit in the face of tragedy. As you stand before this UNESCO World Heritage Site, absorb the historical significance and the symbolic call for a world free from nuclear conflict. Explore the adjacent Peace Memorial Park, where each monument tells a story of remembrance and hope for a peaceful future.',
+--     additionInfo = 'Historical significance, Peaceful reflection, Hiroshima Peace Memorial Museum, Hiroshima Castle, Shukkeien Garden, Okonomiyaki dining, Miyajima Island day trip, A-Bomb Dome illumination'
+-- WHERE id = 15;
+
+-- UPDATE Destination
+-- SET
+--     description = 'The Great Barrier Reef, a mesmerizing underwater realm off the coast of Australia, is a living kaleidoscope of vibrant coral formations and diverse marine life. Immerse yourself in the crystal-clear waters to witness the intricate dance of marine biodiversity. Snorkel or dive into this UNESCO World Heritage Site for an unforgettable encounter with the wonders beneath the waves.',
+--     additionInfo = 'Marine biodiversity, Snorkeling paradise, Coral conservation efforts, Guided diving tours, Underwater photography, Coral bleaching awareness, Indigenous marine protection initiatives'
+-- WHERE id = 16;
+
+-- UPDATE Destination
+-- SET
+--     description = 'The Sydney Opera House, an architectural masterpiece nestled along the harbor, is not just a cultural icon; its a symphony of design and cultural significance. Explore the sails that grace the skyline and attend a performance within its hallowed halls. Take a guided tour to unravel the stories behind this marvel, celebrating its role in shaping the artistic narrative of Sydney and the world.',
+--     additionInfo = 'Architectural marvel, Cultural performances, Behind-the-scenes tours, Opera and ballet experiences, Indigenous art exhibitions, Waterfront dining, Sunset performances, Sydney Harbour Bridge views'
+-- WHERE id = 17;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Uluru, also known as Ayers Rock, stands as a sacred monolith in the heart of Australia, surrounded by the awe-inspiring landscapes of Uluru-Kata Tjuta National Park. As you explore this red desert expanse, discover not only the geological marvel of Uluru but also the rich tapestry of Aboriginal heritage woven into the land. Engage in guided tours to gain insights into ancient stories and the spiritual significance of this UNESCO-listed site.',
+--     additionInfo = 'Aboriginal heritage, Red desert landscapes, Indigenous storytelling, Guided cultural walks, Stargazing experiences, Indigenous art workshops, Cameldrive adventures, Tjukurpa teachings'
+-- WHERE id = 18;
+
+-- UPDATE Destination
+-- SET
+--     description = 'The Great Ocean Road, a scenic coastal masterpiece in Australia, unfolds like a visual poem along the Southern Ocean. Embark on a journey where every twist and turn reveals breathtaking views of towering cliffs, golden beaches, and the iconic Twelve Apostles. Traverse this coastal drive to witness the raw beauty of Australia\'s coastline, capturing the essence of nature\'s grandeur.',
+--     additionInfo = 'Coastal drive, Natural wonders, Twelve Apostles viewpoints, Shipwreck Coast history, Surfing hotspots, Rainforest walks, Local seafood experiences, Sunset vistas'
+-- WHERE id = 19;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Bondi Beach, a haven for surfers and sun-seekers, epitomizes the laid-back coastal vibe of Australia. The golden sands stretch as far as the eye can see, inviting you to relax, take a surf lesson, and soak up the vibrant atmosphere. Dive into the beachside cafes, where the scent of saltwater mingles with the aromas of world-class cuisine, creating an irresistible blend of surf culture and beach vibes.',
+--     additionInfo = 'Surfing paradise, Beach vibes, Coastal walks, Surfing competitions, Beach yoga sessions, Beachside dining, Local art markets, Bondi to Coogee coastal walk'
+-- WHERE id = 20;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Christ the Redeemer, the iconic statue atop Corcovado Mountain in Rio de Janeiro, transcends its role as a spiritual landmark; it is a beacon of serenity and panoramic beauty. As you ascend to this marvel, the sprawling city unfolds beneath, offering unparalleled views. This monumental masterpiece invites you not only to witness the cityscape but to feel the spiritual embrace that echoes through the hills.',
+--     additionInfo = 'Spiritual landmark, City views, Sunset visits, Helicopter tours, Cultural significance, Christ the Redeemer history, Nighttime illumination, Photography excursions'
+-- WHERE id = 21;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Copacabana Beach, a world-renowned stretch of golden sands in Rio de Janeiro, is more than a beach; its a canvas of vibrant energy and endless possibilities. Feel the pulse of the lively atmosphere as you relax on the iconic shores, where beach sports and sun-drenched days seamlessly blend. Copacabana is not just a beach; its a dynamic celebration of sun, sea, and the spirited essence of Brazilian culture.',
+--     additionInfo = 'Beach paradise, Vibrant energy, Beach volleyball, Surfing lessons, Beachside markets, Samba beach parties, Fresh coconut vendors, Nighttime beach events'
+-- WHERE id = 22;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Iguazu Falls, a breathtaking natural wonder straddling the border of Brazil and Argentina, is a symphony of cascading water amidst lush rainforest. Venture into this natures spectacle to witness the sheer power and beauty of the falls. Engage in waterfall adventures, exploring walkways that offer immersive views and glimpses of diverse wildlife in this UNESCO-listed paradise.',
+--     additionInfo = 'Natures spectacle, Waterfall adventure, Boat excursions, Wildlife encounters, Moonlight walks, Birdwatching tours, Jungle safaris, Indigenous folklore'
+-- WHERE id = 23;
+
+-- UPDATE Destination
+-- SET
+--     description = 'The Amazon Rainforest in Brazil, the worlds largest tropical rainforest, is a canvas of greenery pulsating with life. Embark on an eco-tourism journey to explore this cradle of biodiversity, where unique wildlife and lush vegetation coexist. Engage in guided tours that unveil the secrets of the rainforest, from the mighty Amazon River to the canopy above, fostering an appreciation for the delicate balance of this extraordinary ecosystem.',
+--     additionInfo = 'Eco-tourism, Wildlife exploration, Canopy walks, River cruises, Indigenous community visits, Medicinal plant discoveries, Nighttime jungle safaris, Sustainability initiatives'
+-- WHERE id = 24;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Experience the vibrant Carnival in Rio de Janeiro, a cultural extravaganza that transcends the boundaries of music, dance, and colorful parades. Immerse yourself in the rhythmic beats of samba, vibrant costumes, and the infectious energy that fills the streets. This world-famous celebration is not just an event; its a kaleidoscope of Brazilian culture that invites you to join the festivities and become part of the spectacle.',
+--     additionInfo = 'Cultural extravaganza, Samba rhythms, Carnival history, Street parties, Samba school parades, Costume workshops, Carnival cuisine, Carnival balls'
+-- WHERE id = 25;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Table Mountain, a majestic landmark overlooking Cape Town, is more than a geographical wonder; its a canvas of scenic beauty and adventure. Whether you ascend via a cable car or embark on a hiking adventure, the summit offers panoramic views of the city, ocean, and surrounding landscapes. Table Mountain is a sanctuary where nature and urban allure converge, inviting you to explore its trails and embrace the allure of the Cape Peninsula.',
+--     additionInfo = 'Scenic beauty, Hiking adventure, Cable car experiences, Full moon hikes, Birdwatching, Abseiling adventures, Sunset picnics, Table Mountain National Park'
+-- WHERE id = 26;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Kruger National Park, one of Africas premier safari destinations, beckons with the allure of wildlife encounters and untamed landscapes. Embark on a wildlife safari amidst the vast expanse of the park, where the Big Five roam freely. Immerse yourself in the magic of the bushveld, from sunrise game drives to starlit nights, creating memories that resonate with the primal rhythm of the African wilderness.',
+--     additionInfo = 'Wildlife safari, Conservation area, Guided game drives, Bushwalk safaris, Stargazing experiences, Birding safaris, Luxury safari lodges, Rhino conservation initiatives'
+-- WHERE id = 27;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Robben Island, a UNESCO World Heritage Site near Cape Town, is not just a historical landmark; its a living testament to South Africa\'s journey from oppression to resilience. Venture to this island to explore the former prison where Nelson Mandela was held captive and gain insights into the complexities of South Africas apartheid history. Robben Island is a pilgrimage of remembrance, a place where history whispers in the winds off the Atlantic.',
+--     additionInfo = 'Historical landmark, Apartheid history, Guided prison tours, Mandela legacy, Ferry excursions, Cape Town city views, Lighthouse exploration, Anti-apartheid struggle narratives'
+-- WHERE id = 28;
+
+-- UPDATE Destination
+-- SET
+--     description = 'Blyde River Canyon, a breathtaking natural wonder in South Africa, beckons with its lush greenery, towering red cliffs, and panoramic views. Traverse the rim of the canyon to witness natures beauty unfolding in every direction. Engage in canyon exploration, from hiking trails that lead to hidden viewpoints to boat excursions offering a unique perspective of the canyons geological formations.',
+--     additionInfo = 'Canyon exploration, Natures beauty, God\'s Window viewpoints, Three Rondavels, Boat trips, Panorama Route drives, Bourke\'s Luck Potholes, Kadishi Tufa waterfall'
+-- WHERE id = 29;
+
+-- UPDATE Destination
+-- SET
+--     description = 'The Victoria & Alfred Waterfront in Cape Town is a vibrant harbor area that transcends the traditional definition of a waterfront. Explore the mix of historical charm and contemporary energy as you wander through shops, dine at waterfront restaurants, and immerse yourself in cultural attractions. This lively waterfront is not just a shopping and dining destination; it\'s a cultural and entertainment hub that invites you to experience Cape Town\'s dynamic spirit.',
+--     additionInfo = 'Shopping, Dining, Cultural experiences, Waterside promenades, Ferris wheel rides, Maritime history tours, Two Oceans Aquarium, Artisanal craft markets'
+-- WHERE id = 30;
+
+-- UPDATE tour
+-- SET description = 'Embark on an extraordinary journey to explore the mesmerizing beauty of Paris. Visit the iconic Louvre Museum, immerse yourself in the rich art and culture of the city, and indulge in the delightful flavors of authentic French cuisine. Discover the hidden gems of the City of Lights as you stroll along the charming streets and experience the romantic ambiance that envelops this enchanting destination. Uncover the history and elegance of Paris as you visit iconic landmarks, including the Eiffel Tower and Mont Saint-Michel, and create memories that will last a lifetime.',
+-- additionInfo = 'Art and culture, French cuisine, Paris landmarks, Louvre Museum, City exploration'
+-- WHERE id = 1;
+
+-- UPDATE tour
+-- SET description = 'Embark on a magical adventure in Japan, where dreams come to life. Experience the enchanting world of Tokyo Disneyland, marvel at the iconic Mount Fuji, and be mesmerized by the natural wonders that await you. Immerse yourself in the rich cultural heritage of Kyoto Temples and Osaka Castle, and witness the breathtaking beauty of Mount Fuji as it stands as a testament to Japan\'s natural magnificence. This journey is a perfect blend of fantasy, culture, and natural beauty that will leave you with unforgettable memories.',
+-- additionInfo = 'Disney magic, Natural beauty, Japanese culture, Fantasy adventure, Mount Fuji exploration'
+-- WHERE id = 2;
+
+-- UPDATE tour
+-- SET description = 'Embark on an extraordinary journey to discover the wonders of Australia. Immerse yourself in the underwater beauty of the Great Barrier Reef, marvel at the architectural splendor of the Sydney Opera House, and explore the red desert landscapes of Uluru-Kata Tjuta National Park. This adventure is a perfect blend of natural beauty, architectural marvels, and the unique landscapes that define the Australian continent. From vibrant coral reefs to iconic landmarks, this tour offers a once-in-a-lifetime experience.',
+-- additionInfo = 'Underwater adventure, Architectural marvel, Red desert landscapes, Australian wonders, Sydney Opera House, Great Barrier Reef'
+-- WHERE id = 3;
+
+-- UPDATE tour
+-- SET description = 'Experience the marvels of Brazil in an unforgettable journey. From the iconic Christ the Redeemer in Rio de Janeiro to the famous Copacabana Beach and the breathtaking Iguazu Falls, this tour is a blend of spiritual awe, beach paradise, and nature\'s spectacle. Immerse yourself in the vibrant culture of Brazil, explore the pulsating energy of Rio de Janeiro, and witness the power and beauty of one of the world\'s most spectacular waterfalls. This adventure will take you through the heart of Brazil, showcasing its diverse landscapes and cultural richness.',
+-- additionInfo = 'Spiritual awe, Beach paradise, Nature\'s spectacle, Brazilian marvels, Rio de Janeiro, Copacabana Beach, Iguazu Falls'
+-- WHERE id = 4;
+
+-- UPDATE tour
+-- SET description = 'Embark on a captivating journey through the diverse landscapes of South Africa. Experience the thrill of a wildlife safari in Kruger National Park, marvel at the stunning beauty of Table Mountain, and delve into the rich history of Apartheid with a visit to Robben Island. This cultural safari is a perfect blend of wildlife adventure, scenic landscapes, and historical exploration. From the majestic wildlife to the captivating stories of South Africa\'s past, this tour offers a comprehensive and unforgettable experience.',
+-- additionInfo = 'Wildlife safari, Scenic landscapes, Apartheid history, South African culture, Kruger National Park, Table Mountain, Robben Island'
+-- WHERE id = 5;
+
+-- UPDATE tour
+-- SET description = 'Embark on a journey to explore the iconic landmarks of the United States. From the historic Statue of Liberty to the natural wonders of the Grand Canyon and Yellowstone Falls, this expedition is a celebration of American history and natural beauty. Immerse yourself in the stories of the past at historical landmarks, be awestruck by the grandeur of the Grand Canyon, and witness the spectacular Yellowstone Falls. This adventure is a tribute to the diversity and beauty of the United States, from coast to coast.',
+-- additionInfo = 'Historical landmarks, Natural wonders, American history, Statue of Liberty, Grand Canyon, Yellowstone Falls'
+-- WHERE id = 6;
+
+-- UPDATE tour
+-- SET description = 'Immerse yourself in the historical richness of Japan with a tour that explores the cultural heritage of Kyoto Temples, the majestic beauty of Osaka Castle, and the iconic presence of Mount Fuji. This triangle of historical wonders invites you to step back in time as you wander through centuries-old temples, marvel at the architectural brilliance of Osaka Castle, and witness the breathtaking beauty of Mount Fuji. This journey is a perfect blend of cultural exploration, architectural marvels, and the natural splendor that defines Japan.',
+-- additionInfo = 'Cultural heritage, Architectural marvels, Natural beauty, Japanese history, Kyoto Temples, Osaka Castle, Mount Fuji'
+-- WHERE id = 7;
+
+-- UPDATE tour
+-- SET description = 'Embark on a coastal adventure in Australia with a trio of experiences that showcase the beauty of the coastline. Drive along the stunning Great Ocean Road, relax on the iconic Bondi Beach, and explore the architectural marvel of the Sydney Opera House. This coastal trio is a perfect blend of scenic drives, beach vibes, and architectural wonders. From the rugged cliffs of the Great Ocean Road to the golden sands of Bondi Beach, this tour captures the essence of Australia\'s coastal charm.',
+-- additionInfo = 'Coastal drive, Beach vibes, Architectural marvel, Australian coast, Great Ocean Road, Bondi Beach, Sydney Opera House'
+-- WHERE id = 8;
+
+-- UPDATE tour
+-- SET description = 'Explore the natural wonders and cultural marvels of Brazil with this immersive tour. From the awe-inspiring Iguazu Falls and the breathtaking Amazon Rainforest to the unique Pantanal Wetlands and the vibrant Carnival in Rio, this trilogy of experiences offers a comprehensive journey through the diverse landscapes and rich traditions of Brazil. Immerse yourself in the spectacle of nature, encounter unique wildlife, and participate in the energy of one of the world\'s most famous carnivals.',
+-- additionInfo = 'Nature\'s spectacle, Wildlife exploration, Cultural extravaganza, Brazil, Iguazu Falls, Amazon Rainforest, Pantanal Wetlands, Rio Carnival'
+-- WHERE id = 9;
+
+-- UPDATE tour
+-- SET description = 'Embark on a global adventure to witness the wonders of the world. From the iconic Statue of Liberty to the Sydney Opera House, the scenic beauty of the Great Ocean Road, and the red desert landscapes of Uluru-Kata Tjuta National Park, this expedition is a journey to some of the planet\'s most renowned landmarks. Immerse yourself in the cultural richness, marvel at architectural marvels, and traverse diverse landscapes that define the beauty of our world.',
+-- additionInfo = 'Global landmarks, Scenic drive, Red desert landscapes, World wonders, Statue of Liberty, Sydney Opera House, Great Ocean Road, Uluru-Kata Tjuta National Park'
+-- WHERE id = 10;
+
+-- UPDATE tour
+-- SET description = 'Experience the magic of Japan with a delightful journey that combines the enchantment of Tokyo Disneyland and the historical richness of Kyoto Temples. Immerse yourself in the whimsical world of Disney magic, explore centuries-old temples, and enjoy the scenic beauty of Mount Fuji. This tour offers a perfect blend of fantasy, cultural heritage, and natural beauty, making it an unforgettable adventure in the Land of the Rising Sun.',
+-- additionInfo = 'Disney magic, Cultural heritage, Natural beauty, Japan, Tokyo Disneyland, Kyoto Temples, Mount Fuji'
+-- WHERE id = 11;
+
+-- UPDATE tour
+-- SET description = 'Discover the coastal bliss of Australia with this relaxing tour. From the iconic Bondi Beach to snorkeling in the Great Barrier Reef and exploring the architectural marvel of the Sydney Opera House, this coastal retreat offers a perfect blend of beach vibes, underwater adventure, and architectural wonders. Relax on sandy shores, dive into the vibrant underwater world, and marvel at the iconic structures that define the beauty of Australia\'s coastline.',
+-- additionInfo = 'Beach vibes, Underwater adventure, Architectural marvel, Australian coast, Bondi Beach, Great Barrier Reef, Sydney Opera House'
+-- WHERE id = 12;
+
+-- UPDATE tour
+-- SET description = 'Indulge in the elegance of Paris with this sophisticated tour. Stroll along the iconic Champs-Élysées, explore the renowned Musée d\'Orsay, and experience the epitome of Parisian elegance. Immerse yourself in the City of Lights, surrounded by art, culture, and historical charm. This tour is a perfect blend of romantic ambiance and architectural marvels, offering a unique perspective on the beauty of Paris.',
+-- additionInfo = 'City of Lights, Art and culture, Paris, Champs-Élysées, Musée d\'Orsay, Romantic atmosphere, Architectural marvels'
+-- WHERE id = 21;
+
+-- UPDATE tour
+-- SET description = 'Admire the Gothic marvels of Paris with this captivating tour. Explore the stunning architecture of Sainte-Chapelle and Notre-Dame Cathedral, two masterpieces of Gothic art in the heart of Paris. Discover the historical significance and architectural gems that define the beauty of these landmarks. This tour is a journey through time, offering a glimpse into the rich history and artistry of Gothic Paris.',
+-- additionInfo = 'Architectural gems, Historical landmarks, Paris, Gothic art, Sainte-Chapelle, Notre-Dame Cathedral'
+-- WHERE id = 22;
+
+-- UPDATE tour
+-- SET description = 'Embark on a romantic journey through the enchanting nights of Paris. Indulge in a romantic Seine River cruise and enjoy a mesmerizing night tour of the Eiffel Tower. Experience the city lights and the romantic atmosphere that make Paris truly magical at night. This tour is a perfect blend of romance, elegance, and the captivating beauty of Paris after sunset.',
+-- additionInfo = 'City lights, Romantic atmosphere, Paris, Seine River cruise, Eiffel Tower, Night tour'
+-- WHERE id = 23;
+
+-- UPDATE tour
+-- SET description = 'Explore the wonders of Rio de Janeiro with this extravagant tour. Marvel at the beauty of Christ the Redeemer, relax on the famous Copacabana Beach, and immerse yourself in the vibrant Carnival in Rio. Experience spiritual awe, beach paradise, and cultural extravaganza all in one tour. This journey offers a comprehensive exploration of the diverse marvels that make Rio de Janeiro a unique and captivating destination.',
+-- additionInfo = 'Spiritual awe, Beach paradise, Cultural extravaganza, Rio de Janeiro, Christ the Redeemer, Copacabana Beach, Rio Carnival'
+-- WHERE id = 18;
+
+-- UPDATE tour
+-- SET description = 'Embark on a discovery of South Africa\'s rich landscapes and history with this immersive tour. Visit Table Mountain, go on a safari in Kruger National Park, explore the historic Robben Island, and marvel at the stunning Blyde River Canyon. This tour offers a perfect blend of scenic landscapes, wildlife safari, and historical landmarks, providing a comprehensive experience of South Africa\'s natural and cultural wonders.',
+-- additionInfo = 'Scenic landscapes, Wildlife safari, Historical landmarks, South Africa, Table Mountain, Kruger National Park, Robben Island, Blyde River Canyon'
+-- WHERE id = 19;
+
+-- UPDATE tour
+-- SET description = 'Embark on a journey through the heart of Brazil with this wilderness adventure. Explore the Amazon Rainforest, witness the awe-inspiring Iguazu Falls, and experience the unique Pantanal Wetlands. Immerse yourself in wildlife exploration, nature\'s spectacle, and the diverse ecosystems that define the beauty of Brazil. This tour offers a comprehensive adventure through the natural wonders of one of the world\'s most biodiverse countries.',
+-- additionInfo = 'Wildlife exploration, Nature\'s spectacle, Wetland adventure, Brazil, Amazon Rainforest, Iguazu Falls, Pantanal Wetlands'
+-- WHERE id = 14;
+
+-- UPDATE tour
+-- SET description = 'Witness the natural wonders of Brazil with this trilogy tour. Visit the awe-inspiring Iguazu Falls, journey into the breathtaking Amazon Rainforest, and explore the unique Pantanal Wetlands. Immerse yourself in nature\'s spectacle, wildlife exploration, and wetland adventure. This tour offers a comprehensive experience of Brazil\'s diverse ecosystems and the stunning beauty of its natural landscapes.',
+-- additionInfo = 'Nature\'s spectacle, Wildlife exploration, Wetland adventure, Brazil, Iguazu Falls, Amazon Rainforest, Pantanal Wetlands'
+-- WHERE id = 20;
+
+-- UPDATE tour
+-- SET description = 'Embark on a global adventure with this world wonders tour. Journey to iconic landmarks, from the Statue of Liberty to the Sydney Opera House, the Great Ocean Road, and Uluru-Kata Tjuta National Park. Immerse yourself in global landmarks, scenic drives, and the unique red desert landscapes of Australia. This tour offers a comprehensive exploration of some of the world\'s most famous and breathtaking attractions.',
+-- additionInfo = 'Global landmarks, Scenic drives, Red desert landscapes, World wonders, Statue of Liberty, Sydney Opera House, Great Ocean Road, Uluru-Kata Tjuta National Park'
+-- WHERE id = 13;
+
+-- UPDATE tour
+-- SET description = 'Experience the magic of Japan with this delightful tour. Immerse yourself in the enchantment of Tokyo Disneyland and explore the historical richness of Kyoto Temples. This tour offers a perfect blend of Disney magic and cultural heritage, providing a unique and memorable experience in the land of the rising sun.',
+-- additionInfo = 'Disney magic, Cultural heritage, Japan, Tokyo Disneyland, Kyoto Temples'
+-- WHERE id = 17;
+
+-- UPDATE tour
+-- SET description = 'Explore the architectural marvel of the Sydney Opera House and embark on a scenic drive along the Great Ocean Road with this coastal retreat tour. Immerse yourself in the beauty of architectural wonders and scenic drives, experiencing the best of Australia\'s coastal landscapes. This tour offers a perfect blend of cultural exploration and natural beauty.',
+-- additionInfo = 'Architectural marvel, Scenic drives, Australia, Sydney Opera House, Great Ocean Road'
+-- WHERE id = 16;
+
+-- UPDATE tour
+-- SET description = 'Embark on an unforgettable journey with our French Elegance tour and immerse yourself in the timeless beauty of Paris. Explore the iconic Champs-Élysées, where fashion meets grandeur. Ascend the world-renowned Eiffel Tower for panoramic views of the city, and discover the enchanting Mont Saint-Michel, a testament to historical charm. This experience is a celebration of the City of Love, an encounter with architectural marvels, and a walk through the pages of history.',
+--     additionInfo = 'City of Love, Architectural marvel, Historical charm, Paris, Champs-Élysées, Eiffel Tower, Mont Saint-Michel'
+-- WHERE id = 15;

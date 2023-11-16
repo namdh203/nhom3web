@@ -1,6 +1,6 @@
 import React from 'react';
 import RcmCard from './rcm_card';
-import { getMdRcmData2, getPopularCountry2 } from '../RcmbodyFunction';
+import { getMdRcmData, getPopularCountry } from '../RcmbodyFunction';
 
 export default class RcmBlock extends React.Component {
     constructor(props) {
@@ -13,10 +13,9 @@ export default class RcmBlock extends React.Component {
     }
 
     componentDidMount() {
-        getPopularCountry2().then(res => {
-            const id = res.id;
-            this.setState({ 'country_name': res.countryName, 'country_id': res.id }, id => {
-                getMdRcmData2(this.state.country_id).then(res => {
+        getPopularCountry().then(res => {
+            this.setState({ 'country_name': res.countryName, 'country_id': res.id }, () => {
+                getMdRcmData(this.state.country_id).then(res => {
                     this.setState({ 'tourData': res })
                 }).catch(err => {
                     console.log('error: ' + err)
@@ -29,7 +28,6 @@ export default class RcmBlock extends React.Component {
     }
 
     render() {
-        console.log(this.state.country_name, this.state.country_id, this.state.tourData)
         return (
             <div className="rcm-block">
                 <h2 className="rcm-title">{this.state.country_name}</h2>

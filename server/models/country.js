@@ -35,6 +35,8 @@ const Country = db.sequelize.define(
 
 )
 
+Country.hasMany(Destination, { foreignKey: 'country_id' });
+Destination.belongsTo(Country, { foreignKey: 'country_id', targetKey: 'id' });
 
 Country.sync({alter: true}).then((data) => {
     console.log("Table synced successful!")

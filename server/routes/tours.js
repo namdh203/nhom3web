@@ -76,53 +76,13 @@ tours.post('/getrandomcountry', (req, res) => {
 
 })
 
-tours.post('/gettourcountry', (req, res) => {
-    const req_country_id = req.body.id
-    // console.log("req_country_id: ", req_country_id)
-    Tour.findAll({
-        attributes: ['title', 'description', 'demoImage'],
-        include: [
-            {
-                model: TourDest,
-                attributes: [],
-                required: true,
-                include: [
-                    {
-                        model: Destination,
-                        attributes: [],
-                        where: {
-                            country_id: req_country_id // Thay thế 1 bằng giá trị country_id mong muốn
-                        },
-                    },
-                ],
-            },
-        ],
-    })
-        .then(tours => {
-            if (!tours) {
-                res.json({ error: 'Not enough tours' })
-            } else {
-                const responseData = tours.map(tour => ({
-                    title: tour.title,
-                    description: tour.description,
-                    demoImage: tour.demoImage,
-                }));
-
-                res.json(responseData)
-            }
-        })
-        .catch(err => {
-            res.send('error: ' + err)
-        })
-})
-
-
-tours.post('/getrandomcountry2', (req, res) => {
+tours.post('/getspecificcountry', (req, res) => {
     
-    var randomId = Math.floor(Math.random() * 5) + 1
+    const id = req.body.id
+    console.log("id: " + id)
     Country.findOne({
         where: {
-            id: randomId
+            id: id
         }
     }).then(country => {
         if (!country) {
@@ -132,6 +92,7 @@ tours.post('/getrandomcountry2', (req, res) => {
                 id: country.id,
                 countryName: country.countryName,
                 description: country.description,
+                additionInfo: country.additionInfo.split(", "),
                 demoImage: country.demoImage
             };
 
@@ -143,9 +104,8 @@ tours.post('/getrandomcountry2', (req, res) => {
 
 })
 
-tours.post('/gettourcountry2', (req, res) => {
+tours.post('/gettourcountry', (req, res) => {
     const req_country_id = req.body.id
-    console.log("req_country_id: ", req_country_id)
     Tour.findAll({
         attributes: ['title', 'description', 'demoImage'],
         include: [
@@ -183,5 +143,48 @@ tours.post('/gettourcountry2', (req, res) => {
         })
 })
 
+tours.post('/gettourcountry_more', (req, res) => {  
+    const req_country_id = req.body.id
+    Tour.findAll({
+        attributes: ['title', 'duration', 'price', 'priceCurrency', 'startDate', 'endDate', 'additionInfo', 'demoImage'],
+        include: [
+            {
+                model: TourDest,
+                attributes: [],
+                required: true,
+                include: [
+                    {
+                        model: Destination,
+                        attributes: [],
+                        where: {
+                            country_id: req_country_id // Thay thế 1 bằng giá trị country_id mong muốn
+                        },
+                    },
+                ],
+            },
+        ],
+    })
+        .then(tours => {
+            if (!tours) {
+                res.json({ error: 'Not enough tours' })
+            } else {
+                const responseData = tours.map(tour => ({
+                    title: tour.title,
+                    duration: tour.duration,
+                    price: tour.price,
+                    priceCurrency: tour.priceCurrency,
+                    startDate: tour.startDate,
+                    endDate: tour.endDate,
+                    additionInfo: tour.additionInfo.split(", "),
+                    demoImage: tour.demoImage
+                }));
+
+                res.json(responseData)
+            }
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
 
 module.exports = tours

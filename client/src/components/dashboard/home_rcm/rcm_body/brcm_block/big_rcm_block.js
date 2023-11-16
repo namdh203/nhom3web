@@ -16,17 +16,17 @@ export default class BigRcmBlock extends React.Component {
     componentDidMount() {
         getPopularCountry()
         .then(res => {
-            // console.log(res)
             this.setState({'countryData': res})
         }).catch(err => {
             console.log('error: ' + err)
         })
     }
 
+
     render() {
         return (
             <div className="rcm-block">
-                <BigRcmCard name={this.state.countryData.countryName} desc={this.state.countryData.description} src={this.state.countryData.demoImage} />
+                <BigRcmCard id={this.state.countryData.id} name={this.state.countryData.countryName} desc={this.state.countryData.description} src={this.state.countryData.demoImage} />
             </div>
         )
     }

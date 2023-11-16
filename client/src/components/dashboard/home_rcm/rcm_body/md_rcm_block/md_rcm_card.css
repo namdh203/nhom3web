@@ -55,6 +55,8 @@
     margin-bottom: 0;
     margin-top: 10px;
     text-align: justify;
+    height: 125px;
+    overflow: hidden;
 }
 
 .mdrcm-card_inter {
