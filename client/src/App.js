@@ -19,7 +19,7 @@ function App() {
       <div className="App">
         <nav className="navbar navbar-expand-lg navbar-light fixed-top navbar-wrapper">
           <Link className="navbar-brand" to={'/'}>
-            <img  className="logo" src="https://i.imgur.com/dEI3563.png" alt="logo" onClick={showDashBoard}/>
+            <img  className="logo" src="https://i.imgur.com/qm46CNl.png" alt="logo" onClick={showDashBoard}/>
           </Link>
           <SearchBar />
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">

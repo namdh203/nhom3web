@@ -34,7 +34,7 @@
 
 .sub-nav_wrapper {
     position: fixed;
-    top: 61px;
+    top: 55px;
     left: 50%;
     transform: translateX(-50%);
 }

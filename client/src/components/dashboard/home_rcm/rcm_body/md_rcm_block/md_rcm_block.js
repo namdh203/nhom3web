@@ -9,7 +9,7 @@ export default class MdRcmBlock extends React.Component {
         super(props)
         this.state = {
             tourData: [],
-            country_id: Math.floor(Math.random() * 5) + 1
+            country_id: Math.floor(Math.random() * 9) + 1
         }
     }
 
@@ -25,7 +25,7 @@ export default class MdRcmBlock extends React.Component {
         return (
             <div className="rcm-block">
                 <div className="container-md">
-                    <div className="row gx-5">
+                    <div className="row g-5">
                         {this.state.tourData.slice(0, 2).map((tour) => (
                             <div className="col col-sm-12 col-md-6">
                                 <MdRcmCard id={tour.id} name={tour.title} desc={tour.description} src={tour.demoImage} />

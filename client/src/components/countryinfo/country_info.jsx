@@ -10,8 +10,8 @@ export default class CountryInfo extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            countryData: {},
-            tourData: []
+            countryData: null,
+            tourData: null
         }
 
         this.onChange = this.onChange.bind(this)
@@ -59,6 +59,11 @@ export default class CountryInfo extends React.Component {
     };
 
     render() {
+
+        if (this.state.tourData === null || this.state.countryData === null) {
+            return <p>Loading...</p>
+        }
+
         return (
             <div className="country_wrapper">
                 <div className="buffer-block" style={{ 'height': '54px' }}></div>

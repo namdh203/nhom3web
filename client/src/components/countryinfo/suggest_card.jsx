@@ -9,17 +9,17 @@ export default class SuggestCard extends React.Component {
     }
 
     onclick() {
-        window.location.href = "/tour/bali-tour"
+        window.location.href = `/tour?id=${this.props.tour.id}&name=${this.props.tour.title}`
     }
 
     render() {
         return (
-            <div className="suggest-card_wrapper">
+            <div className="suggest-card_wrapper container">
                 <div className="row">
-                    <div className="col col-md-5 col-sm-5 sg-img" style={{ "padding": "0" }}>
+                    <div className="col col-md-5 col-sm-12 sg-img" style={{ "padding": "0" }}>
                         <img src={this.props.tour.demoImage} onClick={this.onclick} className="img-fluid suggest-img" alt="Responsive" />
                     </div>
-                    <div className="col col-md-5 col-sm-5 sg-desc">
+                    <div className="col col-md-5 col-sm-12 sg-desc">
                         <h3>{this.props.tour.title}</h3>
                         <div className="sg-info">
                             <label>Duration: </label>
@@ -46,12 +46,12 @@ export default class SuggestCard extends React.Component {
                             <span> {this.props.tour.price} USD</span>
                         </div>
                     </div>
-                    <div className="col col-md-2 col-sm-2 sg-interac">
+                    <div className="col col-md-2 col-sm-12 sg-interac">
                         <div className="row">
-                            <div className="col col-md-12 col-sm-12 sg-know" onClick={this.onclick}>
+                            <div className="col col-md-12 col-sm-6 sg-know" onClick={this.onclick}>
                                 <h3>Know more</h3>
                             </div>
-                            <div className="col col-md-12 col-sm-12 sg-book">
+                            <div className="col col-md-12 col-sm-6 sg-book">
                                 <h3>Book now</h3>
                             </div>
                         </div>

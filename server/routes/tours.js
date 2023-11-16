@@ -52,7 +52,7 @@ tours.post('/getbesttour', (req, res) => {
 
 tours.post('/getrandomcountry', (req, res) => {
     
-    const randomId = Math.floor(Math.random() * 5) + 1;
+    const randomId = Math.floor(Math.random() * 9) + 1;
     Country.findOne({
         where: {
             id: randomId
@@ -147,7 +147,7 @@ tours.post('/gettourcountry', (req, res) => {
 tours.post('/gettourcountry_more', (req, res) => {  
     const req_country_id = req.body.id
     Tour.findAll({
-        attributes: ['title', 'duration', 'price', 'priceCurrency', 'startDate', 'endDate', 'additionInfo', 'demoImage'],
+        attributes: ['id', 'title', 'duration', 'price', 'priceCurrency', 'startDate', 'endDate', 'additionInfo', 'demoImage'],
         include: [
             {
                 model: TourDest,
@@ -170,6 +170,7 @@ tours.post('/gettourcountry_more', (req, res) => {
                 res.json({ error: 'Not enough tours' })
             } else {
                 const responseData = tours.map(tour => ({
+                    id: tour.id,
                     title: tour.title,
                     duration: tour.duration,
                     price: tour.price,

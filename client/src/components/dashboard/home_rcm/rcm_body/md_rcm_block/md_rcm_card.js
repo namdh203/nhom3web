@@ -20,7 +20,7 @@ export default class MdRcmCard extends React.Component {
                     <h1 className="mdrcm-card_header">{this.props.name}</h1>
                     <p className="mdrcm-card_desc">{this.props.desc}</p>
                     <div className="container-md">
-                        <div className="row mdrcm-card_inter">
+                        <div className="row gy-4 mdrcm-card_inter">
                             <div className="col-md-6 mdrcm-card_choice" onClick={this.onclick}>
                                 <div>
                                     <h1 className="mdrcm-card_know">Know more</h1>
