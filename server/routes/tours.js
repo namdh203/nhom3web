@@ -107,7 +107,7 @@ tours.post('/getspecificcountry', (req, res) => {
 tours.post('/gettourcountry', (req, res) => {
     const req_country_id = req.body.id
     Tour.findAll({
-        attributes: ['title', 'description', 'demoImage'],
+        attributes: ['id', 'title', 'description', 'demoImage'],
         include: [
             {
                 model: TourDest,
@@ -130,6 +130,7 @@ tours.post('/gettourcountry', (req, res) => {
                 res.json({ error: 'Not enough tours' })
             } else {
                 const responseData = tours.map(tour => ({
+                    id: tour.id,
                     title: tour.title,
                     description: tour.description,
                     demoImage: tour.demoImage,
@@ -185,6 +186,39 @@ tours.post('/gettourcountry_more', (req, res) => {
         .catch(err => {
             res.send('error: ' + err)
         })
+})
+
+tours.post('/getspecifictour', (req, res) => {
+    
+    const id = req.body.id
+    console.log("id: " + id)
+    Tour.findOne({
+        where: {
+            id: id
+        }
+    }).then(tour => {
+        if (!tour) {
+            res.json({ error: 'Not enough tour' })
+        } else {
+            const responseData = {
+                id: tour.id,
+                title: tour.title,
+                description: tour.description,
+                duration: tour.duration,
+                price: tour.price,
+                priceCurrency: tour.priceCurrency,
+                startDate: tour.startDate,
+                endDate: tour.endDate,
+                additionInfo: tour.additionInfo.split(", "),
+                demoImage: tour.demoImage
+            };
+
+            res.json(responseData)
+        }
+    }).catch(err => {
+        res.send('error: ' + err)
+    })
+
 })
 
 module.exports = tours

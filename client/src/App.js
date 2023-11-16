@@ -40,7 +40,7 @@ function App() {
             <Dashboard />
             <SignUp />
           </>}/>
-          <Route path="/tour/bali-tour" element={<TourInfo title="Bali Tour" banner="https://s3-hn-2.cloud.cmctelecom.vn/tapchicongthuong.vn/tcct-media/20/2/4/8.-den-uluwatu--.jpg"/>}/>
+          <Route path="/tour" element={<TourInfo title="Bali Tour" banner="https://s3-hn-2.cloud.cmctelecom.vn/tapchicongthuong.vn/tcct-media/20/2/4/8.-den-uluwatu--.jpg"/>}/>
           <Route path="/country" element={<CountryInfo name="Bali"/>}/>
         </Routes>
         <div className="footer-wrapper">

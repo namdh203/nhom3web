@@ -28,7 +28,7 @@ export default class MdRcmBlock extends React.Component {
                     <div className="row gx-5">
                         {this.state.tourData.slice(0, 2).map((tour) => (
                             <div className="col col-sm-12 col-md-6">
-                                <MdRcmCard name={tour.title} desc={tour.description} src={tour.demoImage} />
+                                <MdRcmCard id={tour.id} name={tour.title} desc={tour.description} src={tour.demoImage} />
                             </div>
                         ))}
                     </div>

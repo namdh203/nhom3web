@@ -35,7 +35,7 @@ export default class BigRcmCard extends React.Component {
                                         </div>
                                         <div className="col-md-6 brcm-card_choice">
                                             <div>
-                                                <h1 className="brcm-card_contact">Contact us</h1>
+                                                <h1 className="brcm-card_contact">Book now</h1>
                                             </div>
                                         </div>
                                     </div>

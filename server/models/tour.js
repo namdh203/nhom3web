@@ -14,7 +14,7 @@ const Tour = db.sequelize.define(
             allowNull: false,
         },
         description: {
-            type: Sequelize.STRING,
+            type: Sequelize.TEXT,
             allowNull: false,
         },
         duration: {

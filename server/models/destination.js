@@ -22,7 +22,7 @@ const Destination = db.sequelize.define(
       }
     },
     description: {
-      type: Sequelize.STRING,
+      type: Sequelize.TEXT,
       allowNull: false
     },
     additionInfo: {
