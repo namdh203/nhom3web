@@ -8,10 +8,11 @@ export const getPopularCountry = () => {
     })   
 }
 
-export const getMdRcmData = country_id => {
+export const getMdRcmData = (country_id, tour_type) => {
     return axios
     .post('tours/gettourcountry', {
-        id: country_id
+        id: country_id,
+        type: tour_type
     })
     .then(response => {
         // console.log(response.data)

@@ -12,16 +12,16 @@
 }
 
 .footer-info {
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     color: white;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     border-bottom-style: solid;
     border-bottom-width: 0.25px;
     border-bootom-color: rgba(255, 255, 255, 0.05)
 }
 
 .footer-icon {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 
@@ -44,7 +44,7 @@
 .footer-wrapper {
     background-color: black;
     color: white;
-    padding: 20px 0 10px;
+    padding: 10px 0 10px;
 }
 
 .footer-logo {
@@ -74,4 +74,8 @@
     text-align: left;
     color: white;
     text-decoration: none;
+}
+
+.footer-admin > p {
+    margin: 0;
 }

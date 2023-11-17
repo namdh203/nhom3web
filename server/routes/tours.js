@@ -31,7 +31,7 @@ tours.post('/getbesttour', (req, res) => {
         order: [
             ['voting', 'DESC']
         ],
-        limit: Math.min(numberOfTours, 5)
+        limit: Math.min(numberOfTours, 10)
     }).then(tours => {
         if (!tours) {
             res.json({ error: 'Not enough tours' })
@@ -106,6 +106,7 @@ tours.post('/getspecificcountry', (req, res) => {
 
 tours.post('/gettourcountry', (req, res) => {
     const req_country_id = req.body.id
+    const type = req.body.type
     Tour.findAll({
         attributes: ['id', 'title', 'description', 'demoImage'],
         include: [
@@ -124,6 +125,9 @@ tours.post('/gettourcountry', (req, res) => {
                 ],
             },
         ],
+        where: {
+            type: type
+        }
     })
         .then(tours => {
             if (!tours) {

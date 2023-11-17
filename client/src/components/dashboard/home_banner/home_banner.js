@@ -17,8 +17,8 @@ class HomeBanner extends React.Component {
     };
 
     componentDidMount() {
-        getBannerData(5).then(res => {
-            this.setState({'bannerData': res})
+        getBannerData(7).then(res => {
+            this.setState({ 'bannerData': res })
         }).catch(err => {
             console.log(err)
         })
@@ -27,11 +27,12 @@ class HomeBanner extends React.Component {
     render() {
         // console.log(this.state.bannerData)
         return (
-            <Carousel afterChange={this.onChange} style={{ width: "100%" }}>
-                {this.state.bannerData.map((banner) => (
-                    <BannerImg src={banner.demoImage} name={banner.title} desc={banner.description} />
-                ))}
-            </Carousel>
+            
+                <Carousel afterChange={this.onChange} style={{ width: "100%" }}>
+                    {this.state.bannerData.map((banner) => (
+                        <BannerImg src={banner.demoImage} name={banner.title} desc={banner.description} />
+                    ))}
+                </Carousel>
         );
     }
 };

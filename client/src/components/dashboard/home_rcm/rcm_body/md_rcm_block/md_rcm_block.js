@@ -14,7 +14,7 @@ export default class MdRcmBlock extends React.Component {
     }
 
     componentDidMount() {
-        getMdRcmData(this.state.country_id).then(res => {
+        getMdRcmData(this.state.country_id, this.props.type).then(res => {
             this.setState({ 'tourData': res })
         }).catch(err => {
             console.log('error: ' + err)

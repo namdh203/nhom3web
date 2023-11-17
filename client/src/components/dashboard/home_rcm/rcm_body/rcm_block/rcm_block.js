@@ -15,7 +15,7 @@ export default class RcmBlock extends React.Component {
     componentDidMount() {
         getPopularCountry().then(res => {
             this.setState({ 'country_name': res.countryName, 'country_id': res.id }, () => {
-                getMdRcmData(this.state.country_id).then(res => {
+                getMdRcmData(this.state.country_id, this.props.type).then(res => {
                     this.setState({ 'tourData': res })
                 }).catch(err => {
                     console.log('error: ' + err)

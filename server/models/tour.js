@@ -48,6 +48,9 @@ const Tour = db.sequelize.define(
         voting: {
             type: Sequelize.INTEGER,
             allowNull: false
+        },
+        type: {
+            type: Sequelize.STRING,
         }
     },
     {
