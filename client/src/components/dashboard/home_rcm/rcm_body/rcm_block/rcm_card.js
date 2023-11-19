@@ -19,7 +19,6 @@ export default class RcmCard extends React.Component {
                 <div className="rcm-footer_black"></div>
                 <div className="rcm-info_wrapper">
                     <h1 className="rcm-info">{this.props.name}</h1>
-                    <h1 className="rcm-desc">{this.props.desc}</h1>
                 </div>
             </div>
         )

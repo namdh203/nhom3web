@@ -16,6 +16,7 @@ export default function Dashboard() {
 
       <div className="home-rcm_wrapper" style={{ margin: "0 50px" }}>
         <div className="row gx-5">
+          {/* <div className="col col-md-2"></div> */}
           <RcmSidebar ></RcmSidebar>
           <RcmBody></RcmBody>
         </div>
