@@ -6,6 +6,7 @@ import { PiElevator } from "react-icons/pi";
 import { FaLocationDot } from "react-icons/fa6";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./site_info.css";
+import { useState, useEffect } from "react";
 
 const { Header, Footer, Sider, Content } = Layout;
 const { Title, Paragraph } = Typography;
@@ -16,7 +17,38 @@ export default function SiteInfo(props) {
   let pricePerNight = "24.00";
   let currency = "$";
 
-  let images = ["https://thumbs.dreamstime.com/b/hotel-bed-room-21064950.jpg"];
+  const [accommodationData, setAccommodationData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/Image_link/accomodation.json");
+        const data = await response.json();
+        setAccommodationData(data);
+      } catch (error) {
+        console.error("Error fetching accommodation data:", error);
+      }
+    };
+
+    fetchData();
+  }, []); // The empty dependency array ensures the effect runs once when the component mounts
+
+  if (accommodationData && accommodationData.length > 0) {
+    let linksString = "[";
+    for (let i = 0; i < accommodationData.length; i++) {
+      linksString += accommodationData[i].link + "," + "\n";
+    }
+    linksString += "]";
+    console.log(linksString);
+    // Alternatively, you can use this string in your React component state or display it in your UI.
+  }
+
+  if (!accommodationData || accommodationData.length === 0) {
+    // Render loading state or return null
+    return <div>Loading...</div>;
+  }
+
+  let images = [accommodationData[6].link];
   let introduction =
     "Azure Heights stands as an epitome of refined luxury and contemporary elegance. With meticulously designed rooms, impeccable service, and breathtaking city vistas, it embodies the pinnacle of sophistication. Experience a harmonious blend of comfort and style, where every moment reflects the essence of exclusivity at Azure Heights.";
 
@@ -38,7 +70,7 @@ export default function SiteInfo(props) {
               <Title level={1} style={{ textAlign: "left" }}>
                 {name}
               </Title>
-              <Paragraph >
+              <Paragraph>
                 <span className="lg-font-size">Voting: </span>
                 <span>
                   <i className="fa-solid fa-star"></i>
@@ -134,7 +166,8 @@ export default function SiteInfo(props) {
               </Title>
               {utilities.map((utility, index) => (
                 <Paragraph key={index} className="mb-2 md-font-size">
-                  <span className="icon m-2">{utility.icon}</span> {utility.name}
+                  <span className="icon m-2">{utility.icon}</span>{" "}
+                  {utility.name}
                 </Paragraph>
               ))}
             </div>

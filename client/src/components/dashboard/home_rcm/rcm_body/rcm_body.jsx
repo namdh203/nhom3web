@@ -68,12 +68,12 @@ export default class RcmBody extends React.Component {
                 </div>
                 <div className="move-btn_wrapper forward hidden" onClick={move_forward}>
                   <div className="move-btn">
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <i className="fa-solid fa-chevron-left"></i>
                   </div>
                 </div>
                 <div className="move-btn_wrapper backward" onClick={move_backward}>
                   <div className="move-btn">
-                    <i class="fa-solid fa-chevron-right"></i>
+                    <i className="fa-solid fa-chevron-right"></i>
                   </div>
                 </div>
               </div> */}

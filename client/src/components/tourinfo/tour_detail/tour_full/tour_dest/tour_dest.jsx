@@ -56,7 +56,7 @@ class TourDestination extends React.Component {
                         </div>
                     </div>
                     <div className="tour-dest_add">
-                        <i class="fa-solid fa-plus" style={{ "margin-right": "10px" }}></i>
+                        <i className="fa-solid fa-plus" style={{ "margin-right": "10px" }}></i>
                         <span>Add Info</span>
                     </div>
                 </div>
@@ -72,17 +72,17 @@ class TourDestination extends React.Component {
                     <div className="trans-choice" style={{
                         display: this.props.trans === "train" ? "block" : "none"
                     }}>
-                        <i class="fa-solid fa-train"></i>
+                        <i className="fa-solid fa-train"></i>
                     </div>
                     <div className="trans-choice" style={{
                         display: this.props.trans === "plane" ? "block" : "none"
                     }}>
-                        <i class="fa-solid fa-plane"></i>
+                        <i className="fa-solid fa-plane"></i>
                     </div>
                     <div className="trans-choice" style={{
                         display: this.props.trans === "motor" ? "block" : "none"
                     }}>
-                        <i class="fa-solid fa-motorcycle"></i>
+                        <i className="fa-solid fa-motorcycle"></i>
                     </div>
                 </div>
             </>

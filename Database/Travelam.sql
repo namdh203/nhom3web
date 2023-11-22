@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS Customer (
   accountID INT NOT NULL,
   name VARCHAR(255),
   cardNo VARCHAR(16),
-  address VARCHAR(255),
+  address TEXT,
   phoneNumber VARCHAR(15),
   email VARCHAR(255),
   passportNo VARCHAR(15),
@@ -22,7 +22,6 @@ DROP TABLE IF EXISTS Tour;
 CREATE TABLE IF NOT EXISTS Tour (
   tourID INT NOT NULL,
   title VARCHAR(50),
-  description VARCHAR(255),
   duration INT,
   price DOUBLE,
   priceCurrency VARCHAR(255),
@@ -59,11 +58,11 @@ CREATE TABLE IF NOT EXISTS Destination (
 DROP TABLE IF EXISTS Accommodation;
 CREATE TABLE IF NOT EXISTS Accommodation (
   accomID INT NOT NULL,
-  name VARCHAR(255), -- Adjust the size to your needs
+  name TEXT, 
   destID INT NOT NULL,
   pricePerNight DOUBLE,
-  priceCurrency VARCHAR(255), -- Adjust the size to your needs
-  address VARCHAR(255), -- Adjust the size to your needs
+  priceCurrency VARCHAR(10), -- Adjust the size to your needs
+  address TEXT, -- Adjust the size to your needs
   telephoneNo VARCHAR(15), -- Adjust the size to your needs
   contactEmail VARCHAR(255), -- Adjust the size to your needs
   description MEDIUMTEXT,
@@ -130,7 +129,7 @@ CREATE TABLE IF NOT EXISTS Restaurant (
   restID INT NOT NULL,
   destID INT NOT NULL,
   name VARCHAR(255), -- Adjust the size to your needs
-  address VARCHAR(255), -- Adjust the size to your needs
+  address TEXT, -- Adjust the size to your needs
   telephoneNo VARCHAR(15), -- Adjust the size to your needs
   description MEDIUMTEXT,
   additionalInfo TEXT,
@@ -154,8 +153,8 @@ CREATE TABLE IF NOT EXISTS Payment (
   customerID INT NOT NULL,
   tourID INT NOT NULL,
   payDate DATE,
-  amount INT,
-  currency VARCHAR(255), -- Adjust the size to your needs
+  amount DECIMAL(10, 2),
+  currency VARCHAR(10),
   PRIMARY KEY (paymentID)
 );
 

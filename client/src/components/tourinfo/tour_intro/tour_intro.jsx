@@ -53,16 +53,16 @@ export default class TourIntro extends React.Component {
                             <div className="main-info_item voting">
                                 <h3>VOTING</h3>
                                 <div>
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
+                                    <i className="fa-regular fa-star"></i>
+                                    <i className="fa-regular fa-star"></i>
+                                    <i className="fa-solid fa-star"></i>
+                                    <i className="fa-solid fa-star"></i>
+                                    <i className="fa-solid fa-star"></i>
+                                    <i className="fa-solid fa-star"></i>
+                                    <i className="fa-solid fa-star"></i>
+                                    <i className="fa-solid fa-star"></i>
+                                    <i className="fa-solid fa-star"></i>
+                                    <i className="fa-solid fa-star"></i>
                                 </div>
                             </div>
                         </div>
@@ -77,10 +77,10 @@ export default class TourIntro extends React.Component {
                     </div>
                     <h1 className="short-info_header">Specials:</h1>
                     <div className="special-about">
-                        <p><i class="fa-solid fa-check"></i>        Nice Hotels</p>
-                        <p><i class="fa-solid fa-check"></i>        Interesting Activities</p>
-                        <p><i class="fa-solid fa-check"></i>        Smart Transportations</p>
-                        <p><i class="fa-solid fa-check"></i>        High Quality Restaurants</p>
+                        <p><i className="fa-solid fa-check"></i>        Nice Hotels</p>
+                        <p><i className="fa-solid fa-check"></i>        Interesting Activities</p>
+                        <p><i className="fa-solid fa-check"></i>        Smart Transportations</p>
+                        <p><i className="fa-solid fa-check"></i>        High Quality Restaurants</p>
                     </div>
                 </div>
             </div>
