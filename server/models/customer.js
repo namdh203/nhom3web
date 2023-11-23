@@ -1,13 +1,19 @@
 const Sequelize = require("sequelize")
 const db = require('../database/db.js')
 
+const User = require('../models/user.js')
+
 const Customer = db.sequelize.define(
     'customer',
     {
-        id: {
+        user_id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
-            primaryKey: true
+            primaryKey: true,
+            reference: {
+                model: 'User',
+                key: 'id'
+            }
         },
         name: {
             type: Sequelize.STRING,

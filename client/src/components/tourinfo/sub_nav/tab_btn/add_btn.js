@@ -11,7 +11,7 @@ function clicked(addClass) {
 }
 
 function goIntro() {
-    console.log("ngu")
+    // console.log("ngu")
     const body = document.body
     const intro = body.querySelector(".intro-wrapper")
     intro.style.display = "block"

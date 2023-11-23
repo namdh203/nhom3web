@@ -14,10 +14,11 @@ class TourBriefSchedule extends React.Component {
             <div className="schedule-wrapper">
                 <h1>Brief</h1>
                 <div className='schedule brief'>
+                    <div className="brief-dest">Your location</div>
+                    {this.props.dest.map((dest) => (
+                        <TourDestBrief title={dest.name} trans="train"></TourDestBrief>
+                    ))}
 
-                    <TourDestBrief last="false" first="true" title="Uluwatu Temple" trans="train"></TourDestBrief>
-                    <TourDestBrief last="false" first="false" title="Tirta Gangga" trans="motor"></TourDestBrief>
-                    <TourDestBrief last="true" first="false" title="Lempuyang" trans="motor"></TourDestBrief>
 
                 </div>
                 <div className="tour-cost">

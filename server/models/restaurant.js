@@ -1,6 +1,8 @@
 const Sequelize = require("sequelize")
 const db = require('../database/db.js')
 
+const Destination = require('../models/destination.js')
+
 const Restaurant = db.sequelize.define(
   'restaurant',
   {
@@ -43,6 +45,10 @@ const Restaurant = db.sequelize.define(
     freezeTableName: true
   }
 )
+
+Destination.hasMany(Restaurant, { foreignKey: 'dest_id' });
+Restaurant.belongsTo(Destination, { foreignKey: 'dest_id', targetKey: 'id' });
+
 
 Restaurant.sync({alter : true}).then((data) => {
   console.log("Table and model synced successful!");

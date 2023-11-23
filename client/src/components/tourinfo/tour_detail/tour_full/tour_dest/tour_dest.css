@@ -52,11 +52,12 @@
 }
 
 .tour-dest_add {
-    font-size: 20px;
-    color: rgb(61, 180, 61);
-    border-top-style: dashed;
-    border-top-width: 0.025px;
+    font-size: 14px;
+    color: white;
+    border: 0.025px grey solid;
+    border-radius: 5px;
     padding: 10px 0;
+    background-color: rgb(62, 177, 62);
 }
 
 .tour-dest_add:hover {
@@ -81,4 +82,8 @@
     border-radius: 50px;
     width: 30px;
     height: 30px;
+}
+
+.tour-dest_info-wrapper {
+    padding: 20px 0
 }

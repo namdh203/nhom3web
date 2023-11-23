@@ -5,13 +5,14 @@ import TourIntro from "./tour_intro/tour_intro.jsx"
 import TourDetail from "./tour_detail/tour_detail.jsx"
 import TourDesc from './tour_decs/tour_desc.jsx'
 import SubNav from "./sub_nav/sub_nav.jsx"
-import { getTourData } from '../tourinfo/TourFunction.js' 
+import { getTourData, getDestData } from '../tourinfo/TourFunction.js' 
 
 export default class TourInfo extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            tourData: null
+            tourData: null,
+            destData: null
         }
     }
 
@@ -31,11 +32,20 @@ export default class TourInfo extends React.Component {
         }).catch(err => {
             console.log("error: ", err)
         })
+
+        getDestData(id).then(res => {
+            if (!res) {
+                console.log("Get dest id failed")
+            } else {
+                console.log(res)
+                this.setState({'destData': res})
+            }
+        })
     }
 
     render() {
 
-        if (this.state.tourData === null) {
+        if (this.state.tourData === null || this.state.destData === null) {
             return <p>Loading...</p>
         }
 
@@ -45,7 +55,7 @@ export default class TourInfo extends React.Component {
                 <SubNav></SubNav>
                 <TourIntro tour={this.state.tourData}/>
                 <TourDesc tour={this.state.tourData}></TourDesc>
-                <TourDetail />
+                <TourDetail dest={this.state.destData} />
             </div>
         )
     }

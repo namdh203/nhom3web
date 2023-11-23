@@ -15,16 +15,9 @@ class TourDestBrief extends React.Component {
                     width: "50%",
                     height: "20px",
                     "border-right": "0.025px solid gray",
-                    display: this.props.first === "true" ? "none" : "block"
+                    display: "block"
                 }}></div>
 
-                <div className="brief-dest">{this.props.title}</div>
-                <div className="buffer-block" style={{
-                    width: "50%",
-                    height: "20px",
-                    "border-right": "0.025px solid gray",
-                    display: this.props.last === "true" ? "none" : "block"
-                }}></div>
                 <div className="trans-block" style={{ display: this.props.last === "true" ? "none" : "flex" }}>
                     <div className="trans-choice" style={{
                         display: this.props.trans === "train" ? "block" : "none"
@@ -46,6 +39,15 @@ class TourDestBrief extends React.Component {
                         <i class="fa-solid fa-plane"></i>
                     </div>
                 </div>
+
+                <div className="buffer-block" style={{
+                    width: "50%",
+                    height: "20px",
+                    "border-right": "0.025px solid gray",
+                    display: "block"
+                }}></div>
+
+                <div className="brief-dest">{this.props.title}</div>
             </div>
         )
     }

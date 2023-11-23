@@ -1,6 +1,8 @@
 const Sequelize = require("sequelize")
 const db = require('../database/db.js')
 
+const Destination = require('../models/destination.js')
+
 const Activity = db.sequelize.define(
   'activity',
   {
@@ -39,6 +41,7 @@ const Activity = db.sequelize.define(
     freezeTableName: true
   }
 )
+
 
 Activity.sync({alter : true}).then((data) => {
   console.log("Table and model synced successful!");
