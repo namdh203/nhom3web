@@ -87,3 +87,7 @@ Run frontend (react):\
 How to change port:\
     - Change port in server/server.js\
     - Change port in client/package.json, there is "proxy" key, change its value.
+
+Database format:
+    - Column: camelCase
+    - 
