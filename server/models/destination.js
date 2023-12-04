@@ -13,7 +13,7 @@ const Destination = db.sequelize.define(
       type: Sequelize.STRING,
       allowNull: false
     },
-    country_id: {
+    countryId: {
       type: Sequelize.INTEGER,
       allowNull: false,
       reference: {

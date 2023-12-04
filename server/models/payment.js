@@ -17,7 +17,7 @@ const Payment = db.sequelize.define(
                 key: 'id'
             }
         },
-        tour_id: {
+        tourId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             reference: {

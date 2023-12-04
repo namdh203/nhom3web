@@ -10,10 +10,10 @@ const Accommodation = db.sequelize.define(
             autoIncrement: true
         },
         name: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.STRING,
             allowNull: false
         },
-        dest_id: {
+        destId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             reference: {
@@ -41,12 +41,16 @@ const Accommodation = db.sequelize.define(
             type: Sequelize.STRING,
             allowNull: false
         },
+        description: {
+            type: Sequelize.TEXT,
+            defaultValue: ""
+        },
         additionInfo: {
             type: Sequelize.STRING,
             allowNull: false
         },
         demoImage: {
-            type: Sequelize.STRING,
+            type: Sequelize.TEXT,
             defaultValue: ""
         }
     },

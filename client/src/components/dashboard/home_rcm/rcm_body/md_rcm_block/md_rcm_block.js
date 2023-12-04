@@ -9,12 +9,12 @@ export default class MdRcmBlock extends React.Component {
         super(props)
         this.state = {
             tourData: [],
-            country_id: Math.floor(Math.random() * 9) + 1
+            countryId: Math.floor(Math.random() * 9) + 1
         }
     }
 
     componentDidMount() {
-        getMdRcmData(this.state.country_id, this.props.type).then(res => {
+        getMdRcmData(this.state.countryId, this.props.type).then(res => {
             this.setState({ 'tourData': res })
         }).catch(err => {
             console.log('error: ' + err)

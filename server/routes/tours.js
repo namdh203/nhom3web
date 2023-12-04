@@ -9,7 +9,7 @@ const Country = require("../models/country");
 const Destination = require("../models/destination");
 const TourDest = require("../models/tour_dest");
 
-const sequelize = new Sequelize('travelam', 'root', '@Ttg123456', {
+const sequelize = new Sequelize('travelam', 'root', 'empty2003', {
     host: 'localhost',
     dialect: 'mysql',
 
@@ -105,7 +105,7 @@ tours.post('/getspecificcountry', (req, res) => {
 })
 
 tours.post('/gettourcountry', (req, res) => {
-    const req_country_id = req.body.id
+    const req_countryId = req.body.id
     const type = req.body.type
     Tour.findAll({
         attributes: ['id', 'title', 'description', 'demoImage'],
@@ -119,7 +119,7 @@ tours.post('/gettourcountry', (req, res) => {
                         model: Destination,
                         attributes: [],
                         where: {
-                            country_id: req_country_id // Thay thế 1 bằng giá trị country_id mong muốn
+                            countryId: req_countryId // Thay thế 1 bằng giá trị countryId mong muốn
                         },
                     },
                 ],
@@ -149,7 +149,7 @@ tours.post('/gettourcountry', (req, res) => {
 })
 
 tours.post('/gettourcountry_more', (req, res) => {  
-    const req_country_id = req.body.id
+    const req_countryId = req.body.id
     Tour.findAll({
         attributes: ['id', 'title', 'duration', 'price', 'priceCurrency', 'startDate', 'endDate', 'additionInfo', 'demoImage'],
         include: [
@@ -162,7 +162,7 @@ tours.post('/gettourcountry_more', (req, res) => {
                         model: Destination,
                         attributes: [],
                         where: {
-                            country_id: req_country_id // Thay thế 1 bằng giá trị country_id mong muốn
+                            countryId: req_countryId // Thay thế 1 bằng giá trị countryId mong muốn
                         },
                     },
                 ],

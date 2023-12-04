@@ -13,7 +13,7 @@ const Restaurant = db.sequelize.define(
       type: Sequelize.STRING,
       allowNull: false
     },
-    dest_id: {
+    destId: {
       type: Sequelize.INTEGER,
       allowNull: false,
       reference: {
@@ -29,12 +29,16 @@ const Restaurant = db.sequelize.define(
         type: Sequelize.STRING,
         allowNull: false
     },
+    description: {
+      type: Sequelize.TEXT,
+      allowNull: false
+    },
     additionInfo: {
       type: Sequelize.STRING,
       allowNull: false
     },
     demoImage: {
-      type: Sequelize.STRING,
+      type: Sequelize.TEXT,
       defaultValue: ""
     }
   },

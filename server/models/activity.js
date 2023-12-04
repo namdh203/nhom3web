@@ -13,7 +13,7 @@ const Activity = db.sequelize.define(
       type: Sequelize.STRING,
       allowNull: false
     },
-    dest_id: {
+    destId: {
       type: Sequelize.INTEGER,
       allowNull: false,
       reference: {

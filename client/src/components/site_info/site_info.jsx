@@ -22,7 +22,7 @@ export default function SiteInfo(props) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/Image_link/accomodation.json");
+        const response = await fetch("/Image_link/restaurant.json");
         const data = await response.json();
         setAccommodationData(data);
       } catch (error) {
@@ -34,13 +34,21 @@ export default function SiteInfo(props) {
   }, []); // The empty dependency array ensures the effect runs once when the component mounts
 
   if (accommodationData && accommodationData.length > 0) {
-    let linksString = "[";
-    for (let i = 0; i < accommodationData.length; i++) {
-      linksString += accommodationData[i].link + "," + "\n";
-    }
-    linksString += "]";
-    console.log(linksString);
-    // Alternatively, you can use this string in your React component state or display it in your UI.
+    // let linksString = "";
+    // for (let i = 0; i < accommodationData.length; i++) {
+    //   linksString += accommodationData[i].link + "," + "\n";
+    // }
+    // linksString += "";
+    // console.log(linksString);
+
+    // for (let i = 0; i < 10; i++) {
+    //   let group = "";
+    //   for (let times = 0; times < 7; times++) {
+    //     let idx = Math.floor(Math.random() * accommodationData.length);
+    //     group += accommodationData[idx].link + "," + "\n";
+    //   }
+    //   console.log(group);
+    // }
   }
 
   if (!accommodationData || accommodationData.length === 0) {

@@ -8,14 +8,14 @@ export default class RcmBlock extends React.Component {
         this.state = {
             tourData: [],
             country_name: "France",
-            country_id: 10
+            countryId: 10
         }
     }
 
     componentDidMount() {
         getPopularCountry().then(res => {
-            this.setState({ 'country_name': res.countryName, 'country_id': res.id }, () => {
-                getMdRcmData(this.state.country_id, this.props.type).then(res => {
+            this.setState({ 'country_name': res.countryName, 'countryId': res.id }, () => {
+                getMdRcmData(this.state.countryId, this.props.type).then(res => {
                     this.setState({ 'tourData': res })
                 }).catch(err => {
                     console.log('error: ' + err)

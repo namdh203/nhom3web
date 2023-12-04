@@ -9,7 +9,7 @@ const Transportation = db.sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
-        startDest_id: {
+        startDestId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             reference: {
@@ -17,7 +17,7 @@ const Transportation = db.sequelize.define(
                 key: 'id'
             }
         },
-        endDest_id: {
+        endDestId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             reference: {
@@ -60,7 +60,10 @@ const Transportation = db.sequelize.define(
     }
 )
 
-Transportation.sync({ alter: true }).then((data) => {
+Transportation.sync({ 
+    alter: true,
+    logging: console.log
+ }).then((data) => {
     console.log("Table and model synced successful!");
 }).catch((err) => {
     console.log("Table and model synced failed!");

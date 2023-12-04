@@ -8,6 +8,9 @@ import Footer from './components/dashboard/footer/footer'
 import SearchBar from './components/dashboard/search_bar/search-bar'
 import TourInfo from './components/tourinfo/tour_info'
 import CountryInfo from './components/countryinfo/country_info'
+import SiteInfo from './components/site_info/site_info'
+import Accommodation from './components/site_info/accommodation/accom'
+import Restaurant from './components/site_info/restaurant/restaurant'
 
 function App() {
   // const [isLogin, setIsLogin] = useState(false)
@@ -42,6 +45,12 @@ function App() {
           </>}/>
           <Route path="/tour" element={<TourInfo title="Bali Tour" banner="https://s3-hn-2.cloud.cmctelecom.vn/tapchicongthuong.vn/tcct-media/20/2/4/8.-den-uluwatu--.jpg"/>}/>
           <Route path="/country" element={<CountryInfo name="Bali"/>}/>
+          <Route path="/accomodation/hotel" element={
+            <Accommodation />
+          }/>
+          <Route path="/restaurant/res" element={
+            <Restaurant />
+          }/>
         </Routes>
         <div className="footer-wrapper">
           <Footer />
