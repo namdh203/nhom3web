@@ -16,7 +16,8 @@
 
 .sub-nav_tab:hover {
     background-color: rgb(187, 172, 172);
-    color: black
+    color: black;
+    cursor: pointer;
 }
 
 
@@ -34,7 +35,7 @@
 
 .sub-nav_wrapper {
     position: fixed;
-    top: 54px;
+    top: 55px;
     left: 50%;
     transform: translateX(-50%);
 }

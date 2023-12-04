@@ -2,7 +2,12 @@
     width: 100%;
     height: 300px !important;
     border-radius: 7px;
-    /* box-shadow: 5px 10px 20px rgb(0, 0, 0); */
+    box-shadow: 0px 5px 20px rgb(0, 0, 0);
+}
+
+.mdrcm-card_img:hover {
+    cursor: pointer;
+    scale: 1.05
 }
 
 
@@ -55,6 +60,8 @@
     margin-bottom: 0;
     margin-top: 10px;
     text-align: justify;
+    height: 125px;
+    overflow: hidden;
 }
 
 .mdrcm-card_inter {

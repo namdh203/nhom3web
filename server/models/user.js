@@ -9,11 +9,7 @@ const User = db.sequelize.define(
       primaryKey: true,
       autoIncrement: true
     },
-    first_name: {
-      type: Sequelize.STRING,
-      allowNull: false
-    },
-    last_name: {
+    role: {
       type: Sequelize.STRING,
       allowNull: false
     },

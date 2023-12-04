@@ -7,15 +7,22 @@ const cors = require('cors');
 var SECRET_KEY = "Travelam";
 
 const User = require("../models/user");
+const Customer = require("../models/customer")
+
+
 
 users.use(cors())
 
 users.post('/register', (req, res) => {
     const userData = {
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        role: "user",
         email: req.body.email,
-        password: req.body.password,
+        password: req.body.password
+    }
+
+    const customerData = {
+        name: req.body.first_name + req.body.last_name,
+        email: req.body.email
     }
 
 
@@ -24,21 +31,28 @@ users.post('/register', (req, res) => {
             email: req.body.email
         }
     }).then(user => {
-            if (!user) {
-                bcrypt.hash(req.body.password, 10, (err, hash) => {
-                    userData.password = hash
-                    User.create(userData)
-                        .then(user => {
-                            res.json({ status: user.email + 'Registered!' })
-                        })
-                        .catch(err => {
-                            res.send('error: ' + err)
-                        })
-                })
-            } else {
-                res.json({ error: 'User already exists' })
-            }
-        })
+        if (!user) {
+            bcrypt.hash(req.body.password, 10, (err, hash) => {
+                userData.password = hash
+                User.create(userData)
+                    .then(user => {
+                        res.json({ status: user.email + 'Registered!' })
+                    })
+                    .catch(err => {
+                        res.send('error: ' + err)
+                    })
+                Customer.create(customerData)
+                    .then(user => {
+                        console.log(user.email + 'Registered!')
+                    })
+                    .catch(err => {
+                        res.send('error: ' + err)
+                    })
+            })
+        } else {
+            res.json({ error: 'User already exists' })
+        }
+    })
         .catch(err => {
             res.send('error: ' + err)
         })

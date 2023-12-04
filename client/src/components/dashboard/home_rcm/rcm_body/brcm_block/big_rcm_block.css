@@ -28,6 +28,11 @@
     box-shadow: 5px 0px 15px rgb(0, 0, 0);
 }
 
+.brcm-card_img:hover {
+    scale: 1.025;
+    cursor: pointer;
+}
+
 .brcm-card_info-wrapper {
     text-align: left;
     display: flex;
@@ -42,6 +47,8 @@
 .brcm-card_desc {
     justify-content: justify;
     margin-bottom: 0;
+    height: 170px;
+    overflow: hidden;
 }
 
 .brcm-card_inter {

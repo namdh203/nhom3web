@@ -1,3 +1,7 @@
+.intro-wrapper {
+    padding: 0 105px
+}
+
 .something-about {
     /* border: 0.025px solid grey;
     border-radius: 15px;
@@ -15,11 +19,15 @@
 
 .short-info_header {
     margin-top: 0px;
-    font-size: 28px;
+    font-size: 30px;
 }
 
 .short-info>p {
     padding: 0 20px;
+}
+
+.special-about>p {
+    font-size: 20px;
 }
 
 .special-about>p>i {
@@ -28,7 +36,7 @@
 
 .main-info {
     height: 80px;
-    background-color: rgb(3, 42, 97);
+    background-color: rgb(1, 14, 32);
     border-radius: 0 0 20px 20px;
     margin-bottom: 50px;
     position: relative;
@@ -36,7 +44,7 @@
 
 .main-info::before {
     content: "";
-    background-image: linear-gradient(rgba(3, 42, 97, 0) 0%, rgb(3, 42, 97) 0%, rgb(3, 42, 97) 5%, rgba(3, 42, 97, 0));;
+    background-image: linear-gradient(rgba(3, 42, 97, 0) 0%, rgb(1, 14, 32) 0%, rgb(1, 14, 32) 5%, rgba(3, 42, 97, 0));;
     height: 40px;
     width: 100%;
     position: absolute;
@@ -73,6 +81,7 @@
     flex-direction: column;
     justify-content: center;
 }
+
 
 .main-info_item.voting {
     padding-right: 10px
