@@ -35,9 +35,13 @@ tours.use(cors())
 
 tours.post('/getbesttour', (req, res) => {
     const numberOfTours = req.body.number;
+    const tourType = req.body.type
 
     Tour.findAll({
         attributes: ['title', 'description', 'demoImage'],
+        where: {
+            type: tourType
+        },
         order: [
             ['voting', 'DESC']
         ],
@@ -160,6 +164,7 @@ tours.post('/gettourcountry', (req, res) => {
 
 tours.post('/gettourcountry_more', (req, res) => {  
     const req_country_id = req.body.id
+    const tourType = req.body.type
     Tour.findAll({
         attributes: ['id', 'title', 'duration', 'price', 'priceCurrency', 'startDate', 'endDate', 'additionInfo', 'demoImage'],
         include: [
@@ -178,6 +183,9 @@ tours.post('/gettourcountry_more', (req, res) => {
                 ],
             },
         ],
+        where: {
+            type: tourType
+        }
     })
         .then(tours => {
             if (!tours) {

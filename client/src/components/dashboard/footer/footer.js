@@ -7,22 +7,24 @@ export default function Footer() {
             <div className="footer-info container-md">
                 <div className="row g-5">
                     <div className="col col-md-4 col-sm-12 footer-logo">
-                        <img className="footer-logo_img" src="https://i.imgur.com/qm46CNl.png" alt="logo" />
+                        <a href='/'>
+                            <img className="footer-logo_img" src="https://i.imgur.com/qm46CNl.png" alt="logo" />
+                        </a>
                     </div>
                     <div className="col col-md-4 col-sm-12 footer-category">
                         <h3>Category</h3>
                         <div className="row g-5">
                             <div className="col col-md-6 col-sm-12 footer-category_1">
-                                <a href="#">
+                                <a href="/?type=destination&id=0">
                                     <p>Destinations</p>
                                 </a>
-                                <a href="#">
+                                <a href="/?type=family&id=1">
                                     <p>Family tours</p>
                                 </a>
-                                <a href="#">
+                                <a href="/?type=honey moon&id=2">
                                     <p>Honey mons</p>
                                 </a>
-                                <a href="#">
+                                <a href="/?type=adventure&id=3">
                                     <p>Adventures</p>
                                 </a>
                             </div>
@@ -65,7 +67,7 @@ export default function Footer() {
                     <a href="#"><i class="fa-brands fa-facebook"></i></a>
                     <a href="#"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="#" style={{"margin-right": "20px"}}><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" style={{ "margin-right": "20px" }}><i class="fa-brands fa-youtube"></i></a>
                 </div>
             </div>
             <div className="footer-admin">

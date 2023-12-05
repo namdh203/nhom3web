@@ -2,11 +2,17 @@ import React from "react";
 import "./tour_dest.css"
 import "../../../../../index.js"
 
+import AddImg from "./addition_img";
+
+// import { Collapse } from 'antd';
+
 class TourDestination extends React.Component {
     constructor(props) {
         super(props);
         this.state = {}
     }
+
+
 
     render() {
         return (
@@ -46,85 +52,51 @@ class TourDestination extends React.Component {
                 <div className="tour-dest_wrapper">
                     <div className="tour-dest_header">{this.props.header}</div>
                     <div className="tour-dest_info-wrapper">
-                        <div className="tour-dest_info row gx-4">
-                            <div className="label col col-md-2">Accom:</div>
-                            <div className="detail col col-md-8"><p>Kecak Dance Performance, Kecak Dance Performance</p>
-                                <div className="detail_demo row gx-4">
-                                    <div className="col col-md-3">
-                                        <img src="https://a.cdn-hotels.com/gdcs/production142/d1653/b667788d-ebdf-4b27-8bab-22bc59175055.jpg" className="img-fluid" alt="Responsive" />
-                                    </div>
-                                    <div className="col col-md-3">
-                                        <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1200,h_630/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/o3oq0rci3gucwvpu7pqp/Kecak%20Dance%20Show%20Ticket%20in%20Uluwatu%20and%20Melasti%20Beach%2C%20Bali.jpg" className="img-fluid" alt="Responsive" />
-                                    </div>
-                                </div></div>
-                            <div className="col col-md-2">
-                                <div className="tour-dest_add">
-                                    <i class="fa-solid fa-plus" style={{ "margin-right": "2px" }}></i>
-                                    <span>Add Accom</span>
-                                </div>
+                        <div className="tour-dest_info intro row gx-4 odd">
+                            <div className="col col-md-6">
+                                <p>{this.props.desc}</p>
                             </div>
+                            <div className="col col-md-6">
+                                <img src={this.props.image} className="img-fluid" alt="Responsive" />
+                            </div>
+
                         </div>
-                        <div className="tour-dest_info row gx-4">
-                            <div className="label col col-md-2">Transportation:</div>
-                            <div className="detail col col-md-8"><p>Kecak Dance Performance, Kecak Dance Performance</p>
-                                <div className="detail_demo row gx-4">
-                                    <div className="col col-md-3">
-                                        <img src="https://a.cdn-hotels.com/gdcs/production142/d1653/b667788d-ebdf-4b27-8bab-22bc59175055.jpg" className="img-fluid" alt="Responsive" />
-                                    </div>
-                                    <div className="col col-md-3">
-                                        <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1200,h_630/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/o3oq0rci3gucwvpu7pqp/Kecak%20Dance%20Show%20Ticket%20in%20Uluwatu%20and%20Melasti%20Beach%2C%20Bali.jpg" className="img-fluid" alt="Responsive" />
-                                    </div>
-                                </div></div>
-                            <div className="col col-md-2">
-                                <div className="tour-dest_add">
-                                    <i class="fa-solid fa-plus" style={{ "margin-right": "2px" }}></i>
-                                    <span>Add Trans</span>
+                        <div className="tour-dest_info info row gx-4 odd">
+                            <div className="col col-md-3">
+                                <i class="fa-solid fa-hotel"></i>
+                                <div>
+                                    <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="leftTop"></AddImg>
+                                    <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="leftTop"></AddImg>
+                                    <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="leftTop"></AddImg>
+                                    <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="leftTop"></AddImg>
+                                    
                                 </div>
                             </div>
-                        </div>
-                        <div className="tour-dest_info row gx-4">
-                            <div className="label col col-md-2">Restaurant:</div>
-                            <div className="detail col col-md-8">
-                                <p>Kecak Dance Performance, Kecak Dance Performance</p>
-                                <div className="detail_demo row gx-4">
-                                    <div className="col col-md-3">
-                                        <img src="https://a.cdn-hotels.com/gdcs/production142/d1653/b667788d-ebdf-4b27-8bab-22bc59175055.jpg" className="img-fluid" alt="Responsive" />
-                                    </div>
-                                    <div className="col col-md-3">
-                                        <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1200,h_630/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/o3oq0rci3gucwvpu7pqp/Kecak%20Dance%20Show%20Ticket%20in%20Uluwatu%20and%20Melasti%20Beach%2C%20Bali.jpg" className="img-fluid" alt="Responsive" />
-                                    </div>
+                            <div className="col col-md-3">
+                                <i class="fa-solid fa-truck-plane"></i>
+                                <div>
+                                    <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="top"></AddImg>
+                                    <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="top"></AddImg>
+                                    <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="top"></AddImg>
+                                    <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="top"></AddImg>
                                 </div>
                             </div>
-                            <div className="col col-md-2">
-                                <div className="tour-dest_add">
-                                    <i class="fa-solid fa-plus" style={{ "margin-right": "2px" }}></i>
-                                    <span>Add Meal</span>
+                            <div className="col col-md-3">
+                                <i class="fa-solid fa-drumstick-bite"></i>
+                                <div>
+                                    <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="top"></AddImg>
+                                    <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="top"></AddImg>
+                                    <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="top"></AddImg>
+                                    <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="top"></AddImg>
                                 </div>
                             </div>
-                        </div>
-                        <div className="tour-dest_info row gx-4">
-                            <div className="label col col-md-2">Acivity:</div>
-                            <div className="detail col col-md-8">
-                                <p>Explore Uluwatu Temple, Kecak Dance Performance, Surfing, Rock Climbing</p>
-                                <div className="detail_demo row gx-4">
-                                    <div className="col col-md-3">
-                                        <img src="https://a.cdn-hotels.com/gdcs/production142/d1653/b667788d-ebdf-4b27-8bab-22bc59175055.jpg" className="img-fluid" alt="Responsive" />
-                                    </div>
-                                    <div className="col col-md-3">
-                                        <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1200,h_630/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/o3oq0rci3gucwvpu7pqp/Kecak%20Dance%20Show%20Ticket%20in%20Uluwatu%20and%20Melasti%20Beach%2C%20Bali.jpg" className="img-fluid" alt="Responsive" />
-                                    </div>
-                                    <div className="col col-md-3">
-                                        <img src="https://lushpalm.com/wp-content/uploads/2015/11/surfing-uluwatu-view-from-warungs.jpg" className="img-fluid" alt="Responsive" />
-                                    </div>
-                                    <div className="col col-md-3">
-                                        <img src="https://theworldtravelguy.com/wp-content/uploads/2021/02/DJI_0360.jpg" className="img-fluid" alt="Responsive" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col col-md-2">
-                                <div className="tour-dest_add">
-                                    <i class="fa-solid fa-plus" style={{ "margin-right": "2px" }}></i>
-                                    <span>Add Activity</span>
+                            <div className="col col-md-3">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                                <div>
+                                    <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="rightTop"></AddImg>
+                                    <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="rightTop"></AddImg>
+                                    <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="rightTop"></AddImg>
+                                    <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="rightTop"></AddImg>
                                 </div>
                             </div>
                         </div>
@@ -134,5 +106,36 @@ class TourDestination extends React.Component {
         )
     }
 }
+
+// export default TourDestination;
+
+// const text = `
+//   A dog is a type of domesticated animal.
+//   Known for its loyalty and faithfulness,
+//   it can be found:a welcome guest in many households across the world.
+// `;
+// const items = [
+//   {
+//     key: '1',
+//     label: 'ACCOMODATION',
+//     children: <p>Accomodation:</p>,
+//   },
+//   {
+//     key: '2',
+//     label: 'This is panel header 2',
+//     children: <p>{text}</p>,
+//   },
+//   {
+//     key: '3',
+//     label: 'This is panel header 3',
+//     children: <p>{text}</p>,
+//   },
+// ];
+// const TourDestination = () => {
+//   const onChange = (key) => {   
+//     console.log(key);
+//   };
+//   return <Collapse items={items} defaultActiveKey={['1']} onChange={onChange} />;
+// };
 
 export default TourDestination;

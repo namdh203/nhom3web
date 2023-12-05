@@ -17,22 +17,36 @@ class HomeBanner extends React.Component {
     };
 
     componentDidMount() {
-        getBannerData(7).then(res => {
-            this.setState({ 'bannerData': res })
-        }).catch(err => {
-            console.log(err)
-        })
+
+        const currentURL = window.location.href;
+
+        const url = new URL(currentURL);
+
+        var type = url.searchParams.get("type");
+
+        if (type === null) {
+            type = 'destination'
+        }
+
+        if (type !== null) {
+            getBannerData(7, type).then(res => {
+                this.setState({ 'bannerData': res })
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+
     }
 
     render() {
         // console.log(this.state.bannerData)
         return (
-            
-                <Carousel afterChange={this.onChange} style={{ width: "100%" }}>
-                    {this.state.bannerData.map((banner) => (
-                        <BannerImg src={banner.demoImage} name={banner.title} desc={banner.description} />
-                    ))}
-                </Carousel>
+
+            <Carousel afterChange={this.onChange} style={{ width: "100%" }}>
+                {this.state.bannerData.map((banner) => (
+                    <BannerImg src={banner.demoImage} name={banner.title} desc={banner.description} />
+                ))}
+            </Carousel>
         );
     }
 };

@@ -15,7 +15,7 @@ class TourFullSchedule extends React.Component {
                     <p className="schedule-start">Your location</p>
                 </div>
                 {this.props.dest.map((dest) => (
-                    <TourDestination header={dest.name} trans="train" />
+                    <TourDestination header={dest.name} image={dest.demoImage} desc={dest.description} trans="train" />
                 ))}
 
                 <div className="tour-cost_full">

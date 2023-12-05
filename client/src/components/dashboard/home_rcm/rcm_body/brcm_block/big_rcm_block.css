@@ -3,7 +3,8 @@
     color: white;
     align-items: center;
     line-height: 16px;
-    margin-bottom: 0
+    margin-bottom: 0;
+    font-weight: 600;
 }
 
 .brcm-card_choice>div {
@@ -23,6 +24,14 @@
     cursor: pointer;
 }
 
+.brcm-card_img-wrapper {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .brcm-card_img {
     border-radius: 7px;
     box-shadow: 5px 0px 15px rgb(0, 0, 0);
@@ -36,6 +45,7 @@
 .brcm-card_info-wrapper {
     text-align: left;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }

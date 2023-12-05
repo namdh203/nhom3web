@@ -9,9 +9,9 @@ export const getCountryData = (id) => {
 }
 
 
-export const getTourData = (id) => {
+export const getTourData = (id, type) => {
     return axios
-    .post('tours/gettourcountry_more', {id: id})
+    .post('tours/gettourcountry_more', {id: id, type: type})
     .then(response => {
         return response.data
     })

@@ -9,7 +9,18 @@ export default class BigRcmCard extends React.Component {
     }
 
     onclick() {
-        window.location.href = `/country?id=${this.props.id}&name=${this.props.name}`
+
+        const currentURL = window.location.href;
+
+        const url = new URL(currentURL);
+
+        var type = url.searchParams.get("type");
+
+        if (type === null) {
+            type = 'destination'
+        }
+
+        window.location.href = `/country?id=${this.props.id}&name=${this.props.name}&type=${type}`
     }
 
 

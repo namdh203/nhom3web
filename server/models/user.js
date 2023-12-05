@@ -35,7 +35,7 @@ const User = db.sequelize.define(
 )
 
 
-User.hasMany(Customer, { foreignKey: 'user_id' });
+User.hasOne(Customer, { foreignKey: 'user_id' });
 Customer.belongsTo(User, { foreignKey: 'user_id', targetKey: 'id' });
 
 User.sync({alter : true}).then((data) => {

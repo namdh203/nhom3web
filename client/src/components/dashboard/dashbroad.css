@@ -12,7 +12,7 @@
 }
 
 .rcm-body {
-    margin: 0;
+    margin: 25px 0 0 0;
 }
 
 /* Tutorial */
@@ -184,7 +184,7 @@
 }
 
 .home-rcm_sidebar {
-    margin: 50px 0;
+    margin: 0px 0;
     text-align: left;
     /* border-radius: 10px; */
     border-right: 0.025px rgb(212, 199, 199)     solid;
