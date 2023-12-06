@@ -25,6 +25,9 @@ const Activity = db.sequelize.define(
       type: Sequelize.STRING,
       allowNull: false
     },
+    description: {
+      type: Sequelize.TEXT,
+    },
     additionInfo: {
       type: Sequelize.STRING,
       allowNull: false
@@ -40,7 +43,7 @@ const Activity = db.sequelize.define(
   }
 )
 
-Activity.sync({alter : true}).then((data) => {
+Activity.sync({ alter: true }).then((data) => {
   console.log("Table and model synced successful!");
 }).catch((err) => {
   console.log("Table and model synced failed!");

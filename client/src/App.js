@@ -11,6 +11,7 @@ import CountryInfo from './components/countryinfo/country_info'
 import SiteInfo from './components/site_info/site_info'
 import Accommodation from './components/site_info/accommodation/accom'
 import Restaurant from './components/site_info/restaurant/restaurant'
+import Activity from './components/site_info/activities/activity'
 
 function App() {
   // const [isLogin, setIsLogin] = useState(false)
@@ -50,6 +51,9 @@ function App() {
           }/>
           <Route path="/restaurant/res" element={
             <Restaurant />
+          }/>
+          <Route path="/activity/act" element={
+            <Activity />
           }/>
         </Routes>
         <div className="footer-wrapper">
