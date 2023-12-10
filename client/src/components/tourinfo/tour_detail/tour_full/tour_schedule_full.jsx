@@ -11,10 +11,14 @@ class TourFullSchedule extends React.Component {
     render() {
         return (
             <div className='schedule full'>
-                <TourDestination header="Uluwatu Temple" last="false" first="true" trans="plane" />
-                <TourDestination header="Tirta Gangga" last="false" first="false" trans="train" />
-                <TourDestination header="Lempuyang" last="true" first="false" trans="plane" />
-                <div className="tour-cost">
+                <div className="schedule-start_wrapper">
+                    <p className="schedule-start">Your location</p>
+                </div>
+                {this.props.dest.map((dest) => (
+                    <TourDestination header={dest.name} image={dest.demoImage} desc={dest.description} trans="train" />
+                ))}
+
+                <div className="tour-cost_full">
                     <h1>Get Cost</h1>
                 </div>
             </div>

@@ -59,37 +59,36 @@ CREATE TABLE `Destination` (
 ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Create the "Accommodation" table
-DROP TABLE IF EXISTS Accommodation;
-CREATE TABLE IF NOT EXISTS Accommodation (
-  accomID INT NOT NULL,
-  name TEXT, 
-  destID INT NOT NULL,
+DROP TABLE IF EXISTS accommodation;
+CREATE TABLE IF NOT EXISTS accommodation (
+  id INT NOT NULL,
+  name VARCHAR(255), -- Adjust the size to your needs
+  dest_id INT NOT NULL,
   pricePerNight DOUBLE,
-  priceCurrency VARCHAR(10), -- Adjust the size to your needs
-  address TEXT, -- Adjust the size to your needs
-  telephoneNo VARCHAR(15), -- Adjust the size to your needs
+  priceCurrency VARCHAR(255), -- Adjust the size to your needs
+  address VARCHAR(255), -- Adjust the size to your needs
+  telephone VARCHAR(15), -- Adjust the size to your needs
   contactEmail VARCHAR(255), -- Adjust the size to your needs
-  description MEDIUMTEXT,
-  additionalInfo TEXT,
-  demoImage MEDIUMTEXT,
-  PRIMARY KEY (accomID)
+  additionInfo VARCHAR(255), -- Adjust the size to your
+  demoImage VARCHAR(255), -- Adjust the size to your needs
+  PRIMARY KEY (id)
 );
 
 -- Create the "Tour_accommodation" table
-DROP TABLE IF EXISTS Tour_accommodation;
-CREATE TABLE IF NOT EXISTS Tour_accommodation (
-  tourID INT NOT NULL,
-  accomID INT NOT NULL,
+DROP TABLE IF EXISTS tour_accom;
+CREATE TABLE IF NOT EXISTS tour_accom (
+  tour_id INT NOT NULL,
+  accom_id INT NOT NULL,
   roomNum INT,
-  PRIMARY KEY (tourID, accomID)
+  PRIMARY KEY (tour_id, accom_id)
 );
 
 -- Create the "Transportation" table
-DROP TABLE IF EXISTS Transportation;
-CREATE TABLE IF NOT EXISTS Transportation (
-  transID INT NOT NULL,
-  startDestID INT NOT NULL,
-  endDestID INT NOT NULL,
+DROP TABLE IF EXISTS transportation;
+CREATE TABLE IF NOT EXISTS transportation (
+  id INT NOT NULL,
+  startDest_id INT NOT NULL,
+  endDest_id INT NOT NULL,
   startTime DATE,
   endTime DATE,
   price DOUBLE,
@@ -100,21 +99,22 @@ CREATE TABLE IF NOT EXISTS Transportation (
 );
 
 -- Create the "Tour_transportation" table
-DROP TABLE IF EXISTS Tour_transportation;
-CREATE TABLE IF NOT EXISTS Tour_transportation (
-  tourID INT NOT NULL,
-  transID INT NOT NULL,
-  PRIMARY KEY (tourID, transID)
+DROP TABLE IF EXISTS tour_trans;
+CREATE TABLE IF NOT EXISTS tour_trans (
+  tour_id INT NOT NULL,
+  trans_id INT NOT NULL,
+  PRIMARY KEY (tour_id, trans_id)
 );
 
 -- Create the "Account" table
-DROP TABLE IF EXISTS Account;
-CREATE TABLE IF NOT EXISTS Account (
-  accountID INT NOT NULL,
+DROP TABLE IF EXISTS user;
+CREATE TABLE IF NOT EXISTS user (
+  id INT NOT NULL,
   role VARCHAR(255), -- Adjust the size to your needs
-  username VARCHAR(255), -- Adjust the size to your needs
+  email VARCHAR(255), -- Adjust the size to your needs
   password VARCHAR(255), -- Adjust the size to your needs
-  PRIMARY KEY (accountID)
+  created DATE,
+  PRIMARY KEY (id)
 );
 
 -- Create the "Country" table
@@ -130,60 +130,57 @@ CREATE TABLE `Country` (
 
 
 -- Create the "Restaurant" table
-DROP TABLE IF EXISTS Restaurant;
-CREATE TABLE IF NOT EXISTS Restaurant (
-  restID INT NOT NULL,
-  destID INT NOT NULL,
+DROP TABLE IF EXISTS restaurant;
+CREATE TABLE IF NOT EXISTS restaurant (
+  id INT NOT NULL,
+  dest_id INT NOT NULL,
   name VARCHAR(255), -- Adjust the size to your needs
-  address TEXT, -- Adjust the size to your needs
-  telephoneNo VARCHAR(15), -- Adjust the size to your needs
-  description MEDIUMTEXT,
-  additionalInfo TEXT,
-  demoImage MEDIUMTEXT,
-  PRIMARY KEY (restID)
+  address VARCHAR(255), -- Adjust the size to your needs
+  telephone VARCHAR(15), -- Adjust the size to your needs
+  additionInfo VARCHAR(255),
+  demoImage VARCHAR(255),
+  PRIMARY KEY (id)
 );
 
 -- Create the "Tour_meal" table
-DROP TABLE IF EXISTS Tour_meal;
-CREATE TABLE IF NOT EXISTS Tour_meal (
-  tourID INT NOT NULL,
-  restID INT NOT NULL,
+DROP TABLE IF EXISTS tour_meal;
+CREATE TABLE IF NOT EXISTS tour_meal (
+  tour_id INT NOT NULL,
+  rest_id INT NOT NULL,
   timeSuggest DATE,
-  PRIMARY KEY (tourID, restID)
+  PRIMARY KEY (tour_id, rest_id)
 );
 
 -- Create the "Payment" table
-DROP TABLE IF EXISTS Payment;
-CREATE TABLE IF NOT EXISTS Payment (
-  paymentID INT NOT NULL,
-  customerID INT NOT NULL,
-  tourID INT NOT NULL,
+DROP TABLE IF EXISTS payment;
+CREATE TABLE IF NOT EXISTS payment (
+  id INT NOT NULL,
+  user_id INT NOT NULL,
+  tour_id INT NOT NULL,
   payDate DATE,
-  amount DECIMAL(10, 2),
-  currency VARCHAR(10),
-  PRIMARY KEY (paymentID)
+  amount INT,
+  currency VARCHAR(255), -- Adjust the size to your needs
+  PRIMARY KEY (id)
 );
 
 -- Create the "Activity" table
-DROP TABLE IF EXISTS Activity;
-CREATE TABLE IF NOT EXISTS Activity (
-  activityID INT NOT NULL,
+DROP TABLE IF EXISTS activity;
+CREATE TABLE IF NOT EXISTS activity (
+  id INT NOT NULL,
   name VARCHAR(50), -- Adjust the size to your needs
-  destID INT NOT NULL,
+  dest_id INT NOT NULL,
   type VARCHAR(255), -- Adjust the size to your needs
-  description MEDIUMTEXT,
-  additionalInfo TEXT,
-  demoImage MEDIUMTEXT,
-  PRIMARY KEY (activityID)
+  additionInfo VARCHAR(255),
+  demoImage VARCHAR(255),
+  PRIMARY KEY (id)
 );
 
 -- Create the "Tour_activity" table
-DROP TABLE IF EXISTS Tour_activity;
-CREATE TABLE IF NOT EXISTS Tour_activity (
-  tourID INT NOT NULL,
-  activityID INT NOT NULL,
-  activityDate DATE,
-  startTime INT,
+DROP TABLE IF EXISTS tour_activity;
+CREATE TABLE IF NOT EXISTS tour_activity (
+  tour_id INT NOT NULL,
+  activity_id INT NOT NULL,
+  startDate DATE,
   duration INT,
   PRIMARY KEY (tourID, activityID)
 );
@@ -203,9 +200,9 @@ CREATE TABLE `user` (
 
 -- Add foreign keys to the tables
 
-ALTER TABLE `Tour_accommodation` ADD FOREIGN KEY (`tourID`) REFERENCES `Tour` (`tourID`);
+ALTER TABLE `Tour_accommodation` ADD FOREIGN KEY (`tour_id`) REFERENCES `tour` (`id`);
 
-ALTER TABLE `Tour_accommodation` ADD FOREIGN KEY (`accomID`) REFERENCES `Accommodation` (`accomID`);
+ALTER TABLE `Tour_accommodation` ADD FOREIGN KEY (`accom_id`) REFERENCES `accommodation` (`id`);
 
 ALTER TABLE `Tour_transportation` ADD FOREIGN KEY (`tourID`) REFERENCES `Tour` (`tourID`);
 

@@ -82,23 +82,30 @@
 .sg-desc {
     background-color: rgb(255, 245, 245);
     padding: 20px;
+    border-radius: 0 10px 10px 0;
 }
 
 .sg-interac {
     background-color: rgb(101, 233, 101);
-    border-radius: 0 10px 10px 0;
+    border-radius: 10px;
     color: white;
-    font-size: 24px;
+    font-size: 18px;
     text-align: center;
-    
+    margin: 10px 10px 0 10px
+}
+.sg-book, .sg-know {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .sg-book>h3, .sg-know>h3 {
-    line-height: 163px;
+    margin: 0;
+    line-height: 36px;
 }
 
 .sg-know {
-    border-bottom: solid 1px white;
+    border-right: 0.025px white solid
 }
 
 .sg-know:hover {
@@ -124,4 +131,23 @@
 .sg-info > label {
     font-weight: 600;
     margin: 2.5px 0; 
+}
+
+.main-info {
+    height: 80px;
+    background-color: rgb(1, 14, 32);
+    border-radius: 0 0 20px 20px;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.main-info::before {
+    content: "";
+    background-image: linear-gradient(rgba(3, 42, 97, 0) 0%, rgb(1, 14, 32) 0%, rgb(1, 14, 32) 5%, rgba(3, 42, 97, 0));;
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    top: -40px;
+    left: 0;
+    transform: rotate(180deg);
 }

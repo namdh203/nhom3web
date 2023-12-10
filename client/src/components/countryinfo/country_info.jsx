@@ -23,35 +23,42 @@ export default class CountryInfo extends React.Component {
         const url = new URL(currentURL);
 
         const id = url.searchParams.get("id");
+        const type = url.searchParams.get("type")
         // const name = url.searchParams.get("name");
 
-        getCountryData(id).then(res => {
-            this.setState({ "countryData": res }, () => {
-                const body = document.body;
-                const addition_info = body.querySelector(".country-addition")
+        if (type == null) {
+            type = "destination"
+        }
 
-                var info = "<h2>Addition Info:</h2>"
+        if (type != null) {
+            getCountryData(id).then(res => {
+                this.setState({ "countryData": res }, () => {
+                    const body = document.body;
+                    const addition_info = body.querySelector(".country-addition")
 
-                let len_ = this.state.countryData.additionInfo.length
+                    var info = "<h2>Addition Info:</h2>"
 
-                for (let i = 0; i < Math.min(len_, 6); i++) {
-                    const opt_info = this.state.countryData.additionInfo[i]
-                    info = info + `<p><i class="fa-solid fa-check"></i>        ${opt_info}</p>`
-                }
+                    let len_ = this.state.countryData.additionInfo.length
 
-                addition_info.innerHTML = info
-            })
-        }).catch(err => {
-            console.log('err: ', err)
-        })
+                    for (let i = 0; i < Math.min(len_, 6); i++) {
+                        const opt_info = this.state.countryData.additionInfo[i]
+                        info = info + `<p><i class="fa-solid fa-check"></i>        ${opt_info}</p>`
+                    }
 
-        getTourData(id).then(res => {
-            this.setState({ 'tourData': res })
-        })
-            .catch(err => {
+                    addition_info.innerHTML = info
+                })
+            }).catch(err => {
                 console.log('err: ', err)
             })
 
+            getTourData(id, type).then(res => {
+                this.setState({ 'tourData': res })
+            })
+                .catch(err => {
+                    console.log('err: ', err)
+                })
+
+        }
     }
 
     onChange = (currentSlide) => {
@@ -83,6 +90,10 @@ export default class CountryInfo extends React.Component {
                             </div>
                         ))}
                     </Carousel>
+
+                    <div className="main-info" style={{"height": "20px", "border-radius": "0 0 5px 5px"}}>
+
+                    </div>
 
                     <div className="container-md" style={{ "padding-bottom": "50px" }}>
                         <div className="country-desc">

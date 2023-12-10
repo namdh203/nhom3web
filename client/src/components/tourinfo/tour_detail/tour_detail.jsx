@@ -18,10 +18,10 @@ class TourDetail extends React.Component {
                     <h1 className="detail-header">Schedule</h1>
                     <div className="row g-4">
                         <div className="col col-md-3">
-                            <TourBriefSchedule></TourBriefSchedule>
+                            <TourBriefSchedule dest={this.props.dest}></TourBriefSchedule>
                         </div>
                         <div className="col col-md-9 col-sm-12">
-                            <TourFullSchedule></TourFullSchedule>
+                            <TourFullSchedule dest={this.props.dest}></TourFullSchedule>
                         </div>
                     </div>
                 </div>

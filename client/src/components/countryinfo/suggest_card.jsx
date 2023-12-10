@@ -19,7 +19,7 @@ export default class SuggestCard extends React.Component {
                     <div className="col col-md-5 col-sm-12 sg-img" style={{ "padding": "0" }}>
                         <img src={this.props.tour.demoImage} onClick={this.onclick} className="img-fluid suggest-img" alt="Responsive" />
                     </div>
-                    <div className="col col-md-5 col-sm-12 sg-desc">
+                    <div className="col col-md-7 col-sm-12 sg-desc">
                         <h3>{this.props.tour.title}</h3>
                         <div className="sg-info">
                             <label>Duration: </label>
@@ -36,7 +36,7 @@ export default class SuggestCard extends React.Component {
                         <div className="sg-info">
                             <label>Addition Info:</label><br />
                             <div>
-                                {this.props.tour.additionInfo.slice(0, 5).map((info) => (
+                                {this.props.tour.additionInfo.slice(0, 4).map((info) => (
                                     <p style={{ "margin": 0 }}><i class="fa-solid fa-check" style={{ color: "green" }}></i>        {info}</p>
                                 ))}
                             </div>
@@ -45,8 +45,16 @@ export default class SuggestCard extends React.Component {
                             <label>Price:</label>
                             <span> {this.props.tour.price} USD</span>
                         </div>
+                        <div className="row sg-interac gx-5">
+                            <div className="col col-md-6 col-sm-6 sg-know" onClick={this.onclick}>
+                                <h3>Know more</h3>
+                            </div>
+                            <div className="col col-md-6 col-sm-6 sg-book">
+                                <h3>Book now</h3>
+                            </div>
+                        </div>
                     </div>
-                    <div className="col col-md-2 col-sm-12 sg-interac">
+                    {/* <div className="col col-md-2 col-sm-12 sg-interac">
                         <div className="row">
                             <div className="col col-md-12 col-sm-6 sg-know" onClick={this.onclick}>
                                 <h3>Know more</h3>
@@ -55,7 +63,7 @@ export default class SuggestCard extends React.Component {
                                 <h3>Book now</h3>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         )

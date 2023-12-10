@@ -1,109 +1,68 @@
 import React from "react";
 import "./rcm_sidebar.css"
+import { Link } from "react-router-dom"
 
-export default function RcmSidebar() {
+export default class RcmSidebar extends React.Component {
 
-    function getId() {
+    constructor(props) {
+        super(props)
+        this.state = {
+            id: null
+        }
+    }
+
+    componentDidMount() {
         const currentURL = window.location.href;
 
         const url = new URL(currentURL);
 
-        const id = url.searchParams.get("id");
+        var id = url.searchParams.get("id");
 
-        return id
+        if (id == null) {
+            id = 0
+        }
+
+        this.setState({ "id": id })
     }
 
-    return (
-        <div className="home-rcm_sidebar col col-md-2">
-            <h1 className="rcm-sidebar_header">Categories</h1>
-            <div className="rcm-sidebar_list">
-                <p className="sidebar-choice choice-active" onClick={() => {
-                    window.location.href = "/?type=destination&id=0"
-                    const body = document.body
-                    const list = body.querySelector(".rcm-sidebar_list")
-                    var children = list.querySelectorAll("p")
-                    children.forEach(function (child) {
-                        child.classList.remove("choice-active");
-                    });
 
-                    console.log(getId())
+    render() {
 
-                    children[getId()].classList.add("choice-active")
+        if (this.state.id == null) {
+            return <p>Loading</p>
+        }
 
-                }}>Destinations</p>
-                <p className="sidebar-choice" onClick={() => {
-                    window.location.href = "/?type=family&id=1"
-                    const body = document.body
-                    const list = body.querySelector(".rcm-sidebar_list")
-                    var children = list.querySelectorAll("p")
-                    children.forEach(function (child) {
-                        child.classList.remove("choice-active");
-                    });
-
-                    children[getId()].classList.add("choice-active")
-
-                }}>Family tours</p>
-                <p className="sidebar-choice" onClick={() => {
-                    window.location.href = "/?type=honey moon&id=2"
-                    const body = document.body
-                    const list = body.querySelector(".rcm-sidebar_list")
-                    var children = list.querySelectorAll("p")
-                    children.forEach(function (child) {
-                        child.classList.remove("choice-active");
-                    });
-
-                    children[getId()].classList.add("choice-active")
-
-                }}>Honey mons</p>
-                <p className="sidebar-choice" onClick={() => {
-                    window.location.href = "/?type=destination&id=0"
-                    const body = document.body
-                    const list = body.querySelector(".rcm-sidebar_list")
-                    var children = list.querySelectorAll("p")
-                    children.forEach(function (child) {
-                        child.classList.remove("choice-active");
-                    });
-
-                    children[getId()].classList.add("choice-active")
-
-                }}>Adventures</p>
-                <p className="sidebar-choice" onClick={() => {
-                    window.location.href = "/?type=family&id=1"
-                    const body = document.body
-                    const list = body.querySelector(".rcm-sidebar_list")
-                    var children = list.querySelectorAll("p")
-                    children.forEach(function (child) {
-                        child.classList.remove("choice-active");
-                    });
-
-                    children[getId()].classList.add("choice-active")
-
-                }}>Visa-on-arrivals</p>
-                <p className="sidebar-choice" onClick={() => {
-                    window.location.href = "/?type=honey moon&id=2"
-                    const body = document.body
-                    const list = body.querySelector(".rcm-sidebar_list")
-                    var children = list.querySelectorAll("p")
-                    children.forEach(function (child) {
-                        child.classList.remove("choice-active");
-                    });
-
-                    children[getId()].classList.add("choice-active")
-
-                }}>Special tours</p>
-                <p className="sidebar-choice" onClick={() => {
-                    window.location.href = "/?type=destination&id=0"
-                    const body = document.body
-                    const list = body.querySelector(".rcm-sidebar_list")
-                    var children = list.querySelectorAll("p")
-                    children.forEach(function (child) {
-                        child.classList.remove("choice-active");
-                    });
-
-                    children[getId()].classList.add("choice-active")
-
-                }}>Sales</p>
-            </div>
-        </div >
-    )
+        return (
+            <div className="home-rcm_sidebar sticky-top col col-md-2">
+                <div id="scrollspy1" class="sticky-top">
+                    <div className="buffer-block" style={{"height": "75px"}}></div>
+                    <h1 className="rcm-sidebar_header">Categories</h1>
+                    <div className="rcm-sidebar_list">
+                        <ul class="nav flex-column nav-pills menu-sidebar">
+                            <li class="nav-item">
+                                <p className={`sidebar-choice ${this.state.id == 0 ? "choice-active" : ""}`} onClick={() => {
+                                    window.location.href = "/?type=destination&id=0"
+                                }}>Destinations</p>
+                            </li>
+                            <li class="nav-item">
+                                <p className={`sidebar-choice ${this.state.id == 1 ? "choice-active" : ""}`} onClick={() => {
+                                    window.location.href = "/?type=family&id=1"
+                                }}>Family Tours</p>
+                            </li>
+                            <li class="nav-item">
+                                <p className={`sidebar-choice ${this.state.id == 2 ? "choice-active" : ""}`} onClick={() => {
+                                    window.location.href = "/?type=honey moon&id=2"
+                                }}>Honey moons</p>
+                            </li>
+                            <li class="nav-item">
+                                <p className={`sidebar-choice ${this.state.id == 3 ? "choice-active" : ""}`} onClick={() => {
+                                    window.location.href = "/?type=adventure&id=3"
+                                }}>Adventures</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div >
+        )
+    }
 }

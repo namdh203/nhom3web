@@ -1,6 +1,8 @@
 const Sequelize = require("sequelize")
 const db = require('../database/db.js')
 
+const Destination = require('../models/destination.js')
+
 const Transportation = db.sequelize.define(
     'transportation',
     {
@@ -60,10 +62,13 @@ const Transportation = db.sequelize.define(
     }
 )
 
-Transportation.sync({ 
-    alter: true,
-    logging: console.log
- }).then((data) => {
+Destination.hasMany(Transportation, { foreignKey: 'startDest_id' });
+Transportation.belongsTo(Destination, { foreignKey: 'startDest_id', targetKey: 'id' });
+
+Destination.hasMany(Transportation, { foreignKey: 'endDest_id' });
+Transportation.belongsTo(Destination, { foreignKey: 'endDest_id', targetKey: 'id' });
+
+Transportation.sync({ alter: true }).then((data) => {
     console.log("Table and model synced successful!");
 }).catch((err) => {
     console.log("Table and model synced failed!");

@@ -1,6 +1,8 @@
 const Sequelize = require("sequelize")
 const db = require('../database/db.js')
 
+const User = require("../models/user.js")
+
 const Payment = db.sequelize.define(
     'payment',
     {
@@ -9,12 +11,12 @@ const Payment = db.sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
-        customer_id: {
+        user_id: {
             type: Sequelize.INTEGER,
             allowNull: false,
             reference: {
                 model: 'Customer',
-                key: 'id'
+                key: 'user_id'
             }
         },
         tourId: {
@@ -43,6 +45,9 @@ const Payment = db.sequelize.define(
         freezeTableName: true
     }
 )
+
+User.hasMany(Payment, { foreignKey: 'user_id' });
+Payment.belongsTo(User, { foreignKey: 'user_id', targetKey: 'id' });
 
 Payment.sync({ alter: true }).then((data) => {
     console.log("Table and model synced successful!");
