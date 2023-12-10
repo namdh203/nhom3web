@@ -12,6 +12,7 @@ import SiteInfo from './components/site_info/site_info'
 import Accommodation from './components/site_info/accommodation/accom'
 import Restaurant from './components/site_info/restaurant/restaurant'
 import Activity from './components/site_info/activities/activity'
+import Payment from "./components/payment/payment"
 
 function App() {
   // const [isLogin, setIsLogin] = useState(false)
@@ -55,6 +56,10 @@ function App() {
           <Route path="/activity/act" element={
             <Activity />
           }/>
+          <Route path="/payment" element={
+            <Payment />
+          }
+          />
         </Routes>
         <div className="footer-wrapper">
           <Footer />
