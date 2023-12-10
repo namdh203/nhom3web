@@ -42,6 +42,9 @@ const Activity = db.sequelize.define(
   }
 )
 
+Destination.hasMany(Activity, { foreignKey: 'dest_id' });
+Activity.belongsTo(Destination, { foreignKey: 'dest_id', targetKey: 'id' });
+
 
 Activity.sync({alter : true}).then((data) => {
   console.log("Table and model synced successful!");

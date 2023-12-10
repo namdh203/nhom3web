@@ -12,7 +12,7 @@ const Accommodation = db.sequelize.define(
             autoIncrement: true
         },
         name: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.STRING,
             allowNull: false
         },
         dest_id: {
@@ -48,7 +48,7 @@ const Accommodation = db.sequelize.define(
             allowNull: false
         },
         demoImage: {
-            type: Sequelize.STRING,
+            type: Sequelize.TEXT,
             defaultValue: ""
         }
     },
