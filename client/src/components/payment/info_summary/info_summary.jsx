@@ -1,5 +1,4 @@
 import React from "react";
-import Paragraph from "antd/es/skeleton/Paragraph";
 import "./info_summary.css";
 
 export default class TourSummary extends React.Component {

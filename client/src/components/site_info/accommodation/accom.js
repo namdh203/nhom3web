@@ -1,4 +1,4 @@
-import { Flex, Layout, Typography } from "antd";
+import { Layout, Typography } from "antd";
 import { BsWifi, BsClock } from "react-icons/bs";
 import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { TbAirConditioning } from "react-icons/tb";

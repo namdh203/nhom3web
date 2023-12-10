@@ -8,6 +8,7 @@ INSERT INTO `restaurant` (
     `demoImage`
 ) VALUES 
 (
+  1,
     'LES PHILOSOPHES',
     1,
     '28 rue Vieille du Temple Paris, 75 75004',
@@ -23,6 +24,7 @@ INSERT INTO `restaurant` (
     https://s3-media0.fl.yelpcdn.com/bphoto/vVbgZY7TlO_mwDeEusgneA/o.jpg'
 ),
 (
+  2,
     'BEST BAGEL & COFFEE',
     6, -- Assuming destId 2 for a coffee shop category
     '225 W 35th St New York, NY 10001',
@@ -40,6 +42,7 @@ https://s3-media0.fl.yelpcdn.com/bphoto/Qb5oW7k4cKrLpC6EGajShw/o.jpg,
 https://s3-media0.fl.yelpcdn.com/bphoto/aCrNRtcrdRAjZ4ckwLTZjg/o.jpg,'
 ),
 (
+  3,
     'FUJINOMIYA YAKISOBA GAKKAI',
     12, 
     '宮町4-23 Fujinomiya, 22 418-0067',
@@ -55,6 +58,7 @@ https://s3-media0.fl.yelpcdn.com/bphoto/s2K7insGkqFP3Tiadoksvg/o.jpg,
 https://s3-media0.fl.yelpcdn.com/bphoto/Ni5qbFBNuC6pab1lVJhtNg/o.jpg'
 ),
 (
+  4,
     'KULATA ACADEMY CAFE',
     18,
     '127 Yulara Dr Yulara, NT 0872',
@@ -73,6 +77,7 @@ https://s3-media0.fl.yelpcdn.com/bphoto/ctFCx4cwy1ImSNVxVow_Ww/o.jpg,
 https://s3-media0.fl.yelpcdn.com/bphoto/kHsgYUnGlehGDawvU72GmQ/o.jpg'
 ),
 (
+  5,
     'ROMANTICA',
     23, -- Assuming destId 5 for a romantic restaurant category
     'Av. Hipólito Yrigoyen s/n Puerto Iguazú, N 3370',
@@ -90,6 +95,7 @@ https://s3-media0.fl.yelpcdn.com/bphoto/3dkVAXBY8vCygqbueViupA/o.jpg,
 https://s3-media0.fl.yelpcdn.com/bphoto/U5PJS8YcR9chn6lX67u6bQ/o.jpg'
 ),
 (
+  6,
     'BÜGEL FABRIQUE DE BAGELS',
     40,
     '164 rue Crémazie Ouest Quebec City, QC G1R 1X7',
@@ -108,6 +114,7 @@ https://s3-media0.fl.yelpcdn.com/bphoto/nCB-PhyjZUi63zUSfGhNkQ/o.jpg,
 https://s3-media0.fl.yelpcdn.com/bphoto/Jbntt3m6xJebw5hO9Q3bUw/o.jpg'
 ),
 (
+  7,
     'Li River Cuisine Restaurant',
     42,
     'No.1 Shanhu North Road, Guilin, China',
@@ -123,6 +130,7 @@ https://s3-media0.fl.yelpcdn.com/bphoto/Jbntt3m6xJebw5hO9Q3bUw/o.jpg'
     https://img.restaurantguru.com/r36e-seafood-Hongkong-2021-09.jpg'
 ),
 (
+  8,
     'TUNA AZUL',
     49, -- Assuming destId 7 for a seafood restaurant category
     'Calle Francisca Rodriguez 155 Puerto Vallarta, JAL 48380',
@@ -142,6 +150,7 @@ https://s3-media0.fl.yelpcdn.com/bphoto/4Fnw9mTLeA7ccVe6HvQN9g/o.jpg,
 https://s3-media0.fl.yelpcdn.com/bphoto/J8nSdHpKtFMAKHPs5MUeTA/o.jpg'
 ),
 (
+  9,
     '773 NORTH',
     37, 
     '2749 Grand Island Blvd Grand Island, NY 14072',

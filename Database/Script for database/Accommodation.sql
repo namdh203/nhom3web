@@ -11,6 +11,7 @@ INSERT INTO `accommodation` (
   `demoImage`
 ) VALUES 
 (
+  1,
   'Owen House by Hmlet',
   1,
   100.00,
@@ -29,6 +30,7 @@ INSERT INTO `accommodation` (
     https://img.freepik.com/free-photo/relax-bedroom_1150-17980.jpg?size=626&ext=jpg'
 ),
 (
+  2,
   'Green Valley Resort',
   2,
   150.00,
@@ -48,6 +50,7 @@ https://img.freepik.com/free-photo/luxury-classic-modern-bedroom-suite-hotel_105
 https://cf2.bstatic.com/xdata/images/hotel/max1024x768/80171346.jpg?k=3e231db827f6e0e85f6ba16700f3a79d0e894a3b8f96d01589bd359a3b4b0c95&o=&hp=1'
 ),
 (
+  3,
   'Sunset Beach Villa',
   3,
   200.00,
@@ -67,6 +70,7 @@ https://img.freepik.com/premium-photo/mastre-bedroom-with-terrace-overlooking-se
 https://img.freepik.com/premium-photo/picture-bedroom-hotel-with-yellow-neon-light_177530-1222.jpg?size=626&ext=jpg'
 ),
 (
+  4,
   'Mountain Retreat Lodge',
   6,
   130.00,
@@ -85,6 +89,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1024x768/235989267.jpg?k=23348aa2f
 https://cf2.bstatic.com/xdata/images/hotel/max1024x768/235989265.jpg?k=b7d95b51ee6d57cf5dccd2e63f8faa9bbfe6bb9e9396c08e5651105eeb3129d8&o=&hp=1'
 ),
 (
+  5,
   'Panoramic Penthouse Venice Marina Del Rey',
   7,
   250.00,
@@ -103,6 +108,7 @@ https://img.freepik.com/free-photo/relax-bedroom_1150-17980.jpg?size=626&ext=jpg
 https://img.freepik.com/free-photo/luxury-bedroom-suite-resort-high-rise-hotel-with-working-table_105762-1783.jpg?size=626&ext=jpg'
 ),
 (
+  6,
   'Naples Bliss RV Stay',
   18,
   80.00,
@@ -121,6 +127,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1024x768/264085635.jpg?k=47cad6d57
 https://cf2.bstatic.com/xdata/images/hotel/max1024x768/455242974.jpg?k=3da945588b626989eda5f18e681a162fae6b8ab1c4df5c6814d619743f40a0fa&o=&hp=1'
 ),
 (
+  7,
   'One of a kind LLC',
   4,
   120.00,
@@ -139,6 +146,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1024x768/393287121.jpg?k=532432c51
 https://cf2.bstatic.com/xdata/images/hotel/max1024x768/342587918.jpg?k=bfb167aa5554c4ca42bfac6dabf83fc550a01aed4ef2387504378e791e99c3f2&o=&hp=1,'  
 ),
 (
+  8,
   'Skinny Big House in Jefferson City',
   6,
   90.00,
@@ -158,6 +166,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1024x768/481501535.jpg?k=eac246ec8
 https://cf2.bstatic.com/xdata/images/hotel/max1024x768/499902197.jpg?k=8e43ea6ad98aa23e46490b827257daffedb3a6e569168f2e9bfc264ec212be22&o=&hp'  
 ),
 (
+  9,
   'Beautiful lakefront private resort home, Lake LBJ',
   9,
   180.00,
@@ -177,6 +186,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1024x768/242759483.jpg?k=0c5969c6f
 https://cf2.bstatic.com/xdata/images/hotel/max1024x768/242759474.jpg?k=efe92feea1611909bfe349fe7b1b0d584a000ec67aea09e1500148396c3f5545&o=&hp=1,'  
 ),
 (
+  10,
   'Church of the Perpetual Boogie',
   12,
   70.00,
@@ -195,6 +205,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1024x768/242684727.jpg?k=3d39cd89c
 https://cf2.bstatic.com/xdata/images/hotel/max1024x768/264085641.jpg?k=1a9fa5299f146d18ae32a81bdb0e3bc9b283a25753838791d1dc843753bd5ac4&o=&hp=1,'  
 ),
 (
+  11,
   'Homey, private one bed, fifteen min to city',
   14,
   100.00,
@@ -214,6 +225,7 @@ https://cf2.bstatic.com/xdata/images/xphoto/max500_ao/170451959.jpg?k=763f0b582b
 https://q-xx.bstatic.com/xdata/images/xphoto/300x350/215283468.png?k=adfd9a957bdca3a78b3cc74855f3f6b13264e773871bb91b90a7542173c0b450&o=,'  
 ),
 (
+  12,
   '*NEW* Green Cedar Lodge, Nature Lovers Dream!',
   17,
   150.00,
@@ -232,6 +244,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1280x900/242993585.jpg?k=a05b3bab8
 https://cf2.bstatic.com/xdata/images/hotel/max1280x900/242756012.jpg?k=5d8d886c1242d477b8477a22c7b87491bbc3bf101c4edfc6915862904c3932db&o=&hp=1,'  
 ),
 (
+  13,
   'Holiday Inn Club Vacations at Desert Club Resort',
   20,
   200.00,
@@ -252,6 +265,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1280x900/255863514.jpg?k=46665dbc6
 https://cf2.bstatic.com/xdata/images/hotel/max1280x900/481501577.jpg?k=3d9d476569f7cc393ededa5d629ac30113f9be4334f0ff6d1216fa7dfacfc651&o=&hp=1,'  
 ),
 (
+  14,
   'Palms Bay by Eco shared',
   23,
   110.00,
@@ -271,6 +285,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1280x900/416973324.jpg?k=1a8873de3
 https://cf2.bstatic.com/xdata/images/hotel/max1280x900/444515402.jpg?k=7215e46418c22b25f97d3c94d618631f43d3b4c36eeffb7e493ed71fa375fb66&o=&hp=1,'  
 ),
 (
+  15,
   'Camelback ski in/ski out near in/outdoor waterpark',
   26,
   130.00,
@@ -289,6 +304,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1280x900/242993575.jpg?k=5b3a0be8e
 https://cf2.bstatic.com/xdata/images/hotel/max1280x900/342587915.jpg?k=743bdc0d27992e4a3537a48ac37b73ecf38f77a8f8c40dc1051a4fe35fc19ac9&o=&hp=1,'  
 ),
 (
+  16,
   'Big Bear Lake - Sleeps 8 - Game Room - BBQ',
   29,
   160.00,
@@ -309,6 +325,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1280x900/484740064.jpg?k=fe1236c6b
 https://cf2.bstatic.com/xdata/images/hotel/max1280x900/393287110.jpg?k=1b151deabc822bbe542b956b9625916058000f9fcc265bb97cd017501253c81f&o=&hp=1,'  
 ),
 (
+  17,
   'Cozy, top-floor 3BR loft with balcony in West Town',
   32,
   120.00,
@@ -327,6 +344,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1280x900/481501535.jpg?k=eac246ec8
 https://img.freepik.com/free-photo/white-comfortable-pillow-blanket-bed-with-light-lamp_74190-12074.jpg?size=626&ext=jpg,'  
 ),
 (
+  18,
   'ComfortZone',
   35,
   80.00,
@@ -345,6 +363,7 @@ https://img.freepik.com/free-photo/pillow-bed_1203-9518.jpg?size=626&ext=jpg,
 https://cf2.bstatic.com/xdata/images/hotel/max1024x768/242878833.jpg?k=8c79b905d10dc64630c25fbb7e53831164b441fc3f16cf85476572ba164f3f3c&o=&hp=1,'  
 ),
 (
+  19,
   'The Little Red Cottage',
   38,
   70.00,
@@ -363,6 +382,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1280x900/255863514.jpg?k=46665dbc6
 https://img.freepik.com/free-photo/modern-studio-apartment-design-with-bedroom-living-space_1262-12375.jpg?size=626&ext=jpg,'  
 ),
 (
+  20,
   'Islander Beach Resort',
   41,
   140.00,
@@ -381,6 +401,7 @@ https://img.freepik.com/free-photo/modern-studio-apartment-design-with-bedroom-l
 https://cf2.bstatic.com/xdata/images/hotel/max1280x900/242756012.jpg?k=5d8d886c1242d477b8477a22c7b87491bbc3bf101c4edfc6915862904c3932db&o=&hp=1,'  
 ),
 (
+  21,
   'NYC apartment',
   44,
   110.00,
@@ -399,6 +420,7 @@ https://cf2.bstatic.com/images/hotel/max1280x900/416/416972297.jpg,
 https://cf2.bstatic.com/xdata/images/hotel/max1024x768/353091166.jpg?k=b399e7e50aa100a50b743239a16274cbdabc408f2c9c2ac689775497ce00e470&o=&hp=1,'  
 ),
 (
+  22,
   'Naples Bliss RV Stay',
   47,
   80.00,
@@ -417,6 +439,7 @@ https://img.freepik.com/free-photo/luxury-bedroom-interior-with-rich-furniture-s
 https://img.freepik.com/free-photo/interior-modern-comfortable-hotel-room_1232-1822.jpg?size=626&ext=jpg,'  
 ),
 (
+  23,
   'Furano Natulux Hotel',
   8,
   130.00,
@@ -435,6 +458,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1280x900/278509468.jpg?k=03e5599a4
 https://cf2.bstatic.com/xdata/images/hotel/max1024x768/416973324.jpg?k=1a8873de30dadbb6948f6dffb45ded6d4662660c02ae47ebc18cac1ec95bbec3&o=&hp=1,'
 ),
 (
+  24,
   'Kawaguchiko Country Cottage Ban - Glamping Resort',
   10,
   150.00,
@@ -453,6 +477,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1024x768/444515408.jpg?k=c211f37e8
 https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10030146-7b73df32d42f8afd54bc6a98fadaaa50.jpeg?_src=imagekit&tr=c-at_max,fo-auto,h-370,q-40,w-700,'
 ),
 (
+  25,
   'Premier Hotel - CABIN PRESIDENT - Hakodate',
   11,
   120.00,
@@ -471,6 +496,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1024x768/235989265.jpg?k=b7d95b51e
 https://cf2.bstatic.com/xdata/images/hotel/max1280x900/387364377.jpg?k=a1b13327bacfeb0514ee9b5995ea1b66accb345aa2059f04219e3060f61c35d6&o=&hp=1'
 ),
 (
+  26,
   'Southern Beach Hotel & Resort',
   12,
   180.00,
@@ -489,6 +515,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1024x768/484742732.jpg?k=79b15083c
 https://img.freepik.com/free-photo/modern-studio-apartment-design-with-bedroom-living-space_1262-12375.jpg?size=626&ext=jpg,'
 ),
 (
+  27,
   'Aki Grand Hotel & Spa',
   13,
   160.00,
@@ -507,6 +534,7 @@ https://img.freepik.com/premium-photo/interior-space-big-bed-room-luxury-hotel_1
 https://cf2.bstatic.com/xdata/images/hotel/max1024x768/45510443.jpg?k=25170b445cff1e2ff9d8defe1cd03c2a3883150262eb8b7928ed8c559c1368b7&o=&hp=1,'
 ),
 (
+  28,
   'Toyoko Inn Hokkaido Shin Hakodate Hokuto eki Minami guchi',
   14,
   80.00,
@@ -525,6 +553,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1024x768/353091158.jpg?k=bd32953c8
 https://cf2.bstatic.com/xdata/images/hotel/max1024x768/242759483.jpg?k=0c5969c6f4cd8d468cda2a56a90b8e32dc39e39db754ba62dc912bb98b288b95&o=&hp=1,'
 ),
 (
+  29,
   'Candeo Hotels Nagasaki Shinchi Chinatown',
   16,
   120.00,
@@ -543,6 +572,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1024x768/444515414.jpg?k=441f31a12
 https://cf2.bstatic.com/xdata/images/hotel/max1280x900/393287121.jpg?k=532432c511761f2fa6971058f0ceffaf5e330b35301045f365909d29dbf8ae0f&o=&hp=1,'
 ),
 (
+  30,
   'Samba Linhares',
   18,
   90.00,
@@ -561,6 +591,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1024x768/278509802.jpg?k=f20ff12b7
 https://img.freepik.com/free-photo/small-hotel-bedroom-with-white-walls-panoramic-window_1262-12488.jpg?size=626&ext=jpg,'
 ),
 (
+  31,
   'Hotel Bons Tempos',
   19,
   120.00,
@@ -579,6 +610,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1024x768/444515408.jpg?k=c211f37e8
 https://img.freepik.com/free-photo/luxury-classic-modern-bedroom-suite-hotel_105762-1787.jpg?size=626&ext=jpg,'
 ),
 (
+  32,
   'Transamerica Comandatuba - All Inclusive Resort',
   20,
   280.00,
@@ -597,6 +629,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1280x900/242993575.jpg?k=5b3a0be8e
 https://cf2.bstatic.com/xdata/images/hotel/max1280x900/242684715.jpg?k=6f680f21823f3849bed4e7e018e94b5f9ec00b8141c12eb89e5fc9f499fa74dd&o=&hp=1,'
 ),
 (
+  33,
   'Pousada Canto da Lua',
   21,
   110.00,
@@ -615,6 +648,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1280x900/242993585.jpg?k=a05b3bab8
 https://img.freepik.com/premium-photo/interior-space-big-bed-room-luxury-hotel_1112-7131.jpg?size=626&ext=jpg,'
 ),
 (
+  34,
   'Vila Galé Resort Touros - All Inclusive',
   23,
   220.00,
@@ -633,6 +667,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1024x768/278509802.jpg?k=f20ff12b7
 https://cf2.bstatic.com/xdata/images/hotel/max1024x768/387364377.jpg?k=a1b13327bacfeb0514ee9b5995ea1b66accb345aa2059f04219e3060f61c35d6&o=&hp=1,'
 ),
 (
+  35,
   'Samba Tres Rios',
   24,
   150.00,
@@ -651,6 +686,7 @@ https://img.freepik.com/free-photo/luxury-bedroom-hotel_1150-10836.jpg?size=626&
 https://cf2.bstatic.com/xdata/images/hotel/max1024x768/499902197.jpg?k=8e43ea6ad98aa23e46490b827257daffedb3a6e569168f2e9bfc264ec212be22&o=&hp=1,'
 ),
 (
+  36,
   'Pousada e Restaurante Dona Siroba',
   25,
   95.00,
@@ -669,6 +705,7 @@ https://img.freepik.com/free-photo/relax-bedroom_1150-17980.jpg?size=626&ext=jpg
 https://img.freepik.com/free-photo/pillow-bed_74190-2140.jpg?size=626&ext=jpg,'
 ),
 (
+  37,
   'Shesha KUTEERA',
   26,
   50.00,
@@ -687,6 +724,7 @@ https://img.freepik.com/free-photo/3d-rendering-beautiful-luxury-bedroom-suite-h
 https://cf2.bstatic.com/xdata/images/hotel/max1024x768/444515408.jpg?k=c211f37e8dd33e0ea2dabb8ae6797523999e0641c532975da36c4f291b31b1a7&o=&hp=1,'
 ),
 (
+  38,
   'Hotel Asrani International',
   27,
   80.00,
@@ -705,6 +743,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1024x768/481995469.jpg?k=65718afb2
 https://cf2.bstatic.com/xdata/images/xphoto/max500_ao/170451959.jpg?k=763f0b582b5a58396989a694b926fd8518fd5f1f15ef62e98ec292f550b5586c&o=,'
 ),
 (
+  39,
   'Dilkash group of houseboats',
   28,
   120.00,
@@ -723,6 +762,7 @@ https://img.freepik.com/free-photo/small-hotel-bedroom-with-white-walls-panorami
 https://cf2.bstatic.com/xdata/images/hotel/max1024x768/393287110.jpg?k=1b151deabc822bbe542b956b9625916058000f9fcc265bb97cd017501253c81f&o=&hp=1,'
 ),
 (
+  40,
   'Dynasty Desert Camp',
   29,
   75.00,
@@ -741,6 +781,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1024x768/444515402.jpg?k=7215e4641
 https://cf2.bstatic.com/xdata/images/hotel/max1280x900/444515414.jpg?k=441f31a1299ec27caf6caee33942cef9d6d8995498e3274c51575769b3e8ea23&o=&hp=1,'
 ),
 (
+  41,
   'Zulu Land cottages',
   30,
   90.00,
@@ -759,6 +800,7 @@ https://cf2.bstatic.com/xdata/images/hotel/max1024x768/242756012.jpg?k=5d8d886c1
 https://img.freepik.com/free-photo/interior-modern-comfortable-hotel-room_1232-1822.jpg?size=626&ext=jpg,'
 ),
 (
+  42,
   'Candolim Serenity Resort - Top Rated & Most Awarded Property in Goa',
   31,
   120.00,
