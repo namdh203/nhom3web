@@ -63,8 +63,8 @@ const Accommodation = db.sequelize.define(
 )
 
 
-Destination.hasMany(Accommodation, { foreignKey: 'dest_id' });
-Accommodation.belongsTo(Destination, { foreignKey: 'dest_id', targetKey: 'id' });
+Destination.hasMany(Accommodation, { foreignKey: 'destId' });
+Accommodation.belongsTo(Destination, { foreignKey: 'destId', targetKey: 'id' });
 
 Accommodation.sync({ alter: true }).then((data) => {
     console.log("Table and model synced successful!");

@@ -4,7 +4,6 @@ import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { TbAirConditioning } from "react-icons/tb";
 import { PiElevator } from "react-icons/pi";
 import { FaLocationDot } from "react-icons/fa6";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "../site_info.css";
 import { useState, useEffect } from "react";
 import { getActivityData } from "./ActivityFunc.js";
@@ -55,9 +54,6 @@ export default function Activity(props) {
     if (activityData) {
         name = activityData.name;
         introduction = activityData.description;
-        console.log(activityData.description);
-        console.log(activityData.additionInfo);
-        console.log(activityData.type);
 
         images = extractLink(activityData.demoImage);
         // console.log(images);
