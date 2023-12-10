@@ -18,8 +18,6 @@ class TourBriefSchedule extends React.Component {
                     {this.props.dest.map((dest) => (
                         <TourDestBrief title={dest.name} trans="train"></TourDestBrief>
                     ))}
-
-
                 </div>
                 <div className="tour-cost">
                     <h1>Get Cost</h1>

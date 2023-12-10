@@ -15,7 +15,7 @@ const TourDest = db.sequelize.define(
                 key: 'id'
             }
         },
-        dest_id: {
+        dest_d: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -38,9 +38,9 @@ Destination.hasMany(TourDest, { foreignKey: 'dest_id' });
 TourDest.belongsTo(Destination, { foreignKey: 'dest_id', targetKey: 'id' });
 
 TourDest.sync({ alter: true }).then((data) => {
-    console.log("Table and model synced successful!");
+    console.log("TourDest synced successful!");
 }).catch((err) => {
-    console.log("Table and model synced failed!");
+    console.log("TourDest synced failed!");
 })
 
 module.exports = TourDest;

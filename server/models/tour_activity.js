@@ -6,7 +6,7 @@ const Activity = require('../models/activity.js')
 const TourActivity = db.sequelize.define(
     'tour_activity',
     {
-        tour_id: {
+        tourId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -15,7 +15,7 @@ const TourActivity = db.sequelize.define(
                 key: 'id'
             }
         },
-        activity_id: {
+        activityId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -39,16 +39,16 @@ const TourActivity = db.sequelize.define(
     }
 )
 
-Tour.hasMany(TourActivity, { foreignKey: 'tour_id' });
-TourActivity.belongsTo(Tour, { foreignKey: 'tour_id', targetKey: 'id' });
+Tour.hasMany(TourActivity, { foreignKey: 'tourId' });
+TourActivity.belongsTo(Tour, { foreignKey: 'tourId', targetKey: 'id' });
 
-Activity.hasMany(TourActivity, { foreignKey: 'activity_id' });
-TourActivity.belongsTo(Activity, { foreignKey: 'activity_id', targetKey: 'id' });
+Activity.hasMany(TourActivity, { foreignKey: 'activityId' });
+TourActivity.belongsTo(Activity, { foreignKey: 'activityId', targetKey: 'id' });
 
 TourActivity.sync({ alter: true }).then((data) => {
-    console.log("Table and model synced successful!");
+    console.log("TourActivity synced successful!");
 }).catch((err) => {
-    console.log("Table and model synced failed!");
+    console.log("TourActivity synced failed!");
 })
 
 module.exports = TourActivity;

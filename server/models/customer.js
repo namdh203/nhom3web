@@ -47,9 +47,9 @@ const Customer = db.sequelize.define(
 )
 
 Customer.sync({ alter: true }).then((data) => {
-    console.log("Table and model synced successful!");
+    console.log("Customer synced successful!");
 }).catch((err) => {
-    console.log("Table and model synced failed!");
+    console.log("Customer synced failed!");
 })
 
 module.exports = Customer;

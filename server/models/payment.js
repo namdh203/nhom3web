@@ -50,9 +50,9 @@ User.hasMany(Payment, { foreignKey: 'user_id' });
 Payment.belongsTo(User, { foreignKey: 'user_id', targetKey: 'id' });
 
 Payment.sync({ alter: true }).then((data) => {
-    console.log("Table and model synced successful!");
+    console.log("Payment synced successful!");
 }).catch((err) => {
-    console.log("Table and model synced failed!");
+    console.log("Payment synced failed!");
 })
 
 module.exports = Payment;

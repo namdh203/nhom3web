@@ -15,7 +15,7 @@ const Accommodation = db.sequelize.define(
             type: Sequelize.STRING,
             allowNull: false
         },
-        dest_id: {
+        destId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             reference: {
@@ -43,6 +43,10 @@ const Accommodation = db.sequelize.define(
             type: Sequelize.STRING,
             allowNull: false
         },
+        description: {
+            type: Sequelize.TEXT,
+            defaultValue: ""
+        },
         additionInfo: {
             type: Sequelize.STRING,
             allowNull: false
@@ -59,13 +63,13 @@ const Accommodation = db.sequelize.define(
 )
 
 
-Destination.hasMany(Accommodation, { foreignKey: 'dest_id' });
-Accommodation.belongsTo(Destination, { foreignKey: 'dest_id', targetKey: 'id' });
+Destination.hasMany(Accommodation, { foreignKey: 'destId' });
+Accommodation.belongsTo(Destination, { foreignKey: 'destId', targetKey: 'id' });
 
 Accommodation.sync({ alter: true }).then((data) => {
-    console.log("Table and model synced successful!");
+    console.log("Accommodation synced successful!");
 }).catch((err) => {
-    console.log("Table and model synced failed!");
+    console.log("Accommodation synced failed!");
 })
 
 module.exports = Accommodation;

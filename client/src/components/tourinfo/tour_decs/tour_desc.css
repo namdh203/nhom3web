@@ -5,11 +5,13 @@
 }
 
 .tour-desc_options {
+    text-align: center;
     width: 100%;
     margin-bottom: 15px;
 }
 
 tr, td {
+    text-align: center;
     border-style: solid;
     border-width: 0.025px;
     border-color: gray;

@@ -11,7 +11,7 @@ const Transportation = db.sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
-        startDest_id: {
+        startDestId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             reference: {
@@ -19,7 +19,7 @@ const Transportation = db.sequelize.define(
                 key: 'id'
             }
         },
-        endDest_id: {
+        endDestId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             reference: {
@@ -62,16 +62,19 @@ const Transportation = db.sequelize.define(
     }
 )
 
-Destination.hasMany(Transportation, { foreignKey: 'startDest_id' });
-Transportation.belongsTo(Destination, { foreignKey: 'startDest_id', targetKey: 'id' });
+Destination.hasMany(Transportation, { foreignKey: 'startDestId' });
+Transportation.belongsTo(Destination, { foreignKey: 'startDestId', targetKey: 'id' });
 
-Destination.hasMany(Transportation, { foreignKey: 'endDest_id' });
-Transportation.belongsTo(Destination, { foreignKey: 'endDest_id', targetKey: 'id' });
+Destination.hasMany(Transportation, { foreignKey: 'endDestId' });
+Transportation.belongsTo(Destination, { foreignKey: 'endDestId', targetKey: 'id' });
 
-Transportation.sync({ alter: true }).then((data) => {
-    console.log("Table and model synced successful!");
+Transportation.sync({ 
+    alter: true,
+    logging: console.log
+ }).then((data) => {
+    console.log("Transportation synced successful!");
 }).catch((err) => {
-    console.log("Table and model synced failed!");
+    console.log("Transportation synced failed!");
 })
 
 module.exports = Transportation;

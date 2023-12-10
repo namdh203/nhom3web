@@ -8,13 +8,13 @@ export default class MdRcmBlock extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            tourData: [],
-            country_id: Math.floor(Math.random() * 9) + 1
+            tourData: null,
+            countryId: Math.floor(Math.random() * 9) + 1
         }
     }
 
     componentDidMount() {
-        getMdRcmData(this.state.country_id, this.props.type).then(res => {
+        getMdRcmData(this.state.countryId, this.props.type).then(res => {
             this.setState({ 'tourData': res })
         }).catch(err => {
             console.log('error: ' + err)
@@ -22,6 +22,13 @@ export default class MdRcmBlock extends React.Component {
     }
 
     render() {
+
+        if (this.state.tourData === null) {
+            return <p>Loading....</p>
+        } else {
+            console.log(this.state.tourData);
+        }
+
         return (
             <div className="rcm-block">
                 <div className="container-md">

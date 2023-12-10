@@ -1,4 +1,5 @@
 -- Create the database if it does not exist
+DROP DATABASE Travelam;
 CREATE DATABASE IF NOT EXISTS Travelam;
 
 -- Use the database
@@ -62,13 +63,14 @@ CREATE TABLE IF NOT EXISTS accommodation (
   name VARCHAR(255), -- Adjust the size to your needs
   dest_id INT NOT NULL,
   pricePerNight DOUBLE,
-  priceCurrency VARCHAR(255), -- Adjust the size to your needs
-  address VARCHAR(255), -- Adjust the size to your needs
-  telephone VARCHAR(15), -- Adjust the size to your needs
+  priceCurrency VARCHAR(10), -- Adjust the size to your needs
+  address TEXT, -- Adjust the size to your needs
+  telephoneNo VARCHAR(15), -- Adjust the size to your needs
   contactEmail VARCHAR(255), -- Adjust the size to your needs
-  additionInfo VARCHAR(255), -- Adjust the size to your
-  demoImage VARCHAR(255), -- Adjust the size to your needs
-  PRIMARY KEY (id)
+  description MEDIUMTEXT,
+  additionalInfo TEXT,
+  demoImage MEDIUMTEXT,
+  PRIMARY KEY (accomID)
 );
 
 -- Create the "Tour_accommodation" table
@@ -94,6 +96,8 @@ CREATE TABLE IF NOT EXISTS transportation (
   additionInfo VARCHAR(255),
   demoImage VARCHAR(255),
   PRIMARY KEY (id)
+  demoImage TEXT,
+  PRIMARY KEY (transID)
 );
 
 -- Create the "Tour_transportation" table
@@ -137,6 +141,12 @@ CREATE TABLE IF NOT EXISTS restaurant (
   additionInfo VARCHAR(255),
   demoImage VARCHAR(255),
   PRIMARY KEY (id)
+  address TEXT, -- Adjust the size to your needs
+  telephoneNo VARCHAR(15), -- Adjust the size to your needs
+  description MEDIUMTEXT,
+  additionalInfo TEXT,
+  demoImage MEDIUMTEXT,
+  PRIMARY KEY (restID)
 );
 
 -- Create the "Tour_meal" table
@@ -167,9 +177,10 @@ CREATE TABLE IF NOT EXISTS activity (
   name VARCHAR(50), -- Adjust the size to your needs
   dest_id INT NOT NULL,
   type VARCHAR(255), -- Adjust the size to your needs
-  additionInfo VARCHAR(255),
-  demoImage VARCHAR(255),
-  PRIMARY KEY (id)
+  description MEDIUMTEXT,
+  additionalInfo TEXT,
+  demoImage MEDIUMTEXT,
+  PRIMARY KEY (activityID)
 );
 
 -- Create the "Tour_activity" table
@@ -179,8 +190,20 @@ CREATE TABLE IF NOT EXISTS tour_activity (
   activity_id INT NOT NULL,
   startDate DATE,
   duration INT,
-  PRIMARY KEY (tour_id, activity_id)
+  PRIMARY KEY (tourID, activityID)
 );
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `role` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 -- Add foreign keys to the tables
@@ -197,9 +220,9 @@ ALTER TABLE `Tour_meal` ADD FOREIGN KEY (`tourID`) REFERENCES `Tour` (`tourID`);
 
 ALTER TABLE `Tour_meal` ADD FOREIGN KEY (`restID`) REFERENCES `Restaurant` (`restID`);
 
-ALTER TABLE `Tour_destinations` ADD FOREIGN KEY (`tourID`) REFERENCES `Tour` (`tourID`);
+ALTER TABLE `Tour_dest` ADD FOREIGN KEY (`tourID`) REFERENCES `Tour` (`tourID`);
 
-ALTER TABLE `Tour_destinations` ADD FOREIGN KEY (`destID`) REFERENCES `Destination` (`destID`);
+ALTER TABLE `Tour_dest` ADD FOREIGN KEY (`destID`) REFERENCES `Destination` (`destID`);
 
 ALTER TABLE `Tour_activity` ADD FOREIGN KEY (`tourID`) REFERENCES `Tour` (`tourID`);
 

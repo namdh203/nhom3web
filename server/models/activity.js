@@ -15,7 +15,7 @@ const Activity = db.sequelize.define(
       type: Sequelize.STRING,
       allowNull: false
     },
-    dest_id: {
+    destId: {
       type: Sequelize.INTEGER,
       allowNull: false,
       reference: {
@@ -26,6 +26,9 @@ const Activity = db.sequelize.define(
     type: {
       type: Sequelize.STRING,
       allowNull: false
+    },
+    description: {
+      type: Sequelize.TEXT,
     },
     additionInfo: {
       type: Sequelize.STRING,
@@ -42,14 +45,18 @@ const Activity = db.sequelize.define(
   }
 )
 
-Destination.hasMany(Activity, { foreignKey: 'dest_id' });
-Activity.belongsTo(Destination, { foreignKey: 'dest_id', targetKey: 'id' });
+Destination.hasMany(Activity, { foreignKey: 'destId' });
+Activity.belongsTo(Destination, { foreignKey: 'destId', targetKey: 'id' });
 
 
-Activity.sync({alter : true}).then((data) => {
-  console.log("Table and model synced successful!");
+Destination.hasMany(Activity, { foreignKey: 'destId' });
+Activity.belongsTo(Destination, { foreignKey: 'destId', targetKey: 'id' });
+
+
+Activity.sync({ alter: true }).then((data) => {
+  console.log("Activity synced successful!");
 }).catch((err) => {
-  console.log("Table and model synced failed!");
+  console.log("Activity synced failed!");
 })
 
 module.exports = Activity;

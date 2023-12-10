@@ -6,7 +6,7 @@ const Tour = require('../models/tour.js')
 const TourMeal = db.sequelize.define(
     'tour_meal',
     {
-        tour_id: {
+        tourId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -15,7 +15,7 @@ const TourMeal = db.sequelize.define(
                 key: 'id'
             }
         },
-        rest_id: {
+        restId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -35,17 +35,17 @@ const TourMeal = db.sequelize.define(
     }
 )
 
-Tour.hasMany(TourMeal, { foreignKey: 'tour_id' });
-TourMeal.belongsTo(Tour, { foreignKey: 'tour_id', targetKey: 'id' });
+Tour.hasMany(TourMeal, { foreignKey: 'tourId' });
+TourMeal.belongsTo(Tour, { foreignKey: 'tourId', targetKey: 'id' });
 
-Restaurant.hasMany(TourMeal, { foreignKey: 'rest_id' });
-TourMeal.belongsTo(Restaurant, { foreignKey: 'rest_id', targetKey: 'id' });
+Restaurant.hasMany(TourMeal, { foreignKey: 'restId' });
+TourMeal.belongsTo(Restaurant, { foreignKey: 'restId', targetKey: 'id' });
 
 
 TourMeal.sync({ alter: true }).then((data) => {
-    console.log("Table and model synced successful!");
+    console.log("TourMeal synced successful!");
 }).catch((err) => {
-    console.log("Table and model synced failed!");
+    console.log("TourMeal synced failed!");
 })
 
 module.exports = TourMeal;

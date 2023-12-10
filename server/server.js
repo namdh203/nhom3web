@@ -29,6 +29,16 @@ app.use("/users", Users);
 const Tours = require("./routes/tours");
 app.use("/tours", Tours)
 
+const Accom = require("./routes/accommodations");
+app.use("/accomodation", Accom);
+
+const Rest = require("./routes/restaurants");
+app.use("/restaurant", Rest);
+
+const Activity = require("./routes/activities");
+app.use("/activity", Activity);
+
 app.listen(port, () => {
     console.log(`Server start on port ${port}`);
 })
+

@@ -96,23 +96,23 @@ export default class TourDesc extends React.Component {
 
                 <div className="tour-factor_wrapper">
                     <div className="tour-factor">
-                        <i class="fa-regular fa-calendar-days"></i>
+                        <i className="fa-regular fa-calendar-days"></i>
                         <span>Planning</span>
                     </div>
                     <div className="tour-factor">
-                        <i class="fa-solid fa-truck-plane"></i>
+                        <i className="fa-solid fa-truck-plane"></i>
                         <span>Transportations</span>
                     </div>
                     <div className="tour-factor">
-                        <i class="fa-solid fa-hotel"></i>
+                        <i className="fa-solid fa-hotel"></i>
                         <span>Accommodations</span>
                     </div>
                     <div className="tour-factor">
-                        <i class="fa-solid fa-heart-pulse"></i>
+                        <i className="fa-solid fa-heart-pulse"></i>
                         <span>Activities</span>
                     </div>
                     <div className="tour-factor last-element">
-                        <i class="fa-solid fa-drumstick-bite"></i>
+                        <i className="fa-solid fa-drumstick-bite"></i>
                         <span>Restaurants</span>
                     </div>
                 </div>

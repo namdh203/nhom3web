@@ -89,6 +89,7 @@
 }
 
 .trans-choice {
+    text-align: center;
     border: solid 0.025px gray;
     border-radius: 50px;
     width: 30px;

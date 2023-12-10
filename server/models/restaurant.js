@@ -15,7 +15,7 @@ const Restaurant = db.sequelize.define(
       type: Sequelize.STRING,
       allowNull: false
     },
-    dest_id: {
+    destId: {
       type: Sequelize.INTEGER,
       allowNull: false,
       reference: {
@@ -31,12 +31,16 @@ const Restaurant = db.sequelize.define(
         type: Sequelize.STRING,
         allowNull: false
     },
+    description: {
+      type: Sequelize.TEXT,
+      allowNull: false
+    },
     additionInfo: {
       type: Sequelize.STRING,
       allowNull: false
     },
     demoImage: {
-      type: Sequelize.STRING,
+      type: Sequelize.TEXT,
       defaultValue: ""
     }
   },
@@ -46,14 +50,14 @@ const Restaurant = db.sequelize.define(
   }
 )
 
-Destination.hasMany(Restaurant, { foreignKey: 'dest_id' });
-Restaurant.belongsTo(Destination, { foreignKey: 'dest_id', targetKey: 'id' });
+Destination.hasMany(Restaurant, { foreignKey: 'destId' });
+Restaurant.belongsTo(Destination, { foreignKey: 'destId', targetKey: 'id' });
 
 
 Restaurant.sync({alter : true}).then((data) => {
-  console.log("Table and model synced successful!");
+  console.log("Restaurant synced successful!");
 }).catch((err) => {
-  console.log("Table and model synced failed!");
+  console.log("Restaurant synced failed!");
 })
 
 module.exports = Restaurant;

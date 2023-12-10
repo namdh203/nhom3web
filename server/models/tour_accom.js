@@ -6,7 +6,7 @@ const Accommodation = require('../models/accommodation.js')
 const TourAccom = db.sequelize.define(
     'tour_accom',
     {
-        tour_id: {
+        tourId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -15,7 +15,7 @@ const TourAccom = db.sequelize.define(
                 key: 'id'
             }
         },
-        accom_id: {
+        accomId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -35,17 +35,17 @@ const TourAccom = db.sequelize.define(
     }
 )
 
-Tour.hasMany(TourAccom, { foreignKey: 'tour_id' });
-TourAccom.belongsTo(Tour, { foreignKey: 'tour_id', targetKey: 'id' });
+Tour.hasMany(TourAccom, { foreignKey: 'tourId' });
+TourAccom.belongsTo(Tour, { foreignKey: 'tourId', targetKey: 'id' });
 
-Accommodation.hasMany(TourAccom, { foreignKey: 'accom_id' });
-TourAccom.belongsTo(Accommodation, { foreignKey: 'accom_id', targetKey: 'id' });
+Accommodation.hasMany(TourAccom, { foreignKey: 'accomId' });
+TourAccom.belongsTo(Accommodation, { foreignKey: 'accomId', targetKey: 'id' });
 
 
 TourAccom.sync({ alter: true }).then((data) => {
-    console.log("Table and model synced successful!");
+    console.log("TourAccom synced successful!");
 }).catch((err) => {
-    console.log("Table and model synced failed!");
+    console.log("TourAccom synced failed!");
 })
 
 module.exports = TourAccom;

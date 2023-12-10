@@ -32,21 +32,7 @@ export default class CountryInfo extends React.Component {
 
         if (type != null) {
             getCountryData(id).then(res => {
-                this.setState({ "countryData": res }, () => {
-                    const body = document.body;
-                    const addition_info = body.querySelector(".country-addition")
-
-                    var info = "<h2>Addition Info:</h2>"
-
-                    let len_ = this.state.countryData.additionInfo.length
-
-                    for (let i = 0; i < Math.min(len_, 6); i++) {
-                        const opt_info = this.state.countryData.additionInfo[i]
-                        info = info + `<p><i class="fa-solid fa-check"></i>        ${opt_info}</p>`
-                    }
-
-                    addition_info.innerHTML = info
-                })
+                this.setState({ "countryData": res })
             }).catch(err => {
                 console.log('err: ', err)
             })
@@ -69,7 +55,7 @@ export default class CountryInfo extends React.Component {
 
         if (this.state.tourData === null || this.state.countryData === null) {
             return <p>Loading...</p>
-        }
+        } 
 
         return (
             <div className="country_wrapper">
@@ -102,7 +88,10 @@ export default class CountryInfo extends React.Component {
                             <p>{this.state.countryData.description}</p>
                         </div>
                         <div className="country-addition">
-
+                            <h2>Addition Info</h2>
+                            {this.state.countryData.additionInfo.slice(0, 4).map((info) => (
+                                <p><i class="fa-solid fa-check"></i>        {info}</p>
+                            ))}
                         </div>
                         <div className="suggest-tour row">
                             <h2 style={{ "margin": 0 }}>Tour Suggestions</h2>

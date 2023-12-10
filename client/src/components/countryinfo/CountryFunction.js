@@ -13,6 +13,7 @@ export const getTourData = (id, type) => {
     return axios
     .post('tours/gettourcountry_more', {id: id, type: type})
     .then(response => {
+        console.log(response.data)
         return response.data
     })
 }

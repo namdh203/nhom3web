@@ -12,6 +12,7 @@
 
 
 .mdrcm-card_choice>div>h1 {
+    text-align: center;
     font-size: 18px;
     color: white;
     align-items: center;
