@@ -35,7 +35,7 @@ const Activity = db.sequelize.define(
       allowNull: false
     },
     demoImage: {
-      type: Sequelize.STRING,
+      type: Sequelize.TEXT,
       defaultValue: ""
     }
   },

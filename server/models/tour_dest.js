@@ -15,7 +15,7 @@ const TourDest = db.sequelize.define(
                 key: 'id'
             }
         },
-        dest_d: {
+        dest_id: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,

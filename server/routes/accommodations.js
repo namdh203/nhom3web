@@ -5,18 +5,6 @@ const Sequelize = require("sequelize");
 
 const Accommodation = require("../models/accommodation");
 
-const sequelize = new Sequelize('travelam', 'root', 'empty2003', {
-    host: 'localhost',
-    dialect: 'mysql',
-
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
-    }
-})
-
 accommodations.use(cors());
 
 accommodations.post('/randomAccommodation', (req, res) => {
