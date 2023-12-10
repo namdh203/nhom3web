@@ -12,6 +12,7 @@ import Accommodation from './components/site_info/accommodation/accom'
 import Restaurant from './components/site_info/restaurant/restaurant'
 import Activity from './components/site_info/activities/activity'
 import Payment from "./components/payment/payment"
+import NavBar from './components/navbar/navbar'
 
 function App() {
   // const [isLogin, setIsLogin] = useState(false)
@@ -21,50 +22,39 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top navbar-wrapper">
-          <Link className="navbar-brand" to={'/'}>
-            <img  className="logo" src="https://i.imgur.com/qm46CNl.png" alt="logo" onClick={showDashBoard}/>
-          </Link>
-          <SearchBar />
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item" style={{ display: "block" }}><Link className="nav-link" to={'/sign-in'}><i className="fa-solid fa-right-to-bracket sign-in-logo"></i></Link></li>
-              <li className="nav-item" style={{ display: "block" }}><Link className="nav-link" to={'/sign-up'}><i className="fa-solid fa-user-plus sign-up-logo"></i></Link></li>
-            </ul>
-          </div>
-        </nav>
-        <div className="black-layer"></div>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/sign-in" element={<>
-            <Dashboard />
-            <Login />
-          </>} />
-          <Route path="/sign-up" element={<>ˀ
-            <Dashboard />
-            <SignUp />
-          </>}/>
-          <Route path="/tour" element={<TourInfo title="Bali Tour" banner="https://s3-hn-2.cloud.cmctelecom.vn/tapchicongthuong.vn/tcct-media/20/2/4/8.-den-uluwatu--.jpg"/>}/>
-          <Route path="/country" element={<CountryInfo name="Bali"/>}/>
-          <Route path="/accomodation/hotel" element={
-            <Accommodation />
-          }/>
-          <Route path="/restaurant/res" element={
-            <Restaurant />
-          }/>
-          <Route path="/activity/act" element={
-            <Activity />
-          }/>
-          <Route path="/payment" element={
-            <Payment />
-          }
-          />
-        </Routes>
-        <div className="footer-wrapper">
-          <Footer />
-        </div>
+      <NavBar></NavBar>
+      <div className="black-layer"></div>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/sign-in" element={<>
+          <Dashboard />
+          <Login />
+        </>} />
+        <Route path="/sign-up" element={<>ˀ
+          <Dashboard />
+          <SignUp />
+        </>} />
+        <Route path="/tour" element={<TourInfo title="Bali Tour" banner="https://s3-hn-2.cloud.cmctelecom.vn/tapchicongthuong.vn/tcct-media/20/2/4/8.-den-uluwatu--.jpg" />} />
+        <Route path="/country" element={<CountryInfo name="Bali" />} />
+        <Route path="/accomodation/hotel" element={
+          <Accommodation />
+        } />
+        <Route path="/restaurant/res" element={
+          <Restaurant />
+        } />
+        <Route path="/activity/act" element={
+          <Activity />
+        } />
+        <Route path="/payment" element={
+          <Payment />
+        }
+        />
+      </Routes>
+      <div className="footer-wrapper">
+        <Footer />
       </div>
-    </Router>
+    </div>
+    </Router >
   )
 }
 export default App

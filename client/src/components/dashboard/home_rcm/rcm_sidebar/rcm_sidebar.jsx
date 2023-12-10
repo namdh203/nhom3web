@@ -33,28 +33,28 @@ export default class RcmSidebar extends React.Component {
         }
 
         return (
-            <div className="home-rcm_sidebar sticky-top col col-md-2">
+            <div className="home-rcm_sidebar sticky-top col col-md-2 hidden">
                 <div id="scrollspy1" class="sticky-top">
                     <div className="buffer-block" style={{"height": "75px"}}></div>
                     <h1 className="rcm-sidebar_header">Categories</h1>
                     <div className="rcm-sidebar_list">
                         <ul class="nav flex-column nav-pills menu-sidebar">
-                            <li class="nav-item">
+                            <li class="nav-item sidebar-mode">
                                 <p className={`sidebar-choice ${this.state.id == 0 ? "choice-active" : ""}`} onClick={() => {
                                     window.location.href = "/?type=destination&id=0"
                                 }}>Destinations</p>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item sidebar-mode">
                                 <p className={`sidebar-choice ${this.state.id == 1 ? "choice-active" : ""}`} onClick={() => {
                                     window.location.href = "/?type=family&id=1"
-                                }}>Family Tours</p>
+                                }}>Family</p>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item sidebar-mode">
                                 <p className={`sidebar-choice ${this.state.id == 2 ? "choice-active" : ""}`} onClick={() => {
                                     window.location.href = "/?type=honey moon&id=2"
                                 }}>Honey moons</p>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item sidebar-mode">
                                 <p className={`sidebar-choice ${this.state.id == 3 ? "choice-active" : ""}`} onClick={() => {
                                     window.location.href = "/?type=adventure&id=3"
                                 }}>Adventures</p>

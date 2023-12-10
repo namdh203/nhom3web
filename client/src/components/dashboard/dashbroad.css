@@ -211,3 +211,9 @@
 .rcm-sidebar_list>.chosenList {
     color: rgb(1, 194, 1)
 }
+
+@media screen and (max-width: 992px) {
+    .home-rcm {
+        width: 100% ;
+    }
+}

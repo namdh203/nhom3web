@@ -27,13 +27,13 @@ export default class BigRcmCard extends React.Component {
     render() {
         return (
             <div className="brcm-card_wrapper">
-                <div className="container">
+                <div className="container-md">
                     <div className="row g-5">
-                        <div className="col col-md-6 col-sm-12 brcm-card_img-wrapper">
+                        <div className="col col-md-6 col-sm-12 col-12 brcm-card_img-wrapper">
                             <img src={this.props.src} className="img-fluid brcm-card_img" alt="big-card" onClick={this.onclick}></img>
                         </div>
 
-                        <div className="col col-md-6 col-sm-12 brcm-card_info-wrapper">
+                        <div className="col col-md-6 col-sm-12 col-12 brcm-card_info-wrapper">
                             <div>
                                 <h1 className="brcm-card_header">{this.props.name}</h1>
                                 <p className="brcm-card_desc">{this.props.desc}</p>
