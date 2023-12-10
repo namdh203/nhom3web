@@ -188,6 +188,4 @@ export default function Accommodation(props) {
             <p></p>
         )
     }
-
-
 }
