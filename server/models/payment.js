@@ -49,6 +49,7 @@ const Payment = db.sequelize.define(
 User.hasMany(Payment, { foreignKey: 'user_id' });
 Payment.belongsTo(User, { foreignKey: 'user_id', targetKey: 'id' });
 
+
 Payment.sync({ alter: true }).then((data) => {
     console.log("Payment synced successful!");
 }).catch((err) => {

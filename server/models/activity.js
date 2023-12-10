@@ -48,11 +48,6 @@ const Activity = db.sequelize.define(
 Destination.hasMany(Activity, { foreignKey: 'destId' });
 Activity.belongsTo(Destination, { foreignKey: 'destId', targetKey: 'id' });
 
-
-Destination.hasMany(Activity, { foreignKey: 'destId' });
-Activity.belongsTo(Destination, { foreignKey: 'destId', targetKey: 'id' });
-
-
 Activity.sync({ alter: true }).then((data) => {
   console.log("Activity synced successful!");
 }).catch((err) => {

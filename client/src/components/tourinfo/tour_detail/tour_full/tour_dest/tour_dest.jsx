@@ -37,7 +37,7 @@ class TourDestination extends React.Component {
                     <div className="trans-choice" style={{
                         display: this.props.trans === "motor" ? "block" : "none"
                     }}>
-                        <i className="fa-solid fa-motorcycle"></i>
+                        <i class="fa-solid fa-motorcycle"></i>
                     </div>
                 </div>
                 <div className="buffer-block" style={{

@@ -2,6 +2,10 @@
   text-align: left;
 }
 
+main {
+  padding: 0px;
+}
+
 image-container {
   display: flex;
   max-width: 800px;

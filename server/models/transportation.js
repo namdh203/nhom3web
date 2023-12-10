@@ -64,7 +64,11 @@ const Transportation = db.sequelize.define(
 
 Destination.hasMany(Transportation, { foreignKey: 'startDestId' });
 Transportation.belongsTo(Destination, { foreignKey: 'startDestId', targetKey: 'id' });
+Destination.hasMany(Transportation, { foreignKey: 'startDestId' });
+Transportation.belongsTo(Destination, { foreignKey: 'startDestId', targetKey: 'id' });
 
+Destination.hasMany(Transportation, { foreignKey: 'endDestId' });
+Transportation.belongsTo(Destination, { foreignKey: 'endDestId', targetKey: 'id' });
 Destination.hasMany(Transportation, { foreignKey: 'endDestId' });
 Transportation.belongsTo(Destination, { foreignKey: 'endDestId', targetKey: 'id' });
 

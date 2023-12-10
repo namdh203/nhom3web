@@ -6,6 +6,7 @@ CREATE DATABASE IF NOT EXISTS Travelam;
 USE Travelam;
 
 -- Create the "Customer" table
+<<<<<<< HEAD
 DROP TABLE IF EXISTS customer;
 CREATE TABLE IF NOT EXISTS customer (
   user_id INT NOT NULL,
@@ -55,6 +56,59 @@ CREATE TABLE IF NOT EXISTS destination (
   demoImage VARCHAR(255),
   PRIMARY KEY (id)
 );
+=======
+DROP TABLE IF EXISTS `Customer`;
+CREATE TABLE `Customer` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `cardNo` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `phoneNumber` varchar(255) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `passport` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Create the "Tour" table
+DROP TABLE IF EXISTS Tour;
+CREATE TABLE `Tour` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `duration` int NOT NULL,
+  `price` double NOT NULL,
+  `priceCurrency` varchar(255) DEFAULT 'USD',
+  `startDate` datetime NOT NULL,
+  `endDate` datetime NOT NULL,
+  `additionInfo` varchar(255) NOT NULL,
+  `demoImage` varchar(255) NOT NULL,
+  `voting` int NOT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Create the "Tour_dest" table
+DROP TABLE IF EXISTS Tour_dest;
+CREATE TABLE `Tour_dest` (
+  `tourID` int NOT NULL,
+  `destID` int NOT NULL,
+  PRIMARY KEY (`tour_id`,`dest_id`),
+  KEY `dest_id` (`dest_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Create the "Destination" table
+DROP TABLE IF EXISTS Destination;
+CREATE TABLE `Destination` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `countryID` int NOT NULL,
+  `description` text NOT NULL,
+  `additionInfo` varchar(255) NOT NULL,
+  `demoImage` varchar(255) DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `countryID` (`countryID`),
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+>>>>>>> bd3529af8e4f708c12dbed2cdd0fa27e330ebbc1
 
 -- Create the "Accommodation" table
 DROP TABLE IF EXISTS accommodation;
@@ -63,6 +117,7 @@ CREATE TABLE IF NOT EXISTS accommodation (
   name VARCHAR(255), -- Adjust the size to your needs
   dest_id INT NOT NULL,
   pricePerNight DOUBLE,
+<<<<<<< HEAD
   priceCurrency VARCHAR(10), -- Adjust the size to your needs
   address TEXT, -- Adjust the size to your needs
   telephoneNo VARCHAR(15), -- Adjust the size to your needs
@@ -71,6 +126,15 @@ CREATE TABLE IF NOT EXISTS accommodation (
   additionalInfo TEXT,
   demoImage MEDIUMTEXT,
   PRIMARY KEY (accomID)
+=======
+  priceCurrency VARCHAR(255), -- Adjust the size to your needs
+  address VARCHAR(255), -- Adjust the size to your needs
+  telephone VARCHAR(15), -- Adjust the size to your needs
+  contactEmail VARCHAR(255), -- Adjust the size to your needs
+  additionInfo VARCHAR(255), -- Adjust the size to your
+  demoImage VARCHAR(255), -- Adjust the size to your needs
+  PRIMARY KEY (id)
+>>>>>>> bd3529af8e4f708c12dbed2cdd0fa27e330ebbc1
 );
 
 -- Create the "Tour_accommodation" table
@@ -93,9 +157,12 @@ CREATE TABLE IF NOT EXISTS transportation (
   price DOUBLE,
   priceCurrency VARCHAR(255), -- Adjust the size to your needs
   type VARCHAR(255), -- Adjust the size to your needs
+<<<<<<< HEAD
   additionInfo VARCHAR(255),
   demoImage VARCHAR(255),
   PRIMARY KEY (id)
+=======
+>>>>>>> bd3529af8e4f708c12dbed2cdd0fa27e330ebbc1
   demoImage TEXT,
   PRIMARY KEY (transID)
 );
@@ -120,6 +187,7 @@ CREATE TABLE IF NOT EXISTS user (
 );
 
 -- Create the "Country" table
+<<<<<<< HEAD
 DROP TABLE IF EXISTS country;
 CREATE TABLE IF NOT EXISTS country (
   id INT NOT NULL,
@@ -129,6 +197,18 @@ CREATE TABLE IF NOT EXISTS country (
   demoImage VARCHAR(255),
   PRIMARY KEY (id)
 );
+=======
+DROP TABLE IF EXISTS Country;
+CREATE TABLE `Country` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `countryName` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `additionInfo` varchar(255) NOT NULL,
+  `demoImage` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+>>>>>>> bd3529af8e4f708c12dbed2cdd0fa27e330ebbc1
 
 -- Create the "Restaurant" table
 DROP TABLE IF EXISTS restaurant;
@@ -141,12 +221,15 @@ CREATE TABLE IF NOT EXISTS restaurant (
   additionInfo VARCHAR(255),
   demoImage VARCHAR(255),
   PRIMARY KEY (id)
+<<<<<<< HEAD
   address TEXT, -- Adjust the size to your needs
   telephoneNo VARCHAR(15), -- Adjust the size to your needs
   description MEDIUMTEXT,
   additionalInfo TEXT,
   demoImage MEDIUMTEXT,
   PRIMARY KEY (restID)
+=======
+>>>>>>> bd3529af8e4f708c12dbed2cdd0fa27e330ebbc1
 );
 
 -- Create the "Tour_meal" table
@@ -177,10 +260,16 @@ CREATE TABLE IF NOT EXISTS activity (
   name VARCHAR(50), -- Adjust the size to your needs
   dest_id INT NOT NULL,
   type VARCHAR(255), -- Adjust the size to your needs
+<<<<<<< HEAD
   description MEDIUMTEXT,
   additionalInfo TEXT,
   demoImage MEDIUMTEXT,
   PRIMARY KEY (activityID)
+=======
+  additionInfo VARCHAR(255),
+  demoImage VARCHAR(255),
+  PRIMARY KEY (id)
+>>>>>>> bd3529af8e4f708c12dbed2cdd0fa27e330ebbc1
 );
 
 -- Create the "Tour_activity" table
