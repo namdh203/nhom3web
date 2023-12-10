@@ -55,9 +55,9 @@ Restaurant.belongsTo(Destination, { foreignKey: 'destId', targetKey: 'id' });
 
 
 Restaurant.sync({alter : true}).then((data) => {
-  console.log("Table and model synced successful!");
+  console.log("Restaurant synced successful!");
 }).catch((err) => {
-  console.log("Table and model synced failed!");
+  console.log("Restaurant synced failed!");
 })
 
 module.exports = Restaurant;

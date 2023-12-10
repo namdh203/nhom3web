@@ -41,7 +41,8 @@
 
 .tour-factor > i {
     scale: 1.5;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 .tour-factor > span {

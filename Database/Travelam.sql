@@ -69,9 +69,10 @@ CREATE TABLE IF NOT EXISTS accommodation (
   address VARCHAR(255), -- Adjust the size to your needs
   telephone VARCHAR(15), -- Adjust the size to your needs
   contactEmail VARCHAR(255), -- Adjust the size to your needs
-  additionInfo VARCHAR(255), -- Adjust the size to your
-  demoImage VARCHAR(255), -- Adjust the size to your needs
-  PRIMARY KEY (id)
+  description MEDIUMTEXT,
+  additionalInfo TEXT,
+  demoImage MEDIUMTEXT,
+  PRIMARY KEY (accomID)
 );
 
 -- Create the "Tour_accommodation" table
@@ -94,6 +95,9 @@ CREATE TABLE IF NOT EXISTS transportation (
   price DOUBLE,
   priceCurrency VARCHAR(255), -- Adjust the size to your needs
   type VARCHAR(255), -- Adjust the size to your needs
+  additionInfo VARCHAR(255),
+  demoImage VARCHAR(255),
+  PRIMARY KEY (id)
   demoImage TEXT,
   PRIMARY KEY (transID)
 );
@@ -140,6 +144,12 @@ CREATE TABLE IF NOT EXISTS restaurant (
   additionInfo VARCHAR(255),
   demoImage VARCHAR(255),
   PRIMARY KEY (id)
+  address TEXT, -- Adjust the size to your needs
+  telephoneNo VARCHAR(15), -- Adjust the size to your needs
+  description MEDIUMTEXT,
+  additionalInfo TEXT,
+  demoImage MEDIUMTEXT,
+  PRIMARY KEY (restID)
 );
 
 -- Create the "Tour_meal" table
@@ -170,9 +180,10 @@ CREATE TABLE IF NOT EXISTS activity (
   name VARCHAR(50), -- Adjust the size to your needs
   dest_id INT NOT NULL,
   type VARCHAR(255), -- Adjust the size to your needs
-  additionInfo VARCHAR(255),
-  demoImage VARCHAR(255),
-  PRIMARY KEY (id)
+  description MEDIUMTEXT,
+  additionalInfo TEXT,
+  demoImage MEDIUMTEXT,
+  PRIMARY KEY (activityID)
 );
 
 -- Create the "Tour_activity" table

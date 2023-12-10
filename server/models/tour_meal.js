@@ -43,9 +43,9 @@ TourMeal.belongsTo(Restaurant, { foreignKey: 'restId', targetKey: 'id' });
 
 
 TourMeal.sync({ alter: true }).then((data) => {
-    console.log("Table and model synced successful!");
+    console.log("TourMeal synced successful!");
 }).catch((err) => {
-    console.log("Table and model synced failed!");
+    console.log("TourMeal synced failed!");
 })
 
 module.exports = TourMeal;

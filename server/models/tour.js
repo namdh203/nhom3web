@@ -60,9 +60,9 @@ const Tour = db.sequelize.define(
 )
 
 Tour.sync({ alter: true }).then((data) => {
-    console.log("Table and model synced successful!");
+    console.log("Tour synced successful!");
 }).catch((err) => {
-    console.log("Table and model synced failed!");
+    console.log("Tour synced failed!");
 })
 
 module.exports = Tour;

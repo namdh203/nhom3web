@@ -68,10 +68,13 @@ Transportation.belongsTo(Destination, { foreignKey: 'startDestId', targetKey: 'i
 Destination.hasMany(Transportation, { foreignKey: 'endDestId' });
 Transportation.belongsTo(Destination, { foreignKey: 'endDestId', targetKey: 'id' });
 
-Transportation.sync({ alter: true }).then((data) => {
-    console.log("Table and model synced successful!");
+Transportation.sync({ 
+    alter: true,
+    logging: console.log
+ }).then((data) => {
+    console.log("Transportation synced successful!");
 }).catch((err) => {
-    console.log("Table and model synced failed!");
+    console.log("Transportation synced failed!");
 })
 
 module.exports = Transportation;

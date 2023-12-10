@@ -43,9 +43,9 @@ TourAccom.belongsTo(Accommodation, { foreignKey: 'accomId', targetKey: 'id' });
 
 
 TourAccom.sync({ alter: true }).then((data) => {
-    console.log("Table and model synced successful!");
+    console.log("TourAccom synced successful!");
 }).catch((err) => {
-    console.log("Table and model synced failed!");
+    console.log("TourAccom synced failed!");
 })
 
 module.exports = TourAccom;

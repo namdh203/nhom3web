@@ -39,9 +39,9 @@ Transportation.hasMany(TourTrans, { foreignKey: 'transId' });
 TourTrans.belongsTo(Transportation, { foreignKey: 'transId', targetKey: 'id' });
 
 TourTrans.sync({ alter: true }).then((data) => {
-    console.log("Table and model synced successful!");
+    console.log("TourTrans synced successful!");
 }).catch((err) => {
-    console.log("Table and model synced failed!");
+    console.log("TourTrans synced failed!");
 })
 
 module.exports = TourTrans;

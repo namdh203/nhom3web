@@ -1,4 +1,5 @@
 .brcm-card_choice>div>h1 {
+    text-align: center;
     font-size: 18px;
     color: white;
     align-items: center;
@@ -8,6 +9,7 @@
 }
 
 .brcm-card_choice>div {
+    text-align: center;
     background-color: rgb(1, 198, 132);
     border-style: none;
     border-radius: 5px;

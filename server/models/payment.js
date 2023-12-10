@@ -11,12 +11,12 @@ const Payment = db.sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
-        user_id: {
+        userId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             reference: {
                 model: 'Customer',
-                key: 'user_id'
+                key: 'userId'
             }
         },
         tourId: {
@@ -46,13 +46,13 @@ const Payment = db.sequelize.define(
     }
 )
 
-User.hasMany(Payment, { foreignKey: 'user_id' });
-Payment.belongsTo(User, { foreignKey: 'user_id', targetKey: 'id' });
+User.hasMany(Payment, { foreignKey: 'userId' });
+Payment.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
 
 Payment.sync({ alter: true }).then((data) => {
-    console.log("Table and model synced successful!");
+    console.log("Payment synced successful!");
 }).catch((err) => {
-    console.log("Table and model synced failed!");
+    console.log("Payment synced failed!");
 })
 
 module.exports = Payment;

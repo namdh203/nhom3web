@@ -42,13 +42,13 @@ const TourActivity = db.sequelize.define(
 Tour.hasMany(TourActivity, { foreignKey: 'tourId' });
 TourActivity.belongsTo(Tour, { foreignKey: 'tourId', targetKey: 'id' });
 
-Activity.hasMany(TourActivity, { foreignKey: 'activity_id' });
-TourActivity.belongsTo(Activity, { foreignKey: 'activity_id', targetKey: 'id' });
+Activity.hasMany(TourActivity, { foreignKey: 'activityId' });
+TourActivity.belongsTo(Activity, { foreignKey: 'activityId', targetKey: 'id' });
 
 TourActivity.sync({ alter: true }).then((data) => {
-    console.log("Table and model synced successful!");
+    console.log("TourActivity synced successful!");
 }).catch((err) => {
-    console.log("Table and model synced failed!");
+    console.log("TourActivity synced failed!");
 })
 
 module.exports = TourActivity;

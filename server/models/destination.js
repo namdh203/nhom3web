@@ -42,9 +42,9 @@ const Destination = db.sequelize.define(
 
 
 Destination.sync({alter : true}).then((data) => {
-  console.log("Table and model synced successful!");
+  console.log("Destination synced successful!");
 }).catch((err) => {
-  console.log("Table and model synced failed!");
+  console.log("Destination synced failed!");
 })
 
 module.exports = Destination;

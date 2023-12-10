@@ -22,6 +22,10 @@
     padding-left: 40px; 
 }
 
+.tour-cost > h1 {
+    text-align: center;
+}
+
 .tour-cost_full {
     margin-top: 10px;
     padding: 7px;
@@ -32,11 +36,13 @@
 }
 
 .tour-cost_full > h1 {
+    text-align: center;
     margin: 0;
     font-size: 28px;
     line-height: 32px;
     color: black
 }
+
 
 .tour-cost_full:hover {
     opacity: 0.5;

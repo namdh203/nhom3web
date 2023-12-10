@@ -35,13 +35,13 @@ const Country = db.sequelize.define(
 
 )
 
-Country.hasMany(Destination, { foreignKey: 'country_id' });
-Destination.belongsTo(Country, { foreignKey: 'country_id', targetKey: 'id' });
+Country.hasMany(Destination, { foreignKey: 'countryId' });
+Destination.belongsTo(Country, { foreignKey: 'countryId', targetKey: 'id' });
 
 Country.sync({alter: true}).then((data) => {
-    console.log("Table synced successful!")
+    console.log("Country synced successful!")
 }).catch((err) => {
-    console.log("Table synced failed!")
+    console.log("Country synced failed!")
 })
 
 module.exports = Country;

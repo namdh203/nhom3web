@@ -35,13 +35,13 @@ const User = db.sequelize.define(
 )
 
 
-User.hasOne(Customer, { foreignKey: 'user_id' });
-Customer.belongsTo(User, { foreignKey: 'user_id', targetKey: 'id' });
+User.hasOne(Customer, { foreignKey: 'userId' });
+Customer.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
 
 User.sync({alter : true}).then((data) => {
-  console.log("Table and model synced successful!");
+  console.log("User synced successful!");
 }).catch((err) => {
-  console.log("Table and model synced failed!");
+  console.log("User synced failed!");
 })
 
 module.exports = User;

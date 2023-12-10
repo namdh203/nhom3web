@@ -102,6 +102,8 @@ class TourDestination extends React.Component {
                         </div>
                     </div>
                 </div>
+
+                
             </>
         )
     }
