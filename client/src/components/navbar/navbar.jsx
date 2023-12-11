@@ -74,16 +74,15 @@ export default class NavBar extends React.Component {
                     </div>
                 </nav>
                 <div className={`category-menu_wrapper  ${this.state.showCategory % 2 ? "show" : "hidden"}`}>
-                    <Link className="dashboard-link" to={"/"}>
-                        <div className="black-layer" style={{
-                            "z-index": "9",
-                            display: "flex"
-                        }} onClick={this.onCategoryClick}></div>
-                    </Link>
+                    <div className="black-layer" style={{
+                        "z-index": "9",
+                        display: "flex"
+                    }} onClick={this.onCategoryClick}></div>
+
                     <nav id="sidebarMenu" className="collapse collapse bg-white show" style={{
-                        "z-index": "1031",
+                        "z-index": "1029",
                         "position": "relative"
-                        }}>
+                    }}>
                         <div className="buffer-block" style={{ height: "43px" }}></div>
                         <div className="position-sticky">
                             <div className="list-group list-group-flush mx-3 mt-4">
@@ -102,30 +101,28 @@ export default class NavBar extends React.Component {
                     </nav>
                 </div>
                 <div className={`navbar-menu_wrapper  ${this.state.showNavbarMenu % 2 ? "show" : "hidden"}`}>
-                    <Link className="dashboard-link" to={"/"}>
-                        <div className="black-layer" style={{
-                            "z-index": "9",
-                            display: "flex"
-                        }} onClick={this.onNavbarMenuClick}></div>
-                    </Link>
+                    <div className="black-layer" style={{
+                        "z-index": "9",
+                        display: "flex"
+                    }} onClick={this.onNavbarMenuClick}></div>
                     <nav id="sidebarMenu" className="collapse collapse bg-white show" style={{
-                        "z-index": "1031",
+                        "z-index": "1029",
                         "position": "relative"
-                        }}>
+                    }}>
                         <div className="buffer-block" style={{ height: "43px" }}></div>
                         <div className="position-sticky">
                             <div className="list-group list-group-flush mx-3 mt-4">
-                                <a href="/?type=destination&id=0" className="list-group-item list-group-item-action py-2 ripple" 
+                                <a href="/recommendations/accom?page_num=1" className="list-group-item list-group-item-action py-2 ripple"
                                 ><i class="fa-solid fa-hotel"></i><span>                 Accommodations</span></a>
-                                <a href="/?type=family&id=1" className="list-group-item list-group-item-action py-2 ripple"
+                                <a href="/recommendations/rest?page_num=1" className="list-group-item list-group-item-action py-2 ripple"
                                 ><i class="fa-solid fa-utensils"></i><span>                 Restaurants</span></a>
-                                <a href="/?type=honey moon&id=2" class="list-group-item list-group-item-action py-2 ripple"
+                                <a href="/recommendations/act?page_num=1" class="list-group-item list-group-item-action py-2 ripple"
                                 ><i class="fa-solid fa-chart-line"></i><span>                 Activities</span></a>
-                                <a href="/?type=adventure&id=3" className="list-group-item list-group-item-action py-2 ripple"
+                                <a href="/recommendations/trans?page_num=1" className="list-group-item list-group-item-action py-2 ripple"
                                 ><i class="fa-solid fa-car-side"></i><span>                 Transportations</span></a>
-                                <a href="/?type=adventure&id=3" className="list-group-item list-group-item-action py-2 ripple"
+                                <a href="/sign-in" className="list-group-item list-group-item-action py-2 ripple"
                                 ><i className="fa-solid fa-right-to-bracket"></i><span>                 Login</span></a>
-                                <a href="/?type=adventure&id=3" className="list-group-item list-group-item-action py-2 ripple"
+                                <a href="/sign-up" className="list-group-item list-group-item-action py-2 ripple"
                                 ><i className="fa-solid fa-user-plus"></i><span>                 Sign up</span></a>
                             </div>
                         </div>

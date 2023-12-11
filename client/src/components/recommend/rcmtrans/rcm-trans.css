@@ -195,3 +195,61 @@
 .card-info_addition > p > i {
     color: green
 }
+
+
+@media screen and (max-width: 756px) {
+    .rcm-banner_intro > h2 {
+        font-size: 20px
+    }   
+
+    .rcm-banner_intro > p {
+        font-size: 16px
+    }
+
+    .nav-btn > span {
+        font-size: 14px
+    }   
+
+    .nav-btn {
+        width: 200px !important;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+    .rcm-banner_intro > h2 {
+        font-size: 16px
+    }   
+
+    .rcm-banner_intro > p {
+        font-size: 12px
+    }
+
+    .nav-btn > span {
+        font-size: 12px
+    }   
+
+    .nav-btn {
+        width: 160px !important;
+    }
+
+}
+
+@media screen and (max-width: 462px) {
+    .rcm-banner_intro > h2 {
+        font-size: 14px
+    }   
+
+    .rcm-banner_intro > p {
+        font-size: 10px
+    }
+
+    .nav-btn > span {
+        font-size: 10px
+    }   
+
+    .nav-btn {
+        width: 150px !important;
+    }
+
+}

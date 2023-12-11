@@ -74,10 +74,10 @@ export default class TourDesc extends React.Component {
                     <table className="tour-desc_options">
                         <thead>
                             <tr>
-                                <td>TOUR ID</td>
-                                <td>DURATION</td>
-                                <td>START DATE</td>
-                                <td>END DATE</td>
+                                <td style={{"font-weight": "bold"}}>TOUR ID</td>
+                                <td style={{"font-weight": "bold"}}>DURATION</td>
+                                <td style={{"font-weight": "bold"}}>START DATE</td>
+                                <td style={{"font-weight": "bold"}}>END DATE</td>
                             </tr>
                         </thead>
                         <tbody>

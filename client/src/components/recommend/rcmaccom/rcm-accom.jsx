@@ -66,7 +66,7 @@ export default class RcmAccom extends React.Component {
                     <img src="https://bpb-eu-w2.wpmucdn.com/blogs.lincoln.ac.uk/dist/a/8671/files/2022/04/StMarks-011-by-E-Egg-Joiner-P-small1500.jpg" className="img-fluid rcm-banner_img" alt="Responsive" />
                     <div className="rcm-banner_intro">
                         <h2>Recommended Accommodation Options for visitors.</h2>
-                        <p>Find your perfect stay effortlessly on our website, offering a streamlined guide to accommodations for every traveler.</p>
+                        <p>Here are some of our recommendations for your trip.</p>
                         <a href="#main">
                             <div className="nav-btn_wrapper">
                                 <div className="nav-btn">

@@ -66,7 +66,7 @@ export default class RcmTrans extends React.Component {
                     <img src="https://www.universalfamilyvacations.com/wp-content/uploads/2013/05/universal-studios-orlando-transportation.jpg" className="img-fluid rcm-banner_img" alt="Responsive" />
                     <div className="rcm-banner_intro">
                         <h2>Recommended Transportation Options for visitors.</h2>
-                        <p>Discover a world of transportation insights on our website, providing comprehensive details on diverse travel modes and the latest industry trends.</p>
+                        <p>Here are some of our recommendations for your trip.</p>
                         <a href="#main">
                             <div className="nav-btn_wrapper">
                                 <div className="nav-btn">

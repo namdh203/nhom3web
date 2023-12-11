@@ -66,7 +66,7 @@ export default class RcmAct extends React.Component {
                     <img src="https://d1pk12b7bb81je.cloudfront.net/thumbor/lndbHoMuqXVkuSU_6fFL98IwGvY=/1920x910/https://d1pk12b7bb81je.cloudfront.net/images/photos/slideshows/1691513163_family-activities-photo-6.jpg" className="img-fluid rcm-banner_img" alt="Responsive" />
                     <div className="rcm-banner_intro">
                         <h2>Recommended Activities Options for visitors.</h2>
-                        <p>Immerse yourself in a world of exciting activities with our website, delivering a wealth of information on diverse leisure pursuits and engaging pastimes.</p>
+                        <p>Here are some of our recommendations for your trip.</p>
                         <a href="#main">
                             <div className="nav-btn_wrapper">
                                 <div className="nav-btn">

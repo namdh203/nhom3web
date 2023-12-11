@@ -60,7 +60,7 @@ export default class RcmRest extends React.Component {
                     <img src="https://www.theviewexeter.co.uk/resourcefiles/gallery-images/the-view-restaurant-1.jpg" className="img-fluid rcm-banner_img" alt="Responsive" />
                     <div className="rcm-banner_intro">
                         <h2>Recommended Restaurant Options for visitors.</h2>
-                        <p>Explore diverse culinary delights effortlessly on our website, your go-to source for restaurant recommendations and delectable dining experiences.</p>
+                        <p>Here are some of our recommendations for your trip.</p>
                         <a href="#main">
                             <div className="nav-btn_wrapper">
                                 <div className="nav-btn">
