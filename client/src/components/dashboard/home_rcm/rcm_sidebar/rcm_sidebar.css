@@ -17,6 +17,10 @@
   padding: 0 0 !important;
 }
 
+.nav-item.sidebar-mode:hover {
+  background-color: rgba(0, 0, 0, 0);
+}
+
 /* 
 .home-rcm_sidebar {
     position: fixed;

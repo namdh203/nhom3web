@@ -11,12 +11,7 @@ class TourDestBrief extends React.Component {
     render() {
         return (
             <div>
-                <div className="buffer-block" style={{
-                    width: "50%",
-                    height: "20px",
-                    "border-right": "0.025px solid gray",
-                    display: "block"
-                }}></div>
+                <div className="buffer-block detail brief"></div>
 
                 <div className="trans-block" style={{ display: this.props.last === "true" ? "none" : "flex" }}>
                     <div className="trans-choice" style={{
@@ -40,12 +35,7 @@ class TourDestBrief extends React.Component {
                     </div>
                 </div>
 
-                <div className="buffer-block" style={{
-                    width: "50%",
-                    height: "20px",
-                    "border-right": "0.025px solid gray",
-                    display: "block"
-                }}></div>
+                <div className="buffer-block detail brief"></div>
 
                 <div className="brief-dest">{this.props.title}</div>
             </div>

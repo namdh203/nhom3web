@@ -1,0 +1,197 @@
+.rcm-accom_wrapper {
+    background-color: rgb(233, 240, 248);
+}
+
+.rcm-banner_img {
+    width: 100%;
+    filter: brightness(0.4);
+}
+
+.rcm-banner {
+    position: relative;
+}
+
+.rcm-banner_intro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    justify-content: center;
+}
+
+.rcm-banner_intro > h2 {
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.rcm-banner_intro > p {
+    font-size: 18px;
+    text-align: center;
+}
+
+.nav-btn_wrapper {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rcm-banner_intro > a {
+    text-decoration: none;
+    color: white
+}
+
+.rcm-banner_intro > a > .nav-btn_wrapper > .nav-btn {
+    background-color: rgb(37, 145, 94);
+    width: 250px;
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.nav-btn:hover {
+    cursor: pointer;
+    filter: brightness(0.8);
+    color: #333;
+}
+
+.rcm-main {
+    height: 100%;
+    background-color: rgb(233, 240, 248);
+    padding: 40px 0;
+}
+
+.rcm-main_card {
+    border-radius: 10px;
+}
+
+
+
+.rcm-main_card-wrapper {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.rcm-main_card:hover {
+    scale: 1.1
+}
+
+.rcm-main_card-img {
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+    height: 150px;
+}
+
+.rcm-main_card-img.trans {
+    height: 200px !important;
+}
+
+.rcm-main_card-info {
+    height: 100%;
+    padding: 10px 20px;
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+}
+
+.rcm-main_card-info > .contact {
+    white-space: nowrap;       /* Ngăn chữ xuống dòng */
+    overflow: hidden;          /* Ẩn nội dung dư thừa */
+    text-overflow: ellipsis;   
+    margin-bottom: 2px;
+    font-size: 12px;
+}
+
+.card-header {
+    border-bottom: solid 0.025px rgb(221, 221, 144);
+}
+
+.card-info_header {
+    white-space: nowrap;       /* Ngăn chữ xuống dòng */
+    overflow: hidden;          /* Ẩn nội dung dư thừa */
+    text-overflow: ellipsis;   
+    font-size: 18px;
+}
+
+
+.card-info_addition {
+    /* border-bottom: solid 0.025px rgb(221, 221, 144); */
+    /* margin-top: 10px; */
+    /* padding: 10px 0; */
+    font-size: 12px;
+}
+
+.card-info_addition > span > i {
+    color: green
+}
+
+.card-info_price {
+    padding-top: 5px;
+    display: flex;
+    justify-content: right;
+    /* flex-direction: column; */
+    align-items: center;
+    border-top: solid 0.025px rgb(221, 221, 144);
+    margin-top: 5px;
+}
+
+.price-info {
+    font-size: 12px;
+    color: rgb(155, 154, 154);
+    text-align: right;
+    /* display: flex */
+}
+
+.price {
+    color: green;
+    font-weight: 600;
+}
+
+.know-btn {
+    padding: 6px 10px;
+    background-color: rgb(61, 211, 61);
+    color: white;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-left: 10px
+}
+
+.know-btn:hover {
+    filter: brightness(0.8);
+    color: #333;
+    cursor: pointer;
+}
+
+.rcm-main_wrapper {
+    padding: 0 100px;
+}
+@media screen and (max-width: 992px) {
+    .rcm-main_wrapper {
+        padding: 0 50px;
+    }
+}
+@media screen and (max-width: 900px) {
+    .rcm-main_wrapper {
+        padding: 0 20px;
+    }
+}
+
+.page-item > .page-link {
+    color: rgb(88, 206, 88) !important; 
+}
+
+.page-item.chosen > .page-link {
+    background-color: rgb(88, 206, 88) !important;
+    color: white !important
+}
+
+.card-info_addition > p {
+    margin-bottom: 5px;
+}
+
+.card-info_addition > p > i {
+    color: green
+}

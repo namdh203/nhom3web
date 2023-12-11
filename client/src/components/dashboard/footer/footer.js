@@ -6,15 +6,15 @@ export default function Footer() {
         <div className="footer-wrapper">
             <div className="footer-info container-md">
                 <div className="row g-5">
-                    <div className="col col-md-4 col-sm-12 footer-logo">
+                    <div className="col col-md-4 col-sm-12 col-12 footer-logo">
                         <a href='/'>
                             <img className="footer-logo_img" src="https://i.imgur.com/qm46CNl.png" alt="logo" />
                         </a>
                     </div>
-                    <div className="col col-md-4 col-sm-12 footer-category">
+                    <div className="col col-md-4 col-sm-12 col-12 footer-category">
                         <h3>Category</h3>
                         <div className="row g-5">
-                            <div className="col col-md-6 col-sm-12 footer-category_1">
+                            <div className="col col-md-6 col-sm-12 col-12 footer-category_1">
                                 <a href="/?type=destination&id=0">
                                     <p>Destinations</p>
                                 </a>
@@ -28,7 +28,7 @@ export default function Footer() {
                                     <p>Adventures</p>
                                 </a>
                             </div>
-                            <div className="col col-md-6 col-sm-12 footer-category_1">
+                            <div className="col col-md-6 col-sm-12 col-12 footer-category_1">
                                 <a href="#">
                                     <p>Visa-on-arrivals</p>
                                 </a>
@@ -41,7 +41,7 @@ export default function Footer() {
                             </div>
                         </div>
                     </div>
-                    <div className="col col-md-2 col-sm-12 footer-social">
+                    <div className="col col-md-2 col-sm-12 col-12 footer-social">
                         <h3>Social</h3>
                         <a href="#">
                             <p><i class="fa-brands fa-facebook"></i> Facebook</p>

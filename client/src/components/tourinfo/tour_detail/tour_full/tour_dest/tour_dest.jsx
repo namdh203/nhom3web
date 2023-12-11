@@ -17,12 +17,7 @@ class TourDestination extends React.Component {
     render() {
         return (
             <>
-                <div className="buffer-block" style={{
-                    width: "50%",
-                    height: "35px",
-                    "border-right": "0.025px solid gray",
-                    display: "block"
-                }}></div>
+                <div className="buffer-block detail"></div>
                 <div className="trans-block" style={{ display: this.props.last === "true" ? "none" : "flex" }}>
                     <div className="trans-choice" style={{
                         display: this.props.trans === "train" ? "block" : "none"
@@ -40,14 +35,7 @@ class TourDestination extends React.Component {
                         <i class="fa-solid fa-motorcycle"></i>
                     </div>
                 </div>
-                <div className="buffer-block" style={{
-                    width: "50%",
-                    height: "35px",
-                    "border-right": "0.025px solid gray",
-                    display: "block"
-                }}>
-
-                </div>
+                <div className="buffer-block detail"></div>
 
                 <div className="tour-dest_wrapper">
                     <div className="tour-dest_header">{this.props.header}</div>
@@ -62,7 +50,7 @@ class TourDestination extends React.Component {
 
                         </div>
                         <div className="tour-dest_info info row gx-4 odd">
-                            <div className="col col-md-3">
+                            <div className="col col-md-3 col-sm-6 col-6">
                                 <i class="fa-solid fa-hotel"></i>
                                 <div>
                                     <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="leftTop"></AddImg>
@@ -72,7 +60,7 @@ class TourDestination extends React.Component {
                                     
                                 </div>
                             </div>
-                            <div className="col col-md-3">
+                            <div className="col col-md-3 col-sm-6 col-6">
                                 <i class="fa-solid fa-truck-plane"></i>
                                 <div>
                                     <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="top"></AddImg>
@@ -81,7 +69,7 @@ class TourDestination extends React.Component {
                                     <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="top"></AddImg>
                                 </div>
                             </div>
-                            <div className="col col-md-3">
+                            <div className="col col-md-3 col-sm-6 col-6">
                                 <i class="fa-solid fa-drumstick-bite"></i>
                                 <div>
                                     <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="top"></AddImg>
@@ -90,7 +78,7 @@ class TourDestination extends React.Component {
                                     <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="top"></AddImg>
                                 </div>
                             </div>
-                            <div className="col col-md-3">
+                            <div className="col col-md-3 col-sm-6 col-6">
                                 <i class="fa-solid fa-heart-pulse"></i>
                                 <div>
                                     <AddImg scripts="fasdfasdfadsf" image={this.props.image} pos="rightTop"></AddImg>

@@ -62,7 +62,7 @@ export default class TourDesc extends React.Component {
         }
 
         return (
-            <div className="tour-desc_wrapper container-md" style={{ display: "none" }}>
+            <div className="tour-desc_wrapper" style={{ display: "none" }}>
                 <div className="tour-desc">
                     <h1>Description</h1>
                     <p>{this.props.tour.description}</p>

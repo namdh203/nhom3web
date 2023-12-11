@@ -45,16 +45,16 @@ export default class NavBar extends React.Component {
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Accommodations</a>
+                                <a class="nav-link" href="/recommendations/accom?page_num=1">Accommodations</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Restaurants</a>
+                                <a class="nav-link" href="/recommendations/rest?page_num=1">Restaurants</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Activities</a>
+                                <a class="nav-link" href="/recommendations/act?page_num=1">Activities</a>
                             </li>
                             <li class="nav-item right-border">
-                                <a class="nav-link" href="#">Transportations</a>
+                                <a class="nav-link" href="/recommendations/trans?page_num=1">Transportations</a>
                             </li>
                             {/* <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -81,7 +81,7 @@ export default class NavBar extends React.Component {
                         }} onClick={this.onCategoryClick}></div>
                     </Link>
                     <nav id="sidebarMenu" className="collapse collapse bg-white show" style={{
-                        "z-index": "11",
+                        "z-index": "1031",
                         "position": "relative"
                         }}>
                         <div className="buffer-block" style={{ height: "43px" }}></div>
@@ -109,7 +109,7 @@ export default class NavBar extends React.Component {
                         }} onClick={this.onNavbarMenuClick}></div>
                     </Link>
                     <nav id="sidebarMenu" className="collapse collapse bg-white show" style={{
-                        "z-index": "11",
+                        "z-index": "1031",
                         "position": "relative"
                         }}>
                         <div className="buffer-block" style={{ height: "43px" }}></div>

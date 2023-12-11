@@ -13,16 +13,14 @@ class TourDetail extends React.Component {
 
     render() {
         return (
-            <div className="tour-detail_wrapper" style={{display: "none"}}>
-                <div className="container-md">
-                    <h1 className="detail-header">Schedule</h1>
-                    <div className="row g-4">
-                        <div className="col col-md-3">
-                            <TourBriefSchedule dest={this.props.dest}></TourBriefSchedule>
-                        </div>
-                        <div className="col col-md-9 col-sm-12">
-                            <TourFullSchedule dest={this.props.dest}></TourFullSchedule>
-                        </div>
+            <div className="tour-detail_wrapper" style={{ display: "none" }}>
+                <h1 className="detail-header">Schedule</h1>
+                <div className="row g-4">
+                    <div className="brief-schedule col col-md-3">
+                        <TourBriefSchedule dest={this.props.dest}></TourBriefSchedule>
+                    </div>
+                    <div className="col col-md-9 col-sm-12 col-12">
+                        <TourFullSchedule dest={this.props.dest}></TourFullSchedule>
                     </div>
                 </div>
             </div>
