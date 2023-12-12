@@ -3,6 +3,7 @@ import { login } from './UserFunction.js'
 import { Link } from "react-router-dom"
 import "../../App.css"
 import "../dashboard/dashboard.js"
+import './login.css'
 
 export default class Login extends Component {
     constructor() {
@@ -34,7 +35,7 @@ export default class Login extends Component {
             const nav_items = body.querySelectorAll(".nav-item")
             for (let i = 0; i < nav_items.length; i++) {
                 nav_items[i].style.display = "none"
-            }   
+            }
             window.location.href = "/"
 
         })
@@ -42,14 +43,14 @@ export default class Login extends Component {
 
     render() {
         return (
-            <div className="auth-wrapper">
+            <div className="auth-wrapper-login">
                 <Link className="dashboard-link" to={"/"}>
                     <div className="black-layer" style={{
                         "z-index": "9",
                         display: "flex"
                     }}></div>
                 </Link>
-                <div className="auth-inner">
+                <div className="auth-inner-login">
                     <form onSubmit={this.onSubmit}>
                         <h3>Sign In</h3>
                         <div className="mb-3">
@@ -75,21 +76,11 @@ export default class Login extends Component {
                             />
                         </div>
                         <div className="d-grid">
-                            <button type="submit" className="btn btn-primary">Submit</button>
+                            <button type="submit" className="btn btn-primary">Login</button>
                         </div>
-                        <div className="mb-3">
-                            <div className="custom-control custom-checkbox">
-                                <input
-                                    type="checkbox"
-                                    className="custom-control-input"
-                                    id="customCheck1"
-                                />
-                                <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-                            </div>
-                        </div>
-                        {/* <p className="forgot-password text-right">
-                    Forgot <a href="#">password?</a>
-                </p> */}
+                        <p className="forgot-password text-right">
+                            Didn't <a href="sign-up"> Register?</a>
+                        </p>
                     </form>
                 </div>
             </div>

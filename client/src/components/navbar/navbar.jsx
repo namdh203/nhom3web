@@ -44,18 +44,26 @@ export default class NavBar extends React.Component {
 
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/recommendations/accom?page_num=1">Accommodations</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/recommendations/rest?page_num=1">Restaurants</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/recommendations/act?page_num=1">Activities</a>
-                            </li>
-                            <li class="nav-item right-border">
-                                <a class="nav-link" href="/recommendations/trans?page_num=1">Transportations</a>
-                            </li>
+                            <Link className="nav-link" to={"/recommendations/accom?page_num=1"}>
+                                <li class="nav-item">
+                                    Accommodations
+                                </li>
+                            </Link>
+                            <Link className="nav-link" to={"/recommendations/rest?page_num=1"}>
+                                <li class="nav-item">
+                                    Restaurants
+                                </li>
+                            </Link>
+                            <Link class="nav-link" to={"/recommendations/act?page_num=1"}>
+                                <li class="nav-item">
+                                    Activities
+                                </li>
+                            </Link>
+                            <Link class="nav-link" to={"/recommendations/trans?page_num=1"}>
+                                <li class="nav-item right-border">
+                                    Transportations
+                                </li>
+                            </Link>
                             {/* <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Dropdown link

@@ -1,4 +1,6 @@
 {
     "liveServer.settings.port": 5501,
-    "editor.inlineSuggest.showToolbar": "always"
+    "editor.inlineSuggest.showToolbar": "always",
+    "git.mergeEditor": true,
+    "merge-conflict.autoNavigateNextConflict.enabled": true
 }
