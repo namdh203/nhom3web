@@ -1,8 +1,8 @@
 ## How to run our app:
 Install Database:
 Run our script:\
-    - Open folder Database
-    - Run script from Travelam.sql file in local to create our database
+    - Open folder Database\
+    - Run script from Travelam.sql file in local to create our database\
 
 Install packages:
 
