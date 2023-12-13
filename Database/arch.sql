@@ -128,6 +128,7 @@ CREATE TABLE `payment` (
   `payDate` datetime NOT NULL,
   `amount` double NOT NULL,
   `currency` varchar(255) DEFAULT 'USD',
+  `description` MEDIUMTEXT DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE

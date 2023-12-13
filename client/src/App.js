@@ -12,6 +12,7 @@ import Accommodation from './components/site_info/accommodation/accom'
 import Restaurant from './components/site_info/restaurant/restaurant'
 import Activity from './components/site_info/activities/activity'
 import Payment from "./components/payment/payment"
+import PaymentStep1 from './components/payment/payment_steps/payment_step_1'
 
 function App() {
   // const [isLogin, setIsLogin] = useState(false)
@@ -23,7 +24,7 @@ function App() {
       <div className="App">
         <nav className="navbar navbar-expand-lg navbar-light fixed-top navbar-wrapper">
           <Link className="navbar-brand" to={'/'}>
-            <img  className="logo" src="https://i.imgur.com/qm46CNl.png" alt="logo" onClick={showDashBoard}/>
+            <img className="logo" src="https://i.imgur.com/qm46CNl.png" alt="logo" onClick={showDashBoard} />
           </Link>
           <SearchBar />
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -40,25 +41,34 @@ function App() {
             <Dashboard />
             <Login />
           </>} />
-          <Route path="/sign-up" element={<>ˀ
+          <Route path="/sign-up" element={<>
             <Dashboard />
             <SignUp />
-          </>}/>
-          <Route path="/tour" element={<TourInfo title="Bali Tour" banner="https://s3-hn-2.cloud.cmctelecom.vn/tapchicongthuong.vn/tcct-media/20/2/4/8.-den-uluwatu--.jpg"/>}/>
-          <Route path="/country" element={<CountryInfo name="Bali"/>}/>
+          </>} />
+          <Route path="/tour" element={<TourInfo title="Bali Tour" banner="https://s3-hn-2.cloud.cmctelecom.vn/tapchicongthuong.vn/tcct-media/20/2/4/8.-den-uluwatu--.jpg" />} />
+          <Route path="/country" element={<CountryInfo name="Bali" />} />
           <Route path="/accomodation/hotel" element={
             <Accommodation />
-          }/>
+          } />
           <Route path="/restaurant/res" element={
             <Restaurant />
-          }/>
+          } />
           <Route path="/activity/act" element={
             <Activity />
-          }/>
+          } />
           <Route path="/payment" element={
             <Payment />
-          }
-          />
+          }/>
+          <Route path="/payment/payment-step-1" element={
+            <div>
+              <Payment/>
+              <PaymentStep1></PaymentStep1>
+              
+            </div>
+          }/>
+          <Route path="/payment/step-2" element={
+            <Payment />
+          }/>
         </Routes>
         <div className="footer-wrapper">
           <Footer />
