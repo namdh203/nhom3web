@@ -126,7 +126,7 @@ export default class PaymentStep1 extends React.Component {
               <Title level={4}>
                 {totalCost} {currency}
                 <Paragraph className="text-nowrap p-0" type="secondary">
-                  Discount: {discount}%
+                  Discount: {totalCost * discount} $
                 </Paragraph>
               </Title>
               <button
