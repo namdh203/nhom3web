@@ -38,7 +38,7 @@ export default class PaymentStep1 extends React.Component {
           style={{
             top: "45vh",
             left: "50vw",
-            width: "25vw",
+            width: "40vw",
             height: "75vh",
             backgroundColor: "white",
             transform: "translate(-50%, -50%)",
@@ -55,13 +55,14 @@ export default class PaymentStep1 extends React.Component {
               className="row m-0"
               style={{ backgroundColor: "rgb(24, 214, 24)", height: "10%" }}
             >
-              <div className="col-4">
+              <div className="" style={{width: "100%", height: "100%"}}>
                 <img
                   className="my-2 mx-0"
                   src="https://i.imgur.com/qm46CNl.png"
                   style={{
-                    width: "100%",
-                    height: "65%",
+                    maxWidth: "100%",
+                    height: "70%",
+                    whiteSpace: "nowrap"
                   }}
                 />
               </div>
@@ -71,7 +72,7 @@ export default class PaymentStep1 extends React.Component {
               // Payment method information
             }
             <Content
-              className="m-2"
+              className="m-2 ms-4"
               style={{
                 height: "80%",
               }}

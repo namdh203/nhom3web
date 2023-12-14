@@ -18,6 +18,7 @@ import RcmAccom from "./components/recommend/rcmaccom/rcm-accom.jsx"
 import RcmRest from "./components/recommend/rcmrest/rcm-rest.jsx"
 import RcmAct from "./components/recommend/rcmact/rcm-act.jsx"
 import RcmTrans from "./components/recommend/rcmtrans/rcm-trans.jsx"
+import PaymentStep1 from "./components/payment/payment_steps/payment_step_1.jsx"
 
 function App() {
   // const [isLogin, setIsLogin] = useState(false)
@@ -65,6 +66,13 @@ function App() {
           <Route path="/recommendations/trans" element={
             <RcmTrans></RcmTrans>
           } />
+          <Route path="/payment/payment-step-1" element={
+            <div>
+              <Payment/>
+              <PaymentStep1></PaymentStep1>
+              
+            </div>
+          }/>
         </Routes>
         <div className="footer-wrapper">
           <Footer />

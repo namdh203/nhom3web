@@ -490,7 +490,6 @@ https://cf.bstatic.com/xdata/images/hotel/max1024x768/377920609.jpg?k=1e74443f92
 https://cf.bstatic.com/xdata/images/hotel/max1024x768/377901326.jpg?k=5738240e1b57395d858bf5d66c8d6d9431a4072a99e9e784c1a0e7c2df33782d&o=&hp=1,
 https://cf.bstatic.com/xdata/images/hotel/max1024x768/377920376.jpg?k=b9bf6488f6d70e670198fceee248f7bbb5b83f55173a0185e1fa0de9a913439c&o=&hp=1,
 https://cf.bstatic.com/xdata/images/hotel/max1024x768/377920318.jpg?k=a39298da3f6af268575eb0a46a0eb8101fad0488eda4eee751dfb08a5b19b8af&o=&hp=1,'
-'
 ),
 (
   25,

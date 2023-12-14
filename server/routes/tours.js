@@ -322,7 +322,7 @@ tours.post('/getrestlists', (req, res) => {
                 address: rest.address,
                 telephone: rest.telephone,
                 additionInfo: rest.additionInfo.split(", "),
-                demoImage: rest.demoImage.split(",\n")[0],
+                demoImage: rest.demoImage.split(",")[0],
             }));
 
             res.json(responseData)
@@ -347,7 +347,7 @@ tours.post('/getactlists', (req, res) => {
                 name: act.name,
                 type: act.type,
                 additionInfo: act.additionInfo.split(", "),
-                demoImage: act.demoImage.split(",\n")[0],
+                demoImage: act.demoImage.split(",")[0],
             }));
 
             res.json(responseData)

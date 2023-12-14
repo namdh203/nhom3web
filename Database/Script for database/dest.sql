@@ -1,1 +1,0 @@
-dest (destId, suggestedActivities)
