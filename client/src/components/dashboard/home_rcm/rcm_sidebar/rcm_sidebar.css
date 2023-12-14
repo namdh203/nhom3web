@@ -1,17 +1,24 @@
 .choice-active {
   color: rgb(1, 194, 1);
   font-style: italic;
-  padding-left: 20px;
+  /* padding-left: 20px; */
 }
 
 .sidebar-choice {
     font-size: 20px;
-    
 }
 
 .sidebar-choice:hover {
     color: lightsalmon;
-    padding-left: 10px
+    /* padding-left: 10px */
+}
+
+.nav-item.sidebar-mode {
+  padding: 0 0 !important;
+}
+
+.nav-item.sidebar-mode:hover {
+  background-color: rgba(0, 0, 0, 0);
 }
 
 /* 
@@ -32,6 +39,17 @@
 
 @media (min-width: 991.98px) {
   main {
+    padding-left: 200px;
+  }
+}
+
+
+@media (min-width: 991.98px) {
+  main {
     padding-left: 240px;
+  }
+
+  .home-rcm_sidebar {
+    display: block
   }
 }

@@ -12,28 +12,19 @@ import Accommodation from './components/site_info/accommodation/accom'
 import Restaurant from './components/site_info/restaurant/restaurant'
 import Activity from './components/site_info/activities/activity'
 import Payment from "./components/payment/payment"
-import PaymentStep1 from './components/payment/payment_steps/payment_step_1'
+import NavBar from './components/navbar/navbar'
+
+import RcmAccom from "./components/recommend/rcmaccom/rcm-accom.jsx"
+import RcmRest from "./components/recommend/rcmrest/rcm-rest.jsx"
+import RcmAct from "./components/recommend/rcmact/rcm-act.jsx"
+import RcmTrans from "./components/recommend/rcmtrans/rcm-trans.jsx"
 
 function App() {
   // const [isLogin, setIsLogin] = useState(false)
-  function showDashBoard() {
-    window.location.href = '/'
-  }
   return (
     <Router>
       <div className="App">
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top navbar-wrapper">
-          <Link className="navbar-brand" to={'/'}>
-            <img className="logo" src="https://i.imgur.com/qm46CNl.png" alt="logo" onClick={showDashBoard} />
-          </Link>
-          <SearchBar />
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item" style={{ display: "block" }}><Link className="nav-link" to={'/sign-in'}><i className="fa-solid fa-right-to-bracket sign-in-logo"></i></Link></li>
-              <li className="nav-item" style={{ display: "block" }}><Link className="nav-link" to={'/sign-up'}><i className="fa-solid fa-user-plus sign-up-logo"></i></Link></li>
-            </ul>
-          </div>
-        </nav>
+        <NavBar></NavBar>
         <div className="black-layer"></div>
         <Routes>
           <Route path="/" element={<Dashboard />} />
@@ -58,23 +49,28 @@ function App() {
           } />
           <Route path="/payment" element={
             <Payment />
-          }/>
-          <Route path="/payment/payment-step-1" element={
-            <div>
-              <Payment/>
-              <PaymentStep1></PaymentStep1>
-              
-            </div>
-          }/>
-          <Route path="/payment/step-2" element={
-            <Payment />
-          }/>
+          } />
+          <Route path="/recommendations/accom" element={
+            <RcmAccom></RcmAccom>
+          } />
+
+          <Route path="/recommendations/rest" element={
+            <RcmRest></RcmRest>
+          } />
+
+          <Route path="/recommendations/act" element={
+            <RcmAct></RcmAct>
+          } />
+
+          <Route path="/recommendations/trans" element={
+            <RcmTrans></RcmTrans>
+          } />
         </Routes>
         <div className="footer-wrapper">
           <Footer />
         </div>
       </div>
-    </Router>
+    </Router >
   )
 }
 export default App

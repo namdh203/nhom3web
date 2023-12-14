@@ -3,6 +3,7 @@ import { register } from './UserFunction.js'
 import { Link } from 'react-router-dom'
 import '../../App.css'
 import "../dashboard/dashboard.js"
+import './signup.css'
 
 export default class SignUp extends Component {
     constructor() {
@@ -41,15 +42,23 @@ export default class SignUp extends Component {
 
     render() {
         return (
-            <div className="auth-wrapper">
+
+            <div className="auth-wrapper-signup">
                 <Link className="dashboard-link" to={"/"}>
                     <div className="black-layer" style={{
                         "z-index": "9",
                         display: "flex"
                     }}></div>
                 </Link>
-                <div className="auth-inner">
-                    <form onSubmit={this.onSubmit}>
+                <div className="auth-inner-signup">
+                    <div className="image_signup">
+                        <img
+                            src="travel_signup.png"
+                            alt="Registration img"
+                            className="registration-image"
+                        />
+                    </div>
+                    <form onSubmit={this.onSubmit} className="signup-form">
                         <h3>Sign Up</h3>
 
                         <div className="mb-3">
@@ -98,7 +107,7 @@ export default class SignUp extends Component {
                         </div>
                         <div className="d-grid">
                             <button type="submit" className="btn btn-primary">
-                                Sign Up
+                                Create account
                             </button>
                         </div>
                         <p className="forgot-password text-right">

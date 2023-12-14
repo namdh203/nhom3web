@@ -89,6 +89,9 @@
 }
 
 .trans-choice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     border: solid 0.025px gray;
     border-radius: 50px;
@@ -168,8 +171,10 @@
 }
 
 .tour-dest_info.info > div {
-    text-align: left;
-    padding: 30px 0px 30px 40px;
+    text-align: center;
+    padding: 30px 20px 30px 20px;
+    /* align-items: center; */
+
 }
 
 .tour-dest_info.info > div > i {
@@ -195,7 +200,28 @@
     background-color: rgb(203, 250, 203);
 }
 
+.tour-addition_info {
+    text-align: center;
+}
+
 .tour-addition_info:hover {
     font-weight: 600;
     color:rgb(126, 126, 126)
+}
+
+@media screen and (max-width: 768px) {
+    .tour-dest_info.intro {
+        font-size: 12px;
+        text-align: justify;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .tour-dest_info.info>div>i {
+        font-size: 28px;
+    }
+
+    .tour-addition_info {
+        font-size: 15px;
+    }
 }

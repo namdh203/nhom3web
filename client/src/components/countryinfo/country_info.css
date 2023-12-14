@@ -151,3 +151,250 @@
     left: 0;
     transform: rotate(180deg);
 }
+
+@media screen and (max-width: 992px) {
+    .suggest-img {
+        border-radius: 10px 0 0 10px;
+        height: 100%;
+    }
+    
+    .sg-desc {
+        background-color: rgb(255, 245, 245);
+        padding: 10px;
+        border-radius: 0 10px 10px 0;
+    }
+
+    .sg-desc > h3 {
+        font-size: 24px;
+        margin: 0;
+    }
+    
+    .sg-interac {
+        background-color: rgb(101, 233, 101);
+        border-radius: 10px;
+        color: white;
+        text-align: center;
+        margin: 10px 10px 0 10px
+    }
+
+    .sg-interac > div > h3 {
+        font-size: 18px;
+    }
+
+    .sg-book, .sg-know {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .sg-book>h3, .sg-know>h3 {
+        margin: 0;
+        line-height: 24px;
+    }
+    
+    .sg-know {
+        border-right: 0.025px white solid
+    }
+    
+    .sg-know:hover {
+        cursor: pointer;
+        opacity: 0.7;
+    }
+    
+    .sg-book:hover {
+        cursor: pointer;
+        opacity: 0.4;
+    }
+
+    .sg-info > label {
+        font-weight: 600;
+        margin: 2.5px 0; 
+        font-size: 12px;
+        margin: 0;
+    }
+
+    .sg-info > span {
+        font-size: 12px
+    }
+
+    .sg-info > div > p {
+        font-size: 12px;
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+
+    .country-header {
+        text-align: left;
+        font-size: 18px;
+        font-weight: 600;
+        align-items: center;
+        margin-bottom: 0px;
+    }
+
+    .country-header_wrapper {
+        padding: 10px 30px 10px;
+        background-color: rgb(10, 55, 77);
+        color: white
+    }
+    
+    .country-header_wrapper>p {
+        text-align: left;
+        font-size: 12px;
+        font-weight: 400;
+        align-items: center;
+        margin-bottom: 0px;
+    }    
+
+    .country-banner_wrapper {
+        position: relative;
+        height: 350px;
+        /* margin-bottom: 30px; */
+    }
+    
+
+    .country-info_main {
+        padding: 0 50px;
+    }
+
+    .country-desc > p {
+        text-align: justify;
+        font-size: 16px;
+    }
+    
+    .country-addition {
+        font-size: 16px;
+    }
+
+    
+    .suggest-tour>h2, .country-desc>h2, .country-addition > h2 {
+        font-size: 24px;
+        font-weight: 400;
+    }
+    
+    .country-desc>.last {
+        margin-bottom: 0;
+    }
+    
+    .sg-desc {
+        background-color: rgb(255, 245, 245);
+        padding: 10px;
+        border-radius: 0 10px 10px 0;
+    }
+
+    .sg-desc > h3 {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .sg-interac > div > h3 {
+        font-size: 18px;
+    }
+    
+    .sg-book>h3, .sg-know>h3 {
+        margin: 0;
+        line-height: 24px;
+    }
+    
+
+    .sg-info > label {
+        font-weight: 600;
+        margin: 2.5px 0; 
+        font-size: 12px;
+        margin: 0;
+    }
+
+    .sg-info > span {
+        font-size: 12px
+    }
+
+    .sg-info > div > p {
+        font-size: 12px;
+    }
+    
+}
+
+@media screen and (max-width: 496px) {
+    .country-banner_wrapper {
+        position: relative;
+        height: 250px;
+        /* margin-bottom: 30px; */
+    }
+
+    .sg-desc > h3 {
+        font-size: 14px;
+        margin: 0;
+    }
+    
+    .sg-book>h3, .sg-know>h3 {
+        margin: 0;
+        line-height: 20px;
+    }
+    
+
+    .sg-info > label {
+        font-weight: 600;
+        margin: 2.5px 0; 
+        font-size: 10px;
+        margin: 0;
+    }
+
+    .sg-info > span {
+        font-size: 10px
+    }
+
+    .sg-info > div > p {
+        font-size: 10px;
+    }
+
+    .sg-interac > div > h3 {
+        font-size: 12px !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .country-banner_wrapper {
+        position: relative;
+        height: 250px;
+        /* margin-bottom: 30px; */
+    }
+
+    .sg-info.date {
+        display: none
+    }
+
+    .sg-desc > h3 {
+        font-size: 14px;
+        margin: 0;
+    }
+    
+
+    .suggest-card_wrapper {
+        margin-top: 20px
+    }
+
+    .sg-interac > div > h3 {
+        font-size: 14px;
+    }
+
+    .sg-know, .sg-book {
+        padding: 5px 10px
+    }
+
+    .sg-interac {
+        margin: 5px 5px 0 5px
+    }
+}
+
+@media screen and (max-width: 405px) {
+    .sg-interac > div > h3 {
+        font-size: 10px !important;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .sg-interac > div > h3 {
+        font-size: 8px !important;
+    }
+}

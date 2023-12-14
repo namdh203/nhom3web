@@ -17,66 +17,47 @@ export default class TourIntro extends React.Component {
         return (
             <div className="intro-wrapper" style={{ display: "block" }}>
                 <h1 className="tour-title">{this.props.tour.title}</h1>
-                <Carousel afterChange={onChange} style={{ width: "100%" }}>
+                <Carousel afterChange={onChange} style={{ width: "100%", height: "100%"}}>
                     <div className="tour-banner_wrapper">
                         <img src={this.props.tour.demoImage} className="img-fluid tour-banner" alt="Responsive" />
                     </div>
                 </Carousel>
-                <div className="main-info container-md">
-                    <div className="row gx-5" style={{ 'height': '100%' }}>
-                        <div className="main-info_item-wrapper col col-md-2 col-sm-6">
-                            <div className="main-info_item">
-                                <h3>Duration</h3>
-                                <p>{this.props.tour.duration} days</p>
-                            </div>
-                        </div>
-                        <div className="main-info_item-wrapper col col-md-2 col-sm-6">
-                            <div className="main-info_item">
-                                <h3>Prize</h3>
-                                <p>{this.props.tour.price} {this.props.tour.priceCurrency}</p>
-                            </div>
-                        </div>
-                        <div className="main-info_item-wrapper col col-md-2 col-sm-6">
-                            <div className="main-info_item">
-                                <h3>Start</h3>
-                                <p>{this.props.tour.startDate.slice(0, 10)}</p>
-                            </div>
-                        </div>
-                        <div className="main-info_item-wrapper col col-md-2 col-sm-6">
-                            <div className="main-info_item">
-                                <h3>End</h3>
-                                <p>{this.props.tour.endDate.slice(0, 10)}</p>
-                            </div>
-                        </div>
-                        <div className="main-info_item-wrapper col col-md-2 col-sm-6"></div>
 
-                        <div className="main-info_item-wrapper voting col col-md-2 col-sm-12">
-                            <div className="main-info_item voting">
-                                <h3>VOTING</h3>
-                                <div>
-                                    <i className="fa-regular fa-star"></i>
-                                    <i className="fa-regular fa-star"></i>
-                                    <i className="fa-solid fa-star"></i>
-                                    <i className="fa-solid fa-star"></i>
-                                    <i className="fa-solid fa-star"></i>
-                                    <i className="fa-solid fa-star"></i>
-                                    <i className="fa-solid fa-star"></i>
-                                    <i className="fa-solid fa-star"></i>
-                                    <i className="fa-solid fa-star"></i>
-                                    <i className="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
+                <div className="intro-info">
+                    <div className="short-info">
+                        <h3>Prize: </h3>
+                        <p>The prize of this tour is from <span style={{ color: "green", "font-weight": "bold" }}>{this.props.tour.price}</span> to <span style={{ color: "green", "font-weight": "bold" }}>{this.props.tour.price + 10}</span> {this.props.tour.priceCurrency}</p>
                     </div>
-                </div>
+                    <div className="short-info">
+                        <h3>Time: </h3>
+                        <p>This tour starts from <span style={{ color: "orange", "font-weight": "bold" }}>{this.props.tour.startDate.slice(0, 10)}</span> to <span style={{ color: "red", "font-weight": "bold" }}>{this.props.tour.endDate.slice(0, 10)}</span>. So you can arrange schedule that is suitable.</p>
+                    </div>
+
+                    <div className="short-info">
+                        <h3>VOTING</h3>
+                        <span style={{"padding-left": "20px"}}>
+                            <i className="fa-regular fa-star"></i>
+                            <i className="fa-regular fa-star"></i>
+                            <i className="fa-solid fa-star"></i>
+                            <i className="fa-solid fa-star"></i>
+                            <i className="fa-solid fa-star"></i>
+                            <i className="fa-solid fa-star"></i>
+                            <i className="fa-solid fa-star"></i>
+                            <i className="fa-solid fa-star"></i>
+                            <i className="fa-solid fa-star"></i>
+                            <i className="fa-solid fa-star"></i>
+                        </span> (3651/4564 rating)
+                    </div>
 
 
-                <div className="short-info">
-                    <h1 className="short-info_header">Special Info:</h1>
-                    <div className="special-about">
-                        {this.props.tour.additionInfo.map((info) => (
-                            <p><i class="fa-solid fa-check" style={{ color: "green" }}></i>        {info}</p>
-                        ))}
+
+                    <div className="short-info">
+                        <h3 className="short-info_header">Special Info:</h3>
+                        <div className="special-about">
+                            {this.props.tour.additionInfo.map((info) => (
+                                <p><i class="fa-solid fa-check" style={{ color: "green" }}></i>        {info}</p>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

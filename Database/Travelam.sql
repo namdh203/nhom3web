@@ -6,57 +6,55 @@ CREATE DATABASE IF NOT EXISTS Travelam;
 USE Travelam;
 
 -- Create the "Customer" table
-DROP TABLE IF EXISTS `Customer`;
-CREATE TABLE `Customer` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `cardNo` varchar(255) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `phoneNumber` varchar(255) DEFAULT NULL,
-  `email` varchar(255) NOT NULL,
-  `passport` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS customer;
+CREATE TABLE IF NOT EXISTS customer (
+  user_id INT NOT NULL,
+  name VARCHAR(255),
+  cardNo VARCHAR(16),
+  address VARCHAR(255),
+  phoneNumber VARCHAR(15),
+  email VARCHAR(255),
+  passport VARCHAR(15),
+  PRIMARY KEY (id)
+);
 
 -- Create the "Tour" table
-DROP TABLE IF EXISTS Tour;
-CREATE TABLE `Tour` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `duration` int NOT NULL,
-  `price` double NOT NULL,
-  `priceCurrency` varchar(255) DEFAULT 'USD',
-  `startDate` datetime NOT NULL,
-  `endDate` datetime NOT NULL,
-  `additionInfo` varchar(255) NOT NULL,
-  `demoImage` varchar(255) NOT NULL,
-  `voting` int NOT NULL,
-  `type` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS tour;
+CREATE TABLE IF NOT EXISTS tour (
+  id INT NOT NULL,
+  title VARCHAR(50),
+  description TEXT, -- Adjust the size to your needs
+  duration INT,
+  price DOUBLE,
+  priceCurrency VARCHAR(255), -- Adjust the size to your needs
+  startDate DATE,
+  endDate DATE,
+  additionInfo VARCHAR(255),
+  demoImage VARCHAR(255),
+  voting INT,
+  type VARCHAR(255),
+  PRIMARY KEY (id)
+);
 
--- Create the "Tour_dest" table
-DROP TABLE IF EXISTS Tour_dest;
-CREATE TABLE `Tour_dest` (
-  `tourID` int NOT NULL,
-  `destID` int NOT NULL,
-  PRIMARY KEY (`tour_id`,`dest_id`),
-  KEY `dest_id` (`dest_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- Create the "Tour_destinations" table
+DROP TABLE IF EXISTS tour_dest;
+CREATE TABLE IF NOT EXISTS tour_dest (
+  tour_id INT NOT NULL,
+  dest_id INT NOT NULL,
+  PRIMARY KEY (tour_id, dest_id)
+);
 
 -- Create the "Destination" table
-DROP TABLE IF EXISTS Destination;
-CREATE TABLE `Destination` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `countryID` int NOT NULL,
-  `description` text NOT NULL,
-  `additionInfo` varchar(255) NOT NULL,
-  `demoImage` varchar(255) DEFAULT '',
-  PRIMARY KEY (`id`),
-  KEY `countryID` (`countryID`),
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS destination;
+CREATE TABLE IF NOT EXISTS destination (
+  id INT NOT NULL,
+  name VARCHAR(255), -- Adjust the size to your needs
+  country_id INT NOT NULL,
+  description TEXT, -- Adjust the size to your needs
+  additionInfo VARCHAR(255),
+  demoImage VARCHAR(255),
+  PRIMARY KEY (id)
+);
 
 -- Create the "Accommodation" table
 DROP TABLE IF EXISTS accommodation;
@@ -65,9 +63,9 @@ CREATE TABLE IF NOT EXISTS accommodation (
   name VARCHAR(255), -- Adjust the size to your needs
   dest_id INT NOT NULL,
   pricePerNight DOUBLE,
-  priceCurrency VARCHAR(255), -- Adjust the size to your needs
-  address VARCHAR(255), -- Adjust the size to your needs
-  telephone VARCHAR(15), -- Adjust the size to your needs
+  priceCurrency VARCHAR(10), -- Adjust the size to your needs
+  address TEXT, -- Adjust the size to your needs
+  telephoneNo VARCHAR(15), -- Adjust the size to your needs
   contactEmail VARCHAR(255), -- Adjust the size to your needs
   description MEDIUMTEXT,
   additionalInfo TEXT,
@@ -122,16 +120,15 @@ CREATE TABLE IF NOT EXISTS user (
 );
 
 -- Create the "Country" table
-DROP TABLE IF EXISTS Country;
-CREATE TABLE `Country` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `countryName` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `additionInfo` varchar(255) NOT NULL,
-  `demoImage` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
+DROP TABLE IF EXISTS country;
+CREATE TABLE IF NOT EXISTS country (
+  id INT NOT NULL,
+  countryName VARCHAR(255), -- Adjust the size to your needs
+  description TEXT,
+  additionInfo VARCHAR(255),
+  demoImage VARCHAR(255),
+  PRIMARY KEY (id)
+);
 
 -- Create the "Restaurant" table
 DROP TABLE IF EXISTS restaurant;
@@ -206,45 +203,43 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `user`
+--
 
--- Add foreign keys to the tables
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'user','hieunguyen@gmail.com','$2b$10$EvggYuv1mY.ER6JkRyjc9uz3x0koF8gE.g7dzhYoyTzFbPBQUD.H.','2023-12-12 04:27:54'),(2,'admin','hieutrung@gmail.com','$2b$10$NuEBH9YqBvBvJ6B8z4bUOuffgStNEik2g9jWMy/99s8lOfeusxzUu','2023-12-12 04:31:13');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-ALTER TABLE `Tour_accommodation` ADD FOREIGN KEY (`tour_id`) REFERENCES `tour` (`id`);
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-ALTER TABLE `Tour_accommodation` ADD FOREIGN KEY (`accom_id`) REFERENCES `accommodation` (`id`);
+ALTER TABLE accommodation ADD CONSTRAINT `accommodation_ibfk_1` FOREIGN KEY (`destId`) REFERENCES `destination` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE activity ADD  CONSTRAINT `activity_ibfk_1` FOREIGN KEY (`destId`) REFERENCES `destination` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE customer ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE destination ADD CONSTRAINT `fk_orders_customers` FOREIGN KEY (`countryId`) REFERENCES `country` (`id`);
+ALTER TABLE payment ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE restaurant ADD CONSTRAINT `restaurant_ibfk_1` FOREIGN KEY (`destId`) REFERENCES `destination` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE tour_accom ADD CONSTRAINT `tour_accom_ibfk_1` FOREIGN KEY (`tourId`) REFERENCES `tour` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE tour_accom ADD CONSTRAINT `tour_accom_ibfk_2` FOREIGN KEY (`accomId`) REFERENCES `accommodation` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE tour_activity ADD CONSTRAINT `tour_activity_ibfk_1` FOREIGN KEY (`tourId`) REFERENCES `tour` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE tour_activity ADD CONSTRAINT `tour_activity_ibfk_2` FOREIGN KEY (`activityId`) REFERENCES `activity` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE tour_dest ADD CONSTRAINT `tour_dest_ibfk_1` FOREIGN KEY (`tour_id`) REFERENCES `tour` (`id`);
+ALTER TABLE tour_dest ADD CONSTRAINT `tour_dest_ibfk_2` FOREIGN KEY (`dest_id`) REFERENCES `destination` (`id`);
+ALTER TABLE tour_meal ADD CONSTRAINT `tour_meal_ibfk_1` FOREIGN KEY (`tourId`) REFERENCES `tour` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE tour_meal ADD CONSTRAINT `tour_meal_ibfk_2` FOREIGN KEY (`restId`) REFERENCES `restaurant` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE tour_trans ADD CONSTRAINT `tour_trans_ibfk_1` FOREIGN KEY (`tourId`) REFERENCES `tour` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE tour_trans ADD CONSTRAINT `tour_trans_ibfk_2` FOREIGN KEY (`transId`) REFERENCES `transportation` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
-ALTER TABLE `Tour_transportation` ADD FOREIGN KEY (`tourID`) REFERENCES `Tour` (`tourID`);
-
-ALTER TABLE `Tour_transportation` ADD FOREIGN KEY (`transID`) REFERENCES `Transportation` (`transID`);
-
-ALTER TABLE `Tour_meal` ADD FOREIGN KEY (`tourID`) REFERENCES `Tour` (`tourID`);
-
-ALTER TABLE `Tour_meal` ADD FOREIGN KEY (`restID`) REFERENCES `Restaurant` (`restID`);
-
-ALTER TABLE `Tour_dest` ADD FOREIGN KEY (`tourID`) REFERENCES `Tour` (`tourID`);
-
-ALTER TABLE `Tour_dest` ADD FOREIGN KEY (`destID`) REFERENCES `Destination` (`destID`);
-
-ALTER TABLE `Tour_activity` ADD FOREIGN KEY (`tourID`) REFERENCES `Tour` (`tourID`);
-
-ALTER TABLE `Tour_activity` ADD FOREIGN KEY (`activityID`) REFERENCES `Activity` (`activityID`);
-
-ALTER TABLE `Destination` ADD FOREIGN KEY (`countryID`) REFERENCES `Country` (`countryID`);
-
-ALTER TABLE `Activity` ADD FOREIGN KEY (`destID`) REFERENCES `Destination` (`destID`);
-
-ALTER TABLE `Payment` ADD FOREIGN KEY (`customerID`) REFERENCES `Customer` (`accountID`);
-
-ALTER TABLE `Payment` ADD FOREIGN KEY (`tourID`) REFERENCES `Tour` (`tourID`);
-
-ALTER TABLE `Customer` ADD FOREIGN KEY (`accountID`) REFERENCES `Account` (`accountID`);
-
-ALTER TABLE `Restaurant` ADD FOREIGN KEY (`destID`) REFERENCES `Destination` (`destID`);
-
-ALTER TABLE `Transportation` ADD FOREIGN KEY (`startDestID`) REFERENCES `Destination` (`destID`);
-
-ALTER TABLE `Transportation` ADD FOREIGN KEY (`endDestID`) REFERENCES `Destination` (`destID`);
-
-ALTER TABLE `Accommodation` ADD FOREIGN KEY (`destID`) REFERENCES `Destination` (`destID`);
+-- Dump completed on 2023-12-12 12:11:26

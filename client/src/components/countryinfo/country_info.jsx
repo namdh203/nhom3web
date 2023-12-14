@@ -81,7 +81,7 @@ export default class CountryInfo extends React.Component {
 
                     </div>
 
-                    <div className="container-md" style={{ "padding-bottom": "50px" }}>
+                    <div className="container-md country-info_main" style={{ "padding-bottom": "50px" }}>
                         <div className="country-desc">
                             <h2>Description</h2>
 

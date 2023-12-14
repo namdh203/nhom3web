@@ -40,7 +40,7 @@ export default function Accommodation(props) {
     ];
 
     useEffect(() => {
-        getAccomData(41).then(res => {
+        getAccomData(1).then(res => {
             setAccomData(res);
 
         }).catch(e => {

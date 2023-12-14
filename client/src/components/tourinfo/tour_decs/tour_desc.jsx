@@ -62,7 +62,7 @@ export default class TourDesc extends React.Component {
         }
 
         return (
-            <div className="tour-desc_wrapper container-md" style={{ display: "none" }}>
+            <div className="tour-desc_wrapper" style={{ display: "none" }}>
                 <div className="tour-desc">
                     <h1>Description</h1>
                     <p>{this.props.tour.description}</p>
@@ -74,10 +74,10 @@ export default class TourDesc extends React.Component {
                     <table className="tour-desc_options">
                         <thead>
                             <tr>
-                                <td>TOUR ID</td>
-                                <td>DURATION</td>
-                                <td>START DATE</td>
-                                <td>END DATE</td>
+                                <td style={{"font-weight": "bold"}}>TOUR ID</td>
+                                <td style={{"font-weight": "bold"}}>DURATION</td>
+                                <td style={{"font-weight": "bold"}}>START DATE</td>
+                                <td style={{"font-weight": "bold"}}>END DATE</td>
                             </tr>
                         </thead>
                         <tbody>

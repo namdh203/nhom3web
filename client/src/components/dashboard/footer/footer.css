@@ -65,7 +65,7 @@
 }
 
 .footer-social>h3 {
-    text-align: left;
+    text-align: center;
     margin-bottom: 5px;
 }
 
@@ -76,7 +76,10 @@
 
 .footer-category_1>a, .footer-social>a {
     margin-bottom: 6px;
-    text-align: left;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
     text-decoration: none;
 }

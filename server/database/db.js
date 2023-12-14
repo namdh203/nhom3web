@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize')
 const db = {}
+
+
 // Database: Travelam (testingdbuser for test)
 const sequelize = new Sequelize('Travelam', 'root', 'empty2003', {
   host: 'localhost',

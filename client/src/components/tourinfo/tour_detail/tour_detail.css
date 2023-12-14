@@ -1,5 +1,5 @@
 .tour-detail_wrapper {
-    padding: 0px 0 40px;
+    padding: 0px 100px 40px;
     background-color: rgb(238, 234, 234);
 }
 
@@ -12,17 +12,17 @@
     /* text-align: left; */
     font-size: 28px;
     line-height: 32px;
-    font-weight: 600;   
+    font-weight: 600;
     margin-bottom: 20px;
     /* border-bottom: solid 0.025px #333;  */
 }
 
 .schedule.full {
     /* background-color: red; */
-    padding-left: 40px; 
+
 }
 
-.tour-cost > h1 {
+.tour-cost>h1 {
     text-align: center;
 }
 
@@ -35,7 +35,7 @@
     user-select: none;
 }
 
-.tour-cost_full > h1 {
+.tour-cost_full>h1 {
     text-align: center;
     margin: 0;
     font-size: 28px;
@@ -47,6 +47,7 @@
 .tour-cost_full:hover {
     opacity: 0.5;
     cursor: pointer;
+
     h1 {
         color: white
     }
@@ -85,4 +86,49 @@
 .detail_demo>div>img {
     height: 60px;
     width: 100%;
+}
+
+.buffer-block.detail {
+    width: 50%;
+    height: 35px;
+    border-right: 0.025px solid gray;
+    display: block
+}
+
+@media screen and (max-width: 768px) {
+    .brief-schedule {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .tour-detail_wrapper {
+        padding: 0 50px 20px;
+    }
+
+    .buffer-block.detail {
+        height: 15px;
+    }
+    
+    .buffer-block.detail.brief {
+        height: 15px !important;
+    }
+
+    .trans-choice {
+        width: 25px !important;
+        height: 25px !important;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .tour-detail_wrapper {
+        padding: 0 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .tour-detail_wrapper {
+        padding: 0 10px;
+    }
 }

@@ -235,7 +235,7 @@ tours.post('/getspecifictour', (req, res) => {
 
 tours.post('/getdestdata', (req, res) => {
     const req_tour_id = req.body.id
-    console.log(req_tour_id)
+    // console.log(req_tour_id)
     Destination.findAll({
         attributes: ['id', 'name', 'description', 'additionInfo', 'demoImage'],
         include: [
@@ -276,6 +276,111 @@ tours.post('/getdestdata', (req, res) => {
         })
 })
 
+tours.post('/getaccomlists', (req, res) => {
+    const length = req.body.length;
+    // console.log("Length: ", length)
+    Accommodation.findAll({
+        attributes: ['name', 'pricePerNight', 'priceCurrency', 'address', 'telephone', 'contactEmail', 'additionInfo', 'demoImage'],
+        limit: length
+    }).then(accoms => {
+        
+        if (!accoms) {
+            console.log("No such accom found!");
+        } else {
+            const responseData = accoms.map(accom => ({
+                name: accom.name,
+                pricePerNight: accom.pricePerNight,
+                priceCurrency: accom.priceCurrency,
+                address: accom.address,
+                telephone: accom.telephone,
+                contactEmail: accom.contactEmail,
+                additionInfo: accom.additionInfo.split(", "),
+                demoImage: accom.demoImage.split(", ")[0],
+            }));
+
+            res.json(responseData)
+        }
+    }).catch (e => {
+        res.send("error: " + e);
+    })
+})
+
+
+tours.post('/getrestlists', (req, res) => {
+    const length = req.body.length;
+    // console.log("Length: ", length)
+    Restaurant.findAll({
+        attributes: ['name', 'address', 'telephone', 'additionInfo', 'demoImage'],
+        limit: length
+    }).then(rests => {
+        
+        if (!rests) {
+            console.log("No such rest found!");
+        } else {
+            const responseData = rests.map(rest => ({
+                name: rest.name,
+                address: rest.address,
+                telephone: rest.telephone,
+                additionInfo: rest.additionInfo.split(", "),
+                demoImage: rest.demoImage.split(",\n")[0],
+            }));
+
+            res.json(responseData)
+        }
+    }).catch (e => {
+        res.send("error: " + e);
+    })
+})
+
+tours.post('/getactlists', (req, res) => {
+    const length = req.body.length;
+    // console.log("Length: ", length)
+    Activity.findAll({
+        attributes: ['name', 'type', 'additionInfo', 'demoImage'],
+        limit: length
+    }).then(acts => {
+        
+        if (!acts) {
+            console.log("No such rest found!");
+        } else {
+            const responseData = acts.map(act => ({
+                name: act.name,
+                type: act.type,
+                additionInfo: act.additionInfo.split(", "),
+                demoImage: act.demoImage.split(",\n")[0],
+            }));
+
+            res.json(responseData)
+        }
+    }).catch (e => {
+        res.send("error: " + e);
+    })
+})
+
+
+tours.post('/gettranslists', (req, res) => {
+    const length = req.body.length;
+    // console.log("Length: ", length)
+    Transportation.findAll({
+        attributes: ['type', 'additionInfo', 'demoImage'],
+        limit: length
+    }).then(acts => {
+        
+        if (!acts) {
+            console.log("No such trans found!");
+        } else {
+            const responseData = acts.map(act => ({
+                type: act.type,
+                additionInfo: act.additionInfo.split(", "),
+                demoImage: act.demoImage,
+            }));
+
+            res.json(responseData)
+        }
+    }).catch (e => {
+        res.send("error: " + e);
+    })
+})
 
 
 

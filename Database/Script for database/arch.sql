@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
--- Host: localhost    Database: travelam
+-- Host: localhost    Database: travelhieu
 -- ------------------------------------------------------
 -- Server version	8.0.32
 
@@ -24,19 +24,20 @@ DROP TABLE IF EXISTS `accommodation`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `accommodation` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` int NOT NULL,
+  `name` varchar(255) NOT NULL,
   `destId` int NOT NULL,
   `pricePerNight` double NOT NULL,
   `priceCurrency` varchar(255) DEFAULT 'USD',
   `address` varchar(255) NOT NULL,
   `telephone` varchar(255) NOT NULL,
   `contactEmail` varchar(255) NOT NULL,
+  `description` text,
   `additionInfo` varchar(255) NOT NULL,
-  `demoImage` varchar(255) DEFAULT '',
+  `demoImage` text,
   PRIMARY KEY (`id`),
   KEY `destId` (`destId`),
   CONSTRAINT `accommodation_ibfk_1` FOREIGN KEY (`destId`) REFERENCES `destination` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,12 +52,13 @@ CREATE TABLE `activity` (
   `name` varchar(255) NOT NULL,
   `destId` int NOT NULL,
   `type` varchar(255) NOT NULL,
+  `description` text,
   `additionInfo` varchar(255) NOT NULL,
-  `demoImage` varchar(255) DEFAULT '',
+  `demoImage` text,
   PRIMARY KEY (`id`),
   KEY `destId` (`destId`),
   CONSTRAINT `activity_ibfk_1` FOREIGN KEY (`destId`) REFERENCES `destination` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,7 +75,7 @@ CREATE TABLE `country` (
   `additionInfo` varchar(255) NOT NULL,
   `demoImage` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,15 +86,16 @@ DROP TABLE IF EXISTS `customer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `customer` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `cardNo` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `phoneNumber` varchar(255) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `passport` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  PRIMARY KEY (`user_id`),
+  CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,13 +108,14 @@ DROP TABLE IF EXISTS `destination`;
 CREATE TABLE `destination` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `countryId` int NOT NULL,
+  `countryId` int DEFAULT NULL,
   `description` text NOT NULL,
   `additionInfo` varchar(255) NOT NULL,
   `demoImage` varchar(255) DEFAULT '',
   PRIMARY KEY (`id`),
-  KEY `countryId` (`countryId`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  KEY `country_id` (`countryId`),
+  CONSTRAINT `fk_orders_customers` FOREIGN KEY (`countryId`) REFERENCES `country` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,15 +127,15 @@ DROP TABLE IF EXISTS `payment`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `payment` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `userId` int NOT NULL,
-  `tourId` int NOT NULL,
+  `user_id` int NOT NULL,
+  `tour_id` int NOT NULL,
   `payDate` datetime NOT NULL,
   `amount` double NOT NULL,
   `currency` varchar(255) DEFAULT 'USD',
   PRIMARY KEY (`id`),
-  KEY `userId` (`userId`),
-  CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,12 +151,13 @@ CREATE TABLE `restaurant` (
   `destId` int NOT NULL,
   `address` varchar(255) NOT NULL,
   `telephone` varchar(255) NOT NULL,
+  `description` text NOT NULL,
   `additionInfo` varchar(255) NOT NULL,
-  `demoImage` varchar(255) DEFAULT '',
+  `demoImage` text,
   PRIMARY KEY (`id`),
   KEY `destId` (`destId`),
   CONSTRAINT `restaurant_ibfk_1` FOREIGN KEY (`destId`) REFERENCES `destination` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,7 +181,7 @@ CREATE TABLE `tour` (
   `voting` int NOT NULL,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=160 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=160 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,7 +199,7 @@ CREATE TABLE `tour_accom` (
   KEY `accomId` (`accomId`),
   CONSTRAINT `tour_accom_ibfk_1` FOREIGN KEY (`tourId`) REFERENCES `tour` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tour_accom_ibfk_2` FOREIGN KEY (`accomId`) REFERENCES `accommodation` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,7 +218,7 @@ CREATE TABLE `tour_activity` (
   KEY `activityId` (`activityId`),
   CONSTRAINT `tour_activity_ibfk_1` FOREIGN KEY (`tourId`) REFERENCES `tour` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tour_activity_ibfk_2` FOREIGN KEY (`activityId`) REFERENCES `activity` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,13 +229,13 @@ DROP TABLE IF EXISTS `tour_dest`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tour_dest` (
-  `tourId` int NOT NULL,
-  `destId` int NOT NULL,
-  PRIMARY KEY (`tourId`,`destId`),
-  KEY `destId` (`destId`),
-  CONSTRAINT `tour_dest_ibfk_1` FOREIGN KEY (`tourId`) REFERENCES `tour` (`id`),
-  CONSTRAINT `tour_dest_ibfk_2` FOREIGN KEY (`destId`) REFERENCES `destination` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `tour_id` int NOT NULL,
+  `dest_id` int NOT NULL,
+  PRIMARY KEY (`tour_id`,`dest_id`),
+  KEY `dest_id` (`dest_id`),
+  CONSTRAINT `tour_dest_ibfk_1` FOREIGN KEY (`tour_id`) REFERENCES `tour` (`id`),
+  CONSTRAINT `tour_dest_ibfk_2` FOREIGN KEY (`dest_id`) REFERENCES `destination` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -248,7 +253,7 @@ CREATE TABLE `tour_meal` (
   KEY `restId` (`restId`),
   CONSTRAINT `tour_meal_ibfk_1` FOREIGN KEY (`tourId`) REFERENCES `tour` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tour_meal_ibfk_2` FOREIGN KEY (`restId`) REFERENCES `restaurant` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -265,7 +270,7 @@ CREATE TABLE `tour_trans` (
   KEY `transId` (`transId`),
   CONSTRAINT `tour_trans_ibfk_1` FOREIGN KEY (`tourId`) REFERENCES `tour` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tour_trans_ibfk_2` FOREIGN KEY (`transId`) REFERENCES `transportation` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -291,7 +296,7 @@ CREATE TABLE `transportation` (
   KEY `endDestId` (`endDestId`),
   CONSTRAINT `transportation_ibfk_1` FOREIGN KEY (`startDestId`) REFERENCES `destination` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `transportation_ibfk_2` FOREIGN KEY (`endDestId`) REFERENCES `destination` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -308,7 +313,7 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -320,4 +325,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-23 18:12:15
+-- Dump completed on 2023-12-10 21:08:22
