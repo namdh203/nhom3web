@@ -38,6 +38,9 @@ app.use("/restaurant", Rest);
 const Activity = require("./routes/activities");
 app.use("/activity", Activity);
 
+const Dest = require("./routes/dests");
+app.use("/dest", Dest);
+
 app.listen(port, () => {
     console.log(`Server start on port ${port}`);
 })

@@ -18,7 +18,7 @@ const Accommodation = db.sequelize.define(
         destId: {
             type: Sequelize.INTEGER,
             allowNull: false,
-            reference: {
+            references: {
                 model: 'Destination',
                 key: 'id'
             }

@@ -17,12 +17,12 @@ export default class RcmAccomCard extends React.Component {
                                 {this.props.accom.name}
                             </h3>
                         </div>
-                        <p className="contact" style={{ "margin-top": "5px" }}><i class="fa-solid fa-location-dot"></i>        {this.props.accom.address}</p>
-                        <p className="contact"><i class="fa-solid fa-phone"></i>      {this.props.accom.telephone}</p>
-                        <p className="contact"><i class="fa-solid fa-envelope"></i>      {this.props.accom.contactEmail}</p>
+                        <p className="contact" style={{ "margin-top": "5px" }}><i className="fa-solid fa-location-dot"></i>        {this.props.accom.address}</p>
+                        <p className="contact"><i className="fa-solid fa-phone"></i>      {this.props.accom.telephone}</p>
+                        <p className="contact"><i className="fa-solid fa-envelope"></i>      {this.props.accom.contactEmail}</p>
                         {/* <div className="card-info_addition">
                         {this.props.accom.additionInfo.slice(0, 2).map(info => (
-                            <p><i class="fa-solid fa-check"></i> {info}</p>
+                            <p><i className="fa-solid fa-check"></i> {info}</p>
                         ))}
                         </div> */}
                         <div className="card-info_price">

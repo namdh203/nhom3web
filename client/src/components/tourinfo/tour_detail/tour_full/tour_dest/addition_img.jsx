@@ -20,7 +20,7 @@ export default class AddImg extends React.Component {
                     <img src={this.props.image} style={{'margin-top': '5px'}} className="img-fluid" alt="Responsive" /> */}
                 </div>
             }>
-                <p className="tour-addition_info">{this.props.scripts}</p>
+                <p className="tour-addition_info" style={{whiteSpace: "nowrap", "overflow": "hidden"} }>{this.props.scripts}</p>
             </Popover>
         )
     }
