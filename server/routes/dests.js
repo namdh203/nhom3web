@@ -121,7 +121,7 @@ dest.post('/restaurant', (req, res) => {
             // console.log('destAccoms:', destAccoms);
             const responseData = destRests.map(destRest => ({
                 destId: destRest.destId,
-                accomId: destRest.restId,
+                restId: destRest.restId,
                 name: destRest.restaurant.name,
                 demoImage: destRest.restaurant.demoImage.split(",")[0]
             }));
@@ -155,7 +155,7 @@ dest.post('/activity', (req, res) => {
             // console.log('destAccoms:', destAccoms);
             const responseData = destActs.map(destActs => ({
                 destId: destActs.destId,
-                accomId: destActs.activityId,
+                activityId: destActs.activityId,
                 name: destActs.activity.name,
                 demoImage: destActs.activity.demoImage.split(",")[0]
             }));

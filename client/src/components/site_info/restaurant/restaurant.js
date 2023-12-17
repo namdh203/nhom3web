@@ -21,6 +21,11 @@ const { Title, Paragraph } = Typography;
  * @returns {JSX.Element} - Rendered component displaying accommodation data.
  */
 export default function Restaurant(props) {
+    const currentURL = window.location.href;
+    const url = new URL(currentURL);
+
+    const restId = url.searchParams.get("id");
+
     // Initialize accomData with default value: null.
     const [restData, setRestData] = useState(null);
     let name = "";
@@ -37,7 +42,7 @@ export default function Restaurant(props) {
     ];
 
     useEffect(() => {
-        getRestData(5).then(res => {
+        getRestData(restId).then(res => {
             setRestData(res);
 
         }).catch(e => {

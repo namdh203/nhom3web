@@ -6,6 +6,10 @@ export default class RcmAccomCard extends React.Component {
         this.state = {}
     }
 
+    onclick = () => {
+        window.location.href = `/accommodation/hotel?id=${this.props.accom.id}`
+    }
+
     render() {
         return (
             <div className="rcm-main_card col col-6 col-sm-6 col-md-3">
@@ -30,7 +34,7 @@ export default class RcmAccomCard extends React.Component {
                                 <span>Price per night</span><br />
                                 <span className="price">{this.props.accom.pricePerNight} {this.props.accom.priceCurrency}</span>
                             </div>
-                            <div className="know-btn">
+                            <div className="know-btn" onClick={this.onclick}>
                                 <span>Know more</span>
                             </div>
                         </div>

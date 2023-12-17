@@ -43,7 +43,7 @@ class TourDestination extends React.Component {
           rests: restsRes,
           activity: activityRes,
         });
-        console.log(activityRes);
+        console.log(this.state.rests);
       }
     } catch (error) {
       console.error("An error occurred:", error);
@@ -109,6 +109,8 @@ class TourDestination extends React.Component {
                       scripts={this.state.accoms[0].name}
                       image={this.state.accoms[0].demoImage}
                       pos="leftTop"
+                      site="accommodation/hotel"
+                      id={this.state.accoms[0].accomId}
                     />
                   )}
                   {this.state.accoms[1] && (
@@ -116,6 +118,8 @@ class TourDestination extends React.Component {
                       scripts={this.state.accoms[1].name}
                       image={this.state.accoms[1].demoImage}
                       pos="leftTop"
+                      site="accommodation/hotel"
+                      id={this.state.accoms[1].accomId}
                     />
                   )}
                   {this.state.accoms[2] && (
@@ -123,6 +127,8 @@ class TourDestination extends React.Component {
                       scripts={this.state.accoms[2].name}
                       image={this.state.accoms[2].demoImage}
                       pos="leftTop"
+                      site="accommodation/hotel"
+                      id={this.state.accoms[2].accomId}
                     />
                   )}
                   {this.state.accoms[3] && (
@@ -130,6 +136,8 @@ class TourDestination extends React.Component {
                       scripts={this.state.accoms[3].name}
                       image={this.state.accoms[3].demoImage}
                       pos="leftTop"
+                      site="accommodation/hotel"
+                      id={this.state.accoms[3].accomId}
                     />
                   )}
                 </div>
@@ -142,6 +150,7 @@ class TourDestination extends React.Component {
                       scripts={this.state.trans[0].name}
                       image={this.state.trans[0].demoImage}
                       pos="leftTop"
+                      
                     />
                   )}
                   {this.state.trans[1] && (
@@ -175,6 +184,8 @@ class TourDestination extends React.Component {
                       scripts={this.state.rests[0].name}
                       image={this.state.rests[0].demoImage}
                       pos="leftTop"
+                      site="restaurant/res"
+                      id={this.state.rests[0].restId}
                     />
                   )}
                   {this.state.rests[1] && (
@@ -182,6 +193,8 @@ class TourDestination extends React.Component {
                       scripts={this.state.rests[1].name}
                       image={this.state.rests[1].demoImage}
                       pos="leftTop"
+                      site="restaurant/res"
+                      id={this.state.rests[1].restId}
                     />
                   )}
                   {this.state.rests[2] && (
@@ -189,6 +202,8 @@ class TourDestination extends React.Component {
                       scripts={this.state.rests[2].name}
                       image={this.state.rests[2].demoImage}
                       pos="leftTop"
+                      site="restaurant/res"
+                      id={this.state.rests[2].restId}
                     />
                   )}
                   {this.state.rests[3] && (
@@ -196,6 +211,8 @@ class TourDestination extends React.Component {
                       scripts={this.state.rests[3].name}
                       image={this.state.rests[3].demoImage}
                       pos="leftTop"
+                      site="restaurant/res"
+                      id={this.state.rests[3].restId}
                     />
                   )}
                 </div>
@@ -208,6 +225,8 @@ class TourDestination extends React.Component {
                       scripts={this.state.activity[0].name}
                       image={this.state.activity[0].demoImage}
                       pos="leftTop"
+                      site="activity/act"
+                      id={this.state.activity[0].activityId}
                     />
                   )}
                   {this.state.activity[1] && (
@@ -215,6 +234,8 @@ class TourDestination extends React.Component {
                       scripts={this.state.activity[1].name}
                       image={this.state.activity[1].demoImage}
                       pos="leftTop"
+                      site="activity/act"
+                      id={this.state.activity[1].activityId}
                     />
                   )}
                   {this.state.activity[2] && (
@@ -222,6 +243,8 @@ class TourDestination extends React.Component {
                       scripts={this.state.activity[2].name}
                       image={this.state.activity[2].demoImage}
                       pos="leftTop"
+                      site="activity/act"
+                      id={this.state.activity[2].activityId}
                     />
                   )}
                   {this.state.activity[3] && (
@@ -229,6 +252,8 @@ class TourDestination extends React.Component {
                       scripts={this.state.activity[3].name}
                       image={this.state.activity[3].demoImage}
                       pos="leftTop"
+                      site="activity/act"
+                      id={this.state.activity[3].activityId}
                     />
                   )}
                 </div>

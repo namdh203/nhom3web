@@ -30,7 +30,7 @@ const Tours = require("./routes/tours");
 app.use("/tours", Tours)
 
 const Accom = require("./routes/accommodations");
-app.use("/accomodation", Accom);
+app.use("/accommodation", Accom);
 
 const Rest = require("./routes/restaurants");
 app.use("/restaurant", Rest);

@@ -276,7 +276,7 @@ tours.post('/getaccomlists', (req, res) => {
     const length = req.body.length;
     // console.log("Length: ", length)
     Accommodation.findAll({
-        attributes: ['name', 'pricePerNight', 'priceCurrency', 'address', 'telephone', 'contactEmail', 'additionInfo', 'demoImage'],
+        attributes: ['id', 'name', 'pricePerNight', 'priceCurrency', 'address', 'telephone', 'contactEmail', 'additionInfo', 'demoImage'],
         limit: length
     }).then(accoms => {
         
@@ -284,6 +284,7 @@ tours.post('/getaccomlists', (req, res) => {
             console.log("No such accom found!");
         } else {
             const responseData = accoms.map(accom => ({
+                id: accom.id,
                 name: accom.name,
                 pricePerNight: accom.pricePerNight,
                 priceCurrency: accom.priceCurrency,
@@ -306,7 +307,7 @@ tours.post('/getrestlists', (req, res) => {
     const length = req.body.length;
     // console.log("Length: ", length)
     Restaurant.findAll({
-        attributes: ['name', 'address', 'telephone', 'additionInfo', 'demoImage'],
+        attributes: ['id', 'name', 'address', 'telephone', 'additionInfo', 'demoImage'],
         limit: length
     }).then(rests => {
         
@@ -314,6 +315,7 @@ tours.post('/getrestlists', (req, res) => {
             console.log("No such rest found!");
         } else {
             const responseData = rests.map(rest => ({
+                id: rest.id,
                 name: rest.name,
                 address: rest.address,
                 telephone: rest.telephone,
@@ -332,7 +334,7 @@ tours.post('/getactlists', (req, res) => {
     const length = req.body.length;
     // console.log("Length: ", length)
     Activity.findAll({
-        attributes: ['name', 'type', 'additionInfo', 'demoImage'],
+        attributes: ['id', 'name', 'type', 'additionInfo', 'demoImage'],
         limit: length
     }).then(acts => {
         
@@ -340,6 +342,7 @@ tours.post('/getactlists', (req, res) => {
             console.log("No such rest found!");
         } else {
             const responseData = acts.map(act => ({
+                id: act.id,
                 name: act.name,
                 type: act.type,
                 additionInfo: act.additionInfo.split(", "),
@@ -358,7 +361,7 @@ tours.post('/gettranslists', (req, res) => {
     const length = req.body.length;
     // console.log("Length: ", length)
     Transportation.findAll({
-        attributes: ['type', 'additionInfo', 'demoImage'],
+        attributes: ['id', 'type', 'additionInfo', 'demoImage'],
         limit: length
     }).then(acts => {
         
@@ -366,6 +369,7 @@ tours.post('/gettranslists', (req, res) => {
             console.log("No such trans found!");
         } else {
             const responseData = acts.map(act => ({
+                id: act.id,
                 type: act.type,
                 additionInfo: act.additionInfo.split(", "),
                 demoImage: act.demoImage,
