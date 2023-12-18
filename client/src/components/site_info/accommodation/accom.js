@@ -22,6 +22,11 @@ const { Title, Paragraph } = Typography;
  * @returns {JSX.Element} - Rendered component displaying accommodation data.
  */
 export default function Accommodation(props) {
+    const currentURL = window.location.href;
+    const url = new URL(currentURL);
+
+    const accomId = url.searchParams.get("id");
+
     // Initialize accomData with default value: null.
     const [accomData, setAccomData] = useState(null);
     let name = "";
@@ -40,7 +45,7 @@ export default function Accommodation(props) {
     ];
 
     useEffect(() => {
-        getAccomData(1).then(res => {
+        getAccomData(accomId).then(res => {
             setAccomData(res);
 
         }).catch(e => {

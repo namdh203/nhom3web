@@ -192,11 +192,11 @@ DROP TABLE IF EXISTS `dest_accom`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `dest_accom` (
-  `tourId` int NOT NULL,
+  `destId` int NOT NULL,
   `accomId` int NOT NULL,
-  PRIMARY KEY (`tourId`,`accomId`),
+  PRIMARY KEY (`destId`,`accomId`),
   KEY `accomId` (`accomId`),
-  CONSTRAINT `dest_accom_ibfk_1` FOREIGN KEY (`tourId`) REFERENCES `tour` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `dest_accom_ibfk_1` FOREIGN KEY (`destId`) REFERENCES `destination` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `dest_accom_ibfk_2` FOREIGN KEY (`accomId`) REFERENCES `accommodation` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -209,11 +209,11 @@ DROP TABLE IF EXISTS `dest_activity`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `dest_activity` (
-  `tourId` int NOT NULL,
+  `destId` int NOT NULL,
   `activityId` int NOT NULL,
-  PRIMARY KEY (`tourId`,`activityId`),
+  PRIMARY KEY (`destId`,`activityId`),
   KEY `activityId` (`activityId`),
-  CONSTRAINT `dest_activity_ibfk_1` FOREIGN KEY (`tourId`) REFERENCES `tour` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `dest_activity_ibfk_1` FOREIGN KEY (`destId`) REFERENCES `destination` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `dest_activity_ibfk_2` FOREIGN KEY (`activityId`) REFERENCES `activity` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -228,9 +228,9 @@ DROP TABLE IF EXISTS `tour_dest`;
 CREATE TABLE `tour_dest` (
   `tourId` int NOT NULL,
   `destId` int NOT NULL,
-  PRIMARY KEY (`tourId`,`destId`),
+  PRIMARY KEY (`destId`,`destId`),
   KEY `destId` (`destId`),
-  CONSTRAINT `tour_dest_ibfk_1` FOREIGN KEY (`tourId`) REFERENCES `tour` (`id`),
+  CONSTRAINT `tour_dest_ibfk_1` FOREIGN KEY (`destId`) REFERENCES `tour` (`id`),
   CONSTRAINT `tour_dest_ibfk_2` FOREIGN KEY (`destId`) REFERENCES `destination` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -243,11 +243,11 @@ DROP TABLE IF EXISTS `dest_restaurant`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `dest_restaurant` (
-  `tourId` int NOT NULL,
+  `destId` int NOT NULL,
   `restId` int NOT NULL,
-  PRIMARY KEY (`tourId`,`restId`),
+  PRIMARY KEY (`destId`,`restId`),
   KEY `restId` (`restId`),
-  CONSTRAINT `dest_restaurant_ibfk_1` FOREIGN KEY (`tourId`) REFERENCES `tour` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `dest_restaurant_ibfk_1` FOREIGN KEY (`destId`) REFERENCES `destination` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `dest_restaurant_ibfk_2` FOREIGN KEY (`restId`) REFERENCES `restaurant` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -260,11 +260,11 @@ DROP TABLE IF EXISTS `dest_trans`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `dest_trans` (
-  `tourId` int NOT NULL,
+  `destId` int NOT NULL,
   `transId` int NOT NULL,
-  PRIMARY KEY (`tourId`,`transId`),
+  PRIMARY KEY (`destId`,`transId`),
   KEY `transId` (`transId`),
-  CONSTRAINT `dest_trans_ibfk_1` FOREIGN KEY (`tourId`) REFERENCES `tour` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `dest_trans_ibfk_1` FOREIGN KEY (`destId`) REFERENCES `destination` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `dest_trans_ibfk_2` FOREIGN KEY (`transId`) REFERENCES `transportation` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

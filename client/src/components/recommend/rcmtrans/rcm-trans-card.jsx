@@ -17,12 +17,12 @@ export default class RcmTransCard extends React.Component {
                                 {this.props.trans.type}
                             </h3>
                         </div>
-                        {/* <p className="contact" style={{ "margin-top": "5px" }}><i class="fa-solid fa-heart-pulse"></i>        {this.props.act.type}</p> */}
-                        {/* <p className="contact"><i class="fa-solid fa-phone"></i>      {this.props.act.telephone}</p>
-                        <p className="contact"><i class="fa-solid fa-envelope"></i>      {this.props.act.contactEmail}</p> */}
+                        {/* <p className="contact" style={{ "margin-top": "5px" }}><i className="fa-solid fa-heart-pulse"></i>        {this.props.act.type}</p> */}
+                        {/* <p className="contact"><i className="fa-solid fa-phone"></i>      {this.props.act.telephone}</p>
+                        <p className="contact"><i className="fa-solid fa-envelope"></i>      {this.props.act.contactEmail}</p> */}
                         <div className="card-info_addition">
                         {this.props.trans.additionInfo.slice(0, 5).map(info => (
-                            <p><i class="fa-solid fa-check"></i> {info}</p>
+                            <p><i className="fa-solid fa-check"></i> {info}</p>
                         ))}
                         </div>
                         <div className="card-info_price">

@@ -5,7 +5,6 @@ import Login from './components/users/login'
 import SignUp from './components/users/signup'
 import Dashboard from './components/dashboard/dashboard'
 import Footer from './components/dashboard/footer/footer'
-import SearchBar from './components/dashboard/search_bar/search-bar'
 import TourInfo from './components/tourinfo/tour_info'
 import CountryInfo from './components/countryinfo/country_info'
 import Accommodation from './components/site_info/accommodation/accom'
@@ -39,7 +38,7 @@ function App() {
           </>} />
           <Route path="/tour" element={<TourInfo title="Bali Tour" banner="https://s3-hn-2.cloud.cmctelecom.vn/tapchicongthuong.vn/tcct-media/20/2/4/8.-den-uluwatu--.jpg" />} />
           <Route path="/country" element={<CountryInfo name="Bali" />} />
-          <Route path="/accomodation/hotel" element={
+          <Route path="/accommodation/hotel" element={
             <Accommodation />
           } />
           <Route path="/restaurant/res" element={
@@ -68,11 +67,11 @@ function App() {
           } />
           <Route path="/payment/payment-step-1" element={
             <div>
-              <Payment/>
+              <Payment />
               <PaymentStep1></PaymentStep1>
-              
+
             </div>
-          }/>
+          } />
         </Routes>
         <div className="footer-wrapper">
           <Footer />

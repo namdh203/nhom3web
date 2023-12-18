@@ -44,16 +44,16 @@ export default function Footer() {
                     <div className="col col-md-2 col-sm-12 col-12 footer-social">
                         <h3>Social</h3>
                         <a href="#">
-                            <p><i class="fa-brands fa-facebook"></i> Facebook</p>
+                            <p><i className="fa-brands fa-facebook"></i> Facebook</p>
                         </a>
                         <a href="#">
-                            <p><i class="fa-brands fa-instagram"></i> Instagram</p>
+                            <p><i className="fa-brands fa-instagram"></i> Instagram</p>
                         </a>
                         <a href="#">
-                            <p><i class="fa-brands fa-tiktok"></i> Tiktok</p>
+                            <p><i className="fa-brands fa-tiktok"></i> Tiktok</p>
                         </a>
                         <a href="#">
-                            <p><i class="fa-brands fa-youtube"></i> Youtube</p>
+                            <p><i className="fa-brands fa-youtube"></i> Youtube</p>
                         </a>
                     </div>
                 </div>
@@ -64,10 +64,10 @@ export default function Footer() {
             </div> */}
             <div className="footer-icon">
                 <div className="footer-icon_wrapper">
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="#" style={{ "margin-right": "20px" }}><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i className="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i className="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i className="fa-brands fa-tiktok"></i></a>
+                    <a href="#" style={{ "marginRight": "20px" }}><i className="fa-brands fa-youtube"></i></a>
                 </div>
             </div>
             <div className="footer-admin">

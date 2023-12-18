@@ -30,48 +30,48 @@ export default class NavBar extends React.Component {
     render() {
         return (
             <div className="fixed-top">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top navbar-wrapper">
+                <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top navbar-wrapper">
                     <div className="category-menu hidden" onClick={this.onCategoryClick}>
-                        <i class="fa-solid fa-bars"></i>
+                        <i className="fa-solid fa-bars"></i>
                     </div>
                     <Link className="navbar-brand" to={'/'}>
                         <img className="logo" src="https://i.imgur.com/qm46CNl.png" alt="logo" onClick={this.showDashBoard} />
                     </Link>
 
                     <div className="navbar-menu hidden" onClick={this.onNavbarMenuClick}>
-                        <i class="fa-solid fa-ellipsis"></i>
+                        <i className="fa-solid fa-ellipsis"></i>
                     </div>
 
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav">
+                    <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul className="navbar-nav">
                             <Link className="nav-link" to={"/recommendations/accom?page_num=1"}>
-                                <li class="nav-item">
+                                <li className="nav-item">
                                     Accommodations
                                 </li>
                             </Link>
                             <Link className="nav-link" to={"/recommendations/rest?page_num=1"}>
-                                <li class="nav-item">
+                                <li className="nav-item">
                                     Restaurants
                                 </li>
                             </Link>
-                            <Link class="nav-link" to={"/recommendations/act?page_num=1"}>
-                                <li class="nav-item">
+                            <Link className="nav-link" to={"/recommendations/act?page_num=1"}>
+                                <li className="nav-item">
                                     Activities
                                 </li>
                             </Link>
-                            <Link class="nav-link" to={"/recommendations/trans?page_num=1"}>
-                                <li class="nav-item right-border">
+                            <Link className="nav-link" to={"/recommendations/trans?page_num=1"}>
+                                <li className="nav-item right-border">
                                     Transportations
                                 </li>
                             </Link>
-                            {/* <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {/* <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Dropdown link
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                            <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a className="dropdown-item" href="#">Action</a>
+                                <a className="dropdown-item" href="#">Another action</a>
+                                <a className="dropdown-item" href="#">Something else here</a>
                             </div>
                         </li> */}
                             <div className="log-part">
@@ -83,25 +83,25 @@ export default class NavBar extends React.Component {
                 </nav>
                 <div className={`category-menu_wrapper  ${this.state.showCategory % 2 ? "show" : "hidden"}`}>
                     <div className="black-layer" style={{
-                        "z-index": "9",
+                        "zIndex": "9",
                         display: "flex"
                     }} onClick={this.onCategoryClick}></div>
 
                     <nav id="sidebarMenu" className="collapse collapse bg-white show" style={{
-                        "z-index": "1029",
+                        "zIndex": "1029",
                         "position": "relative"
                     }}>
                         <div className="buffer-block" style={{ height: "43px" }}></div>
                         <div className="position-sticky">
                             <div className="list-group list-group-flush mx-3 mt-4">
                                 <a href="/?type=destination&id=0" className="list-group-item list-group-item-action py-2 ripple"
-                                ><i class="fa-solid fa-location-dot"></i><span>                 Destinations</span></a>
+                                ><i className="fa-solid fa-location-dot"></i><span>                 Destinations</span></a>
                                 <a href="/?type=family&id=1" className="list-group-item list-group-item-action py-2 ripple"
-                                ><i class="fa-solid fa-people-roof"></i><span>                 Family</span></a>
-                                <a href="/?type=honey moon&id=2" class="list-group-item list-group-item-action py-2 ripple"
-                                ><i class="fa-solid fa-heart"></i><span>                 Honey moon</span></a>
+                                ><i className="fa-solid fa-people-roof"></i><span>                 Family</span></a>
+                                <a href="/?type=honey moon&id=2" className="list-group-item list-group-item-action py-2 ripple"
+                                ><i className="fa-solid fa-heart"></i><span>                 Honey moon</span></a>
                                 <a href="/?type=adventure&id=3" className="list-group-item list-group-item-action py-2 ripple"
-                                ><i class="fa-brands fa-space-awesome"></i><span>                 Adventure</span></a>
+                                ><i className="fa-brands fa-space-awesome"></i><span>                 Adventure</span></a>
                             </div>
                         </div>
                         <div className="buffer-block" style={{ height: "12px" }}></div>
@@ -110,24 +110,24 @@ export default class NavBar extends React.Component {
                 </div>
                 <div className={`navbar-menu_wrapper  ${this.state.showNavbarMenu % 2 ? "show" : "hidden"}`}>
                     <div className="black-layer" style={{
-                        "z-index": "9",
+                        "zIndex": "9",
                         display: "flex"
                     }} onClick={this.onNavbarMenuClick}></div>
                     <nav id="sidebarMenu" className="collapse collapse bg-white show" style={{
-                        "z-index": "1029",
+                        "zIndex": "1029",
                         "position": "relative"
                     }}>
                         <div className="buffer-block" style={{ height: "43px" }}></div>
                         <div className="position-sticky">
                             <div className="list-group list-group-flush mx-3 mt-4">
                                 <a href="/recommendations/accom?page_num=1" className="list-group-item list-group-item-action py-2 ripple"
-                                ><i class="fa-solid fa-hotel"></i><span>                 Accommodations</span></a>
+                                ><i className="fa-solid fa-hotel"></i><span>                 Accommodations</span></a>
                                 <a href="/recommendations/rest?page_num=1" className="list-group-item list-group-item-action py-2 ripple"
-                                ><i class="fa-solid fa-utensils"></i><span>                 Restaurants</span></a>
-                                <a href="/recommendations/act?page_num=1" class="list-group-item list-group-item-action py-2 ripple"
-                                ><i class="fa-solid fa-chart-line"></i><span>                 Activities</span></a>
+                                ><i className="fa-solid fa-utensils"></i><span>                 Restaurants</span></a>
+                                <a href="/recommendations/act?page_num=1" className="list-group-item list-group-item-action py-2 ripple"
+                                ><i className="fa-solid fa-chart-line"></i><span>                 Activities</span></a>
                                 <a href="/recommendations/trans?page_num=1" className="list-group-item list-group-item-action py-2 ripple"
-                                ><i class="fa-solid fa-car-side"></i><span>                 Transportations</span></a>
+                                ><i className="fa-solid fa-car-side"></i><span>                 Transportations</span></a>
                                 <a href="/sign-in" className="list-group-item list-group-item-action py-2 ripple"
                                 ><i className="fa-solid fa-right-to-bracket"></i><span>                 Login</span></a>
                                 <a href="/sign-up" className="list-group-item list-group-item-action py-2 ripple"

@@ -90,7 +90,7 @@ export default class CountryInfo extends React.Component {
                         <div className="country-addition">
                             <h2>Addition Info</h2>
                             {this.state.countryData.additionInfo.slice(0, 4).map((info) => (
-                                <p><i class="fa-solid fa-check"></i>        {info}</p>
+                                <p><i className="fa-solid fa-check"></i>        {info}</p>
                             ))}
                         </div>
                         <div className="suggest-tour row">
