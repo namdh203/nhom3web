@@ -3,7 +3,7 @@ const db = {}
 
 
 // Database: Travelam (testingdbuser for test)
-const sequelize = new Sequelize('Travelam', 'root', 'empty2003', {
+const sequelize = new Sequelize('travelgiang', 'root', '@Ttg123456', {
   host: 'localhost',
   dialect: 'mysql',
 
