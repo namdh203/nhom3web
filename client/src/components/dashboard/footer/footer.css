@@ -31,7 +31,7 @@
 
 
 .footer-icon_wrapper>a {
-    font-size: 24px;
+    font-size: 20px;
     margin-right: 20px;
     color: white;
     text-decoration: none;
@@ -49,14 +49,12 @@
 .footer-wrapper {
     background-color: black;
     color: white;
-    padding: 10px 0 10px;
+    padding: 20px 0 20px;
 }
 
 .footer-logo {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 .footer-logo_img {
@@ -64,27 +62,45 @@
     width: 100%
 }
 
-.footer-social>h3 {
-    text-align: center;
-    margin-bottom: 5px;
+.footer-social>h3, .footer-contact>h3, .footer-category>h3 {
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 24px;
 }
 
-.footer-category>h3 {
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.footer-category_1>a, .footer-social>a {
-    margin-bottom: 6px;
-    text-align: center;
+.footer-category_1>a, .footer-social>a, .footer-contact>a {
+    margin-bottom: 10px;
+    text-align: left;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+    justify-content: left;
     color: white;
     text-decoration: none;
+    font-size: 16px;
+
 }
+
 
 .footer-admin > p {
     text-align: center;
     margin: 0;
+}
+
+.footer-category>form {
+    border: none;
+    background-color: none;
+    color: white;
+    border-collapse: collapse;
+}
+
+.form-contact_btn {
+    width: 100px;
+    border: 0.025px solid #ffffff;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.form-contact_btn:hover {
+    background-color: #333;
+    color: #000;
 }
