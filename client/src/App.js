@@ -19,6 +19,8 @@ import RcmRest from "./components/recommend/rcmrest/rcm-rest.jsx"
 import RcmAct from "./components/recommend/rcmact/rcm-act.jsx"
 import RcmTrans from "./components/recommend/rcmtrans/rcm-trans.jsx"
 
+import AdminDashboard from "./components/admin/dashboard.js"
+
 function App() {
   // const [isLogin, setIsLogin] = useState(false)
   return (
@@ -27,6 +29,7 @@ function App() {
         <NavBar></NavBar>
         <div className="black-layer"></div>
         <Routes>
+          <Route path="/admin/*" element={<AdminDashboard />} />
           <Route path="/" element={<Dashboard />} />
           <Route path="/sign-in" element={<>
             <Dashboard />
