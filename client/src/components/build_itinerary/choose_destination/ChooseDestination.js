@@ -4,6 +4,12 @@ import { useState } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import "./ChooseDestination.css";
+
+import { useState } from "react";
+import axios from "axios";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 export default function ChooseDestination() {
   const [searchText, setSearchText] = useState("");
