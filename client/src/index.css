@@ -125,3 +125,8 @@ html,
 .pb-40px {
   padding-bottom: 40px;
 }
+
+
+.buffer-block-horizon {
+  width: 800px;
+}

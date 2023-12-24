@@ -1,5 +1,5 @@
-import React from 'react';
-import "./footer.css"
+import React from "react";
+import "./footer.css";
 
 export default function Footer() {
     return (
@@ -54,7 +54,7 @@ export default function Footer() {
                     </div>
                     <div className="col col-md-5 col-sm-12 col-12 footer-contact">
                         <h3>CONTACT US</h3>
-                        <form>
+                        <form id="contact-us">
                             <div className="mb-3">
                                 <input
                                     type="email"

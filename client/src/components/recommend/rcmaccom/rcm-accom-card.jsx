@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export default class RcmAccomCard extends React.Component {
     constructor(props) {
@@ -26,6 +26,7 @@ export default class RcmAccomCard extends React.Component {
                         <p className="contact"><i className="fa-solid fa-envelope"></i>      {this.props.accom.contactEmail}</p>
                         {/* <div className="card-info_addition">
                         {this.props.accom.additionInfo.slice(0, 2).map(info => (
+                            <p><i className="fa-solid fa-check"></i> {info}</p>
                             <p><i className="fa-solid fa-check"></i> {info}</p>
                         ))}
                         </div> */}

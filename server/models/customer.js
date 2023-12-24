@@ -38,6 +38,9 @@ const Customer = db.sequelize.define(
         passport: {
             type: Sequelize.STRING,
             allowNull: true
+        },
+        avatar: {
+            type: Sequelize.TEXT
         }
     },
     {

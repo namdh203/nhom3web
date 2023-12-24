@@ -29,6 +29,8 @@ export default class Login extends Component {
             password: this.state.password
         }
 
+        const user_json = JSON.stringify(user)
+
         login(user).then(res => {
             console.log(res)
             const body = document.body
@@ -37,7 +39,7 @@ export default class Login extends Component {
                 nav_items[i].style.display = "none"
             }
             window.location.href = "/"
-
+            localStorage.setItem(user.email, user_json)
         })
     }
 
