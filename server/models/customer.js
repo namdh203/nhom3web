@@ -6,7 +6,7 @@ const User = require('../models/user.js')
 const Customer = db.sequelize.define(
     'customer',
     {
-        user_id: {
+        userId: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             primaryKey: true,
@@ -38,6 +38,9 @@ const Customer = db.sequelize.define(
         passport: {
             type: Sequelize.STRING,
             allowNull: true
+        },
+        avatar: {
+            type: Sequelize.TEXT
         }
     },
     {

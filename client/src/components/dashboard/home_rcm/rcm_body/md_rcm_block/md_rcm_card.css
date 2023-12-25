@@ -71,3 +71,7 @@
 .mdrcm-card_inter {
     margin-top: 20px;
 }
+
+.last-block {
+    border-bottom: none;
+}

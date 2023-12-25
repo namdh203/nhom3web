@@ -11,38 +11,6 @@ const Transportation = db.sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
-        // startDestId: {
-        //     type: Sequelize.INTEGER,
-        //     allowNull: false,
-        //     reference: {
-        //         model: 'Destination',
-        //         key: 'id'
-        //     }
-        // },
-        // endDestId: {
-        //     type: Sequelize.INTEGER,
-        //     allowNull: false,
-        //     reference: {
-        //         model: 'Destination',
-        //         key: 'id'
-        //     }
-        // },
-        // startTime: {
-        //     type: Sequelize.DATE,
-        //     allowNull: false
-        // },
-        // endTime: {
-        //     type: Sequelize.DATE,
-        //     allowNull: false
-        // },
-        // price: {
-        //     type: Sequelize.DOUBLE,
-        //     allowNull: false
-        // },
-        // priceCurrency: {
-        //     type: Sequelize.STRING,
-        //     defaultValue: "USD"
-        // },
         type: {
             type: Sequelize.STRING,
             allowNull: false

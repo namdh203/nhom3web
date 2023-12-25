@@ -30,7 +30,7 @@ export default class MdRcmBlock extends React.Component {
         }
 
         return (
-            <div className="rcm-block">
+            <div className="rcm-block last-block">
                 <div className="container-md">
                     <div className="row g-5">
                         {this.state.tourData.slice(0, 2).map((tour) => (

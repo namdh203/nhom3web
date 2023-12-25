@@ -167,11 +167,11 @@
 }
 
 .tour-dest_info.intro>div>img:hover {
-    scale: 1.05
+    scale: 0.8
 }
 
 .tour-dest_info.info > div {
-    text-align: center;
+    text-align: left;
     padding: 30px 20px 30px 20px;
     /* align-items: center; */
 
@@ -201,7 +201,8 @@
 }
 
 .tour-addition_info {
-    text-align: center;
+    text-align: left;
+    font-size: 12px;
 }
 
 .tour-addition_info:hover {

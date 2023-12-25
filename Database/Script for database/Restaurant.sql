@@ -1,4 +1,5 @@
 INSERT INTO `restaurant` (
+  `id`,
     `name`,
     `destId`,
     `address`,

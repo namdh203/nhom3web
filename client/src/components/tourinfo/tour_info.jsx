@@ -37,7 +37,7 @@ export default class TourInfo extends React.Component {
             if (!res) {
                 console.log("Get dest id failed")
             } else {
-                console.log(res)
+                // console.log(res)
                 this.setState({'destData': res})
             }
         })
@@ -50,8 +50,8 @@ export default class TourInfo extends React.Component {
         }
 
         return (
-            <div className="tour-info_wrapper" style={{ "background-color": "rgb(238, 234, 234)", "padding-bottom": "40px" }}>
-                <div className="buffer-block" style={{ "background-color": "rgb(238, 234, 234)" }}></div>
+            <div className="tour-info_wrapper" style={{ "backgroundColor": "rgb(238, 234, 234)", "paddingBottom": "40px" }}>
+                <div className="buffer-block" style={{ "backgroundColor": "rgb(238, 234, 234)" }}></div>
                 <SubNav></SubNav>
                 <TourIntro tour={this.state.tourData}/>
                 <TourDesc tour={this.state.tourData}></TourDesc>

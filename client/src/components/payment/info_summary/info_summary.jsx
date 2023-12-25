@@ -22,8 +22,8 @@ export default class TourSummary extends React.Component {
     const { tourName, description, startDate, totalCost, currency } =
       this.state;
     return (
-      <Layout>
-        <Header></Header>
+      <Layout className="payment-wrapper">
+        <div className="buffer-block" style={{ height: "40px" }}></div>
         <Content>
           <div className="row justify-content-center">
             <div className="bg-summary col-6 border border-secondary rounded my-5">
@@ -33,6 +33,7 @@ export default class TourSummary extends React.Component {
               <Paragraph className="text-center" type="secondary">
                 {description} on {startDate}
               </Paragraph>
+
               <div className="">
                 <div className="m-0 d-flex flex-row justify-content-between">
                   <div>
@@ -46,17 +47,17 @@ export default class TourSummary extends React.Component {
                   </div>
                   
 
-                  <Title className="align-self-end" level={3} style={
-                    {
-
-                    }
-                  }>
+                  <Title className="align-self-end" level={2}>
                     {totalCost} {currency}
                   </Title>
                   
                 </div>
               </div>
             </div>
+          </div>
+          
+          <div>
+
           </div>
         </Content>
       </Layout>

@@ -6,6 +6,7 @@ class TourFullSchedule extends React.Component {
     constructor(props) {
         super(props)
         this.state = {}
+        // console.log(this.props)
     }
 
     render() {
@@ -15,8 +16,9 @@ class TourFullSchedule extends React.Component {
                     <p className="schedule-start">Your location</p>
                 </div>
                 {this.props.dest.map((dest) => (
-                    <TourDestination header={dest.name} image={dest.demoImage} desc={dest.description} trans="train" />
+                    <TourDestination destId={dest.id} header={dest.name} image={dest.demoImage} desc={dest.description} trans="train" />
                 ))}
+
 
                 <div className="tour-cost_full">
                     <h1>Get Cost</h1>

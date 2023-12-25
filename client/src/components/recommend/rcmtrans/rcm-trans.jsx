@@ -70,7 +70,7 @@ export default class RcmTrans extends React.Component {
                         <a href="#main">
                             <div className="nav-btn_wrapper">
                                 <div className="nav-btn">
-                                    <span>View all transportations   <i class="fa-solid fa-angle-down"></i></span>
+                                    <span>View all transportations   <i className="fa-solid fa-angle-down"></i></span>
                                 </div>
                             </div>
                         </a>
@@ -88,15 +88,15 @@ export default class RcmTrans extends React.Component {
                 </div>
 
                 <nav aria-label="Page navigation rcm-pagination">
-                    <ul class="pagination justify-content-center no-margin-bottom pb-40px">
-                        <li class="page-item">
-                            <a class="page-link" href={`?page_num=${Math.max(this.state.pagenum - 1, 1)}`}>Previous</a>
+                    <ul className="pagination justify-content-center no-margin-bottom pb-40px">
+                        <li className="page-item">
+                            <a className="page-link" href={`?page_num=${Math.max(this.state.pagenum - 1, 1)}`}>Previous</a>
                         </li>
                         {this.state.pagelist.map((page) => (
-                            <li class={`page-item${(this.state.pagenum == page + 1) ? " chosen" : ""}`}><a class="page-link" href={`?page_num=${page + 1}`}>{page + 1}</a></li>
+                            <li className={`page-item${(this.state.pagenum == page + 1) ? " chosen" : ""}`}><a className="page-link" href={`?page_num=${page + 1}`}>{page + 1}</a></li>
                         ))}
-                        <li class="page-item">
-                            <a class="page-link" href={`?page_num=${Math.min(this.state.pagenum + 1, this.state.pagelist.length)}`}>Next</a>
+                        <li className="page-item">
+                            <a className="page-link" href={`?page_num=${Math.min(this.state.pagenum + 1, this.state.pagelist.length)}`}>Next</a>
                         </li>
                     </ul>
                 </nav>

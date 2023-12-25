@@ -37,7 +37,7 @@ export default class SuggestCard extends React.Component {
                             <label>Addition Info:</label><br />
                             <div>
                                 {this.props.tour.additionInfo.slice(0, 4).map((info) => (
-                                    <p style={{ "margin": 0 }}><i class="fa-solid fa-check" style={{ color: "green" }}></i>        {info}</p>
+                                    <p style={{ "margin": 0 }}><i className="fa-solid fa-check" style={{ color: "green" }}></i>        {info}</p>
                                 ))}
                             </div>
                         </div>
