@@ -36,7 +36,7 @@ users.post('/register', (req, res) => {
                 userData.password = hash
                 User.create(userData)
                     .then(user => {
-                        res.json({ status: user.email + 'Registered!' })
+                        res.json({ status: 'Registered!' })
                     })
                     .catch(err => {
                         res.send('error: ' + err)
@@ -50,7 +50,7 @@ users.post('/register', (req, res) => {
                     })
             })
         } else {
-            res.json({ error: 'User already exists' })
+            res.json({ status: 'User already exists' })
         }
     })
         .catch(err => {
@@ -70,11 +70,17 @@ users.post('/login', (req, res) => {
                     let token = jwt.sign(user.dataValues, SECRET_KEY, {
                         expiresIn: 1440
                     })
-                    res.send(token)
+                    // res.send(token)
                     // console.log(res)
+                    res.json( {
+                        status: "Success", 
+                        token: token
+                    })
+                } else {
+                    res.json({status: "Password wrong"})
                 }
             } else {
-                res.status(400).json({ error: 'User does not exist' })
+                res.json({status: "Username wrong", error: 'User does not exist' })
             }
         })
         .catch(err => {
@@ -97,6 +103,7 @@ users.get("/", (req, res) => {
 })
 
 users.post('/getCustomer', (req, res) => {
+    console.log("Customer's email: ", req.body.email)
     Customer.findOne({
         where: {
             email: req.body.email
