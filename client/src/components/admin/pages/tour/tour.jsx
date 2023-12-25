@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { getFullProperty } from "./accountFunction";
-import "./account.css"
+import { getAllTour } from "./tourFunction";
+import "./tour.css"
 
-const Account = () => {
-  const [accounts, setAccounts] = useState([]);
-  const [sortCategory, setSortCategory] = useState("name");
+const Tour = () => {
+  const [tours, setTours] = useState([]);
+  const [sortCategory, setSortCategory] = useState("title");
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchTerm, setSearchTerm] = useState("");
 
-  const loadAccounts = () => {
-    getFullProperty()
+  const loadTours = () => {
+    getAllTour()
       .then(data => {
         if (data.error) {
           console.log(data.error);
         } else {
-          setAccounts(data);
+          setTours(data);
         }
       })
       .catch(error => {
-        console.error('Error loading accounts:', error);
+        console.error('Error loading Tours:', error);
       });
   };
 
   useEffect(() => {
-    loadAccounts();
+    loadTours();
   }, []);
 
   const handleSort = (category) => {
@@ -35,7 +35,7 @@ const Account = () => {
     }
   };
 
-  const sortedAccounts = accounts.sort((a, b) => {
+  const sortedTours = tours.sort((a, b) => {
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
@@ -49,20 +49,20 @@ const Account = () => {
     }
   });
 
-  const filteredAccounts = searchTerm
-    ? sortedAccounts.filter(account =>
-      account.name.toLowerCase().includes(searchTerm) ||
-      account.email.toLowerCase().includes(searchTerm)
+  const filteredTours = searchTerm
+    ? sortedTours.filter(tour =>
+        tour.title.toLowerCase().includes(searchTerm) ||
+        tour.type.toLowerCase().includes(searchTerm)
     )
-    : sortedAccounts;
+    : sortedTours;
 
   return (
     <div>
       <div className="dashboard-header">
         <div className="select-container">
           <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
-            <option value="name">Name</option>
-            <option value="email">Email</option>
+            <option value="title">Title</option>
+            <option value="type">Type</option>
           </select>
         </div>
 
@@ -77,7 +77,7 @@ const Account = () => {
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search for name or email"
+            placeholder="Search for title or type"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
           />
@@ -88,24 +88,28 @@ const Account = () => {
         <thead>
           <tr>
             <th> ID</th>
-            <th onClick={() => handleSort("name")}>Name</th>
-            <th> Card No</th>
-            <th> Address</th>
-            <th> Phone Number</th>
-            <th onClick={() => handleSort("email")}>Email</th>
-            <th> Passport</th>
+            <th onClick={() => handleSort("title")}>Title</th>
+            <th> Description</th>
+            <th> Duration</th>
+            <th> Price</th>
+            <th> Price Currency</th>
+            <th> Addition Info</th>
+            <th> Voting</th>
+            <th onClick={() => handleSort("type")}>Type</th>
           </tr>
         </thead>
         <tbody>
-          {filteredAccounts.map(account => (
-            <tr key={account.userId}>
-              <td>{account.userId}</td>
-              <td>{account.name}</td>
-              <td>{account.cardNo}</td>
-              <td>{account.address}</td>
-              <td>{account.phoneNumber}</td>
-              <td>{account.email}</td>
-              <td>{account.passport}</td>
+          {filteredTours.map(tour => (
+            <tr key={tour.id}>
+              <td>{tour.id}</td>
+              <td>{tour.title}</td>
+              <td>{tour.description}</td>
+              <td>{tour.duration}</td>
+              <td>{tour.price}</td>
+              <td>{tour.priceCurrency}</td>
+              <td>{tour.additionInfo}</td>
+              <td>{tour.voting}</td>
+              <td>{tour.type}</td>
             </tr>
           ))}
         </tbody>
@@ -114,4 +118,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default Tour;

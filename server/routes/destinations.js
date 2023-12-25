@@ -21,4 +21,28 @@ router.post("/search-by-name", async (req, res) => {
   }
 });
 
+// admin
+router.post('/admin/getAllDestination', (req, res) => {
+  Destination.findAll({
+      limit: 50
+  })
+  .then(router => {
+      if (router) {
+          const responseData = router.map(destination => ({
+              id: destination.id,
+              name: destination.name,
+              countryId: destination.countryId,
+              description: destination.description,
+              additionInfo: destination.additionInfo,
+          }));
+          res.json(responseData);
+      } else {
+          res.status(400).json({ error: 'No destination found' });
+      }
+  })
+  .catch(err => {
+      res.status(500).json({ error: err.message });
+  });
+});
+
 module.exports = router;

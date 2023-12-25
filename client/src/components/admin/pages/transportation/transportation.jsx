@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { getFullProperty } from "./accountFunction";
-import "./account.css"
+import { getAllTransportation } from "./transportationFunction";
+import "./transportation.css"
 
-const Account = () => {
-  const [accounts, setAccounts] = useState([]);
-  const [sortCategory, setSortCategory] = useState("name");
+const Transportation = () => {
+  const [transportations, setTransportations] = useState([]);
+  const [sortCategory, setSortCategory] = useState("type");
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchTerm, setSearchTerm] = useState("");
 
-  const loadAccounts = () => {
-    getFullProperty()
+  const loadTransportations = () => {
+    getAllTransportation()
       .then(data => {
         if (data.error) {
           console.log(data.error);
         } else {
-          setAccounts(data);
+          setTransportations(data);
         }
       })
       .catch(error => {
-        console.error('Error loading accounts:', error);
+        console.error('Error loading transportations:', error);
       });
   };
 
   useEffect(() => {
-    loadAccounts();
+    loadTransportations();
   }, []);
 
   const handleSort = (category) => {
@@ -35,7 +35,7 @@ const Account = () => {
     }
   };
 
-  const sortedAccounts = accounts.sort((a, b) => {
+  const sortedTransportations = transportations.sort((a, b) => {
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
@@ -49,20 +49,18 @@ const Account = () => {
     }
   });
 
-  const filteredAccounts = searchTerm
-    ? sortedAccounts.filter(account =>
-      account.name.toLowerCase().includes(searchTerm) ||
-      account.email.toLowerCase().includes(searchTerm)
+  const filteredTransportations = searchTerm
+    ? sortedTransportations.filter(transportation =>
+        transportation.type.toLowerCase().includes(searchTerm)
     )
-    : sortedAccounts;
+    : sortedTransportations;
 
   return (
     <div>
       <div className="dashboard-header">
         <div className="select-container">
           <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
-            <option value="name">Name</option>
-            <option value="email">Email</option>
+            <option value="type">Type</option>
           </select>
         </div>
 
@@ -77,7 +75,7 @@ const Account = () => {
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search for name or email"
+            placeholder="Search for type"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
           />
@@ -88,24 +86,16 @@ const Account = () => {
         <thead>
           <tr>
             <th> ID</th>
-            <th onClick={() => handleSort("name")}>Name</th>
-            <th> Card No</th>
-            <th> Address</th>
-            <th> Phone Number</th>
-            <th onClick={() => handleSort("email")}>Email</th>
-            <th> Passport</th>
+            <th onClick={() => handleSort("type")}>Type</th>
+            <th> Addition Info</th>
           </tr>
         </thead>
         <tbody>
-          {filteredAccounts.map(account => (
-            <tr key={account.userId}>
-              <td>{account.userId}</td>
-              <td>{account.name}</td>
-              <td>{account.cardNo}</td>
-              <td>{account.address}</td>
-              <td>{account.phoneNumber}</td>
-              <td>{account.email}</td>
-              <td>{account.passport}</td>
+          {filteredTransportations.map(transportation => (
+            <tr key={transportation.id}>
+              <td>{transportation.id}</td>
+              <td>{transportation.type}</td>
+              <td>{transportation.additionInfo}</td>
             </tr>
           ))}
         </tbody>
@@ -114,4 +104,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default Transportation;

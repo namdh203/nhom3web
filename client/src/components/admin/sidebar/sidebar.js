@@ -3,7 +3,6 @@ import React from 'react'
 import './sidebar.css'
 import { Menu } from 'antd'
 import {
-    AccountBookOutlined,
     UserOutlined,
     ContactsOutlined,
     EnvironmentOutlined,
@@ -24,12 +23,11 @@ function Sidebar() {
                     navigate(key)
                 }}
                 items={[
-                    { label: "Account", key: "account", icon: <AccountBookOutlined /> },
-                    { label: "User", key: "user", icon: <UserOutlined /> },
+                    { label: "Account", key: "account", icon: <UserOutlined /> },
                     { label: "Tour", key: "tour", icon: <ContactsOutlined />},
                     { label: "Destination", key: "destination", icon: <EnvironmentOutlined />},
                     { label: "Transportation", key: "transportation", icon: <CarOutlined />},
-                    { label: "Accomodation", key: "accomodation", icon:<HomeOutlined /> },
+                    { label: "Accommodation", key: "accommodation", icon:<HomeOutlined /> },
                     { label: "Dining Place", key: "dining", icon: <CoffeeOutlined />},
                     { label: "Payment", key: "payment", icon: <CreditCardOutlined /> },
                 ]}
