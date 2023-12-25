@@ -1,12 +1,11 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom';
-
+import Account from '../pages/account/account'
 function Content() {
     return (
         <div className='content'>
             <Routes>
-                <Route path="/home" element={<div>Home</div>}></Route>
-                <Route path="/account" element={<div>account</div>}></Route>
+                <Route path="/account" element={<Account/>}></Route>
                 <Route path="/user" element={<div>user</div>}></Route>
                 <Route path="/tour" element={<div>tour</div>}></Route>
                 <Route path="/destination" element={<div>destination</div>}></Route>

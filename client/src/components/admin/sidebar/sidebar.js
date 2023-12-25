@@ -24,7 +24,6 @@ function Sidebar() {
                     navigate(key)
                 }}
                 items={[
-                    { label: "Home", key: "home"},
                     { label: "Account", key: "account", icon: <AccountBookOutlined /> },
                     { label: "User", key: "user", icon: <UserOutlined /> },
                     { label: "Tour", key: "tour", icon: <ContactsOutlined />},

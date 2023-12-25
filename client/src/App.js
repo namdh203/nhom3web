@@ -22,45 +22,18 @@ import ChooseDestination from "./components/build_itinerary/choose_destination/C
 import Layout from "./components/Layout.js";
 import PaymentStep1 from "./components/payment/payment_steps/payment_step_1.jsx"
 import UserProfile from './components/profile/profile.jsx'
-
-import AdminDashboard from "./components/admin/dashboard.js"
-
+import AdminDashboard from './components/admin/dashboard.js'
 function App() {
   // const [isLogin, setIsLogin] = useState(false)
   return (
     <div className="App">
       <Router>
         <Routes>
-<<<<<<< HEAD
-          <Route path="/admin/*" element={<AdminDashboard />} />
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/sign-in" element={<>
-            <Dashboard />
-            <Login />
-          </>} />
-          <Route path="/sign-up" element={<>ˀ
-            <Dashboard />
-            <SignUp />
-          </>} />
-          <Route path="/tour" element={<TourInfo title="Bali Tour" banner="https://s3-hn-2.cloud.cmctelecom.vn/tapchicongthuong.vn/tcct-media/20/2/4/8.-den-uluwatu--.jpg" />} />
-          <Route path="/country" element={<CountryInfo name="Bali" />} />
-          <Route path="/accomodation/hotel" element={
-            <Accommodation />
-          } />
-          <Route path="/restaurant/res" element={
-            <Restaurant />
-          } />
-          <Route path="/activity/act" element={
-            <Activity />
-          } />
-          <Route path="/payment" element={
-            <Payment />
-          } />
-          <Route path="/recommendations/accom" element={
-            <RcmAccom></RcmAccom>
-          } />
-=======
           <Route path="/" element={<Layout />}>
+            <Route
+              path="admin/*"
+              element={<AdminDashboard />}
+            />
             <Route index element={<Dashboard />} />
             <Route
               path="sign-in"
@@ -99,7 +72,6 @@ function App() {
               path="recommendations/accom"
               element={<RcmAccom></RcmAccom>}
             />
->>>>>>> origin/develop_hieu
 
             <Route path="recommendations/rest" element={<RcmRest></RcmRest>} />
 
@@ -112,7 +84,7 @@ function App() {
 
             <Route
               path="profile"
-              element={<UserProfile email={localStorage.key(0)}/>}
+              element={<UserProfile email={localStorage.key(0)} />}
             />
           </Route>
 

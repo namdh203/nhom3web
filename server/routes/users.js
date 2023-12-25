@@ -73,7 +73,7 @@ users.post('/login', (req, res) => {
                     // res.send(token)
                     // console.log(res)
                     res.json( {
-                        status: "Success", 
+                        status: "Success",
                         token: token
                     })
                 } else {
@@ -180,5 +180,32 @@ users.post('/updateCustomer', (req, res) => {
         res.status(400).json({ error: err })
     });
 })
+
+// admin findAll user from db (or limit)
+
+users.post('/admin/getCustomerProperties', (req, res) => {
+    Customer.findAll({
+        limit: 50
+    })
+    .then(customers => {
+        if (customers) {
+            const responseData = customers.map(customer => ({
+                userId: customer.userId,
+                name: customer.name,
+                cardNo: customer.cardNo,
+                address: customer.address,
+                phoneNumber: customer.phoneNumber,
+                email: customer.email,
+                passport: customer.passport,
+            }));
+            res.json(responseData);
+        } else {
+            res.status(400).json({ error: 'No customers found' });
+        }
+    })
+    .catch(err => {
+        res.status(500).json({ error: err.message });
+    });
+});
 
 module.exports = users;
