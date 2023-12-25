@@ -41,6 +41,9 @@ app.use("/dest", Dest);
 const Destinations = require("./routes/destinations");
 app.use("/destinations", Destinations);
 
+const Comments = require("./routes/comments");
+app.use("/comment", Comments)
+
 app.listen(port, () => {
   console.log(`Server start on port ${port}`);
 });

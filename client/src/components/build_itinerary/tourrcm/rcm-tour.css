@@ -237,10 +237,10 @@ html,
   justify-content: center;
   align-items: center;
 }
-
+/* 
 .navbar-wrapper {
   padding: 0 20px !important;
-}
+} */
 
 .auth-wrapper {
   display: flex;

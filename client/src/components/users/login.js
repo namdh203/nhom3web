@@ -29,8 +29,6 @@ export default class Login extends Component {
             password: this.state.password
         }
 
-        const user_json = JSON.stringify(user)
-
         login(user).then(res => {
             if (res.status === "Success") {
                 alert("Login successfully!")
@@ -40,6 +38,15 @@ export default class Login extends Component {
                     nav_items[i].style.display = "none"
                 }
                 window.location.href = "/"
+
+                const user_ = {
+                    email: this.state.email,
+                    password: this.state.password,
+                    id: res.userId
+                }
+
+                const user_json = JSON.stringify(user_)
+
                 localStorage.setItem(user.email, user_json)
             } else {
                 alert("Login failed! Username or password may be incorrect!")

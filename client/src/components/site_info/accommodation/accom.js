@@ -10,6 +10,7 @@ import "./AccomFunction"
 import { useState, useEffect } from "react";
 import { getAccomData } from "./AccomFunction";
 import extractLink from "../helper/helper.js"
+import Comment from "../../comment/comment.jsx"
 
 const { Header, Footer, Sider, Content } = Layout;
 const { Title, Paragraph } = Typography;
@@ -184,6 +185,9 @@ export default function Accommodation(props) {
                                 ))}
                             </div>
                         </div>
+
+                        <Comment type="accom" type_name={name}></Comment>
+
                     </div>
                 </Content>
             </Layout>

@@ -51,9 +51,20 @@ export default class NavBar extends React.Component {
     const firstKey = localStorage.key(0);
 
     if (firstKey !== null) {
-      console.log(firstKey);
+      // console.log("Email customer: ", firstKey)
       getCustomer(firstKey).then(res => {
-        this.setState({ 'current_user': res })
+
+        this.setState({ 'current_user': res }, () => {
+          // const firstKey = localStorage.key(0)
+          const firstItem = JSON.parse(localStorage.getItem(firstKey))
+          firstItem.avatar = this.state.current_user.avatar ? this.state.current_user.avatar : "https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg"
+          firstItem.name = this.state.current_user.name
+
+          localStorage.setItem(firstKey, JSON.stringify(firstItem))
+        })
+
+
+
       }).catch(err => {
         console.log(err)
       })
@@ -110,10 +121,10 @@ export default class NavBar extends React.Component {
                 className="nav-link"
                 to={"/recommendations/trans?page_num=1"}
               >
-                <li className="nav-item">Transportations</li>
+                <li className="nav-item" style={{ "border-right": "0.025px solid white" }}>Transportations</li>
               </Link>
 
-              <Link
+              {/* <Link
                 className="navLink"
                 to={"/build-itinerary/choose-destination"}
               >
@@ -125,7 +136,7 @@ export default class NavBar extends React.Component {
                     aria-label="Search"
                   />
                 </form>
-              </Link>
+              </Link> */}
 
               <div className="log-part" style={{ display: `${localStorage.length > 0 ? "none" : "flex"}` }}>
                 <li className="nav-item icon">
@@ -140,8 +151,8 @@ export default class NavBar extends React.Component {
                 </li>
               </div>
               <div
-                className="bg-info avatar-wrapper"
-                style={{ display: `${localStorage.length > 0 ? "block" : "none"}`, position: "relative" }}
+                className="avatar-wrapper"
+                style={{ display: `${localStorage.length > 0 ? "block" : "none"}`, position: "relative" , "backgroundColor": "white"}}
                 onClick={this.onAvatarClick}>
                 {/* <p>{this.state.current_user.name}</p> */}
                 <img

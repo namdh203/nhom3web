@@ -1,8 +1,6 @@
 const Sequelize = require("sequelize")
 const db = require('../database/db.js')
 
-const User = require('../models/user.js')
-
 const Customer = db.sequelize.define(
     'customer',
     {
@@ -48,6 +46,9 @@ const Customer = db.sequelize.define(
         freezeTableName: true
     }
 )
+
+// Customer.hasMany(Comment, { foreignKey: 'email' });
+// Comment.belongsTo(Customer, { foreignKey: 'email', targetKey: 'email' });
 
 Customer.sync({ alter: true }).then((data) => {
     console.log("Customer synced successful!");

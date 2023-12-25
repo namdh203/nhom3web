@@ -74,7 +74,8 @@ users.post('/login', (req, res) => {
                     // console.log(res)
                     res.json( {
                         status: "Success", 
-                        token: token
+                        token: token,
+                        userId: user.id
                     })
                 } else {
                     res.json({status: "Password wrong"})
@@ -103,7 +104,8 @@ users.get("/", (req, res) => {
 })
 
 users.post('/getCustomer', (req, res) => {
-    console.log("Customer's email: ", req.body.email)
+    console.log("req.body.email", req.body.email)
+    // alert("Customer's email: ", req.body.email)
     Customer.findOne({
         where: {
             email: req.body.email
@@ -112,6 +114,7 @@ users.post('/getCustomer', (req, res) => {
         .then(customer => {
             if (customer) {
                 const responseData = {
+                    id: customer.userId,
                     name: customer.name,
                     email: customer.email,
                     avatar: customer.avatar,

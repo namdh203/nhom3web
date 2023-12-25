@@ -2,6 +2,7 @@ import React from 'react';
 import "../tour_info.css"
 import "./tour_intro.css"
 import { Carousel } from 'antd';
+import Comment from "../../comment/comment.jsx"
 
 const onChange = (currentSlide) => {
     console.log(currentSlide);
@@ -60,6 +61,8 @@ export default class TourIntro extends React.Component {
                         </div>
                     </div>
                 </div>
+
+                <Comment type="tour" type_name={this.props.tour.title}></Comment>
             </div>
         )
     }

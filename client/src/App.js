@@ -60,7 +60,7 @@ function App() {
               }
             />
             <Route path="country" element={<CountryInfo name="Bali" />} />
-            <Route path="accomodation/hotel" element={<Accommodation />} />
+            <Route path="accommodation/hotel" element={<Accommodation />} />
             <Route path="restaurant/res" element={<Restaurant />} />
             <Route path="activity/act" element={<Activity />} />
             <Route path="payment" element={<Payment />} />

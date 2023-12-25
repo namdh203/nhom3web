@@ -8,6 +8,7 @@ const Tour = require("../models/tour");
 const Country = require("../models/country");
 const Destination = require("../models/destination");
 const TourDest = require("../models/tour_dest");
+const Comment = require("../models/comment");
 
 const Activity = require('../models/activity.js')
 const Transportation = require('../models/transportation.js')
