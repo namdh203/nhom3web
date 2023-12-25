@@ -22,7 +22,7 @@ import ChooseDestination from "./components/build_itinerary/choose_destination/C
 import Layout from "./components/Layout.js";
 import PaymentStep1 from "./components/payment/payment_steps/payment_step_1.jsx"
 import UserProfile from './components/profile/profile.jsx'
-
+import AdminDashboard from './components/admin/dashboard.js'
 function App() {
   // const [isLogin, setIsLogin] = useState(false)
   return (
@@ -30,6 +30,10 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
+            <Route
+              path="admin/*"
+              element={<AdminDashboard />}
+            />
             <Route index element={<Dashboard />} />
             <Route
               path="sign-in"
@@ -80,7 +84,7 @@ function App() {
 
             <Route
               path="profile"
-              element={<UserProfile email={localStorage.key(0)}/>}
+              element={<UserProfile email={localStorage.key(0)} />}
             />
           </Route>
 

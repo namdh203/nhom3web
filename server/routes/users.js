@@ -8,6 +8,7 @@ var SECRET_KEY = "Travelam";
 
 const User = require("../models/user");
 const Customer = require("../models/customer")
+const Comment = require("../models/comment")
 
 
 
@@ -72,16 +73,16 @@ users.post('/login', (req, res) => {
                     })
                     // res.send(token)
                     // console.log(res)
-                    res.json( {
-                        status: "Success", 
+                    res.json({
+                        status: "Success",
                         token: token,
                         userId: user.id
                     })
                 } else {
-                    res.json({status: "Password wrong"})
+                    res.json({ status: "Password wrong" })
                 }
             } else {
-                res.json({status: "Username wrong", error: 'User does not exist' })
+                res.json({ status: "Username wrong", error: 'User does not exist' })
             }
         })
         .catch(err => {
@@ -160,6 +161,7 @@ users.post('/getCustomerProperties', (req, res) => {
 
 users.post('/updateCustomer', (req, res) => {
     const new_user = req.body.new_user
+    var responseData = ""
 
     Customer.update({
         name: new_user.name,
@@ -170,18 +172,65 @@ users.post('/updateCustomer', (req, res) => {
         avatar: new_user.avatar
     }, { where: { email: new_user.email } }).then(customer => {
         if (customer) {
-            const responseData = {
+            responseData = {
                 msg: "Update successfully"
             }
 
-            res.json(responseData)
-        }else {
+            // res.json(responseData)
+        } else {
             res.status(400).json({ error: 'Customer doesn\'t exist' })
         }
     })
-    .catch(err => {
-        res.status(400).json({ error: err })
-    });
+        .catch(err => {
+            res.status(400).json({ error: err })
+        });
+
+    Comment.update({
+        avatar: new_user.avatar
+    }, { where: { email: new_user.email } }).then(comment => {
+        if (comment) {
+            responseData = {
+                msg: "Update successfully"
+            }
+    
+            res.json(responseData)
+        } else {
+            res.status(400).json({ error: 'Comment doesn\'t exist' })
+        }
+    })
+        .catch(err => {
+            res.status(400).json({ error: err })
+        });
+
+    // res.json(responseData)
+
 })
+
+// admin findAll user from db (or limit)
+
+users.post('/admin/getCustomerProperties', (req, res) => {
+    Customer.findAll({
+        limit: 50
+    })
+        .then(customers => {
+            if (customers) {
+                const responseData = customers.map(customer => ({
+                    userId: customer.userId,
+                    name: customer.name,
+                    cardNo: customer.cardNo,
+                    address: customer.address,
+                    phoneNumber: customer.phoneNumber,
+                    email: customer.email,
+                    passport: customer.passport,
+                }));
+                res.json(responseData);
+            } else {
+                res.status(400).json({ error: 'No customers found' });
+            }
+        })
+        .catch(err => {
+            res.status(500).json({ error: err.message });
+        });
+});
 
 module.exports = users;

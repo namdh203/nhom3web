@@ -25,37 +25,36 @@ export default class TourComment extends React.Component {
 
         const key = localStorage.key(0)
 
-        const user_json = JSON.parse(localStorage.getItem(key))
+        if (key === null) {
+            alert("Please log in to comment")
+            window.location.href = "/sign-in"
+        } else {
+            const user_json = JSON.parse(localStorage.getItem(key))
 
-        const cmt = this.state.comment
+            const cmt = this.state.comment
 
-        sendComment(
-            user_json.id, 
-            user_json.email, 
-            this.props.type, 
-            this.props.type_name, 
-            cmt,
-            user_json.name,
-            user_json.avatar
-        ).then(res => {
-            // alert(res.msg)
-            getComment(this.props.type, this.props.type_name).then((res) => {
-                if (res) {
+            sendComment(
+                user_json.id,
+                user_json.email,
+                this.props.type,
+                this.props.type_name,
+                cmt,
+                user_json.name,
+                user_json.avatar
+            ).then(res => {
+                // alert(res.msg)
+                getComment(this.props.type, this.props.type_name).then((res) => {
+                    if (res) {
 
-                    console.log("Update new comment table")
+                        console.log("Update new comment table")
 
-                    this.setState({ current_cmt: res,comment: "" })
-                }
+                        this.setState({ current_cmt: res, comment: "" })
+                    }
+                })
+
+                this.forceUpdate()
             })
-
-            this.forceUpdate()
-
-            // console.log(window.location.href)
-        })
-
-        
-
-
+        }
     }
 
     componentDidMount() {
@@ -71,35 +70,34 @@ export default class TourComment extends React.Component {
         // console.log(this.props.type, this.props.type_name, this.props.user["id"], this.props.user["email"])
 
         return (
-            <div class="container">
-                <div class="be-comment-block">
-                    <h1 class="comments-title">Comments ({this.state.current_cmt.length})</h1>
-                    {this.state.current_cmt.map((cmt) => (
-                        <div class="be-comment">
-                            <div class="be-img-comment">
-                                <a href="blog-detail-2.html">
-                                    <img src={cmt.avatar} alt="" class="be-ava-comment" />
-                                </a>
-                            </div>
-                            <div class="be-comment-content">
-
-                                <span class="be-comment-name">
-                                    <a href="blog-detail-2.html">{cmt.name}</a>
-                                </span>
-                                <span class="be-comment-time">
-                                    <i class="fa fa-clock-o"></i>
-                                    {cmt.createAt}
-                                </span>
-
-                                <p class="be-comment-text">
-                                    {cmt.comment}
-                                </p>
-                            </div>
+            <div class="be-comment-block">
+                <h1 class="comments-title">Comments ({this.state.current_cmt.length})</h1>
+                {this.state.current_cmt.map((cmt) => (
+                    <div class="be-comment">
+                        <div class="be-img-comment">
+                            <a href="blog-detail-2.html">
+                                <img src={cmt.avatar} alt="" class="be-ava-comment" />
+                            </a>
                         </div>
-                    ))}
-                    <form class="form-block">
-                        <div class="row g-4">
-                            {/* <div class="col-xs-12 col-sm-6">
+                        <div class="be-comment-content">
+
+                            <span class="be-comment-name">
+                                <a href="blog-detail-2.html">{cmt.name}</a>
+                            </span>
+                            <span class="be-comment-time">
+                                <i class="fa fa-clock-o"></i>
+                                {cmt.createAt}
+                            </span>
+
+                            <p class="be-comment-text">
+                                {cmt.comment}
+                            </p>
+                        </div>
+                    </div>
+                ))}
+                <form class="form-block">
+                    <div class="row g-4">
+                        {/* <div class="col-xs-12 col-sm-6">
                                 <div class="form-group fl_icon">
                                     <div class="icon"><i class="fa fa-user"></i></div>
                                     <input class="form-input" type="text" placeholder="Your name" />
@@ -111,17 +109,16 @@ export default class TourComment extends React.Component {
                                     <input class="form-input" type="text" placeholder="Your email" />
                                 </div>
                             </div> */}
-                            <h2 style={{ "fontSize": "24px" }}>Write your comments</h2>
-                            <div class="col-xs-12">
-                                <form class="form-group">
-                                    <textarea id="myTextarea" class="form-input" rows="4" cols="50" name="comment" value={this.state.comment} placeholder="Write down your comments" onChange={this.onChange}></textarea>
-                                </form> 
-                                <div className="btn btn-primary pull-right" style={{width: "100%", "margin-top": "15px"}} onClick={this.onCommentClick}>Comment</div>
-                            </div>
-                            
+                        <h2 style={{ "fontSize": "24px" }}>Write your comments</h2>
+                        <div class="col-xs-12">
+                            <form class="form-group">
+                                <textarea id="myTextarea" class="form-input" rows="4" cols="50" name="comment" value={this.state.comment} placeholder="Write down your comments" onChange={this.onChange}></textarea>
+                            </form>
+                            <div className="btn btn-primary pull-right" style={{ width: "100%", "margin-top": "15px" }} onClick={this.onCommentClick}>Comment</div>
                         </div>
-                    </form> 
-                </div>
+
+                    </div>
+                </form>
             </div>
         )
     }

@@ -37,5 +37,33 @@ accommodations.post('/randomAccommodation', (req, res) => {
     })
 })
 
-module.exports = accommodations;
+// admin
+accommodations.post('/admin/getAllAccommodation', (req, res) => {
+    Accommodation.findAll({
+      limit: 50
+  })
+  .then(accommodations => {
+      if (accommodations) {
+          const responseData = accommodations.map(accommodation => ({
+              id: accommodation.id,
+              name: accommodation.name,
+              destId: accommodation.destId,
+              pricePerNight: accommodation.pricePerNight,
+              priceCurrency: accommodation.priceCurrency,
+              address: accommodation.address,
+              telephone: accommodation.telephone,
+              contactEmail: accommodation.contactEmail,
+              description: accommodation.description,
+              additionInfo: accommodation.additionInfo,
+          }));
+          res.json(responseData);
+      } else {
+          res.status(400).json({ error: 'No accommodation found' });
+      }
+  })
+  .catch(err => {
+      res.status(500).json({ error: err.message });
+  });
+});
 
+module.exports = accommodations;

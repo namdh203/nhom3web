@@ -68,7 +68,7 @@ export default function Restaurant(props) {
 
         return (
             <Layout>
-                <Header>Header</Header>
+                <div className="buffer-block"></div>
                 <Content>
                     <div className="container px-5">
                         <div className="d-flex flex-row justify-content-between">
