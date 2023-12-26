@@ -60,27 +60,20 @@ export default class RcmAccom extends React.Component {
       <div className="rcm-accom_wrapper">
         <div className="buffer-block" style={{ height: "51px" }}></div>
 
-        <div className="rcm-banner">
-          <img
-            src="https://bpb-eu-w2.wpmucdn.com/blogs.lincoln.ac.uk/dist/a/8671/files/2022/04/StMarks-011-by-E-Egg-Joiner-P-small1500.jpg"
-            className="img-fluid rcm-banner_img"
-            alt="Responsive"
-          />
-          <div className="rcm-banner_intro">
-            <h2>Recommended Accommodation Options for visitors.</h2>
-            <p>Here are some of our recommendations for your trip.</p>
-            <a href="#main">
-              <div className="nav-btn_wrapper">
-                <div className="nav-btn">
-                  <span>
-                    View all accommodations{" "}
-                    <i className="fa-solid fa-angle-down"></i>
-                  </span>
+                <div className="rcm-banner">
+                    <img src="https://bpb-eu-w2.wpmucdn.com/blogs.lincoln.ac.uk/dist/a/8671/files/2022/04/StMarks-011-by-E-Egg-Joiner-P-small1500.jpg" className="img-fluid rcm-banner_img" alt="Responsive" />
+                    <div className="rcm-banner_intro">
+                        <h2>Recommended Accommodation Options for visitors.</h2>
+                        <p>Here are some of our recommendations for your trip.</p>
+                        <a href="#main">
+                            <div className="nav-btn_wrapper">
+                                <div className="nav-btn">
+                                    <span>View all accommodations   <i className="fa-solid fa-angle-down"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-              </div>
-            </a>
-          </div>
-        </div>
 
         <div className="rcm-main" id="main">
           <div className="rcm-main_wrapper row gx-4 gy-5">
@@ -95,42 +88,20 @@ export default class RcmAccom extends React.Component {
           </div>
         </div>
 
-        <nav aria-label="Page navigation rcm-pagination">
-          <ul className="pagination justify-content-center no-margin-bottom pb-40px">
-            <li key={0} className="page-item">
-              <a
-                className="page-link"
-                href={`?page_num=${Math.max(this.state.pagenum - 1, 1)}`}
-              >
-                Previous
-              </a>
-            </li>
-            {this.state.pagelist.map((page) => (
-              <li
-                key={page + 1}
-                className={`page-item${
-                  this.state.pagenum === page + 1 ? " chosen" : ""
-                }`}
-              >
-                <a className="page-link" href={`?page_num=${page + 1}`}>
-                  {page + 1}
-                </a>
-              </li>
-            ))}
-            <li key={this.state.pagelist.length} className="page-item">
-              <a
-                className="page-link"
-                href={`?page_num=${Math.min(
-                  this.state.pagenum + 1,
-                  this.state.pagelist.length
-                )}`}
-              >
-                Next
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    );
-  }
+                <nav aria-label="Page navigation rcm-pagination">
+                    <ul className="pagination justify-content-center no-margin-bottom pb-40px">
+                        <li className="page-item">
+                            <a className="page-link" href={`?page_num=${Math.max(this.state.pagenum - 1, 1)}`}>Previous</a>
+                        </li>
+                        {this.state.pagelist.map((page) => (
+                            <li className={`page-item${(this.state.pagenum == page + 1) ? " chosen" : ""}`}><a className="page-link" href={`?page_num=${page + 1}`}>{page + 1}</a></li>
+                        ))}
+                        <li className="page-item">
+                            <a className="page-link" href={`?page_num=${Math.min(this.state.pagenum + 1, this.state.pagelist.length)}`}>Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        )
+    }
 }

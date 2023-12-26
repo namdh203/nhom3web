@@ -13,10 +13,6 @@ const Activity = require('../models/activity.js')
 const Transportation = require('../models/transportation.js')
 const Restaurant = require('../models/restaurant.js')
 const Accommodation = require('../models/accommodation.js')
-const TourAccom = require('../models/tour_accom.js')
-const TourActivity = require('../models/tour_activity.js')
-const TourMeal = require('../models/tour_meal.js')
-const TourTrans = require('../models/tour_trans.js')
 const Payment = require('../models/payment.js')
 const Customer = require('../models/customer.js')
 
@@ -54,7 +50,7 @@ tours.post('/getbesttour', (req, res) => {
 })
 
 tours.post('/getrandomcountry', (req, res) => {
-    
+
     const randomId = Math.floor(Math.random() * 9) + 1;
     Country.findOne({
         where: {
@@ -80,7 +76,7 @@ tours.post('/getrandomcountry', (req, res) => {
 })
 
 tours.post('/getspecificcountry', (req, res) => {
-    
+
     const id = req.body.id
     console.log("id: " + id)
     Country.findOne({
@@ -151,7 +147,7 @@ tours.post('/gettourcountry', (req, res) => {
         })
 })
 
-tours.post('/gettourcountry_more', (req, res) => {  
+tours.post('/gettourcountry_more', (req, res) => {
     const req_country_id = req.body.id
     const tourType = req.body.type
     Tour.findAll({
@@ -201,7 +197,7 @@ tours.post('/gettourcountry_more', (req, res) => {
 })
 
 tours.post('/getspecifictour', (req, res) => {
-    
+
     const id = req.body.id
     console.log("id: " + id)
     Tour.findOne({
@@ -280,14 +276,15 @@ tours.post('/getaccomlists', (req, res) => {
     const length = req.body.length;
     // console.log("Length: ", length)
     Accommodation.findAll({
-        attributes: ['name', 'pricePerNight', 'priceCurrency', 'address', 'telephone', 'contactEmail', 'additionInfo', 'demoImage'],
+        attributes: ['id', 'name', 'pricePerNight', 'priceCurrency', 'address', 'telephone', 'contactEmail', 'additionInfo', 'demoImage'],
         limit: length
     }).then(accoms => {
-        
+
         if (!accoms) {
             console.log("No such accom found!");
         } else {
             const responseData = accoms.map(accom => ({
+                id: accom.id,
                 name: accom.name,
                 pricePerNight: accom.pricePerNight,
                 priceCurrency: accom.priceCurrency,
@@ -310,14 +307,15 @@ tours.post('/getrestlists', (req, res) => {
     const length = req.body.length;
     // console.log("Length: ", length)
     Restaurant.findAll({
-        attributes: ['name', 'address', 'telephone', 'additionInfo', 'demoImage'],
+        attributes: ['id', 'name', 'address', 'telephone', 'additionInfo', 'demoImage'],
         limit: length
     }).then(rests => {
-        
+
         if (!rests) {
             console.log("No such rest found!");
         } else {
             const responseData = rests.map(rest => ({
+                id: rest.id,
                 name: rest.name,
                 address: rest.address,
                 telephone: rest.telephone,
@@ -336,14 +334,15 @@ tours.post('/getactlists', (req, res) => {
     const length = req.body.length;
     // console.log("Length: ", length)
     Activity.findAll({
-        attributes: ['name', 'type', 'additionInfo', 'demoImage'],
+        attributes: ['id', 'name', 'type', 'additionInfo', 'demoImage'],
         limit: length
     }).then(acts => {
-        
+
         if (!acts) {
             console.log("No such rest found!");
         } else {
             const responseData = acts.map(act => ({
+                id: act.id,
                 name: act.name,
                 type: act.type,
                 additionInfo: act.additionInfo.split(", "),
@@ -362,14 +361,15 @@ tours.post('/gettranslists', (req, res) => {
     const length = req.body.length;
     // console.log("Length: ", length)
     Transportation.findAll({
-        attributes: ['type', 'additionInfo', 'demoImage'],
+        attributes: ['id', 'type', 'additionInfo', 'demoImage'],
         limit: length
     }).then(acts => {
-        
+
         if (!acts) {
             console.log("No such trans found!");
         } else {
             const responseData = acts.map(act => ({
+                id: act.id,
                 type: act.type,
                 additionInfo: act.additionInfo.split(", "),
                 demoImage: act.demoImage,
@@ -382,6 +382,32 @@ tours.post('/gettranslists', (req, res) => {
     })
 })
 
-
+// admin
+tours.post('/admin/getAllTour', (req, res) => {
+    Tour.findAll({
+        limit: 50
+    })
+    .then(tours => {
+        if (tours) {
+            const responseData = tours.map(tour => ({
+                id: tour.id,
+                title: tour.title,
+                description: tour.description,
+                duration: tour.duration,
+                price: tour.price,
+                priceCurrency: tour.priceCurrency,
+                additionInfo: tour.additionInfo,
+                voting: tour.voting,
+                type: tour.type
+            }));
+            res.json(responseData);
+        } else {
+            res.status(400).json({ error: 'No tours found' });
+        }
+    })
+    .catch(err => {
+        res.status(500).json({ error: err.message });
+    });
+});
 
 module.exports = tours

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
 import "../dashboard/dashbroad.css";
+import { getCustomer } from "./NavbarFunction";
 
 export default class NavBar extends React.Component {
   constructor(props) {
@@ -9,10 +10,16 @@ export default class NavBar extends React.Component {
     this.state = {
       showCategory: 0,
       showNavbarMenu: 0,
+      current_user: {
+        name: "",
+      },
+      openAvaMenu: 0,
     };
     this.showDashBoard = this.showDashBoard.bind(this);
     this.onNavbarMenuClick = this.onNavbarMenuClick.bind(this);
     this.onCategoryClick = this.onCategoryClick.bind(this);
+    this.onAvatarClick = this.onAvatarClick.bind(this);
+    this.onLogout = this.onLogout.bind(this);
   }
 
   onCategoryClick() {
@@ -29,11 +36,43 @@ export default class NavBar extends React.Component {
     });
   }
 
+  onLogout() {
+    localStorage.clear();
+    window.location.reload();
+  }
+
+  onAvatarClick() {
+    this.setState({ openAvaMenu: (this.state.openAvaMenu + 1) % 2 });
+  }
+
+  componentDidMount() {
+    const firstKey = localStorage.key(0);
+
+    if (firstKey !== null) {
+      console.log(firstKey);
+      getCustomer(firstKey)
+        .then((res) => {
+          this.setState({ current_user: res });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("localStorage trống.");
+    }
+  }
+
   showDashBoard() {
     window.location.href = "/";
   }
 
   render() {
+    if (localStorage.length > 0) {
+      if (this.state.current_user == null) {
+        return <p>Loading...</p>;
+      }
+    }
+
     return (
       <div className="fixed-top">
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top navbar-wrapper">
@@ -98,17 +137,87 @@ export default class NavBar extends React.Component {
                 </Link>
               )}
 
-              <div className="log-part">
-                <li className="nav-item icon" style={{ display: "block" }}>
+              <div
+                className="log-part"
+                style={{
+                  display: `${localStorage.length > 0 ? "none" : "flex"}`,
+                }}
+              >
+                <li className="nav-item icon">
                   <Link className="nav-link" to={"/sign-in"}>
                     <i className="fa-solid fa-right-to-bracket sign-in-logo"></i>
                   </Link>
                 </li>
-                <li className="nav-item icon" style={{ display: "block" }}>
+                <li className="nav-item icon">
                   <Link className="nav-link" to={"/sign-up"}>
                     <i className="fa-solid fa-user-plus sign-up-logo"></i>
                   </Link>
                 </li>
+              </div>
+              <div
+                className="bg-info avatar-wrapper"
+                style={{
+                  display: `${localStorage.length > 0 ? "block" : "none"}`,
+                  position: "relative",
+                }}
+                onClick={this.onAvatarClick}
+              >
+                {/* <p>{this.state.current_user.name}</p> */}
+                <img
+                  src={
+                    this.state.current_user.avatar
+                      ? this.state.current_user.avatar
+                      : "https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg"
+                  }
+                  className="img-fluid avatar-img"
+                  alt="Responsive"
+                />
+                <div
+                  class="dropdown-menu ava-menu"
+                  aria-labelledby="dropdownMenuButton"
+                  style={{
+                    display: `${this.state.openAvaMenu ? "block" : "none"}`,
+                    transform: "translateY(7px)",
+                    right: 0,
+                    "box-shadow": "0px 5px 10px rgba(0, 0, 0, 0.5)",
+                    width: "250px",
+                  }}
+                >
+                  <button class="dropdown-item user-name_ava" type="button">
+                    {this.state.current_user.name}
+                  </button>
+                  <p className="username_email">
+                    {this.state.current_user.email}
+                  </p>
+                  <div class="dropdown-divider"></div>
+                  <a
+                    href="/profile"
+                    style={{ "text-decoration": "none", color: "#333" }}
+                  >
+                    <button class="dropdown-item" type="button">
+                      <i class="fa-solid fa-address-card"></i> Profile
+                    </button>
+                  </a>
+                  <button class="dropdown-item" type="button">
+                    <i class="fa-solid fa-list-ul"></i> History
+                  </button>
+                  <a
+                    href="#contact-us"
+                    style={{ "text-decoration": "none", color: "#333" }}
+                  >
+                    <button class="dropdown-item" type="button">
+                      <i class="fa-solid fa-address-book"></i> Contact us
+                    </button>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <button
+                    class="dropdown-item"
+                    type="button"
+                    onClick={this.onLogout}
+                  >
+                    Logout
+                  </button>
+                </div>
               </div>
             </ul>
           </div>

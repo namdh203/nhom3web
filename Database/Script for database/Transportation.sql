@@ -75,19 +75,19 @@ INSERT INTO `transportation` (`id`, `type`, `additionInfo`, `demoImage`) VALUES
     13,
     'Airplane',
     "Emirates Airline",
-    'https://w7.pngwing.com/pngs/39/709/png-transparent-boeing-737-next-generation-boeing-777-airbus-a380-airbus-a330-boeing-767-emirates-airline-mode-of-transport-airplane-aerospace.png'
+    'https://i.insider.com/5fee18a4a18a450018cb6739?width=2000&format=jpeg&auto=webp'
 ),
 (
     14,
     'Airplane',
     "Aviance Airline",
-    'https://w7.pngwing.com/pngs/768/560/png-transparent-boeing-737-next-generation-airbus-a330-boeing-767-airbus-a320-family-airplane-boeing-787-mode-of-transport-airplane-flight.png'
+    'https://cdn.airlines-inform.ru/upload/iblock/1e7/Avianca.JPG'
 ),
 (
     15,
     'Airplane',
     "Qatar Airline",
-    "https://w7.pngwing.com/pngs/340/214/png-transparent-airbus-a320-family-airbus-a330-boeing-737-boeing-777-boeing-767-qatar-airways-airline-mode-of-transport-airplane-aerospace-engineering.png"
+    "https://static.independent.co.uk/2022/12/07/09/iStock-1381496010.jpg?quality=75&width=990&crop=3%3A2%2Csmart&auto=webp"
 )
 
 
