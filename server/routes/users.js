@@ -76,7 +76,8 @@ users.post('/login', (req, res) => {
                     res.json({
                         status: "Success",
                         token: token,
-                        userId: user.id
+                        userId: user.id,
+                        role: user.role
                     })
                 } else {
                     res.json({ status: "Password wrong" })

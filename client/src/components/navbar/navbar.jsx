@@ -185,6 +185,19 @@ export default class NavBar extends React.Component {
                     </button>
                   </a>
                   <button class="dropdown-item" type="button"><i class="fa-solid fa-list-ul"></i>    History</button>
+                  <a 
+                    href="/admin" 
+                    style={{ 
+                      "text-decoration": "none", 
+                      "color": "#333", 
+                      display: `${(localStorage.key(0) !== null && JSON.parse(localStorage.getItem(localStorage.key(0))).role === "admin") ? "block" : "none"}`
+                    }}>
+                    <button class="dropdown-item" type="button">
+
+                      <i class="fa-brands fa-sourcetree"></i>    Quản lý tài nguyên
+
+                    </button>
+                  </a>
                   <a href="#contact-us" style={{ "text-decoration": "none", "color": "#333" }}>
                     <button class="dropdown-item" type="button">
 

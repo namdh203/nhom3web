@@ -42,7 +42,8 @@ export default class Login extends Component {
                 const user_ = {
                     email: this.state.email,
                     password: this.state.password,
-                    id: res.userId
+                    id: res.userId,
+                    role: res.role
                 }
 
                 const user_json = JSON.stringify(user_)

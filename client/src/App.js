@@ -29,7 +29,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Layout showFooter={true}/>}>
             <Route
               path="admin/*"
               element={<AdminDashboard />}
