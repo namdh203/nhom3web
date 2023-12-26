@@ -121,22 +121,29 @@ export default class NavBar extends React.Component {
                 className="nav-link"
                 to={"/recommendations/trans?page_num=1"}
               >
-                <li className="nav-item" style={{ "border-right": "0.025px solid white" }}>Transportations</li>
+                <li
+                  className={`nav-item ${
+                    this.props.showSearchBar ? "" : "right-border"
+                  }`}
+                >
+                  Transportations
+                </li>
               </Link>
-
-              {/* <Link
-                className="navLink"
-                to={"/build-itinerary/choose-destination"}
-              >
-                <form className="d-flex right-border" role="search" style={{ "padding-right": "20px" }}>
-                  <input
-                    className="form-control me-2"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                  />
-                </form>
-              </Link> */}
+              {this.props.showSearchBar && (
+                <Link
+                  className="navLink"
+                  to={"/build-itinerary/choose-destination"}
+                >
+                  <form className="d-flex right-border" role="search">
+                    <input
+                      className="form-control me-2"
+                      type="search"
+                      placeholder="Search"
+                      aria-label="Search"
+                    />
+                  </form>
+                </Link>
+              )}
 
               <div className="log-part" style={{ display: `${localStorage.length > 0 ? "none" : "flex"}` }}>
                 <li className="nav-item icon">

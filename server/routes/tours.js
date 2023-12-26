@@ -1,8 +1,9 @@
 const express = require("express")
 const tours = express.Router();
 const cors = require("cors")
-const Sequelize = require("sequelize")
+// const Sequelize = require("sequelize")
 const seedrandom = require("seedrandom")
+const { Op, Sequelize } = require('sequelize');
 
 const Tour = require("../models/tour");
 const Country = require("../models/country");
@@ -275,9 +276,15 @@ tours.post('/getdestdata', (req, res) => {
 
 tours.post('/getaccomlists', (req, res) => {
     const length = req.body.length;
+    const query = req.body.query
     // console.log("Length: ", length)
     Accommodation.findAll({
         attributes: ['id', 'name', 'pricePerNight', 'priceCurrency', 'address', 'telephone', 'contactEmail', 'additionInfo', 'demoImage'],
+        where: {
+            name: {
+                [Op.like]: `%${query}%`
+            }
+        },
         limit: length
     }).then(accoms => {
 
@@ -306,9 +313,15 @@ tours.post('/getaccomlists', (req, res) => {
 
 tours.post('/getrestlists', (req, res) => {
     const length = req.body.length;
+    const query = req.body.query
     // console.log("Length: ", length)
     Restaurant.findAll({
         attributes: ['id', 'name', 'address', 'telephone', 'additionInfo', 'demoImage'],
+        where: {
+            name: {
+                [Op.like]: `%${query}%`
+            }
+        },
         limit: length
     }).then(rests => {
 
@@ -333,9 +346,15 @@ tours.post('/getrestlists', (req, res) => {
 
 tours.post('/getactlists', (req, res) => {
     const length = req.body.length;
+    const query = req.body.query
     // console.log("Length: ", length)
     Activity.findAll({
         attributes: ['id', 'name', 'type', 'additionInfo', 'demoImage'],
+        where: {
+            name: {
+                [Op.like]: `%${query}%`
+            }
+        },
         limit: length
     }).then(acts => {
 
@@ -360,9 +379,15 @@ tours.post('/getactlists', (req, res) => {
 
 tours.post('/gettranslists', (req, res) => {
     const length = req.body.length;
+    const query = req.body.query
     // console.log("Length: ", length)
     Transportation.findAll({
         attributes: ['id', 'type', 'additionInfo', 'demoImage'],
+        where: {
+            type: {
+                [Op.like]: `%${query}%`
+            }
+        },
         limit: length
     }).then(acts => {
 

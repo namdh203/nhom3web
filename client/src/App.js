@@ -87,16 +87,13 @@ function App() {
               element={<UserProfile email={localStorage.key(0)} />}
             />
           </Route>
-
-          <Route
-            path="/build-itinerary/choose-destination"
-            element={<ChooseDestination />}
-          />
-          <Route
-            path="build-itinerary/tour-recommendations"
-            element={<TourRecommendations />}
-          />
-
+          <Route path="build-itinerary" element={<Layout />}>
+            <Route path="choose-destination" element={<ChooseDestination />} />
+            <Route
+              path="tour-recommendations"
+              element={<TourRecommendations />}
+            />
+          </Route>
         </Routes>
       </Router>
     </div>

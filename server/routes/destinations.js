@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-
+const { sequelize, Sequelize } = require("../database/db");
 const router = express.Router();
 
 const Destination = require("../models/destination");
@@ -9,18 +9,19 @@ const Country = require("../models/country");
 router.use(cors());
 
 router.post("/search-country", async (req, res) => {
-  const country = req.body.country;
+  const query = req.body.query;
 
-  Country.findOne({
-    attributes: ["id"],
-    where: { countryName: country },
+  Country.findAll({
+    attributes: ["id", "countryName"],
+    where: sequelize.where(
+      sequelize.fn("lower", sequelize.col("countryName")),
+      Sequelize.Op.like,
+      `%${query.toLowerCase()}%`
+    ),
+    limit: 10,
   })
-    .then((result) => {
-      if (result === null) {
-        res.json({ error: "Not found" });
-      } else {
-        res.json(result);
-      }
+    .then((results) => {
+      res.json({ results: results });
     })
     .catch((error) => {
       res.status(400).send("Bad request");
@@ -55,22 +56,28 @@ router.post('/admin/getAllDestination', (req, res) => {
 module.exports = router;
 
 router.post("/search-destination", async (req, res) => {
-  const destination = req.body.destination;
+  const query = req.body.query;
   const countryId = req.body.countryId;
 
-  Destination.findOne({
-    attributes: ["id"],
-    where: { countryId: countryId, name: destination },
+  Destination.findAll({
+    attributes: ["id", "name", "additionInfo", "demoImage"],
+    where: {
+      [Sequelize.Op.and]: [
+        sequelize.where(
+          sequelize.fn("lower", sequelize.col("name")),
+          Sequelize.Op.like,
+          `%${query}%`
+        ),
+        { countryId: countryId },
+      ],
+    },
+    limit: 12,
   })
-    .then((result) => {
-      if (result === null) {
-        res.json({ error: "Not found" });
-      } else {
-        res.json(result);
-      }
-    })
+    .then((results) => res.json({ results: results }))
     .catch((reason) => {
       res.status(400).send("Bad request");
       console.log("Bad request", reason);
     });
 });
+
+module.exports = router;
