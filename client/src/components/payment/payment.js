@@ -10,8 +10,9 @@ class Payment extends Component {
     }
 
     render() {
+        const imageUrl = "https://d30w0v1mttprqz.cloudfront.net/img/features/payment/payment-1.svg";
         return (
-            <Layout className=" row">
+            <Layout className="row">
                 <TourSummary style={
                     {
                         width: "50vw"
@@ -34,8 +35,20 @@ class Payment extends Component {
                     <div className="col-4">
                         <Discount></Discount>
                     </div>
-                    
                 </div>
+
+                <img
+                    className="pt-5"
+                    src={imageUrl}
+                    alt="Payment Background"
+                    style={{
+                        height: 'auto',
+                        display: 'block',
+                        margin: "0 25vw",
+                        width: "50vw",
+                        padding: "0"
+                    }}
+                />
 
             </Layout>
         )

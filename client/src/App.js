@@ -68,6 +68,13 @@ function App() {
             <Route path="restaurant/res" element={<Restaurant />} />
             <Route path="activity/act" element={<Activity />} />
             <Route path="payment" element={<Payment />} />
+            <Route path="/payment/payment-step-1" element={
+              <div>
+                <Payment />
+                <PaymentStep1></PaymentStep1>
+
+              </div>
+            } />
             <Route
               path="recommendations/accom"
               element={<RcmAccom></RcmAccom>}
