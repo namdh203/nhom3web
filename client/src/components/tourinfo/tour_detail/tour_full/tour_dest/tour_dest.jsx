@@ -11,7 +11,6 @@ import {
   getActSiteData,
 } from "./GetDestSite.js";
 
-// import { Collapse } from 'antd';
 
 class TourDestination extends React.Component {
   constructor(props) {
