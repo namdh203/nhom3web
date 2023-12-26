@@ -70,3 +70,36 @@ button {
     gap: 10px;
     align-items: center;
 }
+
+/* Pagination styles */
+.pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.pagination li {
+    margin-right: 5px;
+}
+
+.pagination button {
+    padding: 8px 12px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #333;
+}
+
+.pagination button:hover {
+    background-color: #4caf50;
+    /* Green background on hover */
+    color: #fff;
+    border: 1px solid #4caf50;
+}
+
+.pagination .active button {
+    background-color: #4caf50;
+    color: #fff;
+    border: 1px solid #4caf50;
+}

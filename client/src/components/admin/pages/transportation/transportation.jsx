@@ -7,6 +7,8 @@ const Transportation = () => {
   const [sortCategory, setSortCategory] = useState("type");
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(8);
 
   const loadTransportations = () => {
     getAllTransportation()
@@ -55,6 +57,12 @@ const Transportation = () => {
     )
     : sortedTransportations;
 
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filteredTransportations.slice(indexOfFirstItem, indexOfLastItem);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div>
       <div className="dashboard-header">
@@ -91,7 +99,7 @@ const Transportation = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredTransportations.map(transportation => (
+          {currentItems.map(transportation => (
             <tr key={transportation.id}>
               <td>{transportation.id}</td>
               <td>{transportation.type}</td>
@@ -100,6 +108,16 @@ const Transportation = () => {
           ))}
         </tbody>
       </table>
+
+      <ul className="pagination">
+        {Array.from({ length: Math.ceil(filteredTransportations.length / itemsPerPage) }).map(
+          (_, index) => (
+            <li key={index} className={currentPage === index + 1 ? "active" : ""}>
+              <button onClick={() => paginate(index + 1)}>{index + 1}</button>
+            </li>
+          )
+        )}
+      </ul>
     </div>
   );
 };
