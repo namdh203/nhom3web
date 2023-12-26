@@ -12,6 +12,7 @@ export default class TourRecommendations extends Component {
       pagenum: props.page_num,
       card_per_page: 12,
       pagelist: null,
+      dest: null,
     };
   }
 
@@ -29,12 +30,14 @@ export default class TourRecommendations extends Component {
 
     const currentURL = window.location.href;
     const url = new URL(currentURL);
+
     var page_num = url.searchParams.get("page_num");
     page_num = parseInt(page_num);
-    console.log("before: page_num=" + page_num);
     if (isNaN(page_num)) page_num = 1;
-    console.log("after: page_num=" + page_num);
-    this.setState({ pagenum: page_num });
+
+    const destination = url.searchParams.get("dest");
+
+    this.setState({ pagenum: page_num, dest: destination });
   }
 
   getTourList = async (length) => {

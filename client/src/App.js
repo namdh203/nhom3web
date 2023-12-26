@@ -25,7 +25,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Layout showSearchBar showFooter />}>
             <Route index element={<Dashboard />} />
             <Route
               path="sign-in"
@@ -74,15 +74,13 @@ function App() {
               element={<RcmTrans></RcmTrans>}
             />
           </Route>
-
-          <Route
-            path="/build-itinerary/choose-destination"
-            element={<ChooseDestination />}
-          />
-          <Route
-            path="build-itinerary/tour-recommendations"
-            element={<TourRecommendations />}
-          />
+          <Route path="build-itinerary" element={<Layout />}>
+            <Route path="choose-destination" element={<ChooseDestination />} />
+            <Route
+              path="tour-recommendations"
+              element={<TourRecommendations />}
+            />
+          </Route>
         </Routes>
       </Router>
     </div>
