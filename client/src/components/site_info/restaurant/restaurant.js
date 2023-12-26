@@ -9,6 +9,7 @@ import "../site_info.css";
 import { useState, useEffect } from "react";
 import { getRestData } from "./RestFunc.js";
 import extractLink from "../helper/helper.js"
+import Comment from "../../comment/comment.jsx"
 
 const { Header, Footer, Sider, Content } = Layout;
 const { Title, Paragraph } = Typography;
@@ -67,7 +68,7 @@ export default function Restaurant(props) {
 
         return (
             <Layout>
-                <Header>Header</Header>
+                <div className="buffer-block"></div>
                 <Content>
                     <div className="container px-5">
                         <div className="d-flex flex-row justify-content-between">
@@ -174,6 +175,8 @@ export default function Restaurant(props) {
                             </div>
                         </div>
                     </div>
+
+                    <Comment type="rest" type_name={name}></Comment>
                 </Content>
             </Layout>
         )

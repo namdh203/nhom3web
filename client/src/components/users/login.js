@@ -30,13 +30,27 @@ export default class Login extends Component {
         }
 
         login(user).then(res => {
-            console.log(res)
-            const body = document.body
-            const nav_items = body.querySelectorAll(".nav-item")
-            for (let i = 0; i < nav_items.length; i++) {
-                nav_items[i].style.display = "none"
+            if (res.status === "Success") {
+                alert("Login successfully!")
+                const body = document.body
+                const nav_items = body.querySelectorAll(".nav-item")
+                for (let i = 0; i < nav_items.length; i++) {
+                    nav_items[i].style.display = "none"
+                }
+                window.location.href = "/"
+
+                const user_ = {
+                    email: this.state.email,
+                    password: this.state.password,
+                    id: res.userId
+                }
+
+                const user_json = JSON.stringify(user_)
+
+                localStorage.setItem(user.email, user_json)
+            } else {
+                alert("Login failed! Username or password may be incorrect!")
             }
-            window.location.href = "/"
 
         })
     }

@@ -8,6 +8,7 @@ import "../site_info.css";
 import { useState, useEffect } from "react";
 import { getActivityData } from "./ActivityFunc.js";
 import extractLink from "../helper/helper.js"
+import Comment from "../../comment/comment.jsx"
 
 const { Header, Footer, Sider, Content } = Layout;
 const { Title, Paragraph } = Typography;
@@ -60,7 +61,8 @@ export default function Activity(props) {
 
         return (
             <Layout>
-                <Header>Header</Header>
+                {/* <Header>Header</Header> */}
+                <div className="buffer-block"></div>
                 <Content>
                     <div className="container px-5">
                         <div className="d-flex flex-row justify-content-between">
@@ -141,7 +143,11 @@ export default function Activity(props) {
                                 ))} */}
                             </div>
                         </div>
+
+                        <Comment type="activity" type_name={name}></Comment>
+
                     </div>
+                    
                 </Content>
             </Layout>
         )

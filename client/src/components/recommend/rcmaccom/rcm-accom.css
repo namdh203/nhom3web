@@ -83,7 +83,7 @@
 .rcm-main_card-img {
     border-radius: 10px 10px 0 0;
     width: 100%;
-    height: 150px;
+    height: 200px !important;
 }
 
 .rcm-main_card-info {
@@ -182,4 +182,21 @@
 .page-item.chosen > .page-link {
     background-color: rgb(88, 206, 88) !important;
     color: white !important
+}
+
+.searchBar {
+    width: 550px !important;
+    height: 80px;
+    margin: 20px 100px;
+}
+
+.searchBar > h2 { 
+    font-size: 20px;
+}
+
+.searchBar > input {
+    width: 100%;
+    /* height: 100%; */
+    padding: 5px 10px;
+    border-radius: 5px;
 }

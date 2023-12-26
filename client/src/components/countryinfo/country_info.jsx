@@ -5,6 +5,7 @@ import "./country_info.css"
 import SuggestCard from './suggest_card'
 import { getCountryData, getTourData } from './CountryFunction'
 import { Carousel } from 'antd';
+import Comment from '../comment/comment'
 
 export default class CountryInfo extends React.Component {
     constructor(props) {
@@ -98,11 +99,12 @@ export default class CountryInfo extends React.Component {
                             {this.state.tourData.slice(0, 3).map((tour) => (
                                 <SuggestCard tour={tour}></SuggestCard>
                             ))}
-
-
                         </div>
-                    </div>
 
+                        <Comment type="country" type_name={this.state.countryData.countryName}></Comment>
+ 
+                    </div>
+                    
                 </div>
             </div>
         )

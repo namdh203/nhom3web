@@ -8,6 +8,7 @@ var SECRET_KEY = "Travelam";
 
 const User = require("../models/user");
 const Customer = require("../models/customer")
+const Comment = require("../models/comment")
 
 
 
@@ -36,7 +37,7 @@ users.post('/register', (req, res) => {
                 userData.password = hash
                 User.create(userData)
                     .then(user => {
-                        res.json({ status: user.email + 'Registered!' })
+                        res.json({ status: 'Registered!' })
                     })
                     .catch(err => {
                         res.send('error: ' + err)
@@ -50,7 +51,7 @@ users.post('/register', (req, res) => {
                     })
             })
         } else {
-            res.json({ error: 'User already exists' })
+            res.json({ status: 'User already exists' })
         }
     })
         .catch(err => {
@@ -70,11 +71,18 @@ users.post('/login', (req, res) => {
                     let token = jwt.sign(user.dataValues, SECRET_KEY, {
                         expiresIn: 1440
                     })
-                    res.send(token)
+                    // res.send(token)
                     // console.log(res)
+                    res.json({
+                        status: "Success",
+                        token: token,
+                        userId: user.id
+                    })
+                } else {
+                    res.json({ status: "Password wrong" })
                 }
             } else {
-                res.status(400).json({ error: 'User does not exist' })
+                res.json({ status: "Username wrong", error: 'User does not exist' })
             }
         })
         .catch(err => {
@@ -95,5 +103,134 @@ users.get("/", (req, res) => {
         }
     ])
 })
+
+users.post('/getCustomer', (req, res) => {
+    console.log("req.body.email", req.body.email)
+    // alert("Customer's email: ", req.body.email)
+    Customer.findOne({
+        where: {
+            email: req.body.email
+        }
+    })
+        .then(customer => {
+            if (customer) {
+                const responseData = {
+                    id: customer.userId,
+                    name: customer.name,
+                    email: customer.email,
+                    avatar: customer.avatar,
+                };
+
+                res.json(responseData)
+            } else {
+                res.status(400).json({ error: 'Customer doesn\'t exist' })
+            }
+        })
+        .catch(err => {
+            res.status(400).json({ error: err })
+        })
+})
+
+users.post('/getCustomerProperties', (req, res) => {
+    Customer.findOne({
+        where: {
+            email: req.body.email
+        }
+    })
+        .then(customer => {
+            if (customer) {
+                const responseData = {
+                    name: customer.name,
+                    cardNo: customer.cardNo,
+                    address: customer.address,
+                    phoneNumber: customer.phoneNumber,
+                    email: customer.email,
+                    passport: customer.passport,
+                    avatar: customer.avatar
+                };
+
+                res.json(responseData)
+            } else {
+                res.status(400).json({ error: 'Customer doesn\'t exist' })
+            }
+        })
+        .catch(err => {
+            res.status(400).json({ error: err })
+        })
+})
+
+users.post('/updateCustomer', (req, res) => {
+    const new_user = req.body.new_user
+    var responseData = ""
+
+    Customer.update({
+        name: new_user.name,
+        cardNo: new_user.cardNo,
+        address: new_user.address,
+        phoneNumber: new_user.phoneNumber,
+        passport: new_user.passport,
+        avatar: new_user.avatar
+    }, { where: { email: new_user.email } }).then(customer => {
+        if (customer) {
+            responseData = {
+                msg: "Update successfully"
+            }
+
+            // res.json(responseData)
+        } else {
+            res.status(400).json({ error: 'Customer doesn\'t exist' })
+        }
+    })
+        .catch(err => {
+            res.status(400).json({ error: err })
+        });
+
+    Comment.update({
+        avatar: new_user.avatar
+    }, { where: { email: new_user.email } }).then(comment => {
+        if (comment) {
+            responseData = {
+                msg: "Update successfully"
+            }
+    
+            res.json(responseData)
+        } else {
+            res.status(400).json({ error: 'Comment doesn\'t exist' })
+        }
+    })
+        .catch(err => {
+            res.status(400).json({ error: err })
+        });
+
+    // res.json(responseData)
+
+})
+
+// admin findAll user from db (or limit)
+
+users.post('/admin/getCustomerProperties', (req, res) => {
+    Customer.findAll({
+        limit: 50
+    })
+        .then(customers => {
+            if (customers) {
+                const responseData = customers.map(customer => ({
+                    userId: customer.userId,
+                    name: customer.name,
+                    cardNo: customer.cardNo,
+                    address: customer.address,
+                    phoneNumber: customer.phoneNumber,
+                    email: customer.email,
+                    passport: customer.passport,
+                }));
+                res.json(responseData);
+            } else {
+                res.status(400).json({ error: 'No customers found' });
+            }
+        })
+        .catch(err => {
+            res.status(500).json({ error: err.message });
+        });
+});
 
 module.exports = users;

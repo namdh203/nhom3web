@@ -48,10 +48,6 @@ html,
   align-items: center;
 }
 
-.navbar-wrapper {
-  padding: 0 20px !important
-}
-
 .auth-wrapper {
   display: flex;
   justify-content: center;
@@ -124,4 +120,9 @@ html,
 
 .pb-40px {
   padding-bottom: 40px;
+}
+
+
+.buffer-block-horizon {
+  width: 800px;
 }

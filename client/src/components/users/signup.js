@@ -35,7 +35,12 @@ export default class SignUp extends Component {
 
         register(newUser).then(res => {
             // rotes to sign-in
-            window.location.href = `/sign-in`;
+            if (res.status === "Registered!") {
+                alert("Registered successfully! Please sign in again.")
+                window.location.href = `/sign-in`;
+            } else {
+                alert("User has been existed! Let's check information again.")
+            }
         })
     }
 

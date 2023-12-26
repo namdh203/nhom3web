@@ -46,5 +46,30 @@ restaurants.post('/randomRestaurant', (req, res) => {
     })
 })
 
-module.exports = restaurants;
+// admin
+restaurants.post('/admin/getAllRestaurant', (req, res) => {
+    Restaurant.findAll({
+        limit: 50
+    })
+    .then(restaurants => {
+        if (restaurants) {
+            const responseData = restaurants.map(restaurant => ({
+                id: restaurant.id,
+                name: restaurant.name,
+                destId: restaurant.destId,
+                address: restaurant.address,
+                telephone: restaurant.telephone,
+                description: restaurant.description,
+                additionInfo: restaurant.additionInfo,
+            }));
+            res.json(responseData);
+        } else {
+            res.status(400).json({ error: 'No restaurant found' });
+        }
+    })
+    .catch(err => {
+        res.status(500).json({ error: err.message });
+    });
+  });
 
+module.exports = restaurants;
