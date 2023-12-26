@@ -7,6 +7,8 @@ const Tour = () => {
   const [sortCategory, setSortCategory] = useState("title");
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(8);
 
   const loadTours = () => {
     getAllTour()
@@ -56,6 +58,12 @@ const Tour = () => {
     )
     : sortedTours;
 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredTours.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div>
       <div className="dashboard-header">
@@ -99,7 +107,7 @@ const Tour = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredTours.map(tour => (
+          {currentItems.map(tour => (
             <tr key={tour.id}>
               <td>{tour.id}</td>
               <td>{tour.title}</td>
@@ -114,6 +122,16 @@ const Tour = () => {
           ))}
         </tbody>
       </table>
+
+      <ul className="pagination">
+        {Array.from({ length: Math.ceil(filteredTours.length / itemsPerPage) }).map(
+          (_, index) => (
+            <li key={index} className={currentPage === index + 1 ? "active" : ""}>
+              <button onClick={() => paginate(index + 1)}>{index + 1}</button>
+            </li>
+          )
+        )}
+      </ul>
 
     </div>
   );

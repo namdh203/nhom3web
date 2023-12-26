@@ -7,6 +7,8 @@ const Restaurant = () => {
   const [sortCategory, setSortCategory] = useState("name");
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(8);
 
   const loadRestaurants = () => {
     getAllRestaurant()
@@ -55,6 +57,12 @@ const Restaurant = () => {
     )
     : sortedRestaurants;
 
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filteredRestaurants.slice(indexOfFirstItem, indexOfLastItem);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div>
       <div className="dashboard-header">
@@ -95,7 +103,7 @@ const Restaurant = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredRestaurants.map(restaurant => (
+          {currentItems.map(restaurant => (
             <tr key={restaurant.id}>
               <td>{restaurant.id}</td>
               <td>{restaurant.name}</td>
@@ -108,6 +116,16 @@ const Restaurant = () => {
           ))}
         </tbody>
       </table>
+
+      <ul className="pagination">
+        {Array.from({ length: Math.ceil(filteredRestaurants.length / itemsPerPage) }).map(
+          (_, index) => (
+            <li key={index} className={currentPage === index + 1 ? "active" : ""}>
+              <button onClick={() => paginate(index + 1)}>{index + 1}</button>
+            </li>
+          )
+        )}
+      </ul>
     </div>
   );
 };

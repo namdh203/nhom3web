@@ -7,6 +7,8 @@ const Account = () => {
   const [sortCategory, setSortCategory] = useState("name");
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(8);
 
   const loadAccounts = () => {
     getFullProperty()
@@ -56,6 +58,13 @@ const Account = () => {
     )
     : sortedAccounts;
 
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredAccounts.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div>
       <div className="dashboard-header">
@@ -97,7 +106,7 @@ const Account = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredAccounts.map(account => (
+          {currentItems.map(account => (
             <tr key={account.userId}>
               <td>{account.userId}</td>
               <td>{account.name}</td>
@@ -110,6 +119,16 @@ const Account = () => {
           ))}
         </tbody>
       </table>
+
+      <ul className="pagination">
+        {Array.from({ length: Math.ceil(filteredAccounts.length / itemsPerPage) }).map(
+          (_, index) => (
+            <li key={index} className={currentPage === index + 1 ? "active" : ""}>
+              <button onClick={() => paginate(index + 1)}>{index + 1}</button>
+            </li>
+          )
+        )}
+      </ul>
     </div>
   );
 };
