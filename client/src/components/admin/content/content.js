@@ -6,6 +6,9 @@ import Destination from '../pages/destination/destination';
 import Transportation from '../pages/transportation/transportation';
 import Accommodation from '../pages/accomodation/accommodation';
 import Restaurant from '../pages/restaurant/restaurant';
+
+import AddAccountForm from '../pages/account/addAccountForm';
+
 import "./content.css"
 
 function Content() {
@@ -13,6 +16,7 @@ function Content() {
         <div className='content'>
             <Routes>
                 <Route path="/account" element={<Account/>}></Route>
+                <Route path="/account/add-account" element={<AddAccountForm/>}></Route>
                 <Route path="/tour" element={<Tour/>}></Route>
                 <Route path="/destination" element={<Destination/>}></Route>
                 <Route path="/transportation" element={<Transportation/>}></Route>

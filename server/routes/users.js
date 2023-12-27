@@ -192,7 +192,7 @@ users.post('/updateCustomer', (req, res) => {
             responseData = {
                 msg: "Update successfully"
             }
-    
+
             res.json(responseData)
         } else {
             res.status(400).json({ error: 'Comment doesn\'t exist' })
@@ -232,5 +232,63 @@ users.post('/admin/getCustomerProperties', (req, res) => {
             res.status(500).json({ error: err.message });
         });
 });
+
+users.post('/admin/addCustomer', async (req, res) => {
+    const new_customer = req.body.new_customer;
+
+    try {
+        const existingCustomer = await Customer.findOne({ where: { email: new_customer.email } });
+        if (existingCustomer) {
+            return res.status(400).json({ error: 'Customer with this email already exists' });
+        }
+
+        const hashedPassword = await bcrypt.hash(new_customer.password, 10);
+
+        const createdUser = await User.create({
+            role: 'user',
+            email: new_customer.email,
+            password: hashedPassword
+        });
+
+        const userId = createdUser.userId;
+
+        const createdCustomer = await Customer.create({
+            name: new_customer.name,
+            cardNo: new_customer.cardNo,
+            address: new_customer.address,
+            phoneNumber: new_customer.phoneNumber,
+            email: new_customer.email,
+            passport: new_customer.passport
+        });
+
+        res.json({
+            msg: 'Customer added successfully',
+            customer: {
+                userId: createdCustomer.userId,
+                name: createdCustomer.name,
+                cardNo: createdCustomer.cardNo,
+                address: createdCustomer.address,
+                phoneNumber: createdCustomer.phoneNumber,
+                email: createdCustomer.email,
+                passport: createdCustomer.passport,
+            },
+            user: {
+                userId,
+                name: new_customer.name,
+                cardNo: new_customer.cardNo,
+                address: new_customer.address,
+                phoneNumber: new_customer.phoneNumber,
+                email: new_customer.email,
+                passport: new_customer.passport,
+            },
+        });
+    } catch (error) {
+        console.error('Error adding customer:', error);
+        res.status(400).json({ error: 'Error adding customer' });
+    }
+});
+
+
+
 
 module.exports = users;

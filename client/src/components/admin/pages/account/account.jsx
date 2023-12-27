@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getFullProperty } from "./accountFunction";
 import "./account.css"
+import { useNavigate } from "react-router-dom";
 
 const Account = () => {
   const [accounts, setAccounts] = useState([]);
@@ -9,6 +10,8 @@ const Account = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(8);
+
+  const navigate = useNavigate();
 
   const loadAccounts = () => {
     getFullProperty()
@@ -119,6 +122,15 @@ const Account = () => {
           ))}
         </tbody>
       </table>
+
+      <div className="button-admin">
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/account/add-account")}>
+          Add Account
+        </button>
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/account/delete-account")}>
+          Delete
+        </button>
+      </div>
 
       <ul className="pagination">
         {Array.from({ length: Math.ceil(filteredAccounts.length / itemsPerPage) }).map(
