@@ -55,7 +55,7 @@ export default class TourInfo extends React.Component {
                 <SubNav></SubNav>
                 <TourIntro tour={this.state.tourData}/>
                 <TourDesc tour={this.state.tourData}></TourDesc>
-                <TourDetail dest={this.state.destData} />
+                <TourDetail dest={this.state.destData} tour={this.state.tourData}/>
             </div>
         )
     }

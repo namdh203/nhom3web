@@ -10,17 +10,18 @@ export default class TourSummary extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tourName: "Family Beach Retreat in Gold Coast",
-      description: "Family trip",
-      startDate: "20/10/2023",
-      totalCost: 328,
+      tourName: this.props.dataPackage.tourName,
+      description: `${this.props.dataPackage.shortDescription} trip`,
+      startDate: this.props.dataPackage.startDate,
+      totalCost: this.props.dataPackage.totalCost,
       currency: "$",
     };
   }
 
   render() {
-    const { tourName, description, startDate, totalCost, currency } =
+    let { tourName, description, startDate, totalCost, currency } =
       this.state;
+    startDate = new Date(startDate).toISOString().split('T')[0];
     return (
       <Layout className="payment-wrapper">
         <div className="buffer-block" style={{ height: "40px" }}></div>
@@ -37,28 +38,23 @@ export default class TourSummary extends React.Component {
               <div className="">
                 <div className="m-0 d-flex flex-row justify-content-between">
                   <div>
-                  <Title className="m-0" type="secondary" level={4}>
-                    Total cost
-                    
-                  </Title>
-                  <Paragraph className="m-0" type="secondary">
-                    inclusive of all taxes and fees.
-                  </Paragraph>
+                    <Title className="m-0" type="secondary" level={4}>
+                      Total cost
+                    </Title>
+                    <Paragraph className="m-0" type="secondary">
+                      inclusive of all taxes and fees.
+                    </Paragraph>
                   </div>
-                  
 
                   <Title className="align-self-end" level={2}>
                     {totalCost} {currency}
                   </Title>
-                  
                 </div>
               </div>
             </div>
           </div>
-          
-          <div>
 
-          </div>
+          <div></div>
         </Content>
       </Layout>
     );

@@ -20,7 +20,7 @@ class TourDetail extends React.Component {
                         <TourBriefSchedule dest={this.props.dest}></TourBriefSchedule>
                     </div>
                     <div className="col col-md-9 col-sm-12 col-12">
-                        <TourFullSchedule dest={this.props.dest}></TourFullSchedule>
+                        <TourFullSchedule dest={this.props.dest} tour={this.props.tour}></TourFullSchedule>
                     </div>
                 </div>
             </div>
