@@ -23,6 +23,9 @@ import Layout from "./components/Layout.js";
 import PaymentStep1 from "./components/payment/payment_steps/payment_step_1.jsx"
 import UserProfile from './components/profile/profile.jsx'
 import AdminDashboard from './components/admin/dashboard.js'
+
+import Notification from './components/notification/notification.jsx'
+
 function App() {
   // const [isLogin, setIsLogin] = useState(false)
   return (
@@ -48,7 +51,7 @@ function App() {
               path="sign-up"
               element={
                 <>
-                  ˀ
+                  {/* <Notification type="info" msg="fasdfasdf" /> */}
                   <Dashboard />
                   <SignUp />
                 </>
@@ -67,7 +70,16 @@ function App() {
             <Route path="accommodation/hotel" element={<Accommodation />} />
             <Route path="restaurant/res" element={<Restaurant />} />
             <Route path="activity/act" element={<Activity />} />
-            <Route path="payment" element={<Payment />} />
+            <Route path="payment" element={
+              <>
+                <Payment />
+              </>
+            } />
+            <Route path="payment/payment-step-1" element={
+              <>
+                <Payment />
+                <PaymentStep1 /></>
+            } />
             <Route
               path="recommendations/accom"
               element={<RcmAccom></RcmAccom>}

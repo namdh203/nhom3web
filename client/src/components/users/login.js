@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { login } from './UserFunction.js'
 import { Link } from "react-router-dom"
+import { Modal } from "antd"
+
 import "../../App.css"
 import "../dashboard/dashboard.js"
 import './login.css'
@@ -11,16 +13,42 @@ export default class Login extends Component {
         this.state = {
             email: '',
             password: '',
-            errors: {}
+            errors: {},
+            success: false,
+            failed: false,
+            openModal: false
         }
 
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
+        this.handleOk = this.handleOk.bind(this)
+        this.handleCancel = this.handleCancel.bind(this)
+        this.handleOkModified = this.handleOkModified.bind(this)
+        this.handleCancelModified = this.handleCancelModified.bind(this)
+    }
+
+    handleOk() {
+        this.setState({ openModal: false })
+    }
+
+    handleCancel() {
+        this.setState({ openModal: false })
+    }
+
+    handleOkModified() {
+        this.setState({ openModal: false })
+        window.location.href = `/`;
+    }
+
+    handleCancelModified() {
+        this.setState({ openModal: false })
+        window.location.href = `/`;
     }
 
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
+
     onSubmit(e) {
         e.preventDefault()
 
@@ -31,13 +59,15 @@ export default class Login extends Component {
 
         login(user).then(res => {
             if (res.status === "Success") {
-                alert("Login successfully!")
+                // alert("Login successfully!")
                 const body = document.body
                 const nav_items = body.querySelectorAll(".nav-item")
                 for (let i = 0; i < nav_items.length; i++) {
                     nav_items[i].style.display = "none"
                 }
-                window.location.href = "/"
+                // window.location.href = "/"
+
+                this.setState({success: true, openModal: true})
 
                 const user_ = {
                     email: this.state.email,
@@ -50,7 +80,9 @@ export default class Login extends Component {
 
                 localStorage.setItem(user.email, user_json)
             } else {
-                alert("Login failed! Username or password may be incorrect!")
+                this.setState({failed: true, openModal: true})
+
+                // alert("Login failed! Username or password may be incorrect!")
             }
 
         })
@@ -59,6 +91,30 @@ export default class Login extends Component {
     render() {
         return (
             <div className="auth-wrapper-login">
+                {this.state.success ? <div><Modal open={this.state.openModal} onOk={this.handleOkModified} onCancel={this.handleCancelModified} zIndex="2000">
+                    <div className="notice-wrapper" style={{ width: "100%" }}>
+                        <img
+                            src="https://cdn-icons-png.flaticon.com/512/943/943593.png"
+                            className="img-fluid modal-notice info"
+                            alt="Responsive"
+                        />
+                    </div>
+
+                    <h1 className="modal-msg">Login successfully!</h1>
+
+                </Modal></div> : ""}
+                {this.state.failed ? <div><Modal open={this.state.openModal} onOk={this.handleOk} onCancel={this.handleCancel} zIndex="2000">
+                    <div className="notice-wrapper" style={{ width: "100%" }}>
+                        <img
+                            src="https://www.publicdomainpictures.net/pictures/360000/nahled/nein-symbol-rot-warnung.png"
+                            className="img-fluid modal-notice warn"
+                            alt="Responsive"
+                        />
+                    </div>
+
+                    <h1 className="modal-msg">Login failed! Username or password may be incorrect!</h1>
+
+                </Modal></div> : ""}
                 <Link className="dashboard-link" to={"/"}>
                     <div className="black-layer" style={{
                         "z-index": "9",

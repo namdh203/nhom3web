@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import { register } from './UserFunction.js'
 import { Link } from 'react-router-dom'
+
+import { Modal } from 'antd';
 import '../../App.css'
 import "../dashboard/dashboard.js"
 import './signup.css'
+
+import Notification from '../notification/notification.jsx'
 
 export default class SignUp extends Component {
     constructor() {
@@ -13,11 +17,36 @@ export default class SignUp extends Component {
             last_name: "",
             email: "",
             password: "",
-            errors: {}
+            errors: {},
+            openModal: false,
+            success: false,
+            failed: false
         }
 
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
+        this.handleOk = this.handleOk.bind(this)
+        this.handleCancel = this.handleCancel.bind(this)
+        this.handleOkModified = this.handleOkModified.bind(this)
+        this.handleCancelModified = this.handleCancelModified.bind(this)
+    }
+
+    handleOk() {
+        this.setState({ openModal: false })
+    }
+
+    handleCancel() {
+        this.setState({ openModal: false })
+    }
+
+    handleOkModified() {
+        this.setState({ openModal: false })
+        window.location.href = `/sign-in`;
+    }
+
+    handleCancelModified() {
+        this.setState({ openModal: false })
+        window.location.href = `/sign-in`;
     }
 
     onChange(e) {
@@ -36,10 +65,11 @@ export default class SignUp extends Component {
         register(newUser).then(res => {
             // rotes to sign-in
             if (res.status === "Registered!") {
-                alert("Registered successfully! Please sign in again.")
-                window.location.href = `/sign-in`;
+                // alert("Registered successfully! Please sign in again.")
+                this.setState({ success: true, openModal: true })
             } else {
-                alert("User has been existed! Let's check information again.")
+                this.setState({ failed: true, openModal: true })
+                // alert("User has been existed! Let's check information again.")
             }
         })
     }
@@ -49,6 +79,30 @@ export default class SignUp extends Component {
         return (
 
             <div className="auth-wrapper-signup">
+                {this.state.success ? <div><Modal open={this.state.openModal} onOk={this.handleOkModified} onCancel={this.handleCancelModified} zIndex="2000">
+                    <div className="notice-wrapper" style={{ width: "100%" }}>
+                        <img
+                            src="https://cdn-icons-png.flaticon.com/512/943/943593.png"
+                            className="img-fluid modal-notice info"
+                            alt="Responsive"
+                        />
+                    </div>
+
+                    <h1 className="modal-msg">Registered successfully! Please sign in again.</h1>
+
+                </Modal></div> : ""}
+                {this.state.failed ? <div><Modal open={this.state.openModal} onOk={this.handleOk} onCancel={this.handleCancel} zIndex="2000">
+                    <div className="notice-wrapper" style={{ width: "100%" }}>
+                        <img
+                            src="https://www.publicdomainpictures.net/pictures/360000/nahled/nein-symbol-rot-warnung.png"
+                            className="img-fluid modal-notice warn"
+                            alt="Responsive"
+                        />
+                    </div>
+
+                    <h1 className="modal-msg">User has been existed! Let's check information again.</h1>
+
+                </Modal></div> : ""}
                 <Link className="dashboard-link" to={"/"}>
                     <div className="black-layer" style={{
                         "z-index": "9",

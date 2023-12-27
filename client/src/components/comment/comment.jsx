@@ -2,17 +2,32 @@ import React from 'react'
 
 import "./comment.css"
 import { getComment, sendComment } from "./CmtFunction"
+import { Modal } from "antd"
 
 export default class TourComment extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             current_cmt: [],
-            comment: ""
+            comment: "",
+            failed: false,
+            openModal: false
         }
 
         this.onChange = this.onChange.bind(this)
         this.onCommentClick = this.onCommentClick.bind(this)
+        this.handleOk = this.handleOk.bind(this)
+        this.handleCancel = this.handleCancel.bind(this)
+    }
+
+    handleOk() {
+        this.setState({ openModal: false })
+        window.location.href = "/sign-in"
+    }
+
+    handleCancel() {
+        this.setState({ openModal: false })
+        window.location.href = "/sign-in"
     }
 
     onChange(e) {
@@ -26,8 +41,7 @@ export default class TourComment extends React.Component {
         const key = localStorage.key(0)
 
         if (key === null) {
-            alert("Please log in to comment")
-            window.location.href = "/sign-in"
+            this.setState({failed: true, openModal: true})
         } else {
             const user_json = JSON.parse(localStorage.getItem(key))
 
@@ -71,6 +85,18 @@ export default class TourComment extends React.Component {
 
         return (
             <div class="be-comment-block">
+                {this.state.failed ? <div><Modal open={this.state.openModal} onOk={this.handleOk} onCancel={this.handleCancel} zIndex="2000">
+                    <div className="notice-wrapper" style={{ width: "100%" }}>
+                        <img
+                            src="https://www.publicdomainpictures.net/pictures/360000/nahled/nein-symbol-rot-warnung.png"
+                            className="img-fluid modal-notice warn"
+                            alt="Responsive"
+                        />
+                    </div>
+
+                    <h1 className="modal-msg">Please log in to comment!</h1>
+
+                </Modal></div> : ""}
                 <h1 class="comments-title">Comments ({this.state.current_cmt.length})</h1>
                 {this.state.current_cmt.map((cmt) => (
                     <div class="be-comment">
