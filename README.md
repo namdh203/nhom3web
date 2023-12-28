@@ -1,31 +1,38 @@
 ## How to run our app:
-Install Database:
-Run our script:\
-    - Open folder Database\
-    - Run script from Travelam.sql file in local to create our database\
 
-Install packages:
+### Create Database:
 
-Install package:\
-    - Open terminal\
-    - If you haven't installed packages yet, at root, run command "npm install"\
+- Import the file [Travelam.sql](Database/Travelam.sql) into your local mysql server to create the database.
+- Grant access to the database `travelgiang` to a mysql account.
+- In the [/server](/server) directory, create an environment file `.env.local` and copy the fields in `.env.example` into `.env.local`. Type in your mysql hostname and the mysql account that has been granted access to the `travelgiang` database.
 
-Install backend (expressjs):\
-    - At root, run command "cd server"\
-    - If you haven't installed packages yet, run command "npm install"\
+### Install packages:
 
-Install frontend (react):\
-    - Open new terminal tab\
-    - At root, run command "cd client"\
-    - If you haven't installed packages yet, run command "npm install"\
-    - Run command "npm run build"\
+Install root packages:
 
-How to change port:\
-    - Change port in server/server.js\
-    - Change port in client/package.json, there is "proxy" key, change its value.\
+- Open a terminal at the root directory
+- If you haven't installed packages yet, run command `npm install`
 
-Run website:\
-    - At root, run command "npm start-root"
+Install backend (expressjs) packages:
+
+- At root, run command `cd server`
+- If you haven't installed packages yet, run command `npm install`
+
+Install frontend (react) packages:
+
+- Open new terminal tab
+- At root, run command `cd client`
+- If you haven't installed packages yet, run command `npm install`
+
+How to change port:
+
+- Change the port value (default to `5000`) in [/server/server.js](/server/server.js)
+- In [/client/package.json](/client/package.json), there is "proxy" key, change the port value in the server URL.
+
+Run website:
+
+- At root, run command `npm start-root`.
+- If that doesn't work, try run these two commands: `npm start-server` and `npm start-client` in two different terminals.
 
 # Getting Started with Create React App
 

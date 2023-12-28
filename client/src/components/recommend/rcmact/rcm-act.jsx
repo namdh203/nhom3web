@@ -12,40 +12,57 @@ export default class RcmAct extends React.Component {
             actData: null,
             pagenum: null,
             card_per_page: 8,
-            pagelist: null
+            pagelist: null,
+            query: null
         }
+
+        this.onChange = this.onChange.bind(this)
+    }
+
+    loadAct() {
+        var page_list = [];
+        getActList(50, this.state.query).then((res) => {
+            this.setState({ actData: res }, () => {
+                for (let i = 0; i < res.length / this.state.card_per_page; i++) {
+                    page_list.push(i);
+                }
+
+                this.setState({ pagelist: page_list });
+            });
+        });
     }
 
     componentDidMount() {
-
-        var page_list = []
-
-        getActList(50).then(res => {
-            this.setState({ actData: res }, () => {
-                for (let i = 0; i < res.length / this.state.card_per_page; i ++) {
-                    page_list.push(i)
-                }
-
-                this.setState({pagelist: page_list})
-            })
-        })
-
         const currentURL = window.location.href;
 
         const url = new URL(currentURL);
 
-        var page_num = url.searchParams.get("page_num")
+        var query = url.searchParams.get("query");
 
-        page_num = parseInt(page_num)
-
-        if (page_num === null) {
-            page_num = 1
+        if (query === null) {
+            query = ""
         }
 
-        this.setState({pagenum: page_num});
+        this.setState({ query: query }, () => {
+            this.loadAct()
+        })
+
+        var page_num = url.searchParams.get("page_num");
+
+        page_num = parseInt(page_num);
+
+        if (isNaN(page_num)) {
+            page_num = 1;
+        }
+
+        this.setState({ pagenum: page_num });
         // const name = url.searchParams.get("name");
+    }
 
-
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value, pagenum: 1 }, () => {
+            this.loadAct()
+        })
     }
 
     render() {
@@ -78,11 +95,15 @@ export default class RcmAct extends React.Component {
                 </div>
 
                 <div className="rcm-main" id="main">
+                    <div className="searchBar">
+                        <h2>Which activity...?</h2>
+                        <input type="text" value={this.state.query} name="query" placeholder="Activity" onChange={this.onChange} />
+                    </div>
                     <div className="rcm-main_wrapper row gx-4 gy-5">
                         {this.state.actData.slice((this.state.pagenum - 1) * this.state.card_per_page,
-                        this.state.card_per_page * this.state.pagenum).map(act => (
-                            <RcmActCard act={act}></RcmActCard>
-                        ))}
+                            this.state.card_per_page * this.state.pagenum).map(act => (
+                                <RcmActCard act={act}></RcmActCard>
+                            ))}
                     </div>
 
                 </div>
@@ -90,13 +111,13 @@ export default class RcmAct extends React.Component {
                 <nav aria-label="Page navigation rcm-pagination">
                     <ul className="pagination justify-content-center no-margin-bottom pb-40px">
                         <li className="page-item">
-                            <a className="page-link" href={`?page_num=${Math.max(this.state.pagenum - 1, 1)}`}>Previous</a>
+                            <a className="page-link" href={`?page_num=${Math.max(this.state.pagenum - 1, 1)}&query=${this.state.query}`}>Previous</a>
                         </li>
                         {this.state.pagelist.map((page) => (
-                            <li className={`page-item${(this.state.pagenum == page + 1) ? " chosen" : ""}`}><a className="page-link" href={`?page_num=${page + 1}`}>{page + 1}</a></li>
+                            <li className={`page-item${(this.state.pagenum == page + 1) ? " chosen" : ""}`}><a className="page-link" href={`?page_num=${page + 1}&query=${this.state.query}`}>{page + 1}</a></li>
                         ))}
                         <li className="page-item">
-                            <a className="page-link" href={`?page_num=${Math.min(this.state.pagenum + 1, this.state.pagelist.length)}`}>Next</a>
+                            <a className="page-link" href={`?page_num=${Math.min(this.state.pagenum + 1, this.state.pagelist.length)}&query=${this.state.query}`}>Next</a>
                         </li>
                     </ul>
                 </nav>

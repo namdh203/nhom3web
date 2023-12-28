@@ -1,3 +1,17 @@
 .search-input-group {
-  padding: 50px 200px;
+  padding: 50px 200px 0px;
+}
+/* 
+.search-dest-input-group {
+  padding: 0px 200px;
+} */
+
+.centered {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}
+
+.del-btn {
+  float: right;
 }

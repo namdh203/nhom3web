@@ -1,6 +1,8 @@
 import React from 'react'
 import "./profile.css"
 
+import {Modal} from "antd"
+
 import { getFullProperty, updateCustomer } from "./ProfileFunction"
 
 export default class UserProfile extends React.Component {
@@ -29,7 +31,9 @@ export default class UserProfile extends React.Component {
                 "https://cdn-icons-png.flaticon.com/512/2548/2548306.png",
                 "https://cdn-icons-png.flaticon.com/512/1455/1455689.png"
             ],
-            choose: false
+            choose: false,
+            success: false,
+            openModal: false
         }
 
         this.onChange = this.onChange.bind(this)
@@ -37,8 +41,20 @@ export default class UserProfile extends React.Component {
         this.onBlackLayer = this.onBlackLayer.bind(this)
         this.onAvaClick = this.onAvaClick.bind(this)
         this.onChangeAva = this.onChangeAva.bind(this)
-
+        this.handleOk = this.handleOk.bind(this)
+        this.handleCancel = this.handleCancel.bind(this)
     }
+
+    handleOk() {
+        this.setState({ openModal: false })
+        window.location.reload();
+    }
+
+    handleCancel() {
+        this.setState({ openModel: false})
+        window.location.reload();
+    }
+
 
     onChange(e) {
         // console.log(e.target.name, e.target.value)
@@ -72,8 +88,8 @@ export default class UserProfile extends React.Component {
         }
 
         updateCustomer(newUser).then(res => {
-            alert(res.msg)
-            window.location.reload();
+            // alert(res.msg)
+            this.setState({success: true, openModal: true})
         })
 
 
@@ -81,9 +97,10 @@ export default class UserProfile extends React.Component {
 
     componentDidMount() {
 
-        const email = this.props.email
+        const user = JSON.parse(localStorage.getItem("user"))
 
-        if (email !== null) {
+        if (user !== null) {
+            const email = user.email
             console.log(email);
             getFullProperty(email).then(res => {
                 this.setState({
@@ -113,6 +130,18 @@ export default class UserProfile extends React.Component {
 
         return (
             <div className="profile-wrapper">
+                {this.state.success ? <div><Modal open={this.state.openModal} onOk={this.handleOk} onCancel={this.handleCancel} zIndex="2000">
+                    <div className="notice-wrapper" style={{ width: "100%" }}>
+                        <img
+                            src="https://cdn-icons-png.flaticon.com/512/943/943593.png"
+                            className="img-fluid modal-notice info"
+                            alt="Responsive"
+                        />
+                    </div>
+
+                    <h1 className="modal-msg">Update information successfully</h1>
+
+                </Modal></div> : ""}
                 <div className="buffer-block" style={{ height: "100px" }}></div>
                 <div className="container-md">
                     <h1>User Profile</h1>
