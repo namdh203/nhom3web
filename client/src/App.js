@@ -11,7 +11,6 @@ import Accommodation from './components/site_info/accommodation/accom'
 import Restaurant from './components/site_info/restaurant/restaurant'
 import Activity from './components/site_info/activities/activity'
 import Payment from "./components/payment/payment"
-import NavBar from './components/navbar/navbar'
 
 import RcmAccom from "./components/recommend/rcmaccom/rcm-accom.jsx";
 import RcmRest from "./components/recommend/rcmrest/rcm-rest.jsx";
