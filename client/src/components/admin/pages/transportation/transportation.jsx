@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllTransportation } from "./transportationFunction";
 import "./transportation.css"
+import { useNavigate } from "react-router-dom";
 
 const Transportation = () => {
   const [transportations, setTransportations] = useState([]);
@@ -9,6 +10,8 @@ const Transportation = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(8);
+
+  const navigate = useNavigate();
 
   const loadTransportations = () => {
     getAllTransportation()
@@ -108,6 +111,15 @@ const Transportation = () => {
           ))}
         </tbody>
       </table>
+
+      <div className="button-admin">
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/transportation/add-transportation")}>
+          Add Transportation
+        </button>
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/transportation/delete-transportation")}>
+          Delete
+        </button>
+      </div>
 
       <ul className="pagination">
         {Array.from({ length: Math.ceil(filteredTransportations.length / itemsPerPage) }).map(

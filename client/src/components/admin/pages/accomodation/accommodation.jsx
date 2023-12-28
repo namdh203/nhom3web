@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllAccommodation } from "./accommodationFunction";
 import "./accommodation.css"
+import { useNavigate } from "react-router-dom";
 
 const Accommodation = () => {
   const [accommodations, setAccommodations] = useState([]);
@@ -9,6 +10,8 @@ const Accommodation = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(8);
+
+  const navigate = useNavigate();
 
   const loadAccommodations = () => {
     getAllAccommodation()
@@ -122,6 +125,15 @@ const Accommodation = () => {
           ))}
         </tbody>
       </table>
+
+      <div className="button-admin">
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/accommodation/add-accommodation")}>
+          Add Accommodation
+        </button>
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/accommodation/delete-accommodation")}>
+          Delete
+        </button>
+      </div>
 
       <ul className="pagination">
         {Array.from({ length: Math.ceil(filteredAccommodations.length / itemsPerPage) }).map(

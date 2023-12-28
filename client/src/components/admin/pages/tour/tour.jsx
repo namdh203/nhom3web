@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllTour } from "./tourFunction";
 import "./tour.css"
+import { useNavigate } from "react-router-dom";
 
 const Tour = () => {
   const [tours, setTours] = useState([]);
@@ -9,6 +10,8 @@ const Tour = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(8);
+
+  const navigate = useNavigate();
 
   const loadTours = () => {
     getAllTour()
@@ -122,6 +125,15 @@ const Tour = () => {
           ))}
         </tbody>
       </table>
+
+      <div className="button-admin">
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/tour/add-tour")}>
+          Add Tour
+        </button>
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/tour/delete-tour")}>
+          Delete
+        </button>
+      </div>
 
       <ul className="pagination">
         {Array.from({ length: Math.ceil(filteredTours.length / itemsPerPage) }).map(

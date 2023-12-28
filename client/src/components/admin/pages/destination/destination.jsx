@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllDestination } from "./destinationFunction";
 import "./destination.css"
+import { useNavigate } from "react-router-dom";
 
 const Destination = () => {
   const [destinations, setDestinations] = useState([]);
@@ -9,6 +10,8 @@ const Destination = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(8);
+
+  const navigate = useNavigate();
 
   const loadDestinations = () => {
     getAllDestination()
@@ -112,6 +115,15 @@ const Destination = () => {
           ))}
         </tbody>
       </table>
+
+      <div className="button-admin">
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/destination/add-destination")}>
+          Add Destination
+        </button>
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/destination/delete-destination")}>
+          Delete
+        </button>
+      </div>
 
       <ul className="pagination">
         {Array.from({ length: Math.ceil(filteredDestinations.length / itemsPerPage) }).map(

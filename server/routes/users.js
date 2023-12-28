@@ -288,7 +288,38 @@ users.post('/admin/addCustomer', async (req, res) => {
     }
 });
 
+users.post('/admin/deleteCustomer', async (req, res) => {
+    const customerEmail = req.body.old_customer.email;
 
+    try {
+        const user = await User.findOne({
+            where: {
+                email: customerEmail
+            }
+        });
+
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        await User.destroy({
+            where: {
+                email: customerEmail
+            }
+        });
+
+        await Customer.destroy({
+            where: {
+                email: customerEmail
+            }
+        });
+
+        res.json({ msg: 'Account deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting account:', error);
+        res.status(500).json({ error: 'Error deleting account' });
+    }
+});
 
 
 module.exports = users;

@@ -31,9 +31,7 @@ td {
     max-width: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* Tùy chọn: Nếu muốn hiển thị dấu ba chấm khi văn bản bị cắt bớt */
     white-space: nowrap;
-    /* Đảm bảo rằng văn bản không xuống dòng */
 }
 
 
@@ -51,9 +49,7 @@ button {
         max-height: 25px;
         overflow: hidden;
         text-overflow: ellipsis;
-        /* Tùy chọn: Nếu muốn hiển thị dấu ba chấm khi văn bản bị cắt bớt */
         white-space: nowrap;
-        /* Đảm bảo rằng văn bản không xuống dòng */
     }
 }
 
@@ -93,7 +89,6 @@ button {
 
 .pagination button:hover {
     background-color: #4caf50;
-    /* Green background on hover */
     color: #fff;
     border: 1px solid #4caf50;
 }
@@ -102,4 +97,26 @@ button {
     background-color: #4caf50;
     color: #fff;
     border: 1px solid #4caf50;
+}
+
+.button-admin {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.button-admin button {
+    margin-left: 10px;
+}
+
+.add-account-detail-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-account-detail-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

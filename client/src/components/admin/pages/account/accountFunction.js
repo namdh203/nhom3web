@@ -27,3 +27,18 @@ export const addCustomer = (customer) => {
             throw error;
         });
 }
+
+export const deleteCustomer = (customer) => {
+    return axios
+        .post('/users/admin/deleteCustomer', {
+            old_customer: customer
+        })
+        .then(response => {
+            console.log(response.data);
+            return response.data;
+        })
+        .catch(error => {
+            console.error('Error fetching customer data:', error);
+            throw error;
+        });
+}

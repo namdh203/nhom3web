@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './addAccountForm.css'
+import './account.css'
 import { useNavigate } from "react-router-dom";
 import { addCustomer } from './accountFunction';
 
