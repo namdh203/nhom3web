@@ -18,6 +18,8 @@ const Accommodation = require('../models/accommodation.js')
 const Payment = require('../models/payment.js')
 const Customer = require('../models/customer.js')
 
+const moment = require('moment');
+
 tours.use(cors())
 
 tours.post('/getbesttour', (req, res) => {
@@ -336,7 +338,7 @@ tours.post('/getaccomlists', (req, res) => {
 
             res.json(responseData)
         }
-    }).catch (e => {
+    }).catch(e => {
         res.send("error: " + e);
     })
 })
@@ -370,7 +372,7 @@ tours.post('/getrestlists', (req, res) => {
 
             res.json(responseData)
         }
-    }).catch (e => {
+    }).catch(e => {
         res.send("error: " + e);
     })
 })
@@ -402,7 +404,7 @@ tours.post('/getactlists', (req, res) => {
 
             res.json(responseData)
         }
-    }).catch (e => {
+    }).catch(e => {
         res.send("error: " + e);
     })
 })
@@ -434,7 +436,7 @@ tours.post('/gettranslists', (req, res) => {
 
             res.json(responseData)
         }
-    }).catch (e => {
+    }).catch(e => {
         res.send("error: " + e);
     })
 })
@@ -442,29 +444,74 @@ tours.post('/gettranslists', (req, res) => {
 // admin
 tours.post('/admin/getAllTour', (req, res) => {
     Tour.findAll({
-        limit: 50
+        limit: 300
     })
-    .then(tours => {
-        if (tours) {
-            const responseData = tours.map(tour => ({
-                id: tour.id,
-                title: tour.title,
-                description: tour.description,
-                duration: tour.duration,
-                price: tour.price,
-                priceCurrency: tour.priceCurrency,
-                additionInfo: tour.additionInfo,
-                voting: tour.voting,
-                type: tour.type
-            }));
-            res.json(responseData);
-        } else {
-            res.status(400).json({ error: 'No tours found' });
-        }
-    })
-    .catch(err => {
-        res.status(500).json({ error: err.message });
-    });
+        .then(tours => {
+            if (tours) {
+                const responseData = tours.map(tour => ({
+                    id: tour.id,
+                    title: tour.title,
+                    description: tour.description,
+                    duration: tour.duration,
+                    price: tour.price,
+                    priceCurrency: tour.priceCurrency,
+                    additionInfo: tour.additionInfo,
+                    voting: tour.voting,
+                    type: tour.type
+                }));
+                res.json(responseData);
+            } else {
+                res.status(400).json({ error: 'No tours found' });
+            }
+        })
+        .catch(err => {
+            res.status(500).json({ error: err.message });
+        });
+});
+
+tours.post('/admin/addTour', async (req, res) => {
+    const new_tour = req.body.new_tour;
+
+    try {
+        const startDate = moment().format('YYYY-MM-DD');
+        const endDate = moment().add(new_tour.duration - 1, 'days').format('YYYY-MM-DD');
+
+        const createdTour = await Tour.create({
+            title: new_tour.title,
+            description: new_tour.description,
+            duration: new_tour.duration,
+            price: new_tour.price,
+            priceCurrency: new_tour.priceCurrency,
+            additionInfo: new_tour.additionInfo,
+            voting: new_tour.voting,
+            type: new_tour.type,
+            startDate: startDate,
+            endDate: endDate,
+            demoImage: "."
+        });
+
+        res.json({
+            msg: 'Tour added successfully',
+            tour: {
+                id: createdTour.id,
+                title: createdTour.title,
+                description: createdTour.description,
+                duration: createdTour.duration,
+                price: createdTour.price,
+                priceCurrency: createdTour.priceCurrency,
+                startDate: createdTour.startDate,
+                endDate: createdTour.endDate,
+                additionInfo: createdTour.additionInfo,
+                voting: createdTour.voting,
+                type: createdTour.type,
+                demoImage: createdTour.demoImage
+            },
+
+        });
+    } catch (error) {
+        console.error('Error adding tour:', error);
+        res.status(400).json({ error: 'Error adding tour' });
+    }
 });
 
 module.exports = tours

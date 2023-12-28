@@ -55,6 +55,12 @@ export default class SignUp extends Component {
     onSubmit(e) {
         e.preventDefault()
 
+        if (!this.state.first_name.trim() || !this.state.last_name.trim()
+        || !this.state.email.trim() || !this.state.last_name.trim()) {
+            alert('Name & Email & Password are required fields');
+            return;
+        }
+
         const newUser = {
             first_name: this.state.first_name,
             last_name: this.state.last_name,

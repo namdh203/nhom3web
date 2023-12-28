@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllRestaurant } from "./restaurantFunction";
 import "./restaurant.css"
+import { useNavigate } from "react-router-dom";
 
 const Restaurant = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -9,6 +10,8 @@ const Restaurant = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(8);
+
+  const navigate = useNavigate();
 
   const loadRestaurants = () => {
     getAllRestaurant()
@@ -116,6 +119,12 @@ const Restaurant = () => {
           ))}
         </tbody>
       </table>
+
+      <div className="button-admin">
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/dining/add-dining-place")}>
+          Add Dining Place
+        </button>
+      </div>
 
       <ul className="pagination">
         {Array.from({ length: Math.ceil(filteredRestaurants.length / itemsPerPage) }).map(

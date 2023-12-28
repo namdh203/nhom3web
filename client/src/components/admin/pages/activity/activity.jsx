@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { getAllAccommodation } from "./accommodationFunction";
-import "./accommodation.css"
+import { getAllActivity } from "./activityFunction";
+import "./activity.css"
 import { useNavigate } from "react-router-dom";
 
-const Accommodation = () => {
-  const [accommodations, setAccommodations] = useState([]);
+const Activity = () => {
+  const [activitys, setActivitys] = useState([]);
   const [sortCategory, setSortCategory] = useState("name");
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchTerm, setSearchTerm] = useState("");
@@ -13,22 +13,22 @@ const Accommodation = () => {
 
   const navigate = useNavigate();
 
-  const loadAccommodations = () => {
-    getAllAccommodation()
+  const loadActivitys = () => {
+    getAllActivity()
       .then(data => {
         if (data.error) {
           console.log(data.error);
         } else {
-          setAccommodations(data);
+          setActivitys(data);
         }
       })
       .catch(error => {
-        console.error('Error loading accommodations:', error);
+        console.error('Error loading activitys:', error);
       });
   };
 
   useEffect(() => {
-    loadAccommodations();
+    loadActivitys();
   }, []);
 
   const handleSort = (category) => {
@@ -40,7 +40,7 @@ const Accommodation = () => {
     }
   };
 
-  const sortedAccommodations = accommodations.sort((a, b) => {
+  const sortedActivitys = activitys.sort((a, b) => {
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
@@ -54,15 +54,15 @@ const Accommodation = () => {
     }
   });
 
-  const filteredAccommodations = searchTerm
-    ? sortedAccommodations.filter(accommodation =>
-        accommodation.name.toLowerCase().includes(searchTerm)
+  const filteredActivitys = searchTerm
+    ? sortedActivitys.filter(activity =>
+        activity.name.toLowerCase().includes(searchTerm)
     )
-    : sortedAccommodations;
+    : sortedActivitys;
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = filteredAccommodations.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = filteredActivitys.slice(indexOfFirstItem, indexOfLastItem);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -99,41 +99,33 @@ const Accommodation = () => {
             <th> ID</th>
             <th onClick={() => handleSort("name")}>Name</th>
             <th> DestID</th>
-            <th> Price Per Night</th>
-            <th> Price Currency</th>
-            <th> Address</th>
-            <th> Telephone</th>
-            <th> Contact Email</th>
+            <th> Type</th>
             <th> Description</th>
             <th> Addition Info</th>
           </tr>
         </thead>
         <tbody>
-          {currentItems.map(accommodation => (
-            <tr key={accommodation.id}>
-              <td>{accommodation.id}</td>
-              <td>{accommodation.name}</td>
-              <td>{accommodation.destId}</td>
-              <td>{accommodation.pricePerNight}</td>
-              <td>{accommodation.priceCurrency}</td>
-              <td>{accommodation.address}</td>
-              <td>{accommodation.telephone}</td>
-              <td>{accommodation.contactEmail}</td>
-              <td>{accommodation.description}</td>
-              <td>{accommodation.additionInfo}</td>
+          {currentItems.map(activity => (
+            <tr key={activity.id}>
+              <td>{activity.id}</td>
+              <td>{activity.name}</td>
+              <td>{activity.destId}</td>
+              <td>{activity.type}</td>
+              <td>{activity.description}</td>
+              <td>{activity.additionInfo}</td>
             </tr>
           ))}
         </tbody>
       </table>
 
       <div className="button-admin">
-        <button className="btn btn-primary" onClick={ () => navigate("/admin/accommodation/add-accommodation")}>
-          Add Accommodation
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/activity/add-activity")}>
+          Add Activity
         </button>
       </div>
 
       <ul className="pagination">
-        {Array.from({ length: Math.ceil(filteredAccommodations.length / itemsPerPage) }).map(
+        {Array.from({ length: Math.ceil(filteredActivitys.length / itemsPerPage) }).map(
           (_, index) => (
             <li key={index} className={currentPage === index + 1 ? "active" : ""}>
               <button onClick={() => paginate(index + 1)}>{index + 1}</button>
@@ -145,4 +137,4 @@ const Accommodation = () => {
   );
 };
 
-export default Accommodation;
+export default Activity;
