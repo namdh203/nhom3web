@@ -149,7 +149,7 @@ class TourDestination extends React.Component {
                       scripts={this.state.trans[0].name}
                       image={this.state.trans[0].demoImage}
                       pos="leftTop"
-                      
+                      site="trans"
                     />
                   )}
                   {this.state.trans[1] && (
@@ -157,6 +157,7 @@ class TourDestination extends React.Component {
                       scripts={this.state.trans[1].name}
                       image={this.state.trans[1].demoImage}
                       pos="leftTop"
+                      site="trans"
                     />
                   )}
                   {this.state.trans[2] && (
@@ -164,6 +165,7 @@ class TourDestination extends React.Component {
                       scripts={this.state.trans[2].name}
                       image={this.state.trans[2].demoImage}
                       pos="leftTop"
+                      site="trans"
                     />
                   )}
                   {this.state.trans[3] && (
@@ -171,6 +173,7 @@ class TourDestination extends React.Component {
                       scripts={this.state.trans[3].name}
                       image={this.state.trans[3].demoImage}
                       pos="leftTop"
+                      site="trans"
                     />
                   )}
                 </div>
