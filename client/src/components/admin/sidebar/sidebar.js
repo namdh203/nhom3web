@@ -20,11 +20,11 @@ function Sidebar() {
             <div className="admin-info">
                 <div class="be-img-comment admin">
                     <a href="blog-detail-2.html">
-                        <img src={JSON.parse(localStorage.getItem(localStorage.key(0))).avatar} alt="" class="be-ava-comment"  style={{backgroundColor: "#fff"}}/>
+                        <img src={JSON.parse(localStorage.getItem("user")).avatar} alt="" class="be-ava-comment"  style={{backgroundColor: "#fff"}}/>
                     </a>
                 </div>
-                <h3>{JSON.parse(localStorage.getItem(localStorage.key(0))).name}</h3>
-                <p>{JSON.parse(localStorage.getItem(localStorage.key(0))).email}</p>
+                <h3>{JSON.parse(localStorage.getItem("user")).name}</h3>
+                <p>{JSON.parse(localStorage.getItem("user")).email}</p>
             </div>
             <Menu
                 mode="inline"

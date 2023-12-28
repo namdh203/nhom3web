@@ -1,0 +1,134 @@
+.tour-detail_wrapper {
+    padding: 0px 100px 40px;
+    background-color: rgb(238, 234, 234);
+}
+
+.schedule {
+    border-radius: 10px;
+    padding: 0 10px;
+}
+
+.schedule>h1 {
+    /* text-align: left; */
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    /* border-bottom: solid 0.025px #333;  */
+}
+
+.schedule.full {
+    /* background-color: red; */
+
+}
+
+.tour-cost>h1 {
+    text-align: center;
+}
+
+.tour-cost_full {
+    margin-top: 10px;
+    padding: 7px;
+    background-color: rgb(32, 175, 32);
+    border-radius: 10px;
+    border: 0.1px solid gray;
+    user-select: none;
+}
+
+.tour-cost_full>h1 {
+    text-align: center;
+    margin: 0;
+    font-size: 28px;
+    line-height: 32px;
+    color: black
+}
+
+
+.tour-cost_full:hover {
+    opacity: 0.5;
+    cursor: pointer;
+
+    h1 {
+        color: white
+    }
+}
+
+.brief-dest {
+    font-weight: 600;
+}
+
+.schedule.brief>h1 {
+    border-bottom: 0.5px rgb(219, 213, 213) solid
+}
+
+.detail-header {
+    text-align: left;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.schedule-start {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 0;
+    /* line-height: 40px; */
+    padding: 15px
+}
+
+.schedule-start_wrapper {
+    border: 0.025px solid grey;
+    background-color: rgb(62, 177, 62);
+    border-radius: 5px;
+}
+
+.detail_demo>div>img {
+    height: 60px;
+    width: 100%;
+}
+
+.buffer-block.detail {
+    width: 50%;
+    height: 35px;
+    border-right: 0.025px solid gray;
+    display: block
+}
+
+@media screen and (max-width: 768px) {
+    .brief-schedule {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .tour-detail_wrapper {
+        padding: 0 50px 20px;
+    }
+
+    .buffer-block.detail {
+        height: 15px;
+    }
+    
+    .buffer-block.detail.brief {
+        height: 15px !important;
+    }
+
+    .trans-choice {
+        width: 25px !important;
+        height: 25px !important;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .tour-detail_wrapper {
+        padding: 0 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .tour-detail_wrapper {
+        padding: 0 10px;
+    }
+}

@@ -274,6 +274,37 @@ tours.post('/getdestdata', (req, res) => {
         })
 })
 
+tours.post('/getcustomdest', (req, res) => {
+    const itiList = req.body.itiList
+    // console.log(req_tour_id)
+    Destination.findAll({
+        attributes: ['id', 'name', 'description', 'additionInfo', 'demoImage'],
+        where: {
+            id: {
+              [Sequelize.Op.in]: itiList
+            }
+          }
+    })
+        .then(dests => {
+            if (!dests) {
+                res.json({ error: 'Not enough destinations' })
+            } else {
+                const responseData = dests.map(dest => ({
+                    id: dest.id,
+                    name: dest.name,
+                    description: dest.description,
+                    additionInfo: dest.additionInfo.split(", "),
+                    demoImage: dest.demoImage,
+                }));
+
+                res.json(responseData)
+            }
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
 tours.post('/getaccomlists', (req, res) => {
     const length = req.body.length;
     const query = req.body.query

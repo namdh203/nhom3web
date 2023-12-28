@@ -43,7 +43,7 @@ export default class TourComment extends React.Component {
         if (key === null) {
             this.setState({failed: true, openModal: true})
         } else {
-            const user_json = JSON.parse(localStorage.getItem(key))
+            const user_json = JSON.parse(localStorage.getItem("user"))
 
             const cmt = this.state.comment
 

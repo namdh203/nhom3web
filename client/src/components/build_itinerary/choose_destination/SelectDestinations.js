@@ -51,6 +51,21 @@ export default function SelectDestinations({ countryId }) {
     setItinerary((current) => current.filter((dest) => dest.id !== id));
   }
 
+  function buildItinerary() {
+    var itiList = []
+
+    itinerary.forEach((iti) => {
+      itiList.push(iti.id)
+    })
+
+    var arrayString = itiList.join(',');
+
+    var url = "/tour-customize?itiList=" + encodeURIComponent(arrayString);
+
+    window.location.href = url
+
+  }
+
   return (
     <Container fluid="sm">
       <Row className="mb-4">
@@ -117,7 +132,7 @@ export default function SelectDestinations({ countryId }) {
           >
             Edit
           </Button>
-          <Button variant="success">Build Itinerary</Button>
+          <Button variant="success" onClick={() => buildItinerary()}>Build Itinerary</Button>
         </Alert>
 
         <div style={{ height: "150px" }}></div>

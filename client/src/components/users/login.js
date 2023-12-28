@@ -78,7 +78,7 @@ export default class Login extends Component {
 
                 const user_json = JSON.stringify(user_)
 
-                localStorage.setItem(user.email, user_json)
+                localStorage.setItem("user", user_json)
             } else {
                 this.setState({failed: true, openModal: true})
 

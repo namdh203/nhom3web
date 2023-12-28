@@ -97,9 +97,10 @@ export default class UserProfile extends React.Component {
 
     componentDidMount() {
 
-        const email = this.props.email
+        const user = JSON.parse(localStorage.getItem("user"))
 
-        if (email !== null) {
+        if (user !== null) {
+            const email = user.email
             console.log(email);
             getFullProperty(email).then(res => {
                 this.setState({
