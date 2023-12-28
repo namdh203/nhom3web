@@ -40,6 +40,9 @@ const AddAccountForm = () => {
             });
             navigate("/admin/account")
         })
+        .catch(() => {
+            alert('Customer already exists');
+        });
     };
 
     return (

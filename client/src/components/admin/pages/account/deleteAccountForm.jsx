@@ -28,6 +28,9 @@ const DeleteAccountForm = () => {
             });
             navigate("/admin/account")
         })
+        .catch(() => {
+            alert('Customer does not exists');
+        });
     };
 
     return (
