@@ -122,9 +122,6 @@ const Activity = () => {
         <button className="btn btn-primary" onClick={ () => navigate("/admin/activity/add-activity")}>
           Add Activity
         </button>
-        <button className="btn btn-primary" onClick={ () => navigate("/admin/activity/delete-activity")}>
-          Delete
-        </button>
       </div>
 
       <ul className="pagination">

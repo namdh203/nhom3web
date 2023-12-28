@@ -124,9 +124,6 @@ const Restaurant = () => {
         <button className="btn btn-primary" onClick={ () => navigate("/admin/dining/add-dining-place")}>
           Add Dining Place
         </button>
-        <button className="btn btn-primary" onClick={ () => navigate("/admin/dining/delete-dining-place")}>
-          Delete
-        </button>
       </div>
 
       <ul className="pagination">

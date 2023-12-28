@@ -22,10 +22,6 @@ const AddAccountForm = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        if (!newAccount.name.trim() || !newAccount.email.trim() || !newAccount.password.trim()) {
-            alert('Name & Email & Password are required fields');
-            return;
-        }
 
         addCustomer(newAccount).then (res => {
             alert(res.msg)
@@ -59,6 +55,7 @@ const AddAccountForm = () => {
                             placeholder="Enter name"
                             value={newAccount.name}
                             onChange={onChange}
+                            required
                         />
                     </div>
                     <div className="mb-3">
@@ -103,6 +100,7 @@ const AddAccountForm = () => {
                             placeholder="Enter email address"
                             value={newAccount.email}
                             onChange={onChange}
+                            required
                         />
                     </div>
                     <div className="mb-3">
@@ -114,6 +112,7 @@ const AddAccountForm = () => {
                             placeholder="Enter password"
                             value={newAccount.password}
                             onChange={onChange}
+                            required
                         />
                     </div>
                     <div className="mb-3">

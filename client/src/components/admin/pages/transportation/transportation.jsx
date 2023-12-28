@@ -116,9 +116,6 @@ const Transportation = () => {
         <button className="btn btn-primary" onClick={ () => navigate("/admin/transportation/add-transportation")}>
           Add Transportation
         </button>
-        <button className="btn btn-primary" onClick={ () => navigate("/admin/transportation/delete-transportation")}>
-          Delete
-        </button>
       </div>
 
       <ul className="pagination">
