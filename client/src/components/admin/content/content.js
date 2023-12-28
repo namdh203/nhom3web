@@ -5,6 +5,7 @@ import Tour from '../pages/tour/tour'
 import Destination from '../pages/destination/destination';
 import Transportation from '../pages/transportation/transportation';
 import Accommodation from '../pages/accomodation/accommodation';
+import Activity from '../pages/activity/activity';
 import Restaurant from '../pages/restaurant/restaurant';
 
 import AddAccountForm from '../pages/account/addAccountForm';
@@ -24,6 +25,7 @@ function Content() {
                 <Route path="/destination" element={<Destination/>}></Route>
                 <Route path="/transportation" element={<Transportation/>}></Route>
                 <Route path="/accommodation" element={<Accommodation/>}></Route>
+                <Route path="/activity" element={<Activity/>}></Route>
                 <Route path="/dining" element={<Restaurant/>}></Route>
                 <Route path="/payment" element={<div>payment</div>}></Route>
             </Routes>

@@ -8,6 +8,7 @@ import {
     EnvironmentOutlined,
     CarOutlined,
     HomeOutlined,
+    SmileOutlined,
     CoffeeOutlined,
     CreditCardOutlined
 } from '@ant-design/icons';
@@ -38,6 +39,7 @@ function Sidebar() {
                     { label: "Destination", key: "destination", icon: <EnvironmentOutlined /> },
                     { label: "Transportation", key: "transportation", icon: <CarOutlined /> },
                     { label: "Accommodation", key: "accommodation", icon: <HomeOutlined /> },
+                    { label: "Activity", key: "activity", icon: <SmileOutlined /> },
                     { label: "Dining Place", key: "dining", icon: <CoffeeOutlined /> },
                     { label: "Payment", key: "payment", icon: <CreditCardOutlined /> },
                 ]}
