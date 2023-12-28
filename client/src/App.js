@@ -4,32 +4,32 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Login from "./components/users/login";
 import SignUp from "./components/users/signup";
 import Dashboard from "./components/dashboard/dashboard";
-import Footer from "./components/dashboard/footer/footer";
 import TourInfo from "./components/tourinfo/tour_info";
 import CountryInfo from "./components/countryinfo/country_info";
 import Accommodation from "./components/site_info/accommodation/accom";
 import Restaurant from "./components/site_info/restaurant/restaurant";
 import Activity from "./components/site_info/activities/activity";
 import Payment from "./components/payment/payment";
-import NavBar from "./components/navbar/navbar";
-
 import RcmAccom from "./components/recommend/rcmaccom/rcm-accom.jsx";
 import RcmRest from "./components/recommend/rcmrest/rcm-rest.jsx";
 import RcmAct from "./components/recommend/rcmact/rcm-act.jsx";
 import RcmTrans from "./components/recommend/rcmtrans/rcm-trans.jsx";
-import TourRecommendations from "./components/build_itinerary/tourrcm/TourRecommendations.js";
-import ChooseDestination from "./components/build_itinerary/choose_destination/ChooseDestination.js";
 import Layout from "./components/Layout.js";
-import PaymentStep1 from "./components/payment/payment_steps/payment_step_1.jsx";
 import UserProfile from "./components/profile/profile.jsx";
 import AdminDashboard from "./components/admin/dashboard.js";
+import SearchCountry from "./components/build_itinerary/choose_destination/SearchCountry.js";
+import ChooseMonth from "./components/build_itinerary/choose_destination/ChooseMonth.js";
+import PickDate from "./components/build_itinerary/choose_destination/PickDate.js";
+import ChooseDuration from "./components/build_itinerary/choose_destination/ChooseDuration.js";
+import SelectDestinations from "./components/build_itinerary/choose_destination/SelectDestinations.js";
+
 function App() {
   // const [isLogin, setIsLogin] = useState(false)
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Layout showSearchBar showFooter />}>
             <Route path="admin/*" element={<AdminDashboard />} />
             <Route index element={<Dashboard />} />
             <Route
@@ -84,12 +84,13 @@ function App() {
               element={<UserProfile email={localStorage.key(0)} />}
             />
           </Route>
-          <Route path="build-itinerary" element={<Layout />}>
-            <Route path="choose-destination" element={<ChooseDestination />} />
-            <Route
-              path="tour-recommendations"
-              element={<TourRecommendations />}
-            />
+
+          <Route path="build-itinerary" element={<Layout addTopPadding />}>
+            <Route path="country" element={<SearchCountry />} />
+            <Route path="month" element={<ChooseMonth />} />
+            <Route path="date" element={<PickDate />} />
+            <Route path="duration" element={<ChooseDuration />} />
+            <Route path="destinations" element={<SelectDestinations />} />
           </Route>
         </Routes>
       </Router>

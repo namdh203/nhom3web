@@ -8,7 +8,7 @@ export default function SearchBar() {
     <InputGroup
       className="mb-3 search-bar"
       onClick={() => {
-        window.location.href = "/build-itinerary/choose-destination";
+        window.location.href = "/build-itinerary/country";
       }}
     >
       <InputGroup.Text id="search-icon">

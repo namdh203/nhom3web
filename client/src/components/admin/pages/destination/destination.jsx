@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllDestination } from "./destinationFunction";
-import "./destination.css"
+import "./destination.css";
 
 const Destination = () => {
   const [destinations, setDestinations] = useState([]);
@@ -10,15 +10,15 @@ const Destination = () => {
 
   const loadDestinations = () => {
     getAllDestination()
-      .then(data => {
+      .then((data) => {
         if (data.error) {
           console.log(data.error);
         } else {
           setDestinations(data);
         }
       })
-      .catch(error => {
-        console.error('Error loading destinations:', error);
+      .catch((error) => {
+        console.error("Error loading destinations:", error);
       });
   };
 
@@ -39,8 +39,8 @@ const Destination = () => {
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
-    console.log(valueA)
-    console.log(valueB)
+    console.log(valueA);
+    console.log(valueB);
 
     if (sortOrder === "asc") {
       return valueA.localeCompare(valueB);
@@ -50,16 +50,19 @@ const Destination = () => {
   });
 
   const filteredDestinations = searchTerm
-    ? sortedDestinations.filter(destination =>
+    ? sortedDestinations.filter((destination) =>
         destination.name.toLowerCase().includes(searchTerm)
-    )
+      )
     : sortedDestinations;
 
   return (
     <div>
       <div className="dashboard-header">
         <div className="select-container">
-          <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
+          <select
+            id="categorySelect"
+            onChange={(e) => handleSort(e.target.value)}
+          >
             <option value="name">Name</option>
           </select>
         </div>
@@ -82,7 +85,7 @@ const Destination = () => {
         </div>
       </div>
 
-      <table>
+      <table className="destination-table">
         <thead>
           <tr>
             <th> ID</th>
@@ -93,7 +96,7 @@ const Destination = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredDestinations.map(destination => (
+          {filteredDestinations.map((destination) => (
             <tr key={destination.id}>
               <td>{destination.id}</td>
               <td>{destination.name}</td>

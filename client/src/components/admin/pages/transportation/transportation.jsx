@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllTransportation } from "./transportationFunction";
-import "./transportation.css"
+import "./transportation.css";
 
 const Transportation = () => {
   const [transportations, setTransportations] = useState([]);
@@ -10,15 +10,15 @@ const Transportation = () => {
 
   const loadTransportations = () => {
     getAllTransportation()
-      .then(data => {
+      .then((data) => {
         if (data.error) {
           console.log(data.error);
         } else {
           setTransportations(data);
         }
       })
-      .catch(error => {
-        console.error('Error loading transportations:', error);
+      .catch((error) => {
+        console.error("Error loading transportations:", error);
       });
   };
 
@@ -39,8 +39,8 @@ const Transportation = () => {
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
-    console.log(valueA)
-    console.log(valueB)
+    console.log(valueA);
+    console.log(valueB);
 
     if (sortOrder === "asc") {
       return valueA.localeCompare(valueB);
@@ -50,16 +50,19 @@ const Transportation = () => {
   });
 
   const filteredTransportations = searchTerm
-    ? sortedTransportations.filter(transportation =>
+    ? sortedTransportations.filter((transportation) =>
         transportation.type.toLowerCase().includes(searchTerm)
-    )
+      )
     : sortedTransportations;
 
   return (
     <div>
       <div className="dashboard-header">
         <div className="select-container">
-          <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
+          <select
+            id="categorySelect"
+            onChange={(e) => handleSort(e.target.value)}
+          >
             <option value="type">Type</option>
           </select>
         </div>
@@ -82,7 +85,7 @@ const Transportation = () => {
         </div>
       </div>
 
-      <table>
+      <table className="transportation-table">
         <thead>
           <tr>
             <th> ID</th>
@@ -91,7 +94,7 @@ const Transportation = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredTransportations.map(transportation => (
+          {filteredTransportations.map((transportation) => (
             <tr key={transportation.id}>
               <td>{transportation.id}</td>
               <td>{transportation.type}</td>

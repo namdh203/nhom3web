@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getFullProperty } from "./accountFunction";
-import "./account.css"
+import "./account.css";
 
 const Account = () => {
   const [accounts, setAccounts] = useState([]);
@@ -10,15 +10,15 @@ const Account = () => {
 
   const loadAccounts = () => {
     getFullProperty()
-      .then(data => {
+      .then((data) => {
         if (data.error) {
           console.log(data.error);
         } else {
           setAccounts(data);
         }
       })
-      .catch(error => {
-        console.error('Error loading accounts:', error);
+      .catch((error) => {
+        console.error("Error loading accounts:", error);
       });
   };
 
@@ -39,8 +39,8 @@ const Account = () => {
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
-    console.log(valueA)
-    console.log(valueB)
+    console.log(valueA);
+    console.log(valueB);
 
     if (sortOrder === "asc") {
       return valueA.localeCompare(valueB);
@@ -50,17 +50,21 @@ const Account = () => {
   });
 
   const filteredAccounts = searchTerm
-    ? sortedAccounts.filter(account =>
-      account.name.toLowerCase().includes(searchTerm) ||
-      account.email.toLowerCase().includes(searchTerm)
-    )
+    ? sortedAccounts.filter(
+        (account) =>
+          account.name.toLowerCase().includes(searchTerm) ||
+          account.email.toLowerCase().includes(searchTerm)
+      )
     : sortedAccounts;
 
   return (
     <div>
       <div className="dashboard-header">
         <div className="select-container">
-          <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
+          <select
+            id="categorySelect"
+            onChange={(e) => handleSort(e.target.value)}
+          >
             <option value="name">Name</option>
             <option value="email">Email</option>
           </select>
@@ -84,7 +88,7 @@ const Account = () => {
         </div>
       </div>
 
-      <table>
+      <table className="account-table">
         <thead>
           <tr>
             <th> ID</th>
@@ -97,7 +101,7 @@ const Account = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredAccounts.map(account => (
+          {filteredAccounts.map((account) => (
             <tr key={account.userId}>
               <td>{account.userId}</td>
               <td>{account.name}</td>

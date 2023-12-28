@@ -122,10 +122,7 @@ export default class NavBar extends React.Component {
                 </li>
               </Link>
               {this.props.showSearchBar && (
-                <Link
-                  className="navLink"
-                  to={"/build-itinerary/choose-destination"}
-                >
+                <Link className="navLink" to={"/build-itinerary/country"}>
                   <form className="d-flex right-border" role="search">
                     <input
                       className="form-control me-2"
@@ -173,45 +170,45 @@ export default class NavBar extends React.Component {
                   alt="Responsive"
                 />
                 <div
-                  class="dropdown-menu ava-menu"
+                  className="dropdown-menu ava-menu"
                   aria-labelledby="dropdownMenuButton"
                   style={{
                     display: `${this.state.openAvaMenu ? "block" : "none"}`,
                     transform: "translateY(7px)",
                     right: 0,
-                    "box-shadow": "0px 5px 10px rgba(0, 0, 0, 0.5)",
+                    boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.5)",
                     width: "250px",
                   }}
                 >
-                  <button class="dropdown-item user-name_ava" type="button">
+                  <button className="dropdown-item user-name_ava" type="button">
                     {this.state.current_user.name}
                   </button>
                   <p className="username_email">
                     {this.state.current_user.email}
                   </p>
-                  <div class="dropdown-divider"></div>
+                  <div className="dropdown-divider"></div>
                   <a
                     href="/profile"
-                    style={{ "text-decoration": "none", color: "#333" }}
+                    style={{ textDecoration: "none", color: "#333" }}
                   >
-                    <button class="dropdown-item" type="button">
-                      <i class="fa-solid fa-address-card"></i> Profile
+                    <button className="dropdown-item" type="button">
+                      <i className="fa-solid fa-address-card"></i> Profile
                     </button>
                   </a>
-                  <button class="dropdown-item" type="button">
-                    <i class="fa-solid fa-list-ul"></i> History
+                  <button className="dropdown-item" type="button">
+                    <i className="fa-solid fa-list-ul"></i> History
                   </button>
                   <a
                     href="#contact-us"
-                    style={{ "text-decoration": "none", color: "#333" }}
+                    style={{ textDecoration: "none", color: "#333" }}
                   >
-                    <button class="dropdown-item" type="button">
-                      <i class="fa-solid fa-address-book"></i> Contact us
+                    <button className="dropdown-item" type="button">
+                      <i className="fa-solid fa-address-book"></i> Contact us
                     </button>
                   </a>
-                  <div class="dropdown-divider"></div>
+                  <div className="dropdown-divider"></div>
                   <button
-                    class="dropdown-item"
+                    className="dropdown-item"
                     type="button"
                     onClick={this.onLogout}
                   >

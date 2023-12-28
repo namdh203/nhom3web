@@ -4,7 +4,8 @@ import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
-import ListGroupItem from "react-bootstrap/esm/ListGroupItem";
+import ListGroupItem from "react-bootstrap/ListGroupItem";
+import Container from "react-bootstrap/Container";
 
 export default function SearchCountry() {
   const [results, setResults] = useState([]);
@@ -20,8 +21,12 @@ export default function SearchCountry() {
   }
 
   return (
-    <>
-      <InputGroup className="mb-3">
+    <Container className="ps-md-5 pe-md-5">
+      <h2 className="mb-5">
+        What's <i>your pick</i> for your next vacation?
+      </h2>
+
+      <InputGroup size="lg" className="mb-3">
         <InputGroup.Text>
           <IoSearch />
         </InputGroup.Text>
@@ -32,8 +37,9 @@ export default function SearchCountry() {
             type="text"
             placeholder="Pick your destination country"
             onChange={(e) => searchCountry(e.target.value)}
+            size="lg"
           />
-          <label htmlFor="seachCountryTextField">
+          <label className="fs-6" htmlFor="seachCountryTextField">
             Pick your destination country
           </label>
         </Form.Floating>
@@ -44,12 +50,13 @@ export default function SearchCountry() {
           <ListGroupItem
             action
             key={result.id}
-            href={`/build-itinerary/choose-destination?country=${result.id}`}
+            href={`/build-itinerary/month?country=${result.id}`}
+            className="fs-4"
           >
             {result.countryName}
           </ListGroupItem>
         ))}
       </ListGroup>
-    </>
+    </Container>
   );
 }

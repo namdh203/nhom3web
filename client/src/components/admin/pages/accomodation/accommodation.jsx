@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllAccommodation } from "./accommodationFunction";
-import "./accommodation.css"
+import "./accommodation.css";
 
 const Accommodation = () => {
   const [accommodations, setAccommodations] = useState([]);
@@ -10,15 +10,15 @@ const Accommodation = () => {
 
   const loadAccommodations = () => {
     getAllAccommodation()
-      .then(data => {
+      .then((data) => {
         if (data.error) {
           console.log(data.error);
         } else {
           setAccommodations(data);
         }
       })
-      .catch(error => {
-        console.error('Error loading accommodations:', error);
+      .catch((error) => {
+        console.error("Error loading accommodations:", error);
       });
   };
 
@@ -39,8 +39,8 @@ const Accommodation = () => {
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
-    console.log(valueA)
-    console.log(valueB)
+    console.log(valueA);
+    console.log(valueB);
 
     if (sortOrder === "asc") {
       return valueA.localeCompare(valueB);
@@ -50,16 +50,19 @@ const Accommodation = () => {
   });
 
   const filteredAccommodations = searchTerm
-    ? sortedAccommodations.filter(accommodation =>
+    ? sortedAccommodations.filter((accommodation) =>
         accommodation.name.toLowerCase().includes(searchTerm)
-    )
+      )
     : sortedAccommodations;
 
   return (
     <div>
       <div className="dashboard-header">
         <div className="select-container">
-          <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
+          <select
+            id="categorySelect"
+            onChange={(e) => handleSort(e.target.value)}
+          >
             <option value="name">Name</option>
           </select>
         </div>
@@ -82,7 +85,7 @@ const Accommodation = () => {
         </div>
       </div>
 
-      <table>
+      <table className="accommodation-table">
         <thead>
           <tr>
             <th> ID</th>
@@ -98,7 +101,7 @@ const Accommodation = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredAccommodations.map(accommodation => (
+          {filteredAccommodations.map((accommodation) => (
             <tr key={accommodation.id}>
               <td>{accommodation.id}</td>
               <td>{accommodation.name}</td>

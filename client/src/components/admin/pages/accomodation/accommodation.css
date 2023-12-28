@@ -1,58 +1,57 @@
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    padding: 20px 30px;
+.accommodation-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  padding: 20px 30px;
 }
 
-thead {
-    background-color: #f2f2f2;
+.accommodation-table thead {
+  background-color: #f2f2f2;
 }
 
-th {
-    padding: 12px;
-    text-align: left;
-    border-right: 1px solid #ddd;
-    text-align: center;
+.accommodation-table th {
+  padding: 12px;
+  text-align: left;
+  border-right: 1px solid #ddd;
+  text-align: center;
 }
 
-tbody tr {
-    border-bottom: 1px solid #ddd;
+.accommodation-table tbody tr {
+  border-bottom: 1px solid #ddd;
 }
 
-tbody tr:nth-child(even) {
-    background-color: #feffd0;
+.accommodation-table tbody tr:nth-child(even) {
+  background-color: #feffd0;
 }
 
-th,
-td {
-    padding: 15px 20px;
+.accommodation-table th,
+.accommodation-table td {
+  padding: 15px 20px;
 }
 
-
-button {
+/* button {
     padding: 5px 10px;
     margin-right: 5px;
     cursor: pointer;
-}
+} */
 
 @media (max-width: 600px) {
-    th,
-    td {
-        font-size: 14px;
-    }
+  .accommodation-table th,
+  .accommodation-table td {
+    font-size: 14px;
+  }
 }
 
 .dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .select-container,
 .sort-container,
 .search-container {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }

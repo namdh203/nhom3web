@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllTour } from "./tourFunction";
-import "./tour.css"
+import "./tour.css";
 
 const Tour = () => {
   const [tours, setTours] = useState([]);
@@ -10,15 +10,15 @@ const Tour = () => {
 
   const loadTours = () => {
     getAllTour()
-      .then(data => {
+      .then((data) => {
         if (data.error) {
           console.log(data.error);
         } else {
           setTours(data);
         }
       })
-      .catch(error => {
-        console.error('Error loading Tours:', error);
+      .catch((error) => {
+        console.error("Error loading Tours:", error);
       });
   };
 
@@ -39,8 +39,8 @@ const Tour = () => {
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
-    console.log(valueA)
-    console.log(valueB)
+    console.log(valueA);
+    console.log(valueB);
 
     if (sortOrder === "asc") {
       return valueA.localeCompare(valueB);
@@ -50,17 +50,21 @@ const Tour = () => {
   });
 
   const filteredTours = searchTerm
-    ? sortedTours.filter(tour =>
-        tour.title.toLowerCase().includes(searchTerm) ||
-        tour.type.toLowerCase().includes(searchTerm)
-    )
+    ? sortedTours.filter(
+        (tour) =>
+          tour.title.toLowerCase().includes(searchTerm) ||
+          tour.type.toLowerCase().includes(searchTerm)
+      )
     : sortedTours;
 
   return (
     <div>
       <div className="dashboard-header">
         <div className="select-container">
-          <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
+          <select
+            id="categorySelect"
+            onChange={(e) => handleSort(e.target.value)}
+          >
             <option value="title">Title</option>
             <option value="type">Type</option>
           </select>
@@ -84,7 +88,7 @@ const Tour = () => {
         </div>
       </div>
 
-      <table>
+      <table className="tour-table">
         <thead>
           <tr>
             <th> ID</th>
@@ -99,7 +103,7 @@ const Tour = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredTours.map(tour => (
+          {filteredTours.map((tour) => (
             <tr key={tour.id}>
               <td>{tour.id}</td>
               <td>{tour.title}</td>

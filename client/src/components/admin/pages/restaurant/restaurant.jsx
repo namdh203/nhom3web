@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllRestaurant } from "./restaurantFunction";
-import "./restaurant.css"
+import "./restaurant.css";
 
 const Restaurant = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -10,15 +10,15 @@ const Restaurant = () => {
 
   const loadRestaurants = () => {
     getAllRestaurant()
-      .then(data => {
+      .then((data) => {
         if (data.error) {
           console.log(data.error);
         } else {
           setRestaurants(data);
         }
       })
-      .catch(error => {
-        console.error('Error loading restaurants:', error);
+      .catch((error) => {
+        console.error("Error loading restaurants:", error);
       });
   };
 
@@ -39,8 +39,8 @@ const Restaurant = () => {
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
-    console.log(valueA)
-    console.log(valueB)
+    console.log(valueA);
+    console.log(valueB);
 
     if (sortOrder === "asc") {
       return valueA.localeCompare(valueB);
@@ -50,16 +50,19 @@ const Restaurant = () => {
   });
 
   const filteredRestaurants = searchTerm
-    ? sortedRestaurants.filter(restaurant =>
+    ? sortedRestaurants.filter((restaurant) =>
         restaurant.name.toLowerCase().includes(searchTerm)
-    )
+      )
     : sortedRestaurants;
 
   return (
     <div>
       <div className="dashboard-header">
         <div className="select-container">
-          <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
+          <select
+            id="categorySelect"
+            onChange={(e) => handleSort(e.target.value)}
+          >
             <option value="name">Name</option>
           </select>
         </div>
@@ -82,7 +85,7 @@ const Restaurant = () => {
         </div>
       </div>
 
-      <table>
+      <table className="restaurant-table">
         <thead>
           <tr>
             <th> ID</th>
@@ -95,7 +98,7 @@ const Restaurant = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredRestaurants.map(restaurant => (
+          {filteredRestaurants.map((restaurant) => (
             <tr key={restaurant.id}>
               <td>{restaurant.id}</td>
               <td>{restaurant.name}</td>

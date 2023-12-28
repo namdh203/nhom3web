@@ -5,6 +5,7 @@ const router = express.Router();
 
 const Destination = require("../models/destination");
 const Country = require("../models/country");
+const CountryMonthlyAdvice = require("../models/country_monthly_advice");
 
 router.use(cors());
 
@@ -55,27 +56,41 @@ router.post("/search-destination", async (req, res) => {
 });
 
 // admin
-router.post('/admin/getAllDestination', (req, res) => {
+router.post("/admin/getAllDestination", (req, res) => {
   Destination.findAll({
-      limit: 50
+    limit: 50,
   })
-  .then(router => {
+    .then((router) => {
       if (router) {
-          const responseData = router.map(destination => ({
-              id: destination.id,
-              name: destination.name,
-              countryId: destination.countryId,
-              description: destination.description,
-              additionInfo: destination.additionInfo,
-          }));
-          res.json(responseData);
+        const responseData = router.map((destination) => ({
+          id: destination.id,
+          name: destination.name,
+          countryId: destination.countryId,
+          description: destination.description,
+          additionInfo: destination.additionInfo,
+        }));
+        res.json(responseData);
       } else {
-          res.status(400).json({ error: 'No destination found' });
+        res.status(400).json({ error: "No destination found" });
       }
-  })
-  .catch(err => {
+    })
+    .catch((err) => {
       res.status(500).json({ error: err.message });
-  });
+    });
+});
+
+router.post("/get-advice", (req, res) => {
+  const countryId = req.body.countryId;
+  CountryMonthlyAdvice.findAll({
+    where: {
+      countryId: countryId,
+    },
+  })
+    .then((results) => res.json(results))
+    .catch((reason) => {
+      res.status(400).send("Bad request");
+      console.log("Bad request", reason);
+    });
 });
 
 module.exports = router;
