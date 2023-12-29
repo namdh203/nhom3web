@@ -18,6 +18,8 @@ const Accommodation = require('../models/accommodation.js')
 const Payment = require('../models/payment.js')
 const Customer = require('../models/customer.js')
 
+const moment = require('moment');
+
 tours.use(cors())
 
 tours.post('/getbesttour', (req, res) => {
@@ -281,6 +283,37 @@ tours.post('/getdestdata', (req, res) => {
         })
 })
 
+tours.post('/getcustomdest', (req, res) => {
+    const itiList = req.body.itiList
+    // console.log(req_tour_id)
+    Destination.findAll({
+        attributes: ['id', 'name', 'description', 'additionInfo', 'demoImage'],
+        where: {
+            id: {
+              [Sequelize.Op.in]: itiList
+            }
+          }
+    })
+        .then(dests => {
+            if (!dests) {
+                res.json({ error: 'Not enough destinations' })
+            } else {
+                const responseData = dests.map(dest => ({
+                    id: dest.id,
+                    name: dest.name,
+                    description: dest.description,
+                    additionInfo: dest.additionInfo.split(", "),
+                    demoImage: dest.demoImage,
+                }));
+
+                res.json(responseData)
+            }
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
 tours.post('/getaccomlists', (req, res) => {
     const length = req.body.length;
     const query = req.body.query
@@ -312,7 +345,7 @@ tours.post('/getaccomlists', (req, res) => {
 
             res.json(responseData)
         }
-    }).catch (e => {
+    }).catch(e => {
         res.send("error: " + e);
     })
 })
@@ -346,7 +379,7 @@ tours.post('/getrestlists', (req, res) => {
 
             res.json(responseData)
         }
-    }).catch (e => {
+    }).catch(e => {
         res.send("error: " + e);
     })
 })
@@ -378,7 +411,7 @@ tours.post('/getactlists', (req, res) => {
 
             res.json(responseData)
         }
-    }).catch (e => {
+    }).catch(e => {
         res.send("error: " + e);
     })
 })
@@ -410,7 +443,7 @@ tours.post('/gettranslists', (req, res) => {
 
             res.json(responseData)
         }
-    }).catch (e => {
+    }).catch(e => {
         res.send("error: " + e);
     })
 })
@@ -418,29 +451,115 @@ tours.post('/gettranslists', (req, res) => {
 // admin
 tours.post('/admin/getAllTour', (req, res) => {
     Tour.findAll({
-        limit: 50
+        limit: 300,
+        include: [{
+            model: TourDest,
+            attributes: ['dest_id'],
+            as: 'tour_dests',
+        }]
     })
-    .then(tours => {
-        if (tours) {
-            const responseData = tours.map(tour => ({
-                id: tour.id,
-                title: tour.title,
-                description: tour.description,
-                duration: tour.duration,
-                price: tour.price,
-                priceCurrency: tour.priceCurrency,
-                additionInfo: tour.additionInfo,
-                voting: tour.voting,
-                type: tour.type
-            }));
-            res.json(responseData);
-        } else {
-            res.status(400).json({ error: 'No tours found' });
-        }
-    })
-    .catch(err => {
-        res.status(500).json({ error: err.message });
-    });
+        .then(tours => {
+            if (tours) {
+                const responseData = tours.map(tour => ({
+                    id: tour.id,
+                    destIds: tour.tour_dests.map(tour_dest => tour_dest.dest_id),
+                    title: tour.title,
+                    description: tour.description,
+                    duration: tour.duration,
+                    price: tour.price,
+                    priceCurrency: tour.priceCurrency,
+                    additionInfo: tour.additionInfo,
+                    voting: tour.voting,
+                    type: tour.type,
+                    startDate: tour.startDate,
+                    endDate: tour.endDate,
+                    demoImage: tour.demoImage,
+                }));
+                res.json(responseData);
+            } else {
+                res.status(400).json({ error: 'No tours found' });
+            }
+        })
+        .catch(err => {
+            res.status(500).json({ error: err.message });
+        });
 });
+
+tours.post('/admin/addTour', async (req, res) => {
+    const new_tour = req.body.new_tour;
+
+    const new_startDate = moment().format('YYYY-MM-DD');
+    const new_endDate = moment().add(new_tour.duration - 1, 'days').format('YYYY-MM-DD');
+
+    try {
+        const createdTour = await Tour.create({
+            title: new_tour.title,
+            description: new_tour.description,
+            duration: new_tour.duration,
+            price: new_tour.price,
+            priceCurrency: new_tour.priceCurrency,
+            additionInfo: new_tour.additionInfo,
+            voting: new_tour.voting,
+            type: new_tour.type,
+            startDate: new_startDate,
+            endDate: new_endDate,
+            demoImage: new_tour.demoImage,
+        });
+
+        for (const destId of new_tour.destId) {
+            await TourDest.create({
+                tour_id: createdTour.id,
+                dest_id: destId
+            });
+        }
+
+        res.json({
+            msg: 'Tour added successfully',
+            tour: {
+                id: createdTour.id,
+                title: createdTour.title,
+                description: createdTour.description,
+                duration: createdTour.duration,
+                price: createdTour.price,
+                priceCurrency: createdTour.priceCurrency,
+                startDate: createdTour.startDate,
+                endDate: createdTour.endDate,
+                additionInfo: createdTour.additionInfo,
+                voting: createdTour.voting,
+                type: createdTour.type,
+                demoImage: createdTour.demoImage,
+            }
+        });
+    } catch (error) {
+        console.error('Error adding tour:', error);
+        res.status(400).json({ error: 'Error adding tour' });
+    }
+});
+
+tours.post('/admin/deleteTour', async (req, res) => {
+    const old_tour = req.body.old_tour;
+
+    try {
+        const tourToDelete = await Tour.findByPk(old_tour.id);
+
+        if (!tourToDelete) {
+            res.status(404).json({ error: 'Tour not found'});
+        }
+
+        await TourDest.destroy({
+            where: {
+                tour_id: tourToDelete.id
+            }
+        })
+
+        await tourToDelete.destroy();
+
+        res.json({ msg: 'Tour deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting tour:', error);
+        res.status(400).json({ error: 'Error deleting tour' });
+    }
+});
+
 
 module.exports = tours

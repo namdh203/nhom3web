@@ -1,0 +1,18 @@
+.modal-notice {
+    width: 200px;
+    height: 200px;
+    margin: 30px auto
+}
+
+.modal-msg {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.notice-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

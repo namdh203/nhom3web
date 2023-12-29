@@ -45,5 +45,29 @@ activities.post('/randomAct', (req, res) => {
     })
 })
 
-module.exports = activities;
+// admin
+activities.post('/admin/getAllActivity', (req, res) => {
+    Activity.findAll({
+        limit: 50
+    })
+    .then(activities => {
+        if (activities) {
+            const responseData = activities.map(activity => ({
+                id: activity.id,
+                name: activity.name,
+                destId: activity.destId,
+                type: activity.type,
+                description: activity.description,
+                additionInfo: activity.additionInfo,
+            }));
+            res.json(responseData);
+        } else {
+            res.status(400).json({ error: 'No activity found' });
+        }
+    })
+    .catch(err => {
+        res.status(500).json({ error: err.message });
+    });
+  });
 
+module.exports = activities;

@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { getAllTransportation } from "./transportationFunction";
 import "./transportation.css"
+import { useNavigate } from "react-router-dom";
 
 const Transportation = () => {
   const [transportations, setTransportations] = useState([]);
-  const [sortCategory, setSortCategory] = useState("type");
+  const [sortCategory, setSortCategory] = useState("id");
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(8);
+
+  const navigate = useNavigate();
 
   const loadTransportations = () => {
     getAllTransportation()
@@ -36,6 +41,9 @@ const Transportation = () => {
   };
 
   const sortedTransportations = transportations.sort((a, b) => {
+    if (sortCategory === "id") {
+      return sortOrder === "asc" ? a.id - b.id : b.id - a.id;
+    }
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
@@ -55,11 +63,18 @@ const Transportation = () => {
     )
     : sortedTransportations;
 
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filteredTransportations.slice(indexOfFirstItem, indexOfLastItem);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div>
       <div className="dashboard-header">
         <div className="select-container">
           <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
+            <option value="id">ID</option>
             <option value="type">Type</option>
           </select>
         </div>
@@ -85,13 +100,13 @@ const Transportation = () => {
       <table>
         <thead>
           <tr>
-            <th> ID</th>
+            <th onClick={() => handleSort("type")}> ID</th>
             <th onClick={() => handleSort("type")}>Type</th>
             <th> Addition Info</th>
           </tr>
         </thead>
         <tbody>
-          {filteredTransportations.map(transportation => (
+          {currentItems.map(transportation => (
             <tr key={transportation.id}>
               <td>{transportation.id}</td>
               <td>{transportation.type}</td>
@@ -100,6 +115,22 @@ const Transportation = () => {
           ))}
         </tbody>
       </table>
+
+      <div className="button-admin">
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/transportation/add-transportation")}>
+          Add Transportation
+        </button>
+      </div>
+
+      <ul className="pagination">
+        {Array.from({ length: Math.ceil(filteredTransportations.length / itemsPerPage) }).map(
+          (_, index) => (
+            <li key={index} className={currentPage === index + 1 ? "active" : ""}>
+              <button onClick={() => paginate(index + 1)}>{index + 1}</button>
+            </li>
+          )
+        )}
+      </ul>
     </div>
   );
 };

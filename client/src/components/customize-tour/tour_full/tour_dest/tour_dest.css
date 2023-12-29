@@ -1,0 +1,244 @@
+.tour-dest_wrapper {
+    border-style: solid;
+    border-color: gray;
+    border-width: 0.025px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.tour-dest_header {
+    background-color: rgb(62, 177, 62);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 42px;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.tour-dest_customize {
+    background-color: rgb(99, 233, 99);
+    color: #134e07;
+    font-size: 20px;
+    /* font-weight: 600; */
+    line-height: 28px;
+    text-align: center;
+    padding: 5px 20px;
+}
+
+.tour-dest_customize:hover {
+    opacity: 0.8;
+    color: white;
+    cursor: pointer;
+}
+
+/* .tour-dest_info>.label {
+    border-right-style: solid;
+    border-right-color: gray;
+    border-right-width: 0.5px;
+} */
+
+.tour-dest_info>.label {
+    text-align: left;
+    font-weight: 600;
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tour-dest_info>.detail {
+    text-align: left;
+    padding-left: 20px;
+    padding: 20px 20px;
+    border-left: 0.025px solid rgb(170, 170, 170);
+    border-right: 0.025px solid rgb(170, 170, 170)
+}
+
+.tour-dest_info {
+    padding: 0px 10px;
+    margin: 0 0;
+}
+
+.tour-dest_info > .detail > p {
+    margin-bottom: 0
+}
+
+.tour-dest_info > .detail > .choice > img {
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    border-radius: 100px;
+}
+
+.tour-dest_info > .detail > .choice {
+    padding: 5px 0;
+}
+
+.tour-dest_info > .detail > .choice > span {
+    margin-left: 10px;
+}
+
+.tour-dest_add {
+    font-size: 14px;
+    color: white;
+    border: 0.025px grey solid;
+    border-radius: 5px;
+    padding: 10px 0;
+    background-color: rgb(62, 177, 62);
+}
+
+.tour-dest_add:hover {
+    background-color: rgba(61, 180, 61, 0.5);
+    color: white
+}
+
+/* 
+.trans-block > i {
+    scale:;
+} */
+
+.trans-block {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.trans-choice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: solid 0.025px gray;
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+}
+
+.detail_demo {
+    margin-top: 10px;
+}
+
+
+.detail_demo > div > img {
+    border: 0.025px solid gray;
+    border-radius: 5px;
+}
+
+.detail_demo > div > img:hover {
+    scale: 1.25
+}
+
+/* .tour-dest_info > .label {
+    background-color: lightgreen;
+} */
+
+/* .tour-dest_info > .label, .tour-dest_info > .detail, .tour-dest_info > .button {
+    padding: 20px 0
+} */
+
+.tour-dest_info.odd {
+    background-color: rgb(255, 255, 255);
+}
+
+.tour-dest_info.even {
+    background-color: rgb(255, 255, 255);
+}
+
+.tour-dest_info > .button  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tour-dest_add {
+    width: 200px;
+}
+
+.tour-dest_info.intro {
+    padding: 20px 10px;
+    background-color: rgb(255, 255, 255);
+    border: 0.025px solid grey;
+    margin: 0px 20px 10px;
+    border-radius: 20px;
+}
+
+.tour-dest_info.intro>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tour-dest_info.intro>div>p {
+    text-align: left;
+    height: 100px;
+    overflow: hidden;
+    color: rgb(0, 0, 0);
+    margin: 0
+}
+
+.tour-dest_info.intro>div>img {
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
+}
+
+.tour-dest_info.intro>div>img:hover {
+    scale: 0.8
+}
+
+.tour-dest_info.info > div {
+    text-align: left;
+    padding: 30px 20px 30px 20px;
+    /* align-items: center; */
+
+}
+
+.tour-dest_info.info > div > i {
+    font-size: 40px;
+    color: rgb(126, 126, 126);
+}
+
+.tour-dest_info.info > div > div {
+    margin-top: 10px
+}
+
+.tour-dest_info.info > div > div > p {
+    margin: 0;
+    color: rgb(85, 85, 85)
+}
+
+.tour-dest_info-wrapper {
+    background-color: rgb(203, 250, 203);
+    padding-top: 10px;
+}
+
+.tour-dest_info.info {
+    background-color: rgb(203, 250, 203);
+}
+
+.tour-addition_info {
+    text-align: left;
+    font-size: 12px;
+}
+
+.tour-addition_info:hover {
+    font-weight: 600;
+    color:rgb(126, 126, 126)
+}
+
+@media screen and (max-width: 768px) {
+    .tour-dest_info.intro {
+        font-size: 12px;
+        text-align: justify;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .tour-dest_info.info>div>i {
+        font-size: 28px;
+    }
+
+    .tour-addition_info {
+        font-size: 15px;
+    }
+}

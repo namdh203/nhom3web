@@ -8,6 +8,7 @@ import {
     EnvironmentOutlined,
     CarOutlined,
     HomeOutlined,
+    SmileOutlined,
     CoffeeOutlined,
     CreditCardOutlined
 } from '@ant-design/icons';
@@ -16,21 +17,22 @@ import { useNavigate } from 'react-router-dom';
 function Sidebar() {
     const navigate = useNavigate();
     return (
-        <div className="sidebar" style={{"border-right": "0.025px solid #333"}}>
+        <div className="sidebar" style={{"border-right": "0.025px solid #333", backgroundColor: "#001529", color: "#fff"}}>
             <div className="admin-info">
                 <div class="be-img-comment admin">
                     <a href="blog-detail-2.html">
-                        <img src={JSON.parse(localStorage.getItem(localStorage.key(0))).avatar} alt="" class="be-ava-comment" />
+                        <img src={JSON.parse(localStorage.getItem("user")).avatar} alt="" class="be-ava-comment"  style={{backgroundColor: "#fff"}}/>
                     </a>
                 </div>
-                <h3>{JSON.parse(localStorage.getItem(localStorage.key(0))).name}</h3>
-                <p>{JSON.parse(localStorage.getItem(localStorage.key(0))).email}</p>
+                <h3>{JSON.parse(localStorage.getItem("user")).name}</h3>
+                <p>{JSON.parse(localStorage.getItem("user")).email}</p>
             </div>
             <Menu
                 mode="inline"
                 onClick={({ key }) => {
                     navigate(key)
                 }}
+                theme="dark"
                 style={{"border-right": "none"}}
                 items={[
                     { label: "Account", key: "account", icon: <UserOutlined /> },
@@ -38,6 +40,7 @@ function Sidebar() {
                     { label: "Destination", key: "destination", icon: <EnvironmentOutlined /> },
                     { label: "Transportation", key: "transportation", icon: <CarOutlined /> },
                     { label: "Accommodation", key: "accommodation", icon: <HomeOutlined /> },
+                    { label: "Activity", key: "activity", icon: <SmileOutlined /> },
                     { label: "Dining Place", key: "dining", icon: <CoffeeOutlined /> },
                     { label: "Payment", key: "payment", icon: <CreditCardOutlined /> },
                 ]}

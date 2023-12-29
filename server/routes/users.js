@@ -14,50 +14,39 @@ const Comment = require("../models/comment")
 
 users.use(cors())
 
-users.post('/register', (req, res) => {
-    const userData = {
-        role: "user",
-        email: req.body.email,
-        password: req.body.password
-    }
+users.post('/register', async (req, res) => {
+    try {
+        const { email, password, first_name, last_name } = req.body;
 
-    const customerData = {
-        name: req.body.first_name + req.body.last_name,
-        email: req.body.email
-    }
+        const existingUser = await User.findOne({
+            where: {
+                email: email,
+            },
+        });
 
-
-    User.findOne({
-        where: {
-            email: req.body.email
+        if (existingUser) {
+            return res.json({ status: 'User already exists' });
         }
-    }).then(user => {
-        if (!user) {
-            bcrypt.hash(req.body.password, 10, (err, hash) => {
-                userData.password = hash
-                User.create(userData)
-                    .then(user => {
-                        res.json({ status: 'Registered!' })
-                    })
-                    .catch(err => {
-                        res.send('error: ' + err)
-                    })
-                Customer.create(customerData)
-                    .then(user => {
-                        console.log(user.email + 'Registered!')
-                    })
-                    .catch(err => {
-                        res.send('error: ' + err)
-                    })
-            })
-        } else {
-            res.json({ status: 'User already exists' })
-        }
-    })
-        .catch(err => {
-            res.send('error: ' + err)
-        })
-})
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = await User.create({
+            role: 'user',
+            email: email,
+            password: hashedPassword,
+        });
+
+        const newCustomer = await Customer.create({
+            userId: newUser.id,
+            name: `${first_name} ${last_name}`,
+            email: email,
+        });
+
+        res.json({ status: 'Registered!' });
+    } catch (err) {
+        console.error('Error:', err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 users.post('/login', (req, res) => {
     User.findOne({
@@ -76,7 +65,8 @@ users.post('/login', (req, res) => {
                     res.json({
                         status: "Success",
                         token: token,
-                        userId: user.id
+                        userId: user.id,
+                        role: user.role
                     })
                 } else {
                     res.json({ status: "Password wrong" })
@@ -90,19 +80,6 @@ users.post('/login', (req, res) => {
         })
 })
 
-
-users.get("/", (req, res) => {
-    res.json([
-        {
-            "username": "Zero",
-            "age": 20
-        },
-        {
-            "username": "HaNoi",
-            "age": 21
-        }
-    ])
-})
 
 users.post('/getCustomer', (req, res) => {
     console.log("req.body.email", req.body.email)
@@ -192,7 +169,7 @@ users.post('/updateCustomer', (req, res) => {
             responseData = {
                 msg: "Update successfully"
             }
-    
+
             res.json(responseData)
         } else {
             res.status(400).json({ error: 'Comment doesn\'t exist' })
@@ -208,29 +185,119 @@ users.post('/updateCustomer', (req, res) => {
 
 // admin findAll user from db (or limit)
 
-users.post('/admin/getCustomerProperties', (req, res) => {
-    Customer.findAll({
-        limit: 50
-    })
-        .then(customers => {
-            if (customers) {
-                const responseData = customers.map(customer => ({
-                    userId: customer.userId,
-                    name: customer.name,
-                    cardNo: customer.cardNo,
-                    address: customer.address,
-                    phoneNumber: customer.phoneNumber,
-                    email: customer.email,
-                    passport: customer.passport,
-                }));
-                res.json(responseData);
-            } else {
-                res.status(400).json({ error: 'No customers found' });
-            }
-        })
-        .catch(err => {
-            res.status(500).json({ error: err.message });
+users.post('/admin/getCustomerProperties', async (req, res) => {
+    try {
+        const usersData = await User.findAll({
+            include: [{
+                model: Customer,
+                attributes: ['userId', 'name', 'cardNo', 'address', 'phoneNumber', 'email', 'passport', 'avatar'],
+                as: 'customer'
+            }],
+            attributes: ['id', 'role', 'email']
         });
+
+        if (usersData) {
+            const responseData = usersData.map(userData => ({
+                id: userData.id,
+                role: userData.role,
+                email: userData.email,
+                customer: userData.customer
+            }));
+
+            res.json(responseData);
+        } else {
+            res.status(400).json({ error: 'No customers found' });
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 });
+
+users.post('/admin/addCustomer', async (req, res) => {
+    const new_user = req.body.new_user;
+
+    try {
+        const existingUser = await User.findOne({ where: { email: new_user.email } });
+        if (existingUser) {
+            return res.status(400).json({ error: 'User with this email already exists' });
+        }
+
+        const hashedPassword = await bcrypt.hash(new_user.password, 10);
+
+        const createdUser = await User.create({
+            role: new_user.role,
+            email: new_user.email,
+            password: hashedPassword
+        });
+
+        const createdCustomer = await Customer.create({
+            userId: createdUser.id,
+            name: new_user.name,
+            cardNo: new_user.cardNo,
+            address: new_user.address,
+            phoneNumber: new_user.phoneNumber,
+            email: new_user.email,
+            passport: new_user.passport
+        });
+
+        return res.json({
+            msg: 'Customer added successfully',
+            customer: {
+                userId: createdUser.id,
+                name: createdCustomer.name,
+                cardNo: createdCustomer.cardNo,
+                address: createdCustomer.address,
+                phoneNumber: createdCustomer.phoneNumber,
+                email: createdCustomer.email,
+                passport: createdCustomer.passport,
+            },
+            user: {
+                id: createdUser.id,
+                email: createdUser.email,
+                role: createdUser.role,
+            },
+        });
+
+
+    } catch (error) {
+        console.error('Error adding user:', error);
+        res.status(400).json({ error: 'Error adding user' });
+    }
+});
+
+users.post('/admin/deleteCustomer', async (req, res) => {
+    const customerEmail = req.body.old_customer.email;
+
+    try {
+        const user = await User.findOne({
+            where: {
+                email: customerEmail
+            }
+        });
+
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        await User.destroy({
+            where: {
+                email: customerEmail
+            }
+        });
+
+        await Customer.destroy({
+            where: {
+                email: customerEmail
+            }
+        });
+
+        res.json({ msg: 'Account deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting account:', error);
+        res.status(500).json({ error: 'Error deleting account' });
+    }
+});
+
 
 module.exports = users;
