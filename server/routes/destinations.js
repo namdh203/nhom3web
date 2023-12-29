@@ -46,7 +46,7 @@ router.post("/search-destination", async (req, res) => {
         { countryId: countryId },
       ],
     },
-    limit: 12,
+    limit: 4,
   })
     .then((results) => res.json({ results: results }))
     .catch((reason) => {

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Sofia");
+
 .float-on-hover-card {
   cursor: pointer;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -7,4 +9,38 @@
   transform: translateY(-5px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   background-color: rgba(200, 320, 201, 0.3);
+}
+
+.ques-title {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: bold;
+}
+
+.search-title-p1,
+.search-title-p2,
+.search-title-p3 {
+  text-align: center;
+  font-family: "Sofia", sans-serif;
+  margin: 0 7px;
+  display: inline-block;
+}
+
+.search-title-p2 {
+  font-size: 34px;
+  font-style: italic;
+  color: #09b367;
+}
+
+.search-title-p1,
+.search-title-p3 {
+  font-size: 22px;
+}
+
+.full-screen-background {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  min-width: 100vw;
+  opacity: 0.8;
 }

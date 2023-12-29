@@ -55,6 +55,7 @@ export default function SelectDestinations() {
 
   return (
     <Container fluid="sm">
+      <div style={{ height: "50px" }}></div>
       <Row className="mb-4">
         <InputGroup>
           <InputGroup.Text>
