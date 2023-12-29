@@ -1,27 +1,54 @@
+import "./SearchCountry.css"
 import InputGroup from "react-bootstrap/InputGroup";
 import { IoSearch } from "react-icons/io5";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ListGroup from "react-bootstrap/ListGroup";
-import ListGroupItem from "react-bootstrap/esm/ListGroupItem";
+import ListGroupItem from "react-bootstrap/ListGroupItem";
+import Container from "react-bootstrap/Container";
 
 export default function SearchCountry() {
   const [results, setResults] = useState([]);
-
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestionsVisible, setSuggestionsVisible] = useState(false);
+  const navigate = useNavigate();
+  
   useEffect(() => {
-    searchCountry("");
-  }, []);
+    if (searchQuery.trim() !== "") {
+      const timerId = setTimeout(() => {
+        searchCountry(searchQuery);
+      }, 300);
+      return () => clearTimeout(timerId);
+    } else {
+      setResults([]);
+    }
+  }, [searchQuery]);
 
   function searchCountry(query) {
     axios.post("/destinations/search-country", { query }).then((response) => {
       setResults(response.data.results);
+      setSuggestionsVisible(true);
+      
     });
   }
 
+  function handleSuggestionClick(result) {
+    setSearchQuery(result.countryName);
+    setSuggestionsVisible(false);
+    console.log("Selected Country:", result.countryName);
+    navigate(`/build-itinerary/choose-destination?country=${result.id}`);
+
+  }
+
   return (
-    <>
-      <InputGroup className="mb-3">
+    <Container className="ps-md-5 pe-md-5">
+      <h2 className="mb-5">
+        What's <i>your pick</i> for your next vacation?
+      </h2>
+
+      <InputGroup size="lg" className="mb-3">
         <InputGroup.Text>
           <IoSearch />
         </InputGroup.Text>
@@ -32,8 +59,9 @@ export default function SearchCountry() {
             type="text"
             placeholder="Pick your destination country"
             onChange={(e) => searchCountry(e.target.value)}
+            size="lg"
           />
-          <label htmlFor="seachCountryTextField">
+          <label className="fs-6" htmlFor="seachCountryTextField">
             Pick your destination country
           </label>
         </Form.Floating>
@@ -44,12 +72,13 @@ export default function SearchCountry() {
           <ListGroupItem
             action
             key={result.id}
-            href={`/build-itinerary/choose-destination?country=${result.id}`}
+            href={`/build-itinerary/month?country=${result.id}`}
+            className="fs-4"
           >
             {result.countryName}
           </ListGroupItem>
         ))}
       </ListGroup>
-    </>
+    </Container>
   );
 }

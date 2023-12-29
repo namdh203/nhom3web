@@ -15,15 +15,15 @@ const Restaurant = () => {
 
   const loadRestaurants = () => {
     getAllRestaurant()
-      .then(data => {
+      .then((data) => {
         if (data.error) {
           console.log(data.error);
         } else {
           setRestaurants(data);
         }
       })
-      .catch(error => {
-        console.error('Error loading restaurants:', error);
+      .catch((error) => {
+        console.error("Error loading restaurants:", error);
       });
   };
 
@@ -47,8 +47,8 @@ const Restaurant = () => {
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
-    console.log(valueA)
-    console.log(valueB)
+    console.log(valueA);
+    console.log(valueB);
 
     if (sortOrder === "asc") {
       return valueA.localeCompare(valueB);
@@ -58,9 +58,9 @@ const Restaurant = () => {
   });
 
   const filteredRestaurants = searchTerm
-    ? sortedRestaurants.filter(restaurant =>
+    ? sortedRestaurants.filter((restaurant) =>
         restaurant.name.toLowerCase().includes(searchTerm)
-    )
+      )
     : sortedRestaurants;
 
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -97,7 +97,7 @@ const Restaurant = () => {
         </div>
       </div>
 
-      <table>
+      <table className="restaurant-table">
         <thead>
           <tr>
             <th onClick={() => handleSort("id")}> ID</th>

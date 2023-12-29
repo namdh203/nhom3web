@@ -15,15 +15,15 @@ const Accommodation = () => {
 
   const loadAccommodations = () => {
     getAllAccommodation()
-      .then(data => {
+      .then((data) => {
         if (data.error) {
           console.log(data.error);
         } else {
           setAccommodations(data);
         }
       })
-      .catch(error => {
-        console.error('Error loading accommodations:', error);
+      .catch((error) => {
+        console.error("Error loading accommodations:", error);
       });
   };
 
@@ -47,8 +47,8 @@ const Accommodation = () => {
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
-    console.log(valueA)
-    console.log(valueB)
+    console.log(valueA);
+    console.log(valueB);
 
     if (sortOrder === "asc") {
       return valueA.localeCompare(valueB);
@@ -58,9 +58,9 @@ const Accommodation = () => {
   });
 
   const filteredAccommodations = searchTerm
-    ? sortedAccommodations.filter(accommodation =>
+    ? sortedAccommodations.filter((accommodation) =>
         accommodation.name.toLowerCase().includes(searchTerm)
-    )
+      )
     : sortedAccommodations;
 
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -97,7 +97,7 @@ const Accommodation = () => {
         </div>
       </div>
 
-      <table>
+      <table className="accommodation-table">
         <thead>
           <tr>
             <th onClick={() => handleSort("id")}> ID</th>

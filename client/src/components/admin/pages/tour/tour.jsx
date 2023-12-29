@@ -15,15 +15,15 @@ const Tour = () => {
 
   const loadTours = () => {
     getAllTour()
-      .then(data => {
+      .then((data) => {
         if (data.error) {
           console.log(data.error);
         } else {
           setTours(data);
         }
       })
-      .catch(error => {
-        console.error('Error loading Tours:', error);
+      .catch((error) => {
+        console.error("Error loading Tours:", error);
       });
   };
 
@@ -47,8 +47,8 @@ const Tour = () => {
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
-    console.log(valueA)
-    console.log(valueB)
+    console.log(valueA);
+    console.log(valueB);
 
     if (sortOrder === "asc") {
       return valueA.localeCompare(valueB);
@@ -58,10 +58,11 @@ const Tour = () => {
   });
 
   const filteredTours = searchTerm
-    ? sortedTours.filter(tour =>
-        tour.title.toLowerCase().includes(searchTerm) ||
-        tour.type.toLowerCase().includes(searchTerm)
-    )
+    ? sortedTours.filter(
+        (tour) =>
+          tour.title.toLowerCase().includes(searchTerm) ||
+          tour.type.toLowerCase().includes(searchTerm)
+      )
     : sortedTours;
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -99,7 +100,7 @@ const Tour = () => {
         </div>
       </div>
 
-      <table>
+      <table className="tour-table">
         <thead>
           <tr>
             <th onClick={() => handleSort("id")}> ID</th>

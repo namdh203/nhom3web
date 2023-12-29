@@ -15,15 +15,15 @@ const Destination = () => {
 
   const loadDestinations = () => {
     getAllDestination()
-      .then(data => {
+      .then((data) => {
         if (data.error) {
           console.log(data.error);
         } else {
           setDestinations(data);
         }
       })
-      .catch(error => {
-        console.error('Error loading destinations:', error);
+      .catch((error) => {
+        console.error("Error loading destinations:", error);
       });
   };
 
@@ -47,8 +47,8 @@ const Destination = () => {
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
-    console.log(valueA)
-    console.log(valueB)
+    console.log(valueA);
+    console.log(valueB);
 
     if (sortOrder === "asc") {
       return valueA.localeCompare(valueB);
@@ -58,9 +58,9 @@ const Destination = () => {
   });
 
   const filteredDestinations = searchTerm
-    ? sortedDestinations.filter(destination =>
+    ? sortedDestinations.filter((destination) =>
         destination.name.toLowerCase().includes(searchTerm)
-    )
+      )
     : sortedDestinations;
 
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -97,7 +97,7 @@ const Destination = () => {
         </div>
       </div>
 
-      <table>
+      <table className="destination-table">
         <thead>
           <tr>
             <th onClick={() => handleSort("id")}> ID</th>

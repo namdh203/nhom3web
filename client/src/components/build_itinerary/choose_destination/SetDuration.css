@@ -1,0 +1,57 @@
+@import url('https://fonts.cdnfonts.com/css/source-sans-pro');
+
+.mb-3 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+  
+.ques-title {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.row {
+margin-left: -5px;
+margin-right: -5px;
+}
+  
+.col {
+    background-color: #ffffff; 
+    border: 1px solid #ccc;
+    transition: transform 0.3s, background-color 0.3s;
+    border-radius: 15px; 
+    overflow: hidden; 
+    margin-bottom: 15px; 
+    margin-right: 20px;
+    width: 181px;
+}
+
+.col:hover {
+    transform: scale(1.05); 
+    background-color: #e0f7fa; 
+  }
+
+.col:first-child {
+    margin-left: 100px; 
+  }
+  
+.col:last-child {
+    margin-right: 100px; 
+}
+
+.p-3 {
+padding: 1rem;
+text-align: center;
+}
+
+.option-duration {
+    margin-top: 15px;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+}
+  
+Button {
+    margin-top: 1rem;
+}
+  

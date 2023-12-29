@@ -15,15 +15,15 @@ const Transportation = () => {
 
   const loadTransportations = () => {
     getAllTransportation()
-      .then(data => {
+      .then((data) => {
         if (data.error) {
           console.log(data.error);
         } else {
           setTransportations(data);
         }
       })
-      .catch(error => {
-        console.error('Error loading transportations:', error);
+      .catch((error) => {
+        console.error("Error loading transportations:", error);
       });
   };
 
@@ -47,8 +47,8 @@ const Transportation = () => {
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
-    console.log(valueA)
-    console.log(valueB)
+    console.log(valueA);
+    console.log(valueB);
 
     if (sortOrder === "asc") {
       return valueA.localeCompare(valueB);
@@ -58,9 +58,9 @@ const Transportation = () => {
   });
 
   const filteredTransportations = searchTerm
-    ? sortedTransportations.filter(transportation =>
+    ? sortedTransportations.filter((transportation) =>
         transportation.type.toLowerCase().includes(searchTerm)
-    )
+      )
     : sortedTransportations;
 
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -97,7 +97,7 @@ const Transportation = () => {
         </div>
       </div>
 
-      <table>
+      <table className="transportation-table">
         <thead>
           <tr>
             <th onClick={() => handleSort("type")}> ID</th>

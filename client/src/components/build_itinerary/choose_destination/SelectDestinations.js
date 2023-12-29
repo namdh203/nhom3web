@@ -12,12 +12,14 @@ import Alert from "react-bootstrap/Alert";
 import Modal from "react-bootstrap/Modal";
 import CloseButton from "react-bootstrap/CloseButton";
 
-export default function SelectDestinations({ countryId }) {
+export default function SelectDestinations() {
   const [query, setQuery] = useState("");
   const [destinations, setDestinations] = useState([]);
   const [itinerary, setItinerary] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const url = new URL(window.location);
+  const countryId = url.searchParams.get("country");
 
   useEffect(() => {
     searchDestination("");
@@ -100,25 +102,28 @@ export default function SelectDestinations({ countryId }) {
       </Row>
 
       <Row className="gy-3 mb-3 row-cols-1" sm={2} md={3} lg={4}>
-        {destinations.map((dest, index) => (
-          <Col key={index}>
-            <Card className="h-100" key={dest.id}>
-              <Card.Img variant="top" src={dest.demoImage} />
-              <Card.Body>
-                <Card.Title>{dest.name}</Card.Title>
-                <Card.Text>{dest.additionInfo}</Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <Button
-                  variant="success"
-                  onClick={() => addItineraryDest(dest)}
-                >
-                  Add to Itinerary
-                </Button>
-              </Card.Footer>
-            </Card>
-          </Col>
-        ))}
+        {destinations.map(
+          (dest) =>
+            itinerary.find((d) => d.id === dest.id) === undefined && (
+              <Col key={dest.id}>
+                <Card className="h-100" key={dest.id}>
+                  <Card.Img variant="top" src={dest.demoImage} />
+                  <Card.Body>
+                    <Card.Title>{dest.name}</Card.Title>
+                    <Card.Text>{dest.additionInfo}</Card.Text>
+                  </Card.Body>
+                  <Card.Footer>
+                    <Button
+                      variant="success"
+                      onClick={() => addItineraryDest(dest)}
+                    >
+                      Add to Itinerary
+                    </Button>
+                  </Card.Footer>
+                </Card>
+              </Col>
+            )
+        )}
       </Row>
 
       <div className="position-fixed top-100 start-50 translate-middle ">

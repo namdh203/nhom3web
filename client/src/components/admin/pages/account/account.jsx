@@ -22,8 +22,8 @@ const Account = () => {
           setAccounts(data);
         }
       })
-      .catch(error => {
-        console.error('Error loading accounts:', error);
+      .catch((error) => {
+        console.error("Error loading accounts:", error);
       });
   };
 
@@ -94,7 +94,7 @@ const Account = () => {
         </div>
       </div>
 
-      <table>
+      <table className="account-table">
         <thead>
           <tr>
             <th onClick={() => handleSort("id")}>ID</th>

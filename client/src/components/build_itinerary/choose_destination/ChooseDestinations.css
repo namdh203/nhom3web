@@ -1,0 +1,10 @@
+.float-on-hover-card {
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.float-on-hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background-color: rgba(200, 320, 201, 0.3);
+}
