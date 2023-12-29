@@ -8,7 +8,12 @@ export default class AddImg extends React.Component {
   }
 
   onclick = () => {
-    window.location.href = `/${this.props.site}?id=${this.props.id}`
+    if (this.props.site != "trans") {
+      window.location.href = `/${this.props.site}?id=${this.props.id}`
+    } else {
+      window.location.href = `/recommendations/trans?page_num=1`
+    }
+    
   }
 
   render() {

@@ -19,14 +19,6 @@ const Payment = db.sequelize.define(
                 key: 'userId'
             }
         },
-        tourId: {
-            type: Sequelize.INTEGER,
-            allowNull: false,
-            reference: {
-                model: 'Tour',
-                key: 'id'
-            }
-        },
         payDate: {
             type: Sequelize.DATE,
             allowNull: false
@@ -39,6 +31,9 @@ const Payment = db.sequelize.define(
             type: Sequelize.STRING,
             defaultValue: "USD"
         },
+        description: {
+            type: Sequelize.TEXT
+        }
     },
     {
         timestamps: false,

@@ -128,10 +128,10 @@ DROP TABLE IF EXISTS `payment`;
 CREATE TABLE `payment` (
   `id` int NOT NULL AUTO_INCREMENT,
   `userId` int NOT NULL,
-  `tourId` int NOT NULL,
   `payDate` datetime NOT NULL,
   `amount` double NOT NULL,
   `currency` varchar(255) DEFAULT 'USD',
+  `description` TEXT
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`),
   CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE

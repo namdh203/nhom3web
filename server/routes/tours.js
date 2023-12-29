@@ -110,8 +110,12 @@ tours.post('/getspecificcountry', (req, res) => {
 tours.post('/gettourcountry', (req, res) => {
     const req_countryId = req.body.id
     const type = req.body.type
+
     Tour.findAll({
         attributes: ['id', 'title', 'description', 'demoImage'],
+        // where: {
+        //     id: req_countryId
+        // }
         include: [
             {
                 model: TourDest,
@@ -133,6 +137,7 @@ tours.post('/gettourcountry', (req, res) => {
         }
     })
         .then(tours => {
+            console.log("Tour data: " + tours);
             if (!tours) {
                 res.json({ error: 'Not enough tours' })
             } else {
@@ -142,6 +147,8 @@ tours.post('/gettourcountry', (req, res) => {
                     description: tour.description,
                     demoImage: tour.demoImage,
                 }));
+
+                
 
                 res.json(responseData)
             }

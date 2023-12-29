@@ -1,6 +1,7 @@
 const Sequelize = require("sequelize");
 const db = {};
 
+// Database: Travelam (testingdbuser for test)
 const sequelize = new Sequelize(
   "travelgiang",
   process.env.MYSQL_USER,
