@@ -32,7 +32,6 @@ class TourDestination extends React.Component {
   }
 
   async componentDidMount() {
-    console.log("hello world");
 
     try {
       const accomRes = await getAccomSiteData(this.props.destId);
@@ -49,7 +48,7 @@ class TourDestination extends React.Component {
           rests: restsRes,
           activity: activityRes,
         });
-        console.log(this.state.rests);
+        // console.log(this.state.rests);
       }
     } catch (error) {
       console.error("An error occurred:", error);

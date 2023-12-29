@@ -17,7 +17,7 @@ class TourDetail extends React.Component {
                 <h1 className="detail-header">Schedule</h1>
                 <div className="row g-4">
                     <div className="brief-schedule col col-md-3">
-                        <TourBriefSchedule dest={this.props.dest}></TourBriefSchedule>
+                        <TourBriefSchedule dest={this.props.dest} tour={this.props.tour}></TourBriefSchedule>
                     </div>
                     <div className="col col-md-9 col-sm-12 col-12">
                         <TourFullSchedule dest={this.props.dest} tour={this.props.tour}></TourFullSchedule>

@@ -12,7 +12,7 @@ import Alert from "react-bootstrap/Alert";
 import Modal from "react-bootstrap/Modal";
 import CloseButton from "react-bootstrap/CloseButton";
 
-export default function SelectDestinations({ countryId }) {
+export default function SelectDestinations({ countryId, date, duration }) {
   const [query, setQuery] = useState("");
   const [destinations, setDestinations] = useState([]);
   const [itinerary, setItinerary] = useState([]);
@@ -60,7 +60,7 @@ export default function SelectDestinations({ countryId }) {
 
     var arrayString = itiList.join(',');
 
-    var url = "/tour-customize?itiList=" + encodeURIComponent(arrayString);
+    var url = "/tour-customize?itiList=" + encodeURIComponent(arrayString) + `&date=${date}` + `&duration=${duration}`;
 
     window.location.href = url
 

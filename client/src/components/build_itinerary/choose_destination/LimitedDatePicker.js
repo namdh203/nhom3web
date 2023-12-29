@@ -12,7 +12,7 @@ const disabledDate = (current) => {
 
 export const LimitedDatePicker = ({ onChange }) => (
   <DatePicker
-    format="DD-MM-YYYY"
+    format="YYYY-MM-DD"
     disabledDate={disabledDate}
     onChange={onChange}
   />
