@@ -200,3 +200,12 @@
     padding: 5px 10px;
     border-radius: 5px;
 }
+
+.rcm-main_card.active {
+    border: 5px solid lightgreen;
+    scale: 0.9 !important
+}
+
+.rcm-main_card.active:hover {
+    scale: 0.9 !important
+}

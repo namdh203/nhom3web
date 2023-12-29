@@ -7,10 +7,10 @@ import {
 } from "../../tour_full/tour_dest/GetDestSite.js";
 
 import { Route, Routes } from 'react-router-dom';
-import AccomCustom from "../page/accom_custom.jsx"
-import RestCustom from "../page/rest_custom.jsx"
-import ActCustom from "../page/act_custom.jsx"
-import TransCustom from "../page/trans_custom.jsx"
+import AccomCustom from "../page/accom/accom_custom.jsx"
+import RestCustom from "../page/rest/rest_custom.jsx"
+import ActCustom from "../page/act/act_custom.jsx"
+import TransCustom from "../page/trans/trans_custom.jsx"
 
 
 export default class CustomizedContent extends React.Component {
@@ -63,7 +63,7 @@ export default class CustomizedContent extends React.Component {
 
         return (
             <div>
-                <div className="buffer-block" style={{height: "37px", backgroundColor: "e9f0f8", width: "100%"}}></div>
+                {/* <div className="buffer-block" style={{height: "37px", backgroundColor: "e9f0f8", width: "100%"}}></div> */}
                 <Routes>
                     <Route path="/trans" element={<TransCustom data={this.state.transData} />}></Route>
                     <Route path="/accom" element={<AccomCustom data={this.state.accomData} />}></Route>

@@ -16,13 +16,13 @@ import { useNavigate } from 'react-router-dom';
 function Sidebar() {
     const navigate = useNavigate();
     return (
-        <div className="sidebar-customize" style={{"border-right": "0.025px solid #333", backgroundColor: "#001529", color: "#fff"}}>
+        <div className="sidebar-customize" style={{"border-right": "0.025px solid #333"}}>
             <Menu
                 mode="inline"
                 onClick={({ key }) => {
                     navigate(key)
                 }}
-                theme="dark"
+                // theme="dark"
                 style={{"border-right": "none", paddingTop: "20px"}}
                 // selectedKeys="trans"
                 items={[
@@ -32,6 +32,9 @@ function Sidebar() {
                     { label: "Activities", key: "act", icon: <CoffeeOutlined /> },
                 ]}
             ></Menu>
+            <div className="back-btn" onClick={() => {
+                window.location.href = localStorage.getItem("preUrl")
+            }}>Back to itinerary</div>
         </div>
     )
 }

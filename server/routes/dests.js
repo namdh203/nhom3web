@@ -40,7 +40,7 @@ dest.post('/accom', (req, res) => {
         include: [
             {
                 model: Accommodation,
-                attributes: ['id', 'name', 'demoImage'],
+                attributes: ['id', 'name', 'address', 'telephone', 'contactEmail', 'pricePerNight', 'priceCurrency', 'demoImage'],
                 required: true
             }
         ]
@@ -53,7 +53,13 @@ dest.post('/accom', (req, res) => {
                 destId: destAccom.destId,
                 accomId: destAccom.accomId,
                 name: destAccom.accommodation.name,
-                demoImage: destAccom.accommodation.demoImage.split(",")[0]
+                id: destAccom.accommodation.id,
+                demoImage: destAccom.accommodation.demoImage.split(",")[0],
+                address: destAccom.accommodation.address,
+                telephone: destAccom.accommodation.telephone,
+                contactEmail: destAccom.accommodation.contactEmail,
+                pricePerNight: destAccom.accommodation.pricePerNight,
+                priceCurrency: destAccom.accommodation.priceCurrency
             }));
 
             res.json(responseData);
@@ -74,7 +80,7 @@ dest.post('/transportation', (req, res) => {
         include: [
             {
                 model: Transportation,
-                attributes: ['id', 'additionInfo', 'demoImage'],
+                attributes: ['id', 'additionInfo', 'demoImage', 'type'],
                 required: true
             }
         ]
@@ -86,10 +92,13 @@ dest.post('/transportation', (req, res) => {
             const responseData = destTrans.map(destTran => ({
                 destId: destTran.destId,
                 transId: destTran.transId, 
+                id: destTran.transportation.id,
                 name: destTran.transportation.additionInfo.includes(",") ? 
                     destTran.transportation.additionInfo.split(",")[0] : 
                     destTran.transportation.additionInfo,
-                demoImage: destTran.transportation.demoImage
+                additionInfo: destTran.transportation.additionInfo.split(","),
+                demoImage: destTran.transportation.demoImage,
+                type: destTran.transportation.type
             }));
 
             res.json(responseData);
@@ -110,7 +119,7 @@ dest.post('/restaurant', (req, res) => {
         include: [
             {
                 model: Restaurants,
-                attributes: ['id', 'name', 'demoImage'],
+                attributes: ['id', 'name', 'demoImage', 'address', 'telephone', 'description', 'additionInfo'],
                 required: true
             }
         ]
@@ -122,8 +131,13 @@ dest.post('/restaurant', (req, res) => {
             const responseData = destRests.map(destRest => ({
                 destId: destRest.destId,
                 restId: destRest.restId,
+                id: destRest.restaurant.id,
                 name: destRest.restaurant.name,
-                demoImage: destRest.restaurant.demoImage.split(",")[0]
+                demoImage: destRest.restaurant.demoImage.split(",")[0],
+                address: destRest.restaurant.address,
+                telephone: destRest.restaurant.telephone,
+                description: destRest.restaurant.description,
+                additionInfo: destRest.restaurant.additionInfo.split(",")
             }));
 
             res.json(responseData);
@@ -144,7 +158,7 @@ dest.post('/activity', (req, res) => {
         include: [
             {
                 model: Activities,
-                attributes: ['id', 'name', 'demoImage'],
+                attributes: ['id', 'name', 'demoImage', 'type', 'description', 'additionInfo'],
                 required: true
             }
         ]
@@ -156,8 +170,12 @@ dest.post('/activity', (req, res) => {
             const responseData = destActs.map(destActs => ({
                 destId: destActs.destId,
                 activityId: destActs.activityId,
+                id: destActs.activity.id,
                 name: destActs.activity.name,
-                demoImage: destActs.activity.demoImage.split(",")[0]
+                demoImage: destActs.activity.demoImage.split(",")[0],
+                type: destActs.activity.type,
+                description: destActs.activity.description,
+                additionInfo: destActs.activity.additionInfo.split(",")
             }));
 
             res.json(responseData);
