@@ -47,7 +47,7 @@ export default function PickDate() {
 
   return (
     <>
-      <div style={{ height: "30px" }}></div>
+      <div style={{ height: "70px" }}></div>
       <Container>
         <Row className="row-cols-1 gy-3">
           <Col>

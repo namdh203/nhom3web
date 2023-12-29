@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize')
-const db = {}
+const Sequelize = require("sequelize");
+const db = {};
 
 const sequelize = new Sequelize(
   "travelgiang",

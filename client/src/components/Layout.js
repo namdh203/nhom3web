@@ -8,7 +8,7 @@ export default function Layout({ showSearchBar, showFooter, addTopPadding }) {
       <NavBar showSearchBar={showSearchBar} />
       <div className="black-layer"></div>
 
-      {addTopPadding && <div style={{ height: "100px" }}></div>}
+      {addTopPadding && <div style={{ height: "50px" }}></div>}
 
       <Outlet />
 

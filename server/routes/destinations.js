@@ -30,6 +30,31 @@ router.post("/search-country", async (req, res) => {
     });
 });
 
+router.post("/search-destination", async (req, res) => {
+  const query = req.body.query;
+  const countryId = req.body.countryId;
+
+  Destination.findAll({
+    attributes: ["id", "name", "additionInfo", "demoImage"],
+    where: {
+      [Sequelize.Op.and]: [
+        sequelize.where(
+          sequelize.fn("lower", sequelize.col("name")),
+          Sequelize.Op.like,
+          `%${query}%`
+        ),
+        { countryId: countryId },
+      ],
+    },
+    limit: 4,
+  })
+    .then((results) => res.json({ results: results }))
+    .catch((reason) => {
+      res.status(400).send("Bad request");
+      console.log("Bad request", reason);
+    });
+});
+
 // admin
 router.post("/admin/getAllDestination", (req, res) => {
   Destination.findAll({

@@ -55,10 +55,10 @@ class TourDestination extends React.Component {
       console.error("An error occurred:", error);
     }
 
-    var filteredAccoms = []
-    var filteredTrans = []
-    var filteredRests = []
-    var filteredAct = []
+    var filteredAccoms = null
+    var filteredTrans = null
+    var filteredRests = null
+    var filteredAct = null
 
     if (!localStorage.getItem(`rest_dest${this.props.destId}`)) {
       filteredRests = this.state.rests.slice(0, 2)
@@ -74,7 +74,7 @@ class TourDestination extends React.Component {
 
     }
 
-    
+    console.log("Rest: ", this.state.filteredRests)    
 
     if (!localStorage.getItem(`accom_dest${this.props.destId}`)) {
       filteredAccoms = this.state.accoms.slice(0, 2)
@@ -89,6 +89,8 @@ class TourDestination extends React.Component {
 
     }
 
+    console.log("Accom: ", this.state.filteredAccoms)
+
     if (!localStorage.getItem(`trans_dest${this.props.destId}`)) {
       filteredTrans = this.state.trans.slice(0, 2)
       this.setState({filteredTrans: filteredTrans});
@@ -100,6 +102,9 @@ class TourDestination extends React.Component {
       this.setState({filteredTrans: filteredTrans})
 
     }
+
+    console.log("Trans: ", this.state.filteredTrans)
+
 
     if (!localStorage.getItem(`act_dest${this.props.destId}`)) {
       filteredAct = this.state.activity.slice(0, 2)
@@ -113,6 +118,9 @@ class TourDestination extends React.Component {
       
 
     }
+
+    console.log("Act: ", this.state.filteredAct)
+    
 
   }
 

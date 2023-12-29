@@ -58,6 +58,7 @@ export default function ChooseMonth() {
 
   return (
     <>
+      <div style={{ height: "50px" }}></div>
       {monthlyAdvice.length === 0 ? (
         <h4>Loading...</h4>
       ) : (
@@ -85,7 +86,7 @@ export default function ChooseMonth() {
                       <Col className="d-flex justify-content-center p-1">
                         <Card.Text
                           className={
-                            "mx-auto" +
+                            "mx-auto mt-1 mb-2" +
                             (monthlyAdvice[monthIndex].adviceCode === 2
                               ? " text-light bg-success bg-gradient border border-success rounded"
                               : " text-light-emphasis")
@@ -100,7 +101,7 @@ export default function ChooseMonth() {
                         </Card.Text>
                       </Col>
                       <Col className="d-flex justify-content-center">
-                        <Card.Text className="text-secondary">
+                        <Card.Text className="text-secondary mb-3">
                           {monthlyAdvice[monthIndex].lowTemp} -{" "}
                           {monthlyAdvice[monthIndex].highTemp}°C
                         </Card.Text>

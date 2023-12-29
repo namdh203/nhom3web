@@ -14,8 +14,8 @@ export default function DurationCard({ src, min, max }) {
         <Card.Img
           variant="top"
           src={src}
-          className="img-fluid mb-4 mt-4"
-          style={{ maxWidth: "100px" }}
+          className="img-fluid mb-4 mt-4 rounded-circle"
+          style={{ maxWidth: "120px" }}
         />
         <Card.Text className="fw-medium mt-4 mb-4">
           {min}-{max} Days
