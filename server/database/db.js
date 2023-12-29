@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize')
 const db = {}
 // Database: Travelam (testingdbuser for test)
-const sequelize = new Sequelize('travelgiang', 'test', 'Test@1234', {
-  host: 'localhost',
+const sequelize = new Sequelize('travelam', 'root', 'Gi@ng213', {
+  host: '127.0.0.1',
   dialect: 'mysql',
 
   pool: {
