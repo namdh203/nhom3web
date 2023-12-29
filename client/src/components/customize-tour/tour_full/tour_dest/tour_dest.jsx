@@ -19,9 +19,13 @@ class TourDestination extends React.Component {
     this.state = {
       accomData: null,
       accoms: [],
+      filteredAccoms: null,
       trans: [],
+      filteredTrans: null,
       rests: [],
+      filteredRests: null,
       activity: [],
+      filteredAct: null,
     };
 
     this.onCustomizeClicked = this.onCustomizeClicked.bind(this)
@@ -50,19 +54,91 @@ class TourDestination extends React.Component {
     } catch (error) {
       console.error("An error occurred:", error);
     }
+
+    var filteredAccoms = []
+    var filteredTrans = []
+    var filteredRests = []
+    var filteredAct = []
+
+    if (!localStorage.getItem(`rest_dest${this.props.destId}`)) {
+      filteredRests = this.state.rests.slice(0, 2)
+      this.setState({filteredRests: filteredRests});
+    } else {
+      var filteredList2 = JSON.parse(localStorage.getItem(`rest_dest${this.props.destId}`)).arr
+      filteredRests = this.state.rests.filter(function(element) {
+        return filteredList2.includes(element.id);
+      })
+      this.setState({filteredRests: filteredRests}, () => {
+        console.log("Rest: ", this.state.filteredRests)
+      })
+
+    }
+
+    
+
+    if (!localStorage.getItem(`accom_dest${this.props.destId}`)) {
+      filteredAccoms = this.state.accoms.slice(0, 2)
+      this.setState({filteredAccoms: filteredAccoms});
+    } else {
+      var filteredList2 = JSON.parse(localStorage.getItem(`accom_dest${this.props.destId}`)).arr
+      filteredAccoms = this.state.accoms.filter(function(element) {
+        return filteredList2.includes(element.id);
+      })
+      this.setState({filteredAccoms: filteredAccoms})
+      
+
+    }
+
+    if (!localStorage.getItem(`trans_dest${this.props.destId}`)) {
+      filteredTrans = this.state.trans.slice(0, 2)
+      this.setState({filteredTrans: filteredTrans});
+    } else {
+      var filteredList2 = JSON.parse(localStorage.getItem(`trans_dest${this.props.destId}`)).arr
+      filteredTrans = this.state.trans.filter(function(element) {
+        return filteredList2.includes(element.id);
+      })
+      this.setState({filteredTrans: filteredTrans})
+
+    }
+
+    if (!localStorage.getItem(`act_dest${this.props.destId}`)) {
+      filteredAct = this.state.activity.slice(0, 2)
+      this.setState({filteredAct: filteredAct});
+    } else {
+      var filteredList2 = JSON.parse(localStorage.getItem(`act_dest${this.props.destId}`)).arr
+      filteredAct = this.state.activity.filter(function(element) {
+        return filteredList2.includes(element.id);
+      })
+      this.setState({filteredAct: filteredAct})
+      
+
+    }
+
   }
 
   onCustomizeClicked(destId) {
+    localStorage.setItem("preUrl", window.location.href)
     window.location.href = `/customize`
   }
 
   render() {
+
+    if (!this.state.filteredAccoms || !this.state.filteredAct || !this.state.filteredRests || !this.state.filteredTrans) {
+      return <p>Loading...</p>
+    }
+
+    if (this.state.filteredAccoms.length === 0 || this.state.filteredAct.length === 0 || this.state.filteredRests.length === 0 || this.state.filteredTrans.length === 0) {
+      return <p>Loading...</p>
+    }
+
     return (
       <>
         <div className="buffer-block detail"></div>
         <div
           className="trans-block"
-          style={{ display: this.props.last === "true" ? "none" : "flex" }}
+          style={{
+            display: this.props.last === "true" ? "none" : "flex",
+          }}
         >
           <div
             className="trans-choice"
@@ -110,158 +186,55 @@ class TourDestination extends React.Component {
               <div className="col col-md-3 col-sm-6 col-6">
                 <i className="fa-solid fa-hotel"></i>
                 <div>
-                  {this.state.accoms[0] && (
+                  {this.state.filteredAccoms.map((accom) => (
                     <AddImg
-                      scripts={this.state.accoms[0].name}
-                      image={this.state.accoms[0].demoImage}
+                      scripts={accom.name}
+                      image={accom.demoImage}
                       pos="leftTop"
                       site="accommodation/hotel"
-                      id={this.state.accoms[0].accomId}
+                      id={accom.accomId}
                     />
-                  )}
-                  {this.state.accoms[1] && (
-                    <AddImg
-                      scripts={this.state.accoms[1].name}
-                      image={this.state.accoms[1].demoImage}
-                      pos="leftTop"
-                      site="accommodation/hotel"
-                      id={this.state.accoms[1].accomId}
-                    />
-                  )}
-                  {this.state.accoms[2] && (
-                    <AddImg
-                      scripts={this.state.accoms[2].name}
-                      image={this.state.accoms[2].demoImage}
-                      pos="leftTop"
-                      site="accommodation/hotel"
-                      id={this.state.accoms[2].accomId}
-                    />
-                  )}
-                  {this.state.accoms[3] && (
-                    <AddImg
-                      scripts={this.state.accoms[3].name}
-                      image={this.state.accoms[3].demoImage}
-                      pos="leftTop"
-                      site="accommodation/hotel"
-                      id={this.state.accoms[3].accomId}
-                    />
-                  )}
+                  ))}
                 </div>
               </div>
               <div className="col col-md-3 col-sm-6 col-6">
                 <i className="fa-solid fa-truck-plane"></i>
                 <div>
-                  {this.state.trans[0] && (
+                  {this.state.filteredTrans.map((tran) => (
                     <AddImg
-                      scripts={this.state.trans[0].name}
-                      image={this.state.trans[0].demoImage}
-                      pos="leftTop"
-                      
-                    />
-                  )}
-                  {this.state.trans[1] && (
-                    <AddImg
-                      scripts={this.state.trans[1].name}
-                      image={this.state.trans[1].demoImage}
+                      scripts={tran.name}
+                      image={tran.demoImage}
                       pos="leftTop"
                     />
-                  )}
-                  {this.state.trans[2] && (
-                    <AddImg
-                      scripts={this.state.trans[2].name}
-                      image={this.state.trans[2].demoImage}
-                      pos="leftTop"
-                    />
-                  )}
-                  {this.state.trans[3] && (
-                    <AddImg
-                      scripts={this.state.trans[3].name}
-                      image={this.state.trans[3].demoImage}
-                      pos="leftTop"
-                    />
-                  )}
+                  ))}
                 </div>
               </div>
               <div className="col col-md-3 col-sm-6 col-6">
                 <i className="fa-solid fa-drumstick-bite"></i>
                 <div>
-                  {this.state.rests[0] && (
+                  {this.state.filteredRests.map((rest) => (
                     <AddImg
-                      scripts={this.state.rests[0].name}
-                      image={this.state.rests[0].demoImage}
+                      scripts={rest.name}
+                      image={rest.demoImage}
                       pos="leftTop"
                       site="restaurant/res"
-                      id={this.state.rests[0].restId}
+                      id={rest.restId}
                     />
-                  )}
-                  {this.state.rests[1] && (
-                    <AddImg
-                      scripts={this.state.rests[1].name}
-                      image={this.state.rests[1].demoImage}
-                      pos="leftTop"
-                      site="restaurant/res"
-                      id={this.state.rests[1].restId}
-                    />
-                  )}
-                  {this.state.rests[2] && (
-                    <AddImg
-                      scripts={this.state.rests[2].name}
-                      image={this.state.rests[2].demoImage}
-                      pos="leftTop"
-                      site="restaurant/res"
-                      id={this.state.rests[2].restId}
-                    />
-                  )}
-                  {this.state.rests[3] && (
-                    <AddImg
-                      scripts={this.state.rests[3].name}
-                      image={this.state.rests[3].demoImage}
-                      pos="leftTop"
-                      site="restaurant/res"
-                      id={this.state.rests[3].restId}
-                    />
-                  )}
+                  ))}
                 </div>
               </div>
               <div className="col col-md-3 col-sm-6 col-6">
                 <i className="fa-solid fa-heart-pulse"></i>
                 <div>
-                  {this.state.activity[0] && (
+                  {this.state.filteredAct.map((act) => (
                     <AddImg
-                      scripts={this.state.activity[0].name}
-                      image={this.state.activity[0].demoImage}
+                      scripts={act.name}
+                      image={act.demoImage}
                       pos="leftTop"
                       site="activity/act"
-                      id={this.state.activity[0].activityId}
+                      id={act.activityId}
                     />
-                  )}
-                  {this.state.activity[1] && (
-                    <AddImg
-                      scripts={this.state.activity[1].name}
-                      image={this.state.activity[1].demoImage}
-                      pos="leftTop"
-                      site="activity/act"
-                      id={this.state.activity[1].activityId}
-                    />
-                  )}
-                  {this.state.activity[2] && (
-                    <AddImg
-                      scripts={this.state.activity[2].name}
-                      image={this.state.activity[2].demoImage}
-                      pos="leftTop"
-                      site="activity/act"
-                      id={this.state.activity[2].activityId}
-                    />
-                  )}
-                  {this.state.activity[3] && (
-                    <AddImg
-                      scripts={this.state.activity[3].name}
-                      image={this.state.activity[3].demoImage}
-                      pos="leftTop"
-                      site="activity/act"
-                      id={this.state.activity[3].activityId}
-                    />
-                  )}
+                  ))}
                 </div>
               </div>
             </div>

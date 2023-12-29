@@ -1,5 +1,7 @@
 import React from 'react'
-import RcmAccomCard from '../../../recommend/rcmaccom/rcm-accom-card';
+import RcmAccomCardCustom from "./rcm-accom-card-custom"
+import "./accom_custom.css"
+import { Modal } from "antd"
 
 export default class AccomCustom extends React.Component {
     constructor(props) {
@@ -9,11 +11,26 @@ export default class AccomCustom extends React.Component {
             pagenum: null,
             card_per_page: 12,
             pagelist: null,
-            query: ""
+            query: "",
+            activeList: [],
+            success: false,
+            openModal: true
         };
 
         this.onChange = this.onChange.bind(this)
         this.loadAccom = this.loadAccom.bind(this)
+        this.checkInclude = this.checkInclude.bind(this)
+        this.save = this.save.bind(this)
+        this.handleOk = this.handleOk.bind(this)
+        this.handleCancel = this.handleCancel.bind(this)
+    }
+
+    handleOk() {
+        this.setState({ openModal: false })
+    }
+
+    handleCancel() {
+        this.setState({ openModal: false })
     }
 
     loadAccom() {
@@ -21,7 +38,7 @@ export default class AccomCustom extends React.Component {
 
         const query = this.state.query
 
-        var filteredData = this.props.data.filter(function(data) {
+        var filteredData = this.props.data.filter(function (data) {
             return data.name.includes(query);
         });
 
@@ -29,10 +46,11 @@ export default class AccomCustom extends React.Component {
             page_list.push(i);
         }
 
-        this.setState({ pagelist: page_list, filteredData: filteredData});
+        this.setState({ pagelist: page_list, filteredData: filteredData });
     }
 
     componentDidMount() {
+        this.setState({ activeList: [] })
         const currentURL = window.location.href;
 
         const url = new URL(currentURL);
@@ -65,6 +83,27 @@ export default class AccomCustom extends React.Component {
         })
     }
 
+    checkInclude(id) {
+        for (let i = 0; i < this.state.activeList.length; i++) {
+            if (this.state.activeList[i] === id) {
+                return true
+            }
+        }
+
+        return false
+    }
+
+    save() {
+        var destId = JSON.parse(localStorage.getItem("current_dest"))
+        const jsonFile = JSON.stringify({arr: this.state.activeList.join(",")})
+        localStorage.setItem(`accom_dest${destId}`, jsonFile)
+        this.setState({success: true}, () => {
+            if (this.state.openModal === false) {
+                this.setState({openModal: true})
+            }
+        })
+    }
+
     render() {
         if (
             this.state.accomData === null ||
@@ -78,6 +117,18 @@ export default class AccomCustom extends React.Component {
 
         return (
             <div className="rcm-accom_wrapper">
+                {this.state.success ? <div><Modal open={this.state.openModal} onOk={this.handleOk} onCancel={this.handleCancel} zIndex="2000">
+                    <div className="notice-wrapper" style={{ width: "100%" }}>
+                        <img
+                            src="https://cdn-icons-png.flaticon.com/512/943/943593.png"
+                            className="img-fluid modal-notice info"
+                            alt="Responsive"
+                        />
+                    </div>
+
+                    <h1 className="modal-msg">Save customization successfully!</h1>
+
+                </Modal></div> : ""}
                 {/* <div className="buffer-block" style={{ height: "51px" }}></div> */}
 
                 {/* <div className="rcm-banner">
@@ -95,25 +146,46 @@ export default class AccomCustom extends React.Component {
                     </div>
                 </div> */}
 
-                <div className="rcm-main" id="main" style={{backgroundColor: "#ffffff"}}>
+                <div className="rcm-main" id="main" style={{ backgroundColor: "#ffffff" }}>
                     {/* <div className="searchBar">
                         <h2>Which accommodation....?</h2>
                         <input type="text" value={this.state.query} name="query" placeholder="Accommodation" onChange={this.onChange} />
                     </div> */}
-                    <div className="rcm-main_wrapper row gx-4 gy-5">
+                    <div className="rcm-main_wrapper-custom row gx-10 gy-5" style={{ padding: "0 40px" }}>
                         {this.state.filteredData
                             .slice(
                                 (this.state.pagenum - 1) * this.state.card_per_page,
                                 this.state.card_per_page * this.state.pagenum
                             )
                             .map((accom) => (
-                                <RcmAccomCard accom={accom}></RcmAccomCard>
+                                <div className="custom-card col col-6 col-sm-6 col-md-3" onClick={() => {
+                                    if (!this.state.activeList.includes(accom.id)) {
+                                        this.setState({ activeList: this.state.activeList.concat(accom.id) }, () => {
+                                            console.log("Active List: ", this.state.activeList)
+                                        })
+                                    } else {
+                                        const index = this.state.activeList.indexOf(accom.id);
+                                        if (index !== -1) {
+                                            const newArray = [...this.state.activeList];
+                                            newArray.splice(index, 1);
+                                            this.setState({ activeList: newArray }, () => {
+                                                console.log("Active List: ", this.state.activeList)
+                                            });
+                                        }
+                                    }
+                                }}>
+                                    <RcmAccomCardCustom accom={accom} active={this.state.activeList.includes(accom.id)}></RcmAccomCardCustom>
+                                </div>
                             ))}
+                    </div>
+                    <div className="save-custom" onClick={() => this.save()}>
+                        <div className="save=customer_btn">Save</div>
                     </div>
                 </div>
 
-                <nav aria-label="Page navigation rcm-pagination">
-                    <ul className="pagination justify-content-center no-margin-bottom pb-40px">
+
+                <nav aria-label="Page navigation rcm-pagination" style={{ backgroundColor: "#fff" }}>
+                    <ul className="pagination justify-content-center no-margin-bottom pb-40px" style={{ "margin-top": "0", "padding-top": "20px" }}>
                         <li className="page-item">
                             <a className="page-link" href={`?page_num=${Math.max(this.state.pagenum - 1, 1)}&query=${this.state.query}`}>Previous</a>
                         </li>
