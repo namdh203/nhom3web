@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import './tour.css'
 import { useNavigate } from "react-router-dom";
 import { addTour } from './tourFunction';
+import 'react-datepicker/dist/react-datepicker.css';
+import DatePicker from 'react-datepicker';
 
 const AddTourForm = () => {
     const [newTour, setNewTour] = useState({
+        destId: [],
         title: '',
         description: '',
         duration: '',
@@ -13,6 +16,7 @@ const AddTourForm = () => {
         additionInfo: '',
         voting: '',
         type: '',
+        demoImage: '',
     });
 
     const navigate = useNavigate();
@@ -21,12 +25,14 @@ const AddTourForm = () => {
         setNewTour({ ...newTour, [e.target.name]: e.target.value });
     };
 
+
     const onSubmit = (e) => {
         e.preventDefault();
 
-        addTour(newTour).then(res => {
-            alert(res.msg)
+        addTour(newTour).then((res) => {
+            alert(res.msg);
             setNewTour({
+                destId: [],
                 title: '',
                 description: '',
                 duration: '',
@@ -35,9 +41,10 @@ const AddTourForm = () => {
                 additionInfo: '',
                 voting: '',
                 type: '',
+                demoImage: '',
             });
-            navigate("/admin/tour")
-        })
+            navigate('/admin/tour');
+        });
     };
 
     return (
@@ -45,6 +52,17 @@ const AddTourForm = () => {
             <div className="col col-md-9 col-12 add-tour-detail">
                 <h2>Add Tour</h2>
                 <form className="user-profile_form" onSubmit={onSubmit}>
+                    <div className="mb-3">
+                        <label>Destination IDs</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="destId"
+                            placeholder="Enter destination IDs, split with ','"
+                            value={newTour.destId}
+                            onChange={(e) => setNewTour({ ...newTour, destId: e.target.value.split(',') })}
+                        />
+                    </div>
                     <div className="mb-3">
                         <label>Title</label>
                         <input
@@ -134,6 +152,18 @@ const AddTourForm = () => {
                             name="type"
                             placeholder="Enter type"
                             value={newTour.type}
+                            onChange={onChange}
+                            required
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <label>Demo Image</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="demoImage"
+                            placeholder="Enter demo image url"
+                            value={newTour.demoImage}
                             onChange={onChange}
                             required
                         />

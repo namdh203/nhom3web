@@ -444,12 +444,18 @@ tours.post('/gettranslists', (req, res) => {
 // admin
 tours.post('/admin/getAllTour', (req, res) => {
     Tour.findAll({
-        limit: 300
+        limit: 300,
+        include: [{
+            model: TourDest,
+            attributes: ['dest_id'],
+            as: 'tour_dests',
+        }]
     })
         .then(tours => {
             if (tours) {
                 const responseData = tours.map(tour => ({
                     id: tour.id,
+                    destIds: tour.tour_dests.map(tour_dest => tour_dest.dest_id),
                     title: tour.title,
                     description: tour.description,
                     duration: tour.duration,
@@ -457,7 +463,10 @@ tours.post('/admin/getAllTour', (req, res) => {
                     priceCurrency: tour.priceCurrency,
                     additionInfo: tour.additionInfo,
                     voting: tour.voting,
-                    type: tour.type
+                    type: tour.type,
+                    startDate: tour.startDate,
+                    endDate: tour.endDate,
+                    demoImage: tour.demoImage,
                 }));
                 res.json(responseData);
             } else {
@@ -472,10 +481,10 @@ tours.post('/admin/getAllTour', (req, res) => {
 tours.post('/admin/addTour', async (req, res) => {
     const new_tour = req.body.new_tour;
 
-    try {
-        const startDate = moment().format('YYYY-MM-DD');
-        const endDate = moment().add(new_tour.duration - 1, 'days').format('YYYY-MM-DD');
+    const new_startDate = moment().format('YYYY-MM-DD');
+    const new_endDate = moment().add(new_tour.duration - 1, 'days').format('YYYY-MM-DD');
 
+    try {
         const createdTour = await Tour.create({
             title: new_tour.title,
             description: new_tour.description,
@@ -485,10 +494,17 @@ tours.post('/admin/addTour', async (req, res) => {
             additionInfo: new_tour.additionInfo,
             voting: new_tour.voting,
             type: new_tour.type,
-            startDate: startDate,
-            endDate: endDate,
-            demoImage: "."
+            startDate: new_startDate,
+            endDate: new_endDate,
+            demoImage: new_tour.demoImage,
         });
+
+        for (const destId of new_tour.destId) {
+            await TourDest.create({
+                tour_id: createdTour.id,
+                dest_id: destId
+            });
+        }
 
         res.json({
             msg: 'Tour added successfully',
@@ -504,9 +520,8 @@ tours.post('/admin/addTour', async (req, res) => {
                 additionInfo: createdTour.additionInfo,
                 voting: createdTour.voting,
                 type: createdTour.type,
-                demoImage: createdTour.demoImage
-            },
-
+                demoImage: createdTour.demoImage,
+            }
         });
     } catch (error) {
         console.error('Error adding tour:', error);

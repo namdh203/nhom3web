@@ -103,6 +103,7 @@ const Tour = () => {
         <thead>
           <tr>
             <th onClick={() => handleSort("id")}> ID</th>
+            <th>Destination IDs</th>
             <th onClick={() => handleSort("title")}>Title</th>
             <th> Description</th>
             <th> Duration</th>
@@ -111,12 +112,14 @@ const Tour = () => {
             <th> Addition Info</th>
             <th> Voting</th>
             <th onClick={() => handleSort("type")}>Type</th>
+            <th> Demo Image</th>
           </tr>
         </thead>
         <tbody>
           {currentItems.map(tour => (
             <tr key={tour.id}>
               <td>{tour.id}</td>
+              <td>{tour.destIds.join(", ")}</td>
               <td>{tour.title}</td>
               <td>{tour.description}</td>
               <td>{tour.duration}</td>
@@ -125,6 +128,7 @@ const Tour = () => {
               <td>{tour.additionInfo}</td>
               <td>{tour.voting}</td>
               <td>{tour.type}</td>
+              <td>{tour.demoImage}</td>
             </tr>
           ))}
         </tbody>
