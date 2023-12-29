@@ -12,6 +12,7 @@ import AddAccountForm from '../pages/account/addAccountForm';
 import DeleteAccountForm from '../pages/account/deleteAccountForm';
 
 import AddTourForm from '../pages/tour/addTourForm';
+import DeleteTourForm from '../pages/tour/deleteTourForm';
 
 import "./content.css"
 
@@ -25,6 +26,7 @@ function Content() {
 
                 <Route path="/tour" element={<Tour/>}></Route>
                 <Route path="/tour/add-tour" element={<AddTourForm/>}></Route>
+                <Route path="/tour/delete-tour" element={<DeleteTourForm/>}></Route>
 
                 <Route path="/destination" element={<Destination/>}></Route>
                 <Route path="/transportation" element={<Transportation/>}></Route>

@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import './tour.css'
 import { useNavigate } from "react-router-dom";
 import { addTour } from './tourFunction';
-import 'react-datepicker/dist/react-datepicker.css';
-import DatePicker from 'react-datepicker';
 
 const AddTourForm = () => {
     const [newTour, setNewTour] = useState({

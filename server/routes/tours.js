@@ -529,4 +529,30 @@ tours.post('/admin/addTour', async (req, res) => {
     }
 });
 
+tours.post('/admin/deleteTour', async (req, res) => {
+    const old_tour = req.body.old_tour;
+
+    try {
+        const tourToDelete = await Tour.findByPk(old_tour.id);
+
+        if (!tourToDelete) {
+            res.status(404).json({ error: 'Tour not found'});
+        }
+
+        await TourDest.destroy({
+            where: {
+                tour_id: tourToDelete.id
+            }
+        })
+
+        await tourToDelete.destroy();
+
+        res.json({ msg: 'Tour deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting tour:', error);
+        res.status(400).json({ error: 'Error deleting tour' });
+    }
+});
+
+
 module.exports = tours

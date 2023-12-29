@@ -138,6 +138,9 @@ const Tour = () => {
         <button className="btn btn-primary" onClick={ () => navigate("/admin/tour/add-tour")}>
           Add Tour
         </button>
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/tour/delete-tour")}>
+          Delete
+        </button>
       </div>
 
       <ul className="pagination">
