@@ -29,6 +29,72 @@ class TourDestination extends React.Component {
     };
 
     this.onCustomizeClicked = this.onCustomizeClicked.bind(this)
+    this.handleData = this.handleData.bind(this)
+  }
+
+  handleData() {
+    var filteredAccoms = null
+    var filteredTrans = null
+    var filteredRests = null
+    var filteredAct = null
+
+    if (!localStorage.getItem(`rest_dest${this.props.destId}`)) {
+      filteredRests = this.state.rests.slice(0, 2)
+      this.setState({ filteredRests: filteredRests });
+    } else {
+      var filteredList2 = JSON.parse(localStorage.getItem(`rest_dest${this.props.destId}`)).arr
+      filteredRests = this.state.rests.filter(function (element) {
+        return filteredList2.includes(element.id);
+      })
+      this.setState({ filteredRests: filteredRests }, () => {
+        console.log("Rest: ", this.state.filteredRests)
+      })
+    }
+
+    // console.log("Rest: ", this.state.filteredRests)    
+
+    if (!localStorage.getItem(`accom_dest${this.props.destId}`)) {
+      filteredAccoms = this.state.accoms.slice(0, 2)
+      this.setState({ filteredAccoms: filteredAccoms });
+    } else {
+      var filteredList2 = JSON.parse(localStorage.getItem(`accom_dest${this.props.destId}`)).arr
+      filteredAccoms = this.state.accoms.filter(function (element) {
+        return filteredList2.includes(element.id);
+      })
+      this.setState({ filteredAccoms: filteredAccoms })
+
+
+    }
+
+    // console.log("Accom: ", this.state.filteredAccoms)
+
+    if (!localStorage.getItem(`trans_dest${this.props.destId}`)) {
+      filteredTrans = this.state.trans.slice(0, 2)
+      this.setState({ filteredTrans: filteredTrans });
+    } else {
+      var filteredList2 = JSON.parse(localStorage.getItem(`trans_dest${this.props.destId}`)).arr
+      filteredTrans = this.state.trans.filter(function (element) {
+        return filteredList2.includes(element.id);
+      })
+      this.setState({ filteredTrans: filteredTrans })
+
+    }
+
+    // console.log("Trans: ", this.state.filteredTrans)
+
+
+    if (!localStorage.getItem(`act_dest${this.props.destId}`)) {
+      filteredAct = this.state.activity.slice(0, 2)
+      this.setState({ filteredAct: filteredAct });
+    } else {
+      var filteredList2 = JSON.parse(localStorage.getItem(`act_dest${this.props.destId}`)).arr
+      filteredAct = this.state.activity.filter(function (element) {
+        return filteredList2.includes(element.id);
+      })
+      this.setState({ filteredAct: filteredAct })
+
+
+    }
   }
 
   async componentDidMount() {
@@ -48,6 +114,9 @@ class TourDestination extends React.Component {
           trans: transRes,
           rests: restsRes,
           activity: activityRes,
+        }, () => {
+          // Callback function to ensure the state is updated
+          this.handleData();
         });
         console.log(this.state.rests);
       }
@@ -55,72 +124,8 @@ class TourDestination extends React.Component {
       console.error("An error occurred:", error);
     }
 
-    var filteredAccoms = null
-    var filteredTrans = null
-    var filteredRests = null
-    var filteredAct = null
+    // console.log("Act: ", this.state.filteredAct)
 
-    if (!localStorage.getItem(`rest_dest${this.props.destId}`)) {
-      filteredRests = this.state.rests.slice(0, 2)
-      this.setState({filteredRests: filteredRests});
-    } else {
-      var filteredList2 = JSON.parse(localStorage.getItem(`rest_dest${this.props.destId}`)).arr
-      filteredRests = this.state.rests.filter(function(element) {
-        return filteredList2.includes(element.id);
-      })
-      this.setState({filteredRests: filteredRests}, () => {
-        console.log("Rest: ", this.state.filteredRests)
-      })
-
-    }
-
-    console.log("Rest: ", this.state.filteredRests)    
-
-    if (!localStorage.getItem(`accom_dest${this.props.destId}`)) {
-      filteredAccoms = this.state.accoms.slice(0, 2)
-      this.setState({filteredAccoms: filteredAccoms});
-    } else {
-      var filteredList2 = JSON.parse(localStorage.getItem(`accom_dest${this.props.destId}`)).arr
-      filteredAccoms = this.state.accoms.filter(function(element) {
-        return filteredList2.includes(element.id);
-      })
-      this.setState({filteredAccoms: filteredAccoms})
-      
-
-    }
-
-    console.log("Accom: ", this.state.filteredAccoms)
-
-    if (!localStorage.getItem(`trans_dest${this.props.destId}`)) {
-      filteredTrans = this.state.trans.slice(0, 2)
-      this.setState({filteredTrans: filteredTrans});
-    } else {
-      var filteredList2 = JSON.parse(localStorage.getItem(`trans_dest${this.props.destId}`)).arr
-      filteredTrans = this.state.trans.filter(function(element) {
-        return filteredList2.includes(element.id);
-      })
-      this.setState({filteredTrans: filteredTrans})
-
-    }
-
-    console.log("Trans: ", this.state.filteredTrans)
-
-
-    if (!localStorage.getItem(`act_dest${this.props.destId}`)) {
-      filteredAct = this.state.activity.slice(0, 2)
-      this.setState({filteredAct: filteredAct});
-    } else {
-      var filteredList2 = JSON.parse(localStorage.getItem(`act_dest${this.props.destId}`)).arr
-      filteredAct = this.state.activity.filter(function(element) {
-        return filteredList2.includes(element.id);
-      })
-      this.setState({filteredAct: filteredAct})
-      
-
-    }
-
-    console.log("Act: ", this.state.filteredAct)
-    
 
   }
 
@@ -135,9 +140,14 @@ class TourDestination extends React.Component {
       return <p>Loading...</p>
     }
 
-    if (this.state.filteredAccoms.length === 0 || this.state.filteredAct.length === 0 || this.state.filteredRests.length === 0 || this.state.filteredTrans.length === 0) {
-      return <p>Loading...</p>
-    }
+    // if (this.state.filteredAccoms.length === 0 || this.state.filteredAct.length === 0 || this.state.filteredRests.length === 0 || this.state.filteredTrans.length === 0) {
+    //   return <p>Loading...</p>
+    // }
+
+    console.log("Accom: ", this.state.filteredAccoms)
+    console.log("Rest: ", this.state.filteredRests)
+    console.log("Trans: ", this.state.filteredTrans)
+    console.log("Act: ", this.state.filteredAct)
 
     return (
       <>
