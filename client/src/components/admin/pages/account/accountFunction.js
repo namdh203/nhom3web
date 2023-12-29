@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const getFullProperty = () => {
+export const getCustomerProperties = () => {
     return axios
         .post('/users/admin/getCustomerProperties', {})
         .then(response => {
@@ -13,10 +13,10 @@ export const getFullProperty = () => {
         });
 }
 
-export const addCustomer = (customer) => {
+export const addCustomer = (user) => {
     return axios
         .post('/users/admin/addCustomer', {
-            new_customer: customer
+            new_user: user
         })
         .then(response => {
             console.log(response.data);

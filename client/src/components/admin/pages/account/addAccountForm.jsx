@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import './account.css'
-import { useNavigate } from "react-router-dom";
+import './account.css';
+import { useNavigate } from 'react-router-dom';
 import { addCustomer } from './accountFunction';
 
 const AddAccountForm = () => {
     const [newAccount, setNewAccount] = useState({
         name: '',
+        email: '',
+        password: '',
         cardNo: '',
         address: '',
         phoneNumber: '',
-        email: '',
-        password: '',
         passport: '',
+        role: 'admin',
+        moreInformation: false,
     });
 
     const navigate = useNavigate();
@@ -23,22 +25,25 @@ const AddAccountForm = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        addCustomer(newAccount).then (res => {
-            alert(res.msg)
-            setNewAccount({
-                name: '',
-                cardNo: '',
-                address: '',
-                phoneNumber: '',
-                email: '',
-                password: ' ',
-                passport: '',
+        addCustomer(newAccount)
+            .then((res) => {
+                alert(res.msg);
+                setNewAccount({
+                    name: '',
+                    email: '',
+                    password: '',
+                    cardNo: '',
+                    address: '',
+                    phoneNumber: '',
+                    passport: '',
+                    role: 'user',
+                    moreInformation: false,
+                });
+                navigate('/admin/account');
+            })
+            .catch(() => {
+                alert('Customer already exists');
             });
-            navigate("/admin/account")
-        })
-        .catch(() => {
-            alert('Customer already exists');
-        });
     };
 
     return (
@@ -59,39 +64,6 @@ const AddAccountForm = () => {
                         />
                     </div>
                     <div className="mb-3">
-                        <label>CardNo</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="cardNo"
-                            placeholder="Enter card no"
-                            value={newAccount.cardNo}
-                            onChange={onChange}
-                        />
-                    </div>
-                    <div className="mb-3">
-                        <label>Address</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="address"
-                            placeholder="Enter address"
-                            value={newAccount.address}
-                            onChange={onChange}
-                        />
-                    </div>
-                    <div className="mb-3">
-                        <label>Phone Number</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="phoneNumber"
-                            placeholder="Enter phone number"
-                            value={newAccount.phoneNumber}
-                            onChange={onChange}
-                        />
-                    </div>
-                    <div className="mb-3">
                         <label>Email</label>
                         <input
                             type="email"
@@ -106,7 +78,7 @@ const AddAccountForm = () => {
                     <div className="mb-3">
                         <label>Password</label>
                         <input
-                            type="text"
+                            type="password"
                             className="form-control"
                             name="password"
                             placeholder="Enter password"
@@ -116,16 +88,76 @@ const AddAccountForm = () => {
                         />
                     </div>
                     <div className="mb-3">
-                        <label>Passport</label>
-                        <input
-                            type="text"
+                        <label>Role</label>
+                        <select
                             className="form-control"
-                            name="passport"
-                            placeholder="Enter passport"
-                            value={newAccount.passport}
+                            name="role"
+                            value={newAccount.role}
                             onChange={onChange}
+                        >
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div className="mb-3">
+                        <label>More Information?</label>
+                        <input
+                            type="checkbox"
+                            className="form-check-input"
+                            name="moreInformation"
+                            checked={newAccount.moreInformation}
+                            onChange={(e) => setNewAccount({ ...newAccount, moreInformation: e.target.checked })}
                         />
                     </div>
+                    {newAccount.moreInformation && (
+                        <>
+                            <div className="mb-3">
+                                <label>CardNo</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="cardNo"
+                                    placeholder="Enter card no"
+                                    value={newAccount.cardNo}
+                                    onChange={onChange}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label>Address</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="address"
+                                    placeholder="Enter address"
+                                    value={newAccount.address}
+                                    onChange={onChange}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label>Phone Number</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="phoneNumber"
+                                    placeholder="Enter phone number"
+                                    value={newAccount.phoneNumber}
+                                    onChange={onChange}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label>Passport</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="passport"
+                                    placeholder="Enter passport"
+                                    value={newAccount.passport}
+                                    onChange={onChange}
+                                />
+                            </div>
+                        </>
+                    )}
+
                     <div className="d-grid">
                         <button type="submit" className="btn btn-primary profile-btn">
                             Add Account

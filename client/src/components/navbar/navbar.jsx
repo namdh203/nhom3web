@@ -48,7 +48,7 @@ export default class NavBar extends React.Component {
   componentDidMount() {
     const firstKey = localStorage.key(0);
 
-    if (firstKey !== null) {
+    if (firstKey !== null && localStorage.getItem("user") !== null) {
       // console.log("Email customer: ", firstKey)
       const email = JSON.parse(localStorage.getItem("user")).email
       getCustomer(email).then(res => {
@@ -205,12 +205,12 @@ export default class NavBar extends React.Component {
                     </button>
                   </a>
                   <button class="dropdown-item" type="button"><i class="fa-solid fa-list-ul"></i>    History</button>
-                  <a 
-                    href="/admin" 
-                    style={{ 
-                      "text-decoration": "none", 
-                      "color": "#333", 
-                      display: `${(localStorage.key(0) !== null && JSON.parse(localStorage.getItem("user")).role === "admin") ? "block" : "none"}`
+                  <a
+                    href="/admin"
+                    style={{
+                      "text-decoration": "none",
+                      "color": "#333",
+                      display: `${(localStorage.key(0) !== null && localStorage.getItem("user") !== null && JSON.parse(localStorage.getItem("user")).role === "admin") ? "block" : "none"}`
                     }}>
                     <button class="dropdown-item" type="button">
 
