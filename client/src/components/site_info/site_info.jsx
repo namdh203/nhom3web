@@ -40,7 +40,6 @@ export default function SiteInfo(props) {
     // }
     // linksString += "";
     // console.log(linksString);
-
     // for (let i = 0; i < 10; i++) {
     //   let group = "";
     //   for (let times = 0; times < 7; times++) {
@@ -69,7 +68,7 @@ export default function SiteInfo(props) {
   ];
 
   return (
-    <Layout>
+    <Layout className="site-info-layout">
       <Header>Header</Header>
       <Content>
         <div className="container px-5">

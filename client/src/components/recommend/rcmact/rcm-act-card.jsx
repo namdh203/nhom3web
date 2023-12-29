@@ -6,6 +6,10 @@ export default class RcmActCard extends React.Component {
         this.state = {}
     }
 
+    onclick = () => {
+        window.location.href = `/activity/act?id=${this.props.act.id}`
+    }
+
     render() {
         return (
             <div className="rcm-main_card col col-6 col-sm-6 col-md-3">
@@ -17,16 +21,16 @@ export default class RcmActCard extends React.Component {
                                 {this.props.act.name}
                             </h3>
                         </div>
-                        <p className="contact" style={{ "margin-top": "5px" }}><i class="fa-solid fa-heart-pulse"></i>        {this.props.act.type}</p>
-                        {/* <p className="contact"><i class="fa-solid fa-phone"></i>      {this.props.act.telephone}</p>
-                        <p className="contact"><i class="fa-solid fa-envelope"></i>      {this.props.act.contactEmail}</p> */}
+                        <p className="contact" style={{ "margin-top": "5px" }}><i className="fa-solid fa-heart-pulse"></i>        {this.props.act.type}</p>
+                        {/* <p className="contact"><i className="fa-solid fa-phone"></i>      {this.props.act.telephone}</p>
+                        <p className="contact"><i className="fa-solid fa-envelope"></i>      {this.props.act.contactEmail}</p> */}
                         <div className="card-info_addition">
                         {this.props.act.additionInfo.slice(0, 2).map(info => (
-                            <p><i class="fa-solid fa-check"></i> {info}</p>
+                            <p><i className="fa-solid fa-check"></i> {info}</p>
                         ))}
                         </div>
                         <div className="card-info_price">
-                            <div className="know-btn">
+                            <div className="know-btn" onClick={this.onclick}>
                                 <span>Know more</span>
                             </div>
                         </div>

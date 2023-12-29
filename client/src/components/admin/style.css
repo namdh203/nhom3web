@@ -1,0 +1,6 @@
+.dashboard-container {
+    flex: 1;
+    display: flex;
+    padding-top: 65px;
+    padding-bottom: 100px;
+}

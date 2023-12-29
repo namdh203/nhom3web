@@ -11,15 +11,15 @@ const Payment = db.sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
-        user_id: {
+        userId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             reference: {
                 model: 'Customer',
-                key: 'user_id'
+                key: 'userId'
             }
         },
-        tour_id: {
+        tourId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             reference: {
@@ -46,8 +46,8 @@ const Payment = db.sequelize.define(
     }
 )
 
-User.hasMany(Payment, { foreignKey: 'user_id' });
-Payment.belongsTo(User, { foreignKey: 'user_id', targetKey: 'id' });
+User.hasMany(Payment, { foreignKey: 'userId' });
+Payment.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
 
 
 Payment.sync({ alter: true }).then((data) => {

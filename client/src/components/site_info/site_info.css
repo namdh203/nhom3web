@@ -1,12 +1,8 @@
-* {
+.site-info-layout > * {
   text-align: left;
 }
 
-main {
-  padding: 0px;
-}
-
-image-container {
+.image-container {
   display: flex;
   max-width: 800px;
   height: 500px;
@@ -31,13 +27,12 @@ image-container {
   flex-grow: 1;
 }
 
-
 .card {
   background-color: white;
 }
 
 .icon {
-  color:green;
+  color: green;
 }
 
 .md-font-size {
