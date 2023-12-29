@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { getFullProperty } from "./accountFunction";
-import "./account.css"
+import { getCustomerProperties } from "./accountFunction";
+import "./account.css";
 import { useNavigate } from "react-router-dom";
 
 const Account = () => {
   const [accounts, setAccounts] = useState([]);
-  const [sortCategory, setSortCategory] = useState("name");
+  const [sortCategory, setSortCategory] = useState("id");
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,7 +14,7 @@ const Account = () => {
   const navigate = useNavigate();
 
   const loadAccounts = () => {
-    getFullProperty()
+    getCustomerProperties()
       .then(data => {
         if (data.error) {
           console.log(data.error);
@@ -41,11 +41,11 @@ const Account = () => {
   };
 
   const sortedAccounts = accounts.sort((a, b) => {
+    if (sortCategory === "id") {
+      return sortOrder === "asc" ? a.id - b.id : b.id - a.id;
+    }
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
-
-    console.log(valueA)
-    console.log(valueB)
 
     if (sortOrder === "asc") {
       return valueA.localeCompare(valueB);
@@ -56,11 +56,9 @@ const Account = () => {
 
   const filteredAccounts = searchTerm
     ? sortedAccounts.filter(account =>
-      account.name.toLowerCase().includes(searchTerm) ||
       account.email.toLowerCase().includes(searchTerm)
     )
     : sortedAccounts;
-
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -73,7 +71,7 @@ const Account = () => {
       <div className="dashboard-header">
         <div className="select-container">
           <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
-            <option value="name">Name</option>
+            <option value="id">ID</option>
             <option value="email">Email</option>
           </select>
         </div>
@@ -89,7 +87,7 @@ const Account = () => {
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search for name or email"
+            placeholder="Search for email"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
           />
@@ -99,35 +97,38 @@ const Account = () => {
       <table>
         <thead>
           <tr>
-            <th> ID</th>
-            <th onClick={() => handleSort("name")}>Name</th>
-            <th> Card No</th>
-            <th> Address</th>
-            <th> Phone Number</th>
+            <th onClick={() => handleSort("id")}>ID</th>
+            <th>Role</th>
+            <th>Name</th>
+            <th>Card No</th>
+            <th>Address</th>
+            <th>Phone Number</th>
             <th onClick={() => handleSort("email")}>Email</th>
-            <th> Passport</th>
+            <th>Passport</th>
+
           </tr>
         </thead>
         <tbody>
           {currentItems.map(account => (
-            <tr key={account.userId}>
-              <td>{account.userId}</td>
-              <td>{account.name}</td>
-              <td>{account.cardNo}</td>
-              <td>{account.address}</td>
-              <td>{account.phoneNumber}</td>
+            <tr key={account.id}>
+              <td>{account.id}</td>
+              <td>{account.role}</td>
+              <td>{account.customer ? account.customer.name : ''}</td>
+              <td>{account.customer ? account.customer.cardNo : ''}</td>
+              <td>{account.customer ? account.customer.address : ''}</td>
+              <td>{account.customer ? account.customer.phoneNumber : ''}</td>
               <td>{account.email}</td>
-              <td>{account.passport}</td>
+              <td>{account.customer ? account.customer.passport : ''}</td>
             </tr>
           ))}
         </tbody>
       </table>
 
       <div className="button-admin">
-        <button className="btn btn-primary" onClick={ () => navigate("/admin/account/add-account")}>
+        <button className="btn btn-primary" onClick={() => navigate("/admin/account/add-account")}>
           Add Account
         </button>
-        <button className="btn btn-primary" onClick={ () => navigate("/admin/account/delete-account")}>
+        <button className="btn btn-primary" onClick={() => navigate("/admin/account/delete-account")}>
           Delete
         </button>
       </div>

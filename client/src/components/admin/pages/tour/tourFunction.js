@@ -23,7 +23,22 @@ export const addTour = (tour) => {
             return response.data
         })
         .catch(error => {
-            console.error('Error fetching customer data:', error);
+            console.error('Error fetching tour data:', error);
+            throw error;
+        });
+}
+
+export const deleteTour = (tour) => {
+    return axios
+        .post('/tours/admin/deleteTour', {
+            old_tour : tour
+        })
+        .then(response => {
+            console.log(response.data)
+            return response.data
+        })
+        .catch(error => {
+            console.error('Error fetching tour data:', error);
             throw error;
         });
 }

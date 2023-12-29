@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const Tour = () => {
   const [tours, setTours] = useState([]);
-  const [sortCategory, setSortCategory] = useState("title");
+  const [sortCategory, setSortCategory] = useState("id");
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -41,6 +41,9 @@ const Tour = () => {
   };
 
   const sortedTours = tours.sort((a, b) => {
+    if (sortCategory === "id") {
+      return sortOrder === "asc" ? a.id - b.id : b.id - a.id;
+    }
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
@@ -72,6 +75,7 @@ const Tour = () => {
       <div className="dashboard-header">
         <div className="select-container">
           <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
+            <option value="id">ID</option>
             <option value="title">Title</option>
             <option value="type">Type</option>
           </select>
@@ -98,7 +102,8 @@ const Tour = () => {
       <table>
         <thead>
           <tr>
-            <th> ID</th>
+            <th onClick={() => handleSort("id")}> ID</th>
+            <th>Destination IDs</th>
             <th onClick={() => handleSort("title")}>Title</th>
             <th> Description</th>
             <th> Duration</th>
@@ -107,12 +112,14 @@ const Tour = () => {
             <th> Addition Info</th>
             <th> Voting</th>
             <th onClick={() => handleSort("type")}>Type</th>
+            <th> Demo Image</th>
           </tr>
         </thead>
         <tbody>
           {currentItems.map(tour => (
             <tr key={tour.id}>
               <td>{tour.id}</td>
+              <td>{tour.destIds.join(", ")}</td>
               <td>{tour.title}</td>
               <td>{tour.description}</td>
               <td>{tour.duration}</td>
@@ -121,6 +128,7 @@ const Tour = () => {
               <td>{tour.additionInfo}</td>
               <td>{tour.voting}</td>
               <td>{tour.type}</td>
+              <td>{tour.demoImage}</td>
             </tr>
           ))}
         </tbody>
@@ -129,6 +137,9 @@ const Tour = () => {
       <div className="button-admin">
         <button className="btn btn-primary" onClick={ () => navigate("/admin/tour/add-tour")}>
           Add Tour
+        </button>
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/tour/delete-tour")}>
+          Delete
         </button>
       </div>
 

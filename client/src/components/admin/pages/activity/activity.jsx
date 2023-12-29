@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const Activity = () => {
   const [activitys, setActivitys] = useState([]);
-  const [sortCategory, setSortCategory] = useState("name");
+  const [sortCategory, setSortCategory] = useState("id");
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -41,6 +41,9 @@ const Activity = () => {
   };
 
   const sortedActivitys = activitys.sort((a, b) => {
+    if (sortCategory === "id") {
+      return sortOrder === "asc" ? a.id - b.id : b.id - a.id;
+    }
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
@@ -71,6 +74,7 @@ const Activity = () => {
       <div className="dashboard-header">
         <div className="select-container">
           <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
+            <option value="id">ID</option>
             <option value="name">Name</option>
           </select>
         </div>
@@ -96,7 +100,7 @@ const Activity = () => {
       <table>
         <thead>
           <tr>
-            <th> ID</th>
+            <th onClick={() => handleSort("id")}> ID</th>
             <th onClick={() => handleSort("name")}>Name</th>
             <th> DestID</th>
             <th> Type</th>
