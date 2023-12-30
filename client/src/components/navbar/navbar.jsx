@@ -124,9 +124,8 @@ export default class NavBar extends React.Component {
                 to={"/recommendations/trans?page_num=1"}
               >
                 <li
-                  className={`nav-item ${
-                    this.props.showSearchBar ? "" : "right-border"
-                  }`}
+                  className={`nav-item ${this.props.showSearchBar ? "" : "right-border"
+                    }`}
                 >
                   Transportations
                 </li>
@@ -163,7 +162,7 @@ export default class NavBar extends React.Component {
               </div>
               <div
                 className="avatar-wrapper"
-                style={{ display: `${localStorage.length > 0 ? "block" : "none"}`, position: "relative" , "backgroundColor": "white"}}
+                style={{ display: `${localStorage.length > 0 ? "block" : "none"}`, position: "relative", "backgroundColor": "white" }}
                 onClick={this.onAvatarClick}>
                 {/* <p>{this.state.current_user.name}</p> */}
                 <img
@@ -201,7 +200,16 @@ export default class NavBar extends React.Component {
                       <i className="fa-solid fa-address-card"></i> Profile
                     </button>
                   </a>
-                  <button class="dropdown-item" type="button"><i class="fa-solid fa-list-ul"></i>    History</button>
+                  <a
+                    href="/history"
+                    style={{
+                      "text-decoration": "none",
+                      "color": "#333",
+                      display: `${(localStorage.key(0) !== null && localStorage.getItem("user") !== null && JSON.parse(localStorage.getItem("user")).role === "admin") ? "block" : "none"}`
+                    }}>
+                    <button class="dropdown-item" type="button"><i class="fa-solid fa-list-ul"></i>    History</button>
+                  </a>
+
                   <a
                     href="/admin"
                     style={{
@@ -234,9 +242,8 @@ export default class NavBar extends React.Component {
           </div>
         </nav>
         <div
-          className={`category-menu_wrapper  ${
-            this.state.showCategory % 2 ? "show" : "hidden"
-          }`}
+          className={`category-menu_wrapper  ${this.state.showCategory % 2 ? "show" : "hidden"
+            }`}
         >
           <div
             className="black-layer"
@@ -292,9 +299,8 @@ export default class NavBar extends React.Component {
           </nav>
         </div>
         <div
-          className={`navbar-menu_wrapper  ${
-            this.state.showNavbarMenu % 2 ? "show" : "hidden"
-          }`}
+          className={`navbar-menu_wrapper  ${this.state.showNavbarMenu % 2 ? "show" : "hidden"
+            }`}
         >
           <div
             className="black-layer"
