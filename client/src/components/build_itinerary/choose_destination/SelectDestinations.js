@@ -19,7 +19,9 @@ export default function SelectDestinations({ countryId, date, duration }) {
   const [showAlert, setShowAlert] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const url = new URL(window.location);
-  // const countryId = url.searchParams.get("country");
+  countryId = url.searchParams.get("country");
+  date = url.searchParams.get("date");
+  // duration = url.searchParams.get("duration");
 
   useEffect(() => {
     searchDestination("");

@@ -26,6 +26,7 @@ import SelectDestinations from "./components/build_itinerary/choose_destination/
 import PaymentStep1 from "./components/payment/payment_steps/payment_step_1.jsx"
 import TourCustomize from "./components/customize-tour/tour_customize.jsx";
 import ChooseCustomized from "./components/customize-tour/customized-choice/choose_customized.jsx";
+import TourHistory from "./components/history/history.jsx"
 
 function App() {
   // const [isLogin, setIsLogin] = useState(false)
@@ -101,10 +102,15 @@ function App() {
             />
 
             <Route
+              path="history"
+              element={<TourHistory />}
+            />
+
+            <Route
               path="/tour-customize"
               element={<TourCustomize />}
             />
-            
+
             <Route
               path="/customize/*"
               element={<ChooseCustomized />}

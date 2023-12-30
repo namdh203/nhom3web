@@ -39,8 +39,8 @@ export default class Discount extends React.Component {
     }
     return (
       <div>
-        <Layout>
-          <Content className="row">
+        <Layout style={{paddingLeft: 0}}>
+          <Content className="row" style={{paddingLeft: "10px"}}>
             <div className="col-10 bg-white border border-light rounded shadow-lg row d-flex justify-content-center">
               <div className="col-6 m-2 p-2">
                 <img

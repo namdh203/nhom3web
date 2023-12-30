@@ -25,7 +25,7 @@ export default class TourSummary extends React.Component {
     return (
       <Layout className="payment-wrapper">
         <div className="buffer-block" style={{ height: "40px" }}></div>
-        <Content>
+        <Content style={{paddingLeft: "0"}}>
           <div className="row justify-content-center">
             <div className="bg-summary col-6 border border-secondary rounded my-5">
               <Title level={5} className="text-center m-1" strong="true">

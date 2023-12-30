@@ -21,17 +21,18 @@ const Payment = () => {
             <div className="row mb-5" style={
                 {
                     margin: "0 25vw",
-                    width: "55vw"
+                    width: "55vw",
+                    paddingLeft: 0
                 }
             }>
-                <div className="col-4">
+                <div className="col col-4 col-md-4">
                     <Discount discount={0} dataPackage={dataPackage}></Discount>
                 </div>
 
-                <div className="col-4">
+                <div className="col col-4 col-md-4">
                     <Discount discount={10}  dataPackage={dataPackage}></Discount>
                 </div>
-                <div className="col-4">
+                <div className="col col-4 col-md-4">
                     <Discount discount={20} dataPackage={dataPackage}></Discount>
                 </div>
             </div>

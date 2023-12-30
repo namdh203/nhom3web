@@ -21,4 +21,31 @@ payments.post("/createTransaction", (req, res) => {
     })
 })
 
+payments.post('/getAllPayment', (req, res) => {
+    const id = req.body.id
+    Payment.findAll({
+        attributes: ['id', 'userId', 'payDate', 'amount', 'currency', 'description'],
+        where: {
+            userId: id
+        }
+    })
+        .then(payments => {
+            if (!payments) {
+                res.json({ error: 'Not enough payments' })
+            } else {
+                const responseData = payments.map(payment => ({
+                    id: payment.id,
+                    payDate: payment.payDate,
+                    amount: payment.amount,
+                    currency: payment.currency,
+                    description: payment.description
+                }));
+
+                res.json(responseData)
+            }
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
 module.exports = payments;

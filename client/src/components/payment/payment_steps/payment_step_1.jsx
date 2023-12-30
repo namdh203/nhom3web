@@ -87,10 +87,10 @@ const PaymentStep1 = () => {
         id="step1-wrapper"
         className="position-absolute border border-secondary "
         style={{
-          top: "45vh",
-          left: "50vw",
+          top: "50%",
+          left: "50%",
           width: "40vw",
-          height: "75vh",
+          height: "78vh",
           backgroundColor: "white",
           transform: "translate(-50%, -50%)",
           zIndex: "10",
@@ -122,8 +122,8 @@ const PaymentStep1 = () => {
           {
             // Payment method information
           }
-          <form onSubmit={handleSubmit} style={{ height: "100%" }}>
-            <Content className="mx-4" style={{ height: "86%" }}>
+          <form onSubmit={handleSubmit} style={{ height: "100%", boxSizing: "border-box" }}>
+            <Content className="mx-4" style={{ height: "80%", paddingLeft: 0}}>
               <Title className="my-2" level={5}>
                 Pay Via Cards
               </Title>
@@ -180,7 +180,8 @@ const PaymentStep1 = () => {
             <div
               className="d-flex flex-row border-top border-secondary p-2 shadow-lg"
               style={{
-                height: "13%",
+                height: "20%",
+                // paddingBottom: "0 !important",
               }}
             >
               <Title level={4}>
@@ -194,8 +195,12 @@ const PaymentStep1 = () => {
                 style={{
                   marginLeft: "3vh",
                   width: "80%",
+                  height: "85%"
                 }}
                 type="submit"
+                onClick={() => {
+                  window.location.href = "/history"
+                }}
               >
                 Pay Now
               </button>

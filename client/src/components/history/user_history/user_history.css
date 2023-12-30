@@ -1,0 +1,133 @@
+.tour-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  padding: 20px 30px;
+}
+
+.tour-table thead {
+  background-color: #f2f2f2;
+}
+
+.tour-table th {
+  padding: 12px;
+  text-align: left;
+  border-right: 1px solid #ddd;
+  text-align: center;
+}
+
+.tour-table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.tour-table tbody tr:nth-child(even) {
+  background-color: #feffd0;
+}
+
+th,
+td {
+    padding: 15px 20px;
+    max-height: 25px;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+} */
+
+@media (max-width: 600px) {
+
+    th,
+    td {
+        font-size: 14px;
+        max-height: 25px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.select-container,
+.sort-container,
+.search-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Pagination styles */
+.pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.pagination li {
+    margin-right: 5px;
+}
+
+.pagination button {
+    padding: 8px 12px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #333;
+}
+
+.pagination button:hover {
+    background-color: #4caf50;
+    color: #fff;
+    border: 1px solid #4caf50;
+}
+
+.pagination .active button {
+    background-color: #4caf50;
+    color: #fff;
+    border: 1px solid #4caf50;
+}
+
+.button-admin {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.button-admin button {
+    margin-left: 10px;
+}
+
+.add-tour-detail-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-account-detail-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pay-info {
+    font-size: 20px;
+}
+
+.pay-info > span.pay-desc {
+    color: rgb(9, 116, 15);
+}
+
+.pay-info > span.pay-label {
+    width: 500px;
+}
