@@ -28,77 +28,79 @@ class TourDestination extends React.Component {
       filteredAct: null,
     };
 
-    this.onCustomizeClicked = this.onCustomizeClicked.bind(this)
-    this.handleData = this.handleData.bind(this)
+    this.onCustomizeClicked = this.onCustomizeClicked.bind(this);
+    this.handleData = this.handleData.bind(this);
   }
 
   handleData() {
-    var filteredAccoms = null
-    var filteredTrans = null
-    var filteredRests = null
-    var filteredAct = null
+    console.log("handle data");
+    var filteredAccoms = null;
+    var filteredTrans = null;
+    var filteredRests = null;
+    var filteredAct = null;
 
     if (!localStorage.getItem(`rest_dest${this.props.destId}`)) {
-      filteredRests = this.state.rests.slice(0, 2)
+      filteredRests = this.state.rests.slice(0, 2);
       this.setState({ filteredRests: filteredRests });
     } else {
-      var filteredList2 = JSON.parse(localStorage.getItem(`rest_dest${this.props.destId}`)).arr
+      var filteredList2 = JSON.parse(
+        localStorage.getItem(`rest_dest${this.props.destId}`)
+      ).arr;
       filteredRests = this.state.rests.filter(function (element) {
         return filteredList2.includes(element.id);
-      })
+      });
       this.setState({ filteredRests: filteredRests }, () => {
-        console.log("Rest: ", this.state.filteredRests)
-      })
+        console.log("Rest: ", this.state.filteredRests);
+      });
     }
 
-    // console.log("Rest: ", this.state.filteredRests)    
+    // console.log("Rest: ", this.state.filteredRests)
 
     if (!localStorage.getItem(`accom_dest${this.props.destId}`)) {
-      filteredAccoms = this.state.accoms.slice(0, 2)
+      filteredAccoms = this.state.accoms.slice(0, 2);
       this.setState({ filteredAccoms: filteredAccoms });
     } else {
-      var filteredList2 = JSON.parse(localStorage.getItem(`accom_dest${this.props.destId}`)).arr
+      var filteredList2 = JSON.parse(
+        localStorage.getItem(`accom_dest${this.props.destId}`)
+      ).arr;
       filteredAccoms = this.state.accoms.filter(function (element) {
         return filteredList2.includes(element.id);
-      })
-      this.setState({ filteredAccoms: filteredAccoms })
-
-
+      });
+      this.setState({ filteredAccoms: filteredAccoms });
     }
 
     // console.log("Accom: ", this.state.filteredAccoms)
 
     if (!localStorage.getItem(`trans_dest${this.props.destId}`)) {
-      filteredTrans = this.state.trans.slice(0, 2)
+      filteredTrans = this.state.trans.slice(0, 2);
       this.setState({ filteredTrans: filteredTrans });
     } else {
-      var filteredList2 = JSON.parse(localStorage.getItem(`trans_dest${this.props.destId}`)).arr
+      var filteredList2 = JSON.parse(
+        localStorage.getItem(`trans_dest${this.props.destId}`)
+      ).arr;
       filteredTrans = this.state.trans.filter(function (element) {
         return filteredList2.includes(element.id);
-      })
-      this.setState({ filteredTrans: filteredTrans })
-
+      });
+      this.setState({ filteredTrans: filteredTrans });
     }
 
     // console.log("Trans: ", this.state.filteredTrans)
 
-
     if (!localStorage.getItem(`act_dest${this.props.destId}`)) {
-      filteredAct = this.state.activity.slice(0, 2)
+      filteredAct = this.state.activity.slice(0, 2);
       this.setState({ filteredAct: filteredAct });
     } else {
-      var filteredList2 = JSON.parse(localStorage.getItem(`act_dest${this.props.destId}`)).arr
+      var filteredList2 = JSON.parse(
+        localStorage.getItem(`act_dest${this.props.destId}`)
+      ).arr;
       filteredAct = this.state.activity.filter(function (element) {
         return filteredList2.includes(element.id);
-      })
-      this.setState({ filteredAct: filteredAct })
-
-
+      });
+      this.setState({ filteredAct: filteredAct });
     }
   }
 
   async componentDidMount() {
-
     try {
       const accomRes = await getAccomSiteData(this.props.destId);
       const transRes = await getTransSiteData(this.props.destId);
@@ -106,17 +108,20 @@ class TourDestination extends React.Component {
       const activityRes = await getActSiteData(this.props.destId);
 
       if (!accomRes || !transRes || !restsRes) {
-        console.log("Get DestAccom data failed");
+        console.log("Get destination data failed");
       } else {
-        this.setState({
-          accoms: accomRes,
-          trans: transRes,
-          rests: restsRes,
-          activity: activityRes,
-        }, () => {
-          // Callback function to ensure the state is updated
-          this.handleData();
-        });
+        this.setState(
+          {
+            accoms: accomRes,
+            trans: transRes,
+            rests: restsRes,
+            activity: activityRes,
+          },
+          () => {
+            // Callback function to ensure the state is updated
+            this.handleData();
+          }
+        );
         // console.log(this.state.rests);
       }
     } catch (error) {
@@ -124,29 +129,31 @@ class TourDestination extends React.Component {
     }
 
     // console.log("Act: ", this.state.filteredAct)
-
-
   }
 
-  onCustomizeClicked(destId) {
-    localStorage.setItem("preUrl", window.location.href)
-    window.location.href = `/customize`
+  onCustomizeClicked() {
+    localStorage.setItem("preUrl", window.location.href);
+    window.location.href = `/customize`;
   }
 
   render() {
-
-    if (!this.state.filteredAccoms || !this.state.filteredAct || !this.state.filteredRests || !this.state.filteredTrans) {
-      return <p>Loading...</p>
+    if (
+      !this.state.filteredAccoms ||
+      !this.state.filteredAct ||
+      !this.state.filteredRests ||
+      !this.state.filteredTrans
+    ) {
+      return <p>Loading...</p>;
     }
 
     // if (this.state.filteredAccoms.length === 0 || this.state.filteredAct.length === 0 || this.state.filteredRests.length === 0 || this.state.filteredTrans.length === 0) {
     //   return <p>Loading...</p>
     // }
 
-    console.log("Accom: ", this.state.filteredAccoms)
-    console.log("Rest: ", this.state.filteredRests)
-    console.log("Trans: ", this.state.filteredTrans)
-    console.log("Act: ", this.state.filteredAct)
+    console.log("Accom: ", this.state.filteredAccoms);
+    console.log("Rest: ", this.state.filteredRests);
+    console.log("Trans: ", this.state.filteredTrans);
+    console.log("Act: ", this.state.filteredAct);
 
     return (
       <>
@@ -256,10 +263,15 @@ class TourDestination extends React.Component {
               </div>
             </div>
           </div>
-          <div className="tour-dest_customize" onClick={() => {
-            this.onCustomizeClicked()
-            localStorage.setItem("current_dest", this.props.destId)
-          }}>+ Customize</div>
+          <div
+            className="tour-dest_customize"
+            onClick={() => {
+              this.onCustomizeClicked();
+              localStorage.setItem("current_dest", this.props.destId);
+            }}
+          >
+            + Customize
+          </div>
         </div>
       </>
     );
