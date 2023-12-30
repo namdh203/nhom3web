@@ -125,7 +125,7 @@ const PaymentStep1 = () => {
           <form onSubmit={handleSubmit} style={{ height: "100%", boxSizing: "border-box" }}>
             <Content className="mx-4" style={{ height: "80%", paddingLeft: 0}}>
               <Title className="my-2" level={5}>
-                Pay Via Cards
+                Pay Via Cards (Choose one)
               </Title>
               <Select
                 defaultValue="Card"

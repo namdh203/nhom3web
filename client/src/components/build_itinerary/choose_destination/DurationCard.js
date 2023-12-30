@@ -10,7 +10,7 @@ export default function DurationCard({ src, min, max }) {
 
   return (
     <Card className="float-on-hover-card shadow-sm" onClick={handleOnClick}>
-      <Card.Body>
+      <Card.Body style={{textAlign: 'center'}}>
         <Card.Img
           variant="top"
           src={src}

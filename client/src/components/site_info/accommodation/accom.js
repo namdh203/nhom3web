@@ -64,7 +64,7 @@ export default function Accommodation(props) {
         return (
             <Layout>
                 <div className="buffer-block"></div>
-                <Content>
+                <Content style={{paddingLeft: "0"}}>
                     <div className="container px-5">
                         <div className="card">
                             <div className="d-flex flex-row justify-content-between mb-0 mt-3">
