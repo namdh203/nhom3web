@@ -49,7 +49,7 @@ restaurants.post('/randomRestaurant', (req, res) => {
 // admin
 restaurants.post('/admin/getAllRestaurant', (req, res) => {
     Restaurant.findAll({
-        limit: 50
+        limit: 300
     })
         .then(restaurants => {
             if (restaurants) {

@@ -48,7 +48,7 @@ activities.post('/randomAct', (req, res) => {
 // admin
 activities.post('/admin/getAllActivity', (req, res) => {
     Activity.findAll({
-        limit: 50
+        limit: 300
     })
         .then(activities => {
             if (activities) {

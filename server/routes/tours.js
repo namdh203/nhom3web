@@ -147,7 +147,7 @@ tours.post('/gettourcountry', (req, res) => {
                     demoImage: tour.demoImage,
                 }));
 
-                
+
 
                 res.json(responseData)
             }

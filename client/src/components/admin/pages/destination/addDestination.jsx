@@ -5,7 +5,6 @@ import { addDestination } from './destinationFunction';
 
 const AddDestinationForm = () => {
     const [newDestination, setNewDestination] = useState({
-        // destId: [],
         name: "",
         countryId: 1,
         description: "",
@@ -97,14 +96,14 @@ const AddDestinationForm = () => {
                         />
                     </div>
                     <div className="mb-3">
-                        <label>Accom IDs</label>
+                        <label>Trans IDs</label>
                         <input
                             type="text"
                             className="form-control"
-                            name="accomId"
-                            placeholder="Enter accommodation IDs, split with ','"
-                            value={newDestination.accomId}
-                            onChange={(e) => setNewDestination({ ...newDestination, accomId: e.target.value.split(',') })}
+                            name="transId"
+                            placeholder="Enter transportation IDs, split with ','"
+                            value={newDestination.transId}
+                            onChange={(e) => setNewDestination({ ...newDestination, transId: e.target.value.split(',') })}
                         />
                     </div>
 
@@ -126,14 +125,14 @@ const AddDestinationForm = () => {
                             type="text"
                             className="form-control"
                             name="transId"
-                            placeholder="Enter transportation IDs, split with ','"
-                            value={newDestination.transId}
-                            onChange={(e) => setNewDestination({ ...newDestination, transId: e.target.value.split(',') })}
+                            placeholder="Enter accomodation IDs, split with ','"
+                            value={newDestination.accomId}
+                            onChange={(e) => setNewDestination({ ...newDestination, accomId: e.target.value.split(',') })}
                         />
                     </div>
 
                     <div className="mb-3">
-                        <label>Accom IDs</label>
+                        <label>Activity IDs</label>
                         <input
                             type="text"
                             className="form-control"
@@ -143,7 +142,7 @@ const AddDestinationForm = () => {
                             onChange={(e) => setNewDestination({ ...newDestination, actId: e.target.value.split(',') })}
                         />
                     </div>
-                    
+
                     <div className="mb-3">
                         <label>Demo Image</label>
                         <input

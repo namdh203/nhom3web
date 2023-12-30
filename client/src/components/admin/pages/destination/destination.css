@@ -107,13 +107,13 @@
   margin-left: 10px;
 }
 
-.add-account-detail-container {
+.add-destination-detail-container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.delete-account-detail-container {
+.delete-destination-detail-container {
   display: flex;
   align-items: center;
   justify-content: center;

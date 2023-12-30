@@ -25,7 +25,7 @@ import AddActivityForm from '../pages/activity/addActivityForm';
 import DeleteActivityForm from '../pages/activity/deleteActivityForm';
 
 import AddDestinationForm from '../pages/destination/addDestination';
-
+import DeleteDestinationForm from '../pages/destination/deleteDestination';
 
 import AddRestaurantForm from '../pages/restaurant/addRestaurantForm';
 import DeleteRestaurantForm from '../pages/restaurant/deleteRestaurantForm';
@@ -46,6 +46,7 @@ function Content() {
 
                 <Route path="/destination" element={<Destination/>}></Route>
                 <Route path="/destination/add-destination" element={<AddDestinationForm/>}></Route>
+                <Route path="/destination/delete-destination" element={<DeleteDestinationForm/>}></Route>
 
 
                 <Route path="/transportation" element={<Transportation/>}></Route>
