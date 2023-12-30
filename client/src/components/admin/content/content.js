@@ -7,6 +7,7 @@ import Transportation from '../pages/transportation/transportation';
 import Accommodation from '../pages/accomodation/accommodation';
 import Activity from '../pages/activity/activity';
 import Restaurant from '../pages/restaurant/restaurant';
+import Payment from "../pages/user_history/user_history"
 
 import AddAccountForm from '../pages/account/addAccountForm';
 import DeleteAccountForm from '../pages/account/deleteAccountForm';
@@ -53,7 +54,7 @@ function Content() {
 
                 <Route path="/dining" element={<Restaurant/>}></Route>
 
-                <Route path="/payment" element={<div>payment</div>}></Route>
+                <Route path="/payment" element={<Payment />}></Route>
             </Routes>
         </div>
     )
