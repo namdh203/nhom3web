@@ -50,23 +50,23 @@ export default class NavBar extends React.Component {
 
     if (firstKey !== null && localStorage.getItem("user") !== null) {
       // console.log("Email customer: ", firstKey)
-      const email = JSON.parse(localStorage.getItem("user")).email
-      getCustomer(email).then(res => {
+      const email = JSON.parse(localStorage.getItem("user")).email;
+      getCustomer(email)
+        .then((res) => {
+          this.setState({ current_user: res }, () => {
+            // const firstKey = localStorage.key(0)
+            const firstItem = JSON.parse(localStorage.getItem("user"));
+            firstItem.avatar = this.state.current_user.avatar
+              ? this.state.current_user.avatar
+              : "https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg";
+            firstItem.name = this.state.current_user.name;
 
-        this.setState({ 'current_user': res }, () => {
-          // const firstKey = localStorage.key(0)
-          const firstItem = JSON.parse(localStorage.getItem("user"))
-          firstItem.avatar = this.state.current_user.avatar ? this.state.current_user.avatar : "https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg"
-          firstItem.name = this.state.current_user.name
-
-          localStorage.setItem("user", JSON.stringify(firstItem))
+            localStorage.setItem("user", JSON.stringify(firstItem));
+          });
         })
-
-
-
-      }).catch(err => {
-        console.log(err)
-      })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
       console.log("localStorage trống.");
     }
@@ -124,8 +124,9 @@ export default class NavBar extends React.Component {
                 to={"/recommendations/trans?page_num=1"}
               >
                 <li
-                  className={`nav-item ${this.props.showSearchBar ? "" : "right-border"
-                    }`}
+                  className={`nav-item ${
+                    this.props.showSearchBar ? "" : "right-border"
+                  }`}
                 >
                   Transportations
                 </li>
@@ -162,8 +163,13 @@ export default class NavBar extends React.Component {
               </div>
               <div
                 className="avatar-wrapper"
-                style={{ display: `${localStorage.length > 0 ? "block" : "none"}`, position: "relative", "backgroundColor": "white" }}
-                onClick={this.onAvatarClick}>
+                style={{
+                  display: `${localStorage.length > 0 ? "block" : "none"}`,
+                  position: "relative",
+                  backgroundColor: "white",
+                }}
+                onClick={this.onAvatarClick}
+              >
                 {/* <p>{this.state.current_user.name}</p> */}
                 <img
                   src={
@@ -203,29 +209,49 @@ export default class NavBar extends React.Component {
                   <a
                     href="/history"
                     style={{
-                      "text-decoration": "none",
-                      "color": "#333",
-                      display: `${(localStorage.key(0) !== null && localStorage.getItem("user") !== null && JSON.parse(localStorage.getItem("user")).role === "admin") ? "block" : "none"}`
-                    }}>
-                    <button class="dropdown-item" type="button"><i class="fa-solid fa-list-ul"></i>    History</button>
+                      textDecoration: "none",
+                      color: "#333",
+                      display: `${
+                        localStorage.key(0) !== null &&
+                        localStorage.getItem("user") !== null &&
+                        JSON.parse(localStorage.getItem("user")).role ===
+                          "admin"
+                          ? "block"
+                          : "none"
+                      }`,
+                    }}
+                  >
+                    <button className="dropdown-item" type="button">
+                      <i className="fa-solid fa-list-ul"></i> History
+                    </button>
                   </a>
 
                   <a
                     href="/admin"
                     style={{
-                      "text-decoration": "none",
-                      "color": "#333",
-                      display: `${(localStorage.key(0) !== null && localStorage.getItem("user") !== null && JSON.parse(localStorage.getItem("user")).role === "admin") ? "block" : "none"}`
-                    }}>
-                    <button class="dropdown-item" type="button">
-
-                      <i class="fa-brands fa-sourcetree"></i>    Quản lý tài nguyên
-
+                      textDecoration: "none",
+                      color: "#333",
+                      display: `${
+                        localStorage.key(0) !== null &&
+                        localStorage.getItem("user") !== null &&
+                        JSON.parse(localStorage.getItem("user")).role ===
+                          "admin"
+                          ? "block"
+                          : "none"
+                      }`,
+                    }}
+                  >
+                    <button className="dropdown-item" type="button">
+                      <i className="fa-brands fa-sourcetree"></i> Quản lý tài
+                      nguyên
                     </button>
                   </a>
-                  <a href="#contact-us" style={{ "text-decoration": "none", "color": "#333" }}>
-                    <button class="dropdown-item" type="button">
-                      <i class="fa-solid fa-address-book"></i> Contact us
+                  <a
+                    href="#contact-us"
+                    style={{ textDecoration: "none", color: "#333" }}
+                  >
+                    <button className="dropdown-item" type="button">
+                      <i className="fa-solid fa-address-book"></i> Contact us
                     </button>
                   </a>
                   <div className="dropdown-divider"></div>
@@ -242,8 +268,9 @@ export default class NavBar extends React.Component {
           </div>
         </nav>
         <div
-          className={`category-menu_wrapper  ${this.state.showCategory % 2 ? "show" : "hidden"
-            }`}
+          className={`category-menu_wrapper  ${
+            this.state.showCategory % 2 ? "show" : "hidden"
+          }`}
         >
           <div
             className="black-layer"
@@ -299,8 +326,9 @@ export default class NavBar extends React.Component {
           </nav>
         </div>
         <div
-          className={`navbar-menu_wrapper  ${this.state.showNavbarMenu % 2 ? "show" : "hidden"
-            }`}
+          className={`navbar-menu_wrapper  ${
+            this.state.showNavbarMenu % 2 ? "show" : "hidden"
+          }`}
         >
           <div
             className="black-layer"
