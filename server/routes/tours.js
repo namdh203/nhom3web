@@ -251,7 +251,7 @@ tours.post('/getdestdata', (req, res) => {
                 attributes: [],
                 required: true,
                 where: {
-                    tour_id: req_tour_id
+                    tourId: req_tour_id
                 },
                 include: [
                     {
@@ -454,7 +454,7 @@ tours.post('/admin/getAllTour', (req, res) => {
         limit: 300,
         include: [{
             model: TourDest,
-            attributes: ['dest_id'],
+            attributes: ['destId'],
             as: 'tour_dests',
         }]
     })
@@ -462,7 +462,7 @@ tours.post('/admin/getAllTour', (req, res) => {
             if (tours) {
                 const responseData = tours.map(tour => ({
                     id: tour.id,
-                    destIds: tour.tour_dests.map(tour_dest => tour_dest.dest_id),
+                    destIds: tour.tour_dests.map(tour_dest => tour_dest.destId),
                     title: tour.title,
                     description: tour.description,
                     duration: tour.duration,
@@ -508,8 +508,8 @@ tours.post('/admin/addTour', async (req, res) => {
 
         for (const destId of new_tour.destId) {
             await TourDest.create({
-                tour_id: createdTour.id,
-                dest_id: destId
+                tourId: createdTour.id,
+                destId: destId
             });
         }
 
@@ -548,7 +548,7 @@ tours.post('/admin/deleteTour', async (req, res) => {
 
         await TourDest.destroy({
             where: {
-                tour_id: tourToDelete.id
+                tourId: tourToDelete.id
             }
         })
 

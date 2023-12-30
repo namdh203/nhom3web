@@ -3,7 +3,7 @@ const db = {};
 
 // Database: Travelam (testingdbuser for test)
 const sequelize = new Sequelize(
-  "travelgiang",
+  "newtravelnam",
   process.env.MYSQL_USER,
   process.env.MYSQL_PASSWORD,
   {

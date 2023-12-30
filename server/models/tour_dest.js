@@ -6,7 +6,7 @@ const Destination = require('./destination.js')
 const TourDest = db.sequelize.define(
     'tour_dest',
     {
-        tour_id: {
+        tourId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -15,7 +15,7 @@ const TourDest = db.sequelize.define(
                 key: 'id'
             }
         },
-        dest_id: {
+        destId: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -31,11 +31,11 @@ const TourDest = db.sequelize.define(
     }
 )
 
-Tour.hasMany(TourDest, { foreignKey: 'tour_id' });
-TourDest.belongsTo(Tour, { foreignKey: 'tour_id', targetKey: 'id' });
+Tour.hasMany(TourDest, { foreignKey: 'tourId' });
+TourDest.belongsTo(Tour, { foreignKey: 'tourId', targetKey: 'id' });
 
-Destination.hasMany(TourDest, { foreignKey: 'dest_id' });
-TourDest.belongsTo(Destination, { foreignKey: 'dest_id', targetKey: 'id' });
+Destination.hasMany(TourDest, { foreignKey: 'destId' });
+TourDest.belongsTo(Destination, { foreignKey: 'destId', targetKey: 'id' });
 
 TourDest.sync({ alter: true }).then((data) => {
     console.log("TourDest synced successful!");
