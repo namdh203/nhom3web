@@ -85,7 +85,7 @@ const PaymentStep1 = () => {
         <div
           className="black-layer"
           style={{
-            zIndex: "9",
+            "z-index": "9",
             display: "flex",
           }}
         ></div>
@@ -94,10 +94,10 @@ const PaymentStep1 = () => {
         id="step1-wrapper"
         className="position-absolute border border-secondary "
         style={{
-          top: "50%",
-          left: "50%",
+          top: "45vh",
+          left: "50vw",
           width: "40vw",
-          height: "78vh",
+          height: "75vh",
           backgroundColor: "white",
           transform: "translate(-50%, -50%)",
           zIndex: "10",
@@ -122,7 +122,6 @@ const PaymentStep1 = () => {
                   height: "70%",
                   whiteSpace: "nowrap",
                 }}
-                alt="App Logo"
               />
             </div>
           </div>
@@ -130,13 +129,10 @@ const PaymentStep1 = () => {
           {
             // Payment method information
           }
-          <form
-            onSubmit={handleSubmit}
-            style={{ height: "100%", boxSizing: "border-box" }}
-          >
-            <Content className="mx-4" style={{ height: "80%", paddingLeft: 0 }}>
+          <form onSubmit={handleSubmit} style={{ height: "100%" }}>
+            <Content className="mx-4" style={{ height: "86%" }}>
               <Title className="my-2" level={5}>
-                Pay Via Cards (Choose one)
+                Pay Via Cards
               </Title>
               <Select
                 defaultValue="Card"
@@ -158,12 +154,14 @@ const PaymentStep1 = () => {
                   <Input
                     className="card-info-input m-2 col-8"
                     placeholder="Card number"
+
                     onChange={(e) => setCardNumber(e.target.value)}
                   />
 
                   <Input
                     className="card-info-input mt-2 col-3"
                     placeholder="Expiry"
+
                     onChange={(e) => setExpiry(e.target.value)}
                   />
                 </div>
@@ -172,12 +170,14 @@ const PaymentStep1 = () => {
                   <Input
                     className="card-info-input m-2 col-8"
                     placeholder="Holder's name"
+
                     onChange={(e) => setHolderName(e.target.value)}
                   />
 
                   <Input
                     className="card-info-input mt-2 col-3"
                     placeholder="CVV"
+
                     onChange={(e) => setCVV(e.target.value)}
                   />
                 </div>
@@ -187,8 +187,7 @@ const PaymentStep1 = () => {
             <div
               className="d-flex flex-row border-top border-secondary p-2 shadow-lg"
               style={{
-                height: "20%",
-                // paddingBottom: "0 !important",
+                height: "13%",
               }}
             >
               <Title level={4}>
@@ -202,12 +201,8 @@ const PaymentStep1 = () => {
                 style={{
                   marginLeft: "3vh",
                   width: "80%",
-                  height: "85%",
                 }}
                 type="submit"
-                onClick={() => {
-                  window.location.href = "/history";
-                }}
               >
                 Pay Now
               </button>
