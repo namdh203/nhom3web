@@ -14,6 +14,7 @@ import DeleteAccountForm from '../pages/account/deleteAccountForm';
 
 import AddTourForm from '../pages/tour/addTourForm';
 import DeleteTourForm from '../pages/tour/deleteTourForm';
+import EditTourForm from '../pages/tour/editTourForm';
 
 import AddTransportationForm from '../pages/transportation/addTransportation';
 import DeleteTransportationForm from '../pages/transportation/deleteTransportation';
@@ -43,6 +44,7 @@ function Content() {
                 <Route path="/tour" element={<Tour/>}></Route>
                 <Route path="/tour/add-tour" element={<AddTourForm/>}></Route>
                 <Route path="/tour/delete-tour" element={<DeleteTourForm/>}></Route>
+                <Route path="/tour/edit-tour/:tourId" element={<EditTourForm/>}></Route>
 
                 <Route path="/destination" element={<Destination/>}></Route>
                 <Route path="/destination/add-destination" element={<AddDestinationForm/>}></Route>

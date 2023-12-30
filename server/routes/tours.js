@@ -560,5 +560,107 @@ tours.post('/admin/deleteTour', async (req, res) => {
     }
 });
 
+tours.post('/admin/getTourById', (req, res) => {
+    const tourId = req.body.id;
+
+    Tour.findByPk(tourId, {
+        include: [
+            {
+                model: TourDest,
+                attributes: ['destId'],
+                as: 'tour_dests',
+            },
+        ],
+    })
+        .then(tour => {
+            if (tour) {
+                const responseData = {
+                    id: tour.id,
+                    destIds: tour.tour_dests.map(tour_dest => tour_dest.destId),
+                    title: tour.title,
+                    description: tour.description,
+                    duration: tour.duration,
+                    price: tour.price,
+                    priceCurrency: tour.priceCurrency,
+                    startDate: tour.startDate,
+                    endDate: tour.endDate,
+                    additionInfo: tour.additionInfo,
+                    voting: tour.voting,
+                    type: tour.type,
+                    demoImage: tour.demoImage,
+                };
+                res.json(responseData);
+            } else {
+                res.status(404).json({ error: 'Tour not found' });
+            }
+        })
+        .catch(err => {
+            console.error('Error fetching tour details:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+        });
+});
+
+//edit
+tours.post('/admin/editTour', async (req, res) => {
+    const updatedTour = req.body.updated_tour;
+
+    try {
+        console.log(updatedTour + "leu leu")
+        const tourToUpdate = await Tour.findByPk(updatedTour.id);
+
+        if (!tourToUpdate) {
+            return res.status(404).json({ error: 'Tour not found' });
+        }
+
+        console.log(tourToUpdate)
+
+        tourToUpdate.title = updatedTour.title;
+        tourToUpdate.description = updatedTour.description;
+        tourToUpdate.duration = updatedTour.duration;
+        tourToUpdate.price = updatedTour.price;
+        tourToUpdate.priceCurrency = updatedTour.priceCurrency;
+        tourToUpdate.additionInfo = updatedTour.additionInfo;
+        tourToUpdate.voting = updatedTour.voting;
+        tourToUpdate.type = updatedTour.type;
+        tourToUpdate.demoImage = updatedTour.demoImage;
+
+        await tourToUpdate.save();
+
+        await TourDest.destroy({
+            where: {
+                tourId: tourToUpdate.id
+            }
+        });
+
+        for (const destId of updatedTour.destIds) {
+            await TourDest.create({
+                tourId: tourToUpdate.id,
+                destId: destId
+            });
+        }
+
+        res.json({
+            msg: 'Tour updated successfully',
+            tour: {
+                id: tourToUpdate.id,
+                title: tourToUpdate.title,
+                description: tourToUpdate.description,
+                duration: tourToUpdate.duration,
+                price: tourToUpdate.price,
+                priceCurrency: tourToUpdate.priceCurrency,
+                startDate: tourToUpdate.startDate,
+                endDate: tourToUpdate.endDate,
+                additionInfo: tourToUpdate.additionInfo,
+                voting: tourToUpdate.voting,
+                type: tourToUpdate.type,
+                demoImage: tourToUpdate.demoImage,
+            }
+        });
+    } catch (error) {
+        console.error('Error updating tour:', error);
+        res.status(400).json({ error: 'Error updating tour' });
+    }
+});
+
 
 module.exports = tours
