@@ -15,6 +15,13 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+-- Create the database if it does not exist
+DROP DATABASE IF EXISTS newtravelnam;
+CREATE DATABASE IF NOT EXISTS newtravelnam;
+
+-- Use the database
+USE newtravelnam;
+
 --
 -- Table structure for table `accommodation`
 --

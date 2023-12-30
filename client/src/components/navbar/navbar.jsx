@@ -211,14 +211,14 @@ export default class NavBar extends React.Component {
                     style={{
                       textDecoration: "none",
                       color: "#333",
-                      display: `${
-                        localStorage.key(0) !== null &&
-                        localStorage.getItem("user") !== null &&
-                        JSON.parse(localStorage.getItem("user")).role ===
-                          "admin"
-                          ? "block"
-                          : "none"
-                      }`,
+                      // display: `${
+                      //   localStorage.key(0) !== null &&
+                      //   localStorage.getItem("user") !== null &&
+                      //   JSON.parse(localStorage.getItem("user")).role ===
+                      //     "admin"
+                      //     ? "block"
+                      //     : "none"
+                      // }`,
                     }}
                   >
                     <button className="dropdown-item" type="button">
