@@ -55,8 +55,8 @@ export default class TourIntro extends React.Component {
                     <div className="short-info">
                         <h3 className="short-info_header">Special Info:</h3>
                         <div className="special-about">
-                            {this.props.tour.additionInfo.map((info) => (
-                                <p><i className="fa-solid fa-check" style={{ color: "green" }}></i>        {info}</p>
+                            {this.props.tour.additionInfo.map((info, index) => (
+                                <p key={index}><i className="fa-solid fa-check" style={{ color: "green" }}></i>        {info}</p>
                             ))}
                         </div>
                     </div>

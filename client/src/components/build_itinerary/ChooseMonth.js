@@ -69,8 +69,8 @@ export default function ChooseMonth() {
             {Array.from(
               { length: 9 },
               (_, i) => (today.getMonth() + i + 1) % 12
-            ).map((monthIndex) => (
-              <Col className="w-15">
+            ).map((monthIndex, index) => (
+              <Col className="w-15" key={index}>
                 <Card
                   className="h-100 shadow-sm float-on-hover-card"
                   onClick={() => {

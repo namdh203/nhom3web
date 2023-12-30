@@ -33,8 +33,8 @@ export default class RcmBlock extends React.Component {
                 <h2 className="rcm-title">{this.state.country_name}</h2>
                 <div className="container-md">
                     <div className='row g-4'>
-                        {this.state.tourData.slice(0, 4).map((tour) => (
-                            <div className='col col-md-3 col-sm-6 col-12'>
+                        {this.state.tourData.slice(0, 4).map((tour, index) => (
+                            <div className='col col-md-3 col-sm-6 col-12' key={index}>
                                 <RcmCard id = {tour.id} name={tour.title} src={tour.demoImage} />
                             </div>
                         ))}

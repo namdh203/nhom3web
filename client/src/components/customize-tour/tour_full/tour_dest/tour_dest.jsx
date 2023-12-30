@@ -210,8 +210,9 @@ class TourDestination extends React.Component {
               <div className="col col-md-3 col-sm-6 col-6">
                 <i className="fa-solid fa-hotel"></i>
                 <div>
-                  {this.state.filteredAccoms.map((accom) => (
+                  {this.state.filteredAccoms.map((accom, index) => (
                     <AddImg
+                      key={index}
                       scripts={accom.name}
                       image={accom.demoImage}
                       pos="leftTop"
@@ -224,11 +225,12 @@ class TourDestination extends React.Component {
               <div className="col col-md-3 col-sm-6 col-6">
                 <i className="fa-solid fa-truck-plane"></i>
                 <div>
-                  {this.state.filteredTrans.map((tran) => (
+                  {this.state.filteredTrans.map((tran, index) => (
                     <AddImg
                       scripts={tran.name}
                       image={tran.demoImage}
                       pos="leftTop"
+                      key={index}
                     />
                   ))}
                 </div>
@@ -236,13 +238,14 @@ class TourDestination extends React.Component {
               <div className="col col-md-3 col-sm-6 col-6">
                 <i className="fa-solid fa-drumstick-bite"></i>
                 <div>
-                  {this.state.filteredRests.map((rest) => (
+                  {this.state.filteredRests.map((rest, index) => (
                     <AddImg
                       scripts={rest.name}
                       image={rest.demoImage}
                       pos="leftTop"
                       site="restaurant/res"
                       id={rest.restId}
+                      key={index}
                     />
                   ))}
                 </div>
@@ -250,13 +253,14 @@ class TourDestination extends React.Component {
               <div className="col col-md-3 col-sm-6 col-6">
                 <i className="fa-solid fa-heart-pulse"></i>
                 <div>
-                  {this.state.filteredAct.map((act) => (
+                  {this.state.filteredAct.map((act, index) => (
                     <AddImg
                       scripts={act.name}
                       image={act.demoImage}
                       pos="leftTop"
                       site="activity/act"
                       id={act.activityId}
+                      key={index}
                     />
                   ))}
                 </div>

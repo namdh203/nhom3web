@@ -27,8 +27,8 @@ export default class RcmTransCardCustom extends React.Component {
             {/* <p className="contact"><i className="fa-solid fa-phone"></i>      {this.props.act.telephone}</p>
                         <p className="contact"><i className="fa-solid fa-envelope"></i>      {this.props.act.contactEmail}</p> */}
             <div className="card-info_addition">
-              {this.props.trans.additionInfo.slice(0, 5).map((info) => (
-                <p>
+              {this.props.trans.additionInfo.slice(0, 5).map((info, index) => (
+                <p key={index}>
                   <i className="fa-solid fa-check"></i> {info}
                 </p>
               ))}

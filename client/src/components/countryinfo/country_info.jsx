@@ -73,8 +73,8 @@ export default class CountryInfo extends React.Component {
         <div className="country-info_wrapper">
           {/* <img src={this.state.countryData.demoImage} className="img-fluid country-banner" alt="Responsive" /> */}
           <Carousel afterChange={this.onChange} style={{ width: "100%" }}>
-            {this.state.tourData.map((tour) => (
-              <div className="country-banner_wrapper">
+            {this.state.tourData.map((tour, index) => (
+              <div className="country-banner_wrapper" key={index}>
                 <img
                   src={tour.demoImage}
                   className="img-fluid country-banner"
@@ -100,16 +100,16 @@ export default class CountryInfo extends React.Component {
             </div>
             <div className="country-addition">
               <h2>Addition Info</h2>
-              {this.state.countryData.additionInfo.slice(0, 4).map((info) => (
-                <p>
+              {this.state.countryData.additionInfo.slice(0, 4).map((info, index) => (
+                <p key={index}>
                   <i className="fa-solid fa-check"></i> {info}
                 </p>
               ))}
             </div>
             <div className="suggest-tour row">
               <h2 style={{ margin: 0 }}>Tour Suggestions</h2>
-              {this.state.tourData.slice(0, 3).map((tour) => (
-                <SuggestCard tour={tour}></SuggestCard>
+              {this.state.tourData.slice(0, 3).map((tour, index) => (
+                <SuggestCard tour={tour} key={index}></SuggestCard>
               ))}
             </div>
 

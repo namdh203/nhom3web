@@ -45,8 +45,8 @@ export default class SuggestCard extends React.Component {
               <label>Addition Info:</label>
               <br />
               <div>
-                {this.props.tour.additionInfo.slice(0, 4).map((info) => (
-                  <p style={{ margin: 0 }}>
+                {this.props.tour.additionInfo.slice(0, 4).map((info, index) => (
+                  <p style={{ margin: 0 }} key={index}>
                     <i
                       className="fa-solid fa-check"
                       style={{ color: "green" }}
@@ -61,15 +61,12 @@ export default class SuggestCard extends React.Component {
               <span> {this.props.tour.price} USD</span>
             </div>
             <div className="row sg-interac gx-5">
-              <div
-                className="col col-md-6 col-sm-6 col-6 sg-know"
-                onClick={this.onclick}
-              >
+              <div className="col col-12 sg-know" onClick={this.onclick}>
                 <h3>Know more</h3>
               </div>
-              <div className="col col-md-6 col-sm-6 col-6 sg-book">
+              {/* <div className="col col-md-6 col-sm-6 col-6 sg-book">
                 <h3>Book now</h3>
-              </div>
+              </div> */}
             </div>
           </div>
           {/* <div className="col col-md-2 col-sm-12 sg-interac">

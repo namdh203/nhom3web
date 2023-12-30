@@ -49,11 +49,12 @@ class HomeBanner extends React.Component {
           autoplay
           autoplaySpeed={"500"}
         >
-          {this.state.bannerData.map((banner) => (
+          {this.state.bannerData.map((banner, index) => (
             <BannerImg
               src={banner.demoImage}
               name={banner.title}
               desc={banner.description}
+              key={index}
             />
           ))}
         </Carousel>
