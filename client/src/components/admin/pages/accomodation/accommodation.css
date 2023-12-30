@@ -108,13 +108,13 @@ td {
     margin-left: 10px;
 }
 
-.add-account-detail-container {
+.add-accommodation-detail-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.delete-account-detail-container {
+.delete-accommodation-detail-container {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -543,7 +543,7 @@ tours.post('/admin/deleteTour', async (req, res) => {
         const tourToDelete = await Tour.findByPk(old_tour.id);
 
         if (!tourToDelete) {
-            res.status(404).json({ error: 'Tour not found'});
+            return res.status(404).json({ error: 'Tour not found'});
         }
 
         await TourDest.destroy({

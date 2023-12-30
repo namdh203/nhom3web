@@ -101,16 +101,20 @@ const Transportation = () => {
         <thead>
           <tr>
             <th onClick={() => handleSort("type")}> ID</th>
+            <th> Destination IDs</th>
             <th onClick={() => handleSort("type")}>Type</th>
             <th> Addition Info</th>
+            <th> Demo Image</th>
           </tr>
         </thead>
         <tbody>
           {currentItems.map(transportation => (
             <tr key={transportation.id}>
               <td>{transportation.id}</td>
+              <td>{transportation.destIds.join(", ")}</td>
               <td>{transportation.type}</td>
               <td>{transportation.additionInfo}</td>
+              <td>{transportation.demoImage}</td>
             </tr>
           ))}
         </tbody>
@@ -119,6 +123,9 @@ const Transportation = () => {
       <div className="button-admin">
         <button className="btn btn-primary" onClick={ () => navigate("/admin/transportation/add-transportation")}>
           Add Transportation
+        </button>
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/transportation/delete-transportation")}>
+          Delete
         </button>
       </div>
 

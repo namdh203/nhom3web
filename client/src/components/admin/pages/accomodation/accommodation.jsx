@@ -134,6 +134,9 @@ const Accommodation = () => {
         <button className="btn btn-primary" onClick={ () => navigate("/admin/accommodation/add-accommodation")}>
           Add Accommodation
         </button>
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/accommodation/delete-accommodation")}>
+          Delete
+        </button>
       </div>
 
       <ul className="pagination">
