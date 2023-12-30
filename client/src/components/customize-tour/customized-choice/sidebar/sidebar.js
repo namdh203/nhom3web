@@ -3,15 +3,15 @@ import React from "react";
 import "./sidebar.css";
 import { Menu } from "antd";
 import {
-  UserOutlined,
-  ContactsOutlined,
-  EnvironmentOutlined,
+  // UserOutlined,
+  // ContactsOutlined,
+  // EnvironmentOutlined,
   CarOutlined,
   HomeOutlined,
   CoffeeOutlined,
   SmileOutlined,
   ArrowLeftOutlined,
-  CreditCardOutlined,
+  // CreditCardOutlined,
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 

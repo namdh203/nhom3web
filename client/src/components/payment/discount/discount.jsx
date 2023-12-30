@@ -2,8 +2,8 @@ import React from "react";
 import Layout from "antd/es/layout/layout";
 import { Typography } from "antd";
 import { Link } from "react-router-dom";
-import { Icon } from "antd";
-import { AccountBookFilled } from "@ant-design/icons";
+// import { Icon } from "antd";
+// import { AccountBookFilled } from "@ant-design/icons";
 
 const { Paragraph, Title } = Typography;
 const { Content } = Layout;
@@ -39,8 +39,8 @@ export default class Discount extends React.Component {
     }
     return (
       <div>
-        <Layout style={{paddingLeft: 0}}>
-          <Content className="row" style={{paddingLeft: "10px"}}>
+        <Layout style={{ paddingLeft: 0 }}>
+          <Content className="row" style={{ paddingLeft: "10px" }}>
             <div className="col-10 bg-white border border-light rounded shadow-lg row d-flex justify-content-center">
               <div className="col-6 m-2 p-2">
                 <img
@@ -51,6 +51,7 @@ export default class Discount extends React.Component {
                     width: "auto",
                     height: "auto",
                   }}
+                  alt="Cash Icon"
                 ></img>
               </div>
 

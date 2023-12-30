@@ -32,8 +32,10 @@ function translateAdviceCode(adviceCode) {
       return "OUR PICK";
     case 3:
       return "TOO CROWDED";
+    default:
+      return "Error";
   }
-  return "ERROR";
+  // return "ERROR";
 }
 
 export default function ChooseMonth() {

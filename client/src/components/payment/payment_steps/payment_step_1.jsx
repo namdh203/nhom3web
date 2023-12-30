@@ -5,7 +5,7 @@ import { useLocation, Link } from "react-router-dom";
 import { createPaymentTransaction } from "./paymentFunc";
 import "./payment_step_1.css";
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Content } = Layout;
 const { Paragraph, Title } = Typography;
 
 const PaymentStep1 = () => {
@@ -122,6 +122,7 @@ const PaymentStep1 = () => {
                   height: "70%",
                   whiteSpace: "nowrap",
                 }}
+                alt="App Logo"
               />
             </div>
           </div>

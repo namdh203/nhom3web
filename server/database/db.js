@@ -2,17 +2,22 @@ const Sequelize = require("sequelize");
 const db = {};
 
 // Database: Travelam (testingdbuser for test)
-const sequelize = new Sequelize('travelam', 'root', 'qwertyuiop', {
-  host: 'localhost',
-  dialect: 'mysql',
+const sequelize = new Sequelize(
+  "newtravelnam",
+  process.env.MYSQL_USER,
+  process.env.MYSQL_PASSWORD,
+  {
+    host: "localhost",
+    dialect: "mysql",
 
-  pool: {
+    pool: {
       max: 5,
       min: 0,
       acquire: 30000,
-      idle: 10000
+      idle: 10000,
+    },
   }
-})
+);
 
 // check connection
 sequelize

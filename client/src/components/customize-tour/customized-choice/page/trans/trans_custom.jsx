@@ -239,7 +239,7 @@ export default class RestCustom extends React.Component {
               <li
                 key={index}
                 className={`page-item${
-                  this.state.pagenum == page + 1 ? " chosen" : ""
+                  this.state.pagenum === page + 1 ? " chosen" : ""
                 }`}
               >
                 <a

@@ -3,7 +3,7 @@ import "./info_summary.css";
 import Layout from "antd/es/layout/layout";
 import { Typography } from "antd";
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Content } = Layout;
 const { Paragraph, Title } = Typography;
 
 export default class TourSummary extends React.Component {
@@ -19,13 +19,12 @@ export default class TourSummary extends React.Component {
   }
 
   render() {
-    let { tourName, description, startDate, totalCost, currency } =
-      this.state;
-    startDate = new Date(startDate).toISOString().split('T')[0];
+    let { tourName, description, startDate, totalCost, currency } = this.state;
+    startDate = new Date(startDate).toISOString().split("T")[0];
     return (
       <Layout className="payment-wrapper">
         <div className="buffer-block" style={{ height: "40px" }}></div>
-        <Content style={{paddingLeft: "0"}}>
+        <Content style={{ paddingLeft: "0" }}>
           <div className="row justify-content-center">
             <div className="bg-summary col-6 border border-secondary rounded my-5">
               <Title level={5} className="text-center m-1" strong="true">

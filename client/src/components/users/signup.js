@@ -7,7 +7,7 @@ import "../../App.css";
 import "../dashboard/dashboard.js";
 import "./signup.css";
 
-import Notification from "../notification/notification.jsx";
+// import Notification from "../notification/notification.jsx";
 
 export default class SignUp extends Component {
   constructor() {

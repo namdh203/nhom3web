@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getAllPayment } from "./HistoryFunction";
-import "./user_history.css"
-import { useNavigate } from "react-router-dom";
-import { Modal } from "antd"
+import "./user_history.css";
+// import { useNavigate } from "react-router-dom";
+import { Modal } from "antd";
 
 const Payment = () => {
   const [payments, setPayments] = useState([]);
@@ -11,22 +11,22 @@ const Payment = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(8);
-  const [payDesc, setPayDesc] = useState("")
-  const [openModal, setOpenModal] = useState(true)
-  const [descClicked, setDescClicked] = useState(false)
+  const [payDesc, setPayDesc] = useState("");
+  const [openModal, setOpenModal] = useState(true);
+  const [descClicked, setDescClicked] = useState(false);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleOk = () => {
-    setOpenModal(false)
-  }
+    setOpenModal(false);
+  };
 
   const handleCancel = () => {
-    setOpenModal(false)
-  }
+    setOpenModal(false);
+  };
 
   const loadPayments = () => {
-    const userId = JSON.parse(localStorage.getItem("user")).id
+    const userId = JSON.parse(localStorage.getItem("user")).id;
     getAllPayment(userId)
       .then((data) => {
         if (data.error) {
@@ -72,31 +72,66 @@ const Payment = () => {
 
   const filteredPayments = searchTerm
     ? sortedPayments.filter(
-      (payment) =>
-        payment.title.toLowerCase().includes(searchTerm) ||
-        payment.type.toLowerCase().includes(searchTerm)
-    )
+        (payment) =>
+          payment.title.toLowerCase().includes(searchTerm) ||
+          payment.type.toLowerCase().includes(searchTerm)
+      )
     : sortedPayments;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredPayments.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredPayments.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
-      {descClicked ? <div><Modal open={openModal} onOk={() => handleOk()} onCancel={() => handleCancel()} zIndex="2000">
-        <p className="pay-info"><span className="pay-label">Tour Id:</span> <span className="pay-desc">{JSON.parse(payDesc).tourId}</span></p>
-        <p className="pay-info"><span className="pay-label">Card Type:</span>  <span className="pay-desc">{JSON.parse(payDesc).cardType}</span></p>
-        <p className="pay-info"><span className="pay-label">Card Number:</span>  <span className="pay-desc">{JSON.parse(payDesc).cardNumber}</span></p>
-        <p className="pay-info"><span className="pay-label">Expiry:</span> <span className="pay-desc">{JSON.parse(payDesc).expiry}</span></p>
-        <p className="pay-info"><span className="pay-label">Holder Name:</span> <span className="pay-desc">{JSON.parse(payDesc).holderName}</span></p>
-        <p className="pay-info"><span className="pay-label">CVV:</span> <span className="pay-desc">{JSON.parse(payDesc).cvv}</span></p>
-      </Modal></div> : ""}
+      {descClicked ? (
+        <div>
+          <Modal
+            open={openModal}
+            onOk={() => handleOk()}
+            onCancel={() => handleCancel()}
+            zIndex="2000"
+          >
+            <p className="pay-info">
+              <span className="pay-label">Tour Id:</span>{" "}
+              <span className="pay-desc">{JSON.parse(payDesc).tourId}</span>
+            </p>
+            <p className="pay-info">
+              <span className="pay-label">Card Type:</span>{" "}
+              <span className="pay-desc">{JSON.parse(payDesc).cardType}</span>
+            </p>
+            <p className="pay-info">
+              <span className="pay-label">Card Number:</span>{" "}
+              <span className="pay-desc">{JSON.parse(payDesc).cardNumber}</span>
+            </p>
+            <p className="pay-info">
+              <span className="pay-label">Expiry:</span>{" "}
+              <span className="pay-desc">{JSON.parse(payDesc).expiry}</span>
+            </p>
+            <p className="pay-info">
+              <span className="pay-label">Holder Name:</span>{" "}
+              <span className="pay-desc">{JSON.parse(payDesc).holderName}</span>
+            </p>
+            <p className="pay-info">
+              <span className="pay-label">CVV:</span>{" "}
+              <span className="pay-desc">{JSON.parse(payDesc).cvv}</span>
+            </p>
+          </Modal>
+        </div>
+      ) : (
+        ""
+      )}
       <div className="dashboard-header">
         <div className="select-container">
-          <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
+          <select
+            id="categorySelect"
+            onChange={(e) => handleSort(e.target.value)}
+          >
             <option value="id">ID</option>
             <option value="payDate">PayDate</option>
             <option value="amount">Amount</option>
@@ -139,19 +174,23 @@ const Payment = () => {
           </tr>
         </thead>
         <tbody>
-          {currentItems.map(payment => (
+          {currentItems.map((payment) => (
             <tr key={payment.id}>
               <td>{payment.id}</td>
               <td>{payment.payDate}</td>
               <td>{payment.amount}</td>
               <td>{payment.currency}</td>
-              <td onClick={() => {
-                setPayDesc(payment.description)
-                setDescClicked(true)
-                if (openModal === false) {
-                  setOpenModal(true)
-                }
-              }}>{payment.description}</td>
+              <td
+                onClick={() => {
+                  setPayDesc(payment.description);
+                  setDescClicked(true);
+                  if (openModal === false) {
+                    setOpenModal(true);
+                  }
+                }}
+              >
+                {payment.description}
+              </td>
             </tr>
           ))}
         </tbody>
@@ -167,15 +206,14 @@ const Payment = () => {
       </div> */}
 
       <ul className="pagination">
-        {Array.from({ length: Math.ceil(filteredPayments.length / itemsPerPage) }).map(
-          (_, index) => (
-            <li key={index} className={currentPage === index + 1 ? "active" : ""}>
-              <button onClick={() => paginate(index + 1)}>{index + 1}</button>
-            </li>
-          )
-        )}
+        {Array.from({
+          length: Math.ceil(filteredPayments.length / itemsPerPage),
+        }).map((_, index) => (
+          <li key={index} className={currentPage === index + 1 ? "active" : ""}>
+            <button onClick={() => paginate(index + 1)}>{index + 1}</button>
+          </li>
+        ))}
       </ul>
-
     </div>
   );
 };

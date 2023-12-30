@@ -43,7 +43,7 @@ class TourDestination extends React.Component {
       filteredRests = this.state.rests.slice(0, 2);
       this.setState({ filteredRests: filteredRests });
     } else {
-      var filteredList2 = JSON.parse(
+      const filteredList2 = JSON.parse(
         localStorage.getItem(`rest_dest${this.props.destId}`)
       ).arr;
       filteredRests = this.state.rests.filter(function (element) {
@@ -60,7 +60,7 @@ class TourDestination extends React.Component {
       filteredAccoms = this.state.accoms.slice(0, 2);
       this.setState({ filteredAccoms: filteredAccoms });
     } else {
-      var filteredList2 = JSON.parse(
+      const filteredList2 = JSON.parse(
         localStorage.getItem(`accom_dest${this.props.destId}`)
       ).arr;
       filteredAccoms = this.state.accoms.filter(function (element) {
@@ -75,7 +75,7 @@ class TourDestination extends React.Component {
       filteredTrans = this.state.trans.slice(0, 2);
       this.setState({ filteredTrans: filteredTrans });
     } else {
-      var filteredList2 = JSON.parse(
+      const filteredList2 = JSON.parse(
         localStorage.getItem(`trans_dest${this.props.destId}`)
       ).arr;
       filteredTrans = this.state.trans.filter(function (element) {
@@ -90,7 +90,7 @@ class TourDestination extends React.Component {
       filteredAct = this.state.activity.slice(0, 2);
       this.setState({ filteredAct: filteredAct });
     } else {
-      var filteredList2 = JSON.parse(
+      const filteredList2 = JSON.parse(
         localStorage.getItem(`act_dest${this.props.destId}`)
       ).arr;
       filteredAct = this.state.activity.filter(function (element) {

@@ -230,7 +230,7 @@ export default class AccomCustom extends React.Component {
             {this.state.pagelist.map((page) => (
               <li
                 className={`page-item${
-                  this.state.pagenum == page + 1 ? " chosen" : ""
+                  this.state.pagenum === page + 1 ? " chosen" : ""
                 }`}
               >
                 <a

@@ -8,13 +8,12 @@ export default class AddImg extends React.Component {
   }
 
   onclick = () => {
-    if (this.props.site != "trans") {
-      window.location.href = `/${this.props.site}?id=${this.props.id}`
+    if (this.props.site !== "trans") {
+      window.location.href = `/${this.props.site}?id=${this.props.id}`;
     } else {
-      window.location.href = `/recommendations/trans?page_num=1`
+      window.location.href = `/recommendations/trans?page_num=1`;
     }
-    
-  }
+  };
 
   render() {
     // console.log(this.props);
@@ -39,7 +38,11 @@ export default class AddImg extends React.Component {
       >
         <div
           className="tour-addition_info"
-          style={{ whiteSpace: "nowrap", overflow: "hidden", cursor: "pointer" }}
+          style={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            cursor: "pointer",
+          }}
           onClick={this.onclick}
         >
           {this.props.scripts}

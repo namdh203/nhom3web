@@ -30,16 +30,16 @@ export default function Footer() {
             </p>
             <div className="footer-icon">
               <div className="footer-icon_wrapper">
-                <a href="#">
+                <a href="/">
                   <i className="fa-brands fa-facebook"></i>
                 </a>
-                <a href="#">
+                <a href="/">
                   <i className="fa-brands fa-instagram"></i>
                 </a>
-                <a href="#">
+                <a href="/">
                   <i className="fa-brands fa-tiktok"></i>
                 </a>
-                <a href="#" style={{ marginRight: "20px" }}>
+                <a href="/" style={{ marginRight: "20px" }}>
                   <i className="fa-brands fa-youtube"></i>
                 </a>
               </div>
@@ -64,22 +64,22 @@ export default function Footer() {
           </div>
           <div className="col col-md-2 col-sm-12 col-12 footer-social">
             <h3>SOCIAL</h3>
-            <a href="#">
+            <a href="/">
               <p>
                 <i className="fa-brands fa-facebook"></i> Facebook
               </p>
             </a>
-            <a href="#">
+            <a href="/">
               <p>
                 <i className="fa-brands fa-instagram"></i> Instagram
               </p>
             </a>
-            <a href="#">
+            <a href="/">
               <p>
                 <i className="fa-brands fa-tiktok"></i> Tiktok
               </p>
             </a>
-            <a href="#">
+            <a href="/">
               <p>
                 <i className="fa-brands fa-youtube"></i> Youtube
               </p>

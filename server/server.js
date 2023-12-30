@@ -3,6 +3,13 @@ const app = express();
 const cors = require("cors");
 var bodyParser = require("body-parser");
 const dotenv = require("dotenv");
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 dotenv.config({ path: ".env.local" });
 
@@ -45,7 +52,7 @@ const Destinations = require("./routes/destinations");
 app.use("/destinations", Destinations);
 
 const Comments = require("./routes/comments");
-app.use("/comment", Comments)
+app.use("/comment", Comments);
 
 const Transportations = require("./routes/transportations");
 app.use("/transportations", Transportations);

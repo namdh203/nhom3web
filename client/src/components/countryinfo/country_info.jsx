@@ -24,7 +24,7 @@ export default class CountryInfo extends React.Component {
     const url = new URL(currentURL);
 
     const id = url.searchParams.get("id");
-    const type = url.searchParams.get("type");
+    let type = url.searchParams.get("type");
     // const name = url.searchParams.get("name");
 
     if (type == null) {
@@ -100,11 +100,13 @@ export default class CountryInfo extends React.Component {
             </div>
             <div className="country-addition">
               <h2>Addition Info</h2>
-              {this.state.countryData.additionInfo.slice(0, 4).map((info, index) => (
-                <p key={index}>
-                  <i className="fa-solid fa-check"></i> {info}
-                </p>
-              ))}
+              {this.state.countryData.additionInfo
+                .slice(0, 4)
+                .map((info, index) => (
+                  <p key={index}>
+                    <i className="fa-solid fa-check"></i> {info}
+                  </p>
+                ))}
             </div>
             <div className="suggest-tour row">
               <h2 style={{ margin: 0 }}>Tour Suggestions</h2>

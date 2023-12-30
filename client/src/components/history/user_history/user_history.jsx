@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllPayment } from "./HistoryFunction";
 import "./user_history.css";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { Modal } from "antd";
 
 const Tour = () => {
@@ -15,7 +15,7 @@ const Tour = () => {
   const [openModal, setOpenModal] = useState(true);
   const [descClicked, setDescClicked] = useState(false);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleOk = () => {
     setOpenModal(false);
