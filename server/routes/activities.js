@@ -5,7 +5,7 @@ const Sequelize = require("sequelize");
 
 const Activity = require("../models/activity");
 
-const sequelize = new Sequelize('travelam', 'root', 'empty2003', {
+const sequelize = new Sequelize('travelam', 'root', 'qwertyuiop', {
     host: 'localhost',
     dialect: 'mysql',
 
