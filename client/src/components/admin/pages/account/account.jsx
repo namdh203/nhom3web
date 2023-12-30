@@ -15,7 +15,7 @@ const Account = () => {
 
   const loadAccounts = () => {
     getCustomerProperties()
-      .then(data => {
+      .then((data) => {
         if (data.error) {
           console.log(data.error);
         } else {
@@ -55,14 +55,17 @@ const Account = () => {
   });
 
   const filteredAccounts = searchTerm
-    ? sortedAccounts.filter(account =>
-      account.email.toLowerCase().includes(searchTerm)
-    )
+    ? sortedAccounts.filter((account) =>
+        account.email.toLowerCase().includes(searchTerm)
+      )
     : sortedAccounts;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredAccounts.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredAccounts.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -70,7 +73,10 @@ const Account = () => {
     <div>
       <div className="dashboard-header">
         <div className="select-container">
-          <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
+          <select
+            id="categorySelect"
+            onChange={(e) => handleSort(e.target.value)}
+          >
             <option value="id">ID</option>
             <option value="email">Email</option>
           </select>
@@ -105,42 +111,47 @@ const Account = () => {
             <th>Phone Number</th>
             <th onClick={() => handleSort("email")}>Email</th>
             <th>Passport</th>
-
           </tr>
         </thead>
         <tbody>
-          {currentItems.map(account => (
+          {currentItems.map((account) => (
             <tr key={account.id}>
               <td>{account.id}</td>
               <td>{account.role}</td>
-              <td>{account.customer ? account.customer.name : ''}</td>
-              <td>{account.customer ? account.customer.cardNo : ''}</td>
-              <td>{account.customer ? account.customer.address : ''}</td>
-              <td>{account.customer ? account.customer.phoneNumber : ''}</td>
+              <td>{account.customer ? account.customer.name : ""}</td>
+              <td>{account.customer ? account.customer.cardNo : ""}</td>
+              <td>{account.customer ? account.customer.address : ""}</td>
+              <td>{account.customer ? account.customer.phoneNumber : ""}</td>
               <td>{account.email}</td>
-              <td>{account.customer ? account.customer.passport : ''}</td>
+              <td>{account.customer ? account.customer.passport : ""}</td>
             </tr>
           ))}
         </tbody>
       </table>
 
       <div className="button-admin">
-        <button className="btn btn-primary" onClick={() => navigate("/admin/account/add-account")}>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/admin/account/add-account")}
+        >
           Add Account
         </button>
-        <button className="btn btn-primary" onClick={() => navigate("/admin/account/delete-account")}>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/admin/account/delete-account")}
+        >
           Delete
         </button>
       </div>
 
-      <ul className="pagination">
-        {Array.from({ length: Math.ceil(filteredAccounts.length / itemsPerPage) }).map(
-          (_, index) => (
-            <li key={index} className={currentPage === index + 1 ? "active" : ""}>
-              <button onClick={() => paginate(index + 1)}>{index + 1}</button>
-            </li>
-          )
-        )}
+      <ul className="account-pagination">
+        {Array.from({
+          length: Math.ceil(filteredAccounts.length / itemsPerPage),
+        }).map((_, index) => (
+          <li key={index} className={currentPage === index + 1 ? "active" : ""}>
+            <button onClick={() => paginate(index + 1)}>{index + 1}</button>
+          </li>
+        ))}
       </ul>
     </div>
   );

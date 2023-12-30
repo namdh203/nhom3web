@@ -32,10 +32,10 @@ const DestActivity = db.sequelize.define(
 );
 
 Destination.hasMany(DestActivity, { foreignKey: "destId" });
-DestActivity.belongsTo(Destination, { foreignKey: "destId", targetKey: "id" });
+DestActivity.belongsTo(Destination, { foreignKey: "destId" });
 
 Activity.hasMany(DestActivity, { foreignKey: "activityId" });
-DestActivity.belongsTo(Activity, { foreignKey: "activityId", targetKey: "id" });
+DestActivity.belongsTo(Activity, { foreignKey: "activityId" });
 
 DestActivity.sync({ alter: true })
   .then((data) => {

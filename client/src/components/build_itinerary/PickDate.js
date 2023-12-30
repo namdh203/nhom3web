@@ -51,7 +51,9 @@ export default function PickDate() {
       <Container>
         <Row className="row-cols-1 gy-3">
           <Col>
-            <h3>When is your departure date?</h3>
+            <h3 style={{ textAlign: "center" }}>
+              When is your departure date?
+            </h3>
           </Col>
           <Col className="d-flex justify-content-center">
             <div style={wrapperStyle}>
@@ -63,7 +65,7 @@ export default function PickDate() {
               />
             </div>
           </Col>
-          <Col>
+          <Col className="d-flex justify-content-center">
             <Button variant="success mt-1" onClick={transitionToNextPage}>
               Next
             </Button>

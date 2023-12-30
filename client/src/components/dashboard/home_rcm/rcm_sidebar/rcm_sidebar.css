@@ -5,12 +5,12 @@
 }
 
 .sidebar-choice {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .sidebar-choice:hover {
-    color: lightsalmon;
-    /* padding-left: 10px */
+  color: lightsalmon;
+  /* padding-left: 10px */
 }
 
 .nav-item.sidebar-mode {
@@ -36,20 +36,18 @@
   font-weight: 600;
 }
 
-
-@media (min-width: 991.98px) {
+/* @media (min-width: 991.98px) {
   main {
     padding-left: 200px;
   }
-}
-
+} */
 
 @media (min-width: 991.98px) {
-  main {
+  /* main {
     padding-left: 240px;
-  }
+  } */
 
   .home-rcm_sidebar {
-    display: block
+    display: block;
   }
 }

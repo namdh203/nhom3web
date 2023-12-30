@@ -24,14 +24,14 @@
   background-color: #feffd0;
 }
 
-th,
-td {
-    padding: 15px 20px;
-    max-height: 25px;
-    max-width: 100px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+.account-table th,
+.account-table td {
+  padding: 15px 20px;
+  max-height: 25px;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* button {
@@ -41,22 +41,21 @@ td {
 } */
 
 @media (max-width: 600px) {
-
-    th,
-    td {
-        font-size: 14px;
-        max-height: 25px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
+  .account-table th,
+  .account-table td {
+    font-size: 14px;
+    max-height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 .dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .select-container,
 .sort-container,
@@ -67,56 +66,56 @@ td {
 }
 
 /* Pagination styles */
-.pagination {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
+.account-pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
 }
 
-.pagination li {
-    margin-right: 5px;
+.account-pagination li {
+  margin-right: 5px;
 }
 
-.pagination button {
-    padding: 8px 12px;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    background-color: #fff;
-    color: #333;
+.account-pagination button {
+  padding: 8px 12px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #333;
 }
 
-.pagination button:hover {
-    background-color: #4caf50;
-    color: #fff;
-    border: 1px solid #4caf50;
+.account-pagination button:hover {
+  background-color: #4caf50;
+  color: #fff;
+  border: 1px solid #4caf50;
 }
 
-.pagination .active button {
-    background-color: #4caf50;
-    color: #fff;
-    border: 1px solid #4caf50;
+.account-pagination .active button {
+  background-color: #4caf50;
+  color: #fff;
+  border: 1px solid #4caf50;
 }
 
 .button-admin {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
 }
 
 .button-admin button {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .add-account-detail-container {
-    padding: 30px 20px 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  padding: 30px 20px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .delete-account-detail-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

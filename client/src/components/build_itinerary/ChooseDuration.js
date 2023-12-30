@@ -7,7 +7,9 @@ export default function ChooseDuration() {
   return (
     <Container>
       <div style={{ height: "80px" }}></div>
-      <h3 className="ques-title">What's the duration of your holiday?</h3>
+      <h3 className="ques-title" style={{ textAlign: "center" }}>
+        What's the duration of your holiday?
+      </h3>
 
       <Row className="row-cols-lg-4 row-cols-2 gy-3 mt-4 ps-xl-5 pe-xk-5 ms-xl-5 me-xl-5">
         <Col>

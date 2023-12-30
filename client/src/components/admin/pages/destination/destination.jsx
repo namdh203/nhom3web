@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllDestination } from "./destinationFunction";
-import "./destination.css"
+import "./destination.css";
 import { useNavigate } from "react-router-dom";
 
 const Destination = () => {
@@ -63,17 +63,23 @@ const Destination = () => {
       )
     : sortedDestinations;
 
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = filteredDestinations.slice(indexOfFirstItem, indexOfLastItem);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredDestinations.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
       <div className="dashboard-header">
         <div className="select-container">
-          <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
+          <select
+            id="categorySelect"
+            onChange={(e) => handleSort(e.target.value)}
+          >
             <option value="id">ID</option>
             <option value="name">Name</option>
           </select>
@@ -108,7 +114,7 @@ const Destination = () => {
           </tr>
         </thead>
         <tbody>
-          {currentItems.map(destination => (
+          {currentItems.map((destination) => (
             <tr key={destination.id}>
               <td>{destination.id}</td>
               <td>{destination.name}</td>
@@ -121,21 +127,23 @@ const Destination = () => {
       </table>
 
       <div className="button-admin">
-        <button className="btn btn-primary" onClick={ () => navigate("/admin/destination/add-destination")}>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/admin/destination/add-destination")}
+        >
           Add Destination
         </button>
       </div>
 
-      <ul className="pagination">
-        {Array.from({ length: Math.ceil(filteredDestinations.length / itemsPerPage) }).map(
-          (_, index) => (
-            <li key={index} className={currentPage === index + 1 ? "active" : ""}>
-              <button onClick={() => paginate(index + 1)}>{index + 1}</button>
-            </li>
-          )
-        )}
+      <ul className="destination-pagination">
+        {Array.from({
+          length: Math.ceil(filteredDestinations.length / itemsPerPage),
+        }).map((_, index) => (
+          <li key={index} className={currentPage === index + 1 ? "active" : ""}>
+            <button onClick={() => paginate(index + 1)}>{index + 1}</button>
+          </li>
+        ))}
       </ul>
-
     </div>
   );
 };

@@ -17,16 +17,16 @@ import RcmTrans from "./components/recommend/rcmtrans/rcm-trans.jsx";
 import Layout from "./components/Layout.js";
 import UserProfile from "./components/profile/profile.jsx";
 import AdminDashboard from "./components/admin/dashboard.js";
-import SearchCountry from "./components/build_itinerary/choose_destination/SearchCountry.js";
-import ChooseMonth from "./components/build_itinerary/choose_destination/ChooseMonth.js";
-import PickDate from "./components/build_itinerary/choose_destination/PickDate.js";
-import ChooseDuration from "./components/build_itinerary/choose_destination/ChooseDuration.js";
-import SelectDestinations from "./components/build_itinerary/choose_destination/SelectDestinations.js";
+import SearchCountry from "./components/build_itinerary/SearchCountry.js";
+import ChooseMonth from "./components/build_itinerary/ChooseMonth.js";
+import PickDate from "./components/build_itinerary/PickDate.js";
+import ChooseDuration from "./components/build_itinerary/ChooseDuration.js";
+import SelectDestinations from "./components/build_itinerary/SelectDestinations.js";
 
-import PaymentStep1 from "./components/payment/payment_steps/payment_step_1.jsx"
+import PaymentStep1 from "./components/payment/payment_steps/payment_step_1.jsx";
 import TourCustomize from "./components/customize-tour/tour_customize.jsx";
 import ChooseCustomized from "./components/customize-tour/customized-choice/choose_customized.jsx";
-import TourHistory from "./components/history/history.jsx"
+import TourHistory from "./components/history/history.jsx";
 
 function App() {
   // const [isLogin, setIsLogin] = useState(false)
@@ -35,10 +35,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Layout showFooter={true} />}>
-            <Route
-              path="admin/*"
-              element={<AdminDashboard />}
-            />
+            <Route path="admin/*" element={<AdminDashboard />} />
             <Route index element={<Dashboard />} />
             <Route
               path="sign-in"
@@ -72,16 +69,23 @@ function App() {
             <Route path="accommodation/hotel" element={<Accommodation />} />
             <Route path="restaurant/res" element={<Restaurant />} />
             <Route path="activity/act" element={<Activity />} />
-            <Route path="payment" element={
-              <>
-                <Payment />
-              </>
-            } />
-            <Route path="payment/payment-step-1" element={
-              <>
-                <Payment />
-                <PaymentStep1 /></>
-            } />
+            <Route
+              path="payment"
+              element={
+                <>
+                  <Payment />
+                </>
+              }
+            />
+            <Route
+              path="payment/payment-step-1"
+              element={
+                <>
+                  <Payment />
+                  <PaymentStep1 />
+                </>
+              }
+            />
             <Route
               path="recommendations/accom"
               element={<RcmAccom></RcmAccom>}
@@ -96,25 +100,13 @@ function App() {
               element={<RcmTrans></RcmTrans>}
             />
 
-            <Route
-              path="profile"
-              element={<UserProfile />}
-            />
+            <Route path="profile" element={<UserProfile />} />
 
-            <Route
-              path="history"
-              element={<TourHistory />}
-            />
+            <Route path="history" element={<TourHistory />} />
 
-            <Route
-              path="/tour-customize"
-              element={<TourCustomize />}
-            />
+            <Route path="/tour-customize" element={<TourCustomize />} />
 
-            <Route
-              path="/customize/*"
-              element={<ChooseCustomized />}
-            />
+            <Route path="/customize/*" element={<ChooseCustomized />} />
           </Route>
 
           <Route path="build-itinerary" element={<Layout addTopPadding />}>

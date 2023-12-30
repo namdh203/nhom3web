@@ -1,4 +1,3 @@
-// import "./SearchCountry.css";
 import InputGroup from "react-bootstrap/InputGroup";
 import { IoSearch } from "react-icons/io5";
 import Form from "react-bootstrap/Form";
@@ -7,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
-import background from "../../../assets/img/map.png";
+import background from "../../assets/img/map.png";
 import Container from "react-bootstrap/Container";
 import "./ChooseDestinations.css";
 import Row from "react-bootstrap/Row";
@@ -85,7 +84,7 @@ export default function SearchCountry() {
         </Col>
         <Col className="d-flex justify-content-center">
           {suggestionsVisible && (
-            <ListGroup variant="flush" className="suggestions-list w-50">
+            <ListGroup variant="flush" className="suggestions-list w-75">
               {results.map((result) => (
                 <ListGroupItem
                   action

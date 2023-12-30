@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllTour } from "./tourFunction";
-import "./tour.css"
+import "./tour.css";
 import { useNavigate } from "react-router-dom";
 
 const Tour = () => {
@@ -75,7 +75,10 @@ const Tour = () => {
     <div>
       <div className="dashboard-header">
         <div className="select-container">
-          <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
+          <select
+            id="categorySelect"
+            onChange={(e) => handleSort(e.target.value)}
+          >
             <option value="id">ID</option>
             <option value="title">Title</option>
             <option value="type">Type</option>
@@ -117,7 +120,7 @@ const Tour = () => {
           </tr>
         </thead>
         <tbody>
-          {currentItems.map(tour => (
+          {currentItems.map((tour) => (
             <tr key={tour.id}>
               <td>{tour.id}</td>
               <td>{tour.destIds.join(", ")}</td>
@@ -136,24 +139,29 @@ const Tour = () => {
       </table>
 
       <div className="button-admin">
-        <button className="btn btn-primary" onClick={ () => navigate("/admin/tour/add-tour")}>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/admin/tour/add-tour")}
+        >
           Add Tour
         </button>
-        <button className="btn btn-primary" onClick={ () => navigate("/admin/tour/delete-tour")}>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/admin/tour/delete-tour")}
+        >
           Delete
         </button>
       </div>
 
-      <ul className="pagination">
-        {Array.from({ length: Math.ceil(filteredTours.length / itemsPerPage) }).map(
-          (_, index) => (
-            <li key={index} className={currentPage === index + 1 ? "active" : ""}>
-              <button onClick={() => paginate(index + 1)}>{index + 1}</button>
-            </li>
-          )
-        )}
+      <ul className="tour-pagination">
+        {Array.from({
+          length: Math.ceil(filteredTours.length / itemsPerPage),
+        }).map((_, index) => (
+          <li key={index} className={currentPage === index + 1 ? "active" : ""}>
+            <button onClick={() => paginate(index + 1)}>{index + 1}</button>
+          </li>
+        ))}
       </ul>
-
     </div>
   );
 };

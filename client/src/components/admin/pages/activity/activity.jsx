@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllActivity } from "./activityFunction";
-import "./activity.css"
+import "./activity.css";
 import { useNavigate } from "react-router-dom";
 
 const Activity = () => {
@@ -15,15 +15,15 @@ const Activity = () => {
 
   const loadActivitys = () => {
     getAllActivity()
-      .then(data => {
+      .then((data) => {
         if (data.error) {
           console.log(data.error);
         } else {
           setActivitys(data);
         }
       })
-      .catch(error => {
-        console.error('Error loading activitys:', error);
+      .catch((error) => {
+        console.error("Error loading activitys:", error);
       });
   };
 
@@ -47,8 +47,8 @@ const Activity = () => {
     const valueA = a[sortCategory].toLowerCase();
     const valueB = b[sortCategory].toLowerCase();
 
-    console.log(valueA)
-    console.log(valueB)
+    console.log(valueA);
+    console.log(valueB);
 
     if (sortOrder === "asc") {
       return valueA.localeCompare(valueB);
@@ -58,22 +58,28 @@ const Activity = () => {
   });
 
   const filteredActivitys = searchTerm
-    ? sortedActivitys.filter(activity =>
+    ? sortedActivitys.filter((activity) =>
         activity.name.toLowerCase().includes(searchTerm)
-    )
+      )
     : sortedActivitys;
 
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = filteredActivitys.slice(indexOfFirstItem, indexOfLastItem);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredActivitys.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
       <div className="dashboard-header">
         <div className="select-container">
-          <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
+          <select
+            id="categorySelect"
+            onChange={(e) => handleSort(e.target.value)}
+          >
             <option value="id">ID</option>
             <option value="name">Name</option>
           </select>
@@ -97,7 +103,7 @@ const Activity = () => {
         </div>
       </div>
 
-      <table>
+      <table className="activity-table">
         <thead>
           <tr>
             <th onClick={() => handleSort("id")}> ID</th>
@@ -110,7 +116,7 @@ const Activity = () => {
           </tr>
         </thead>
         <tbody>
-          {currentItems.map(activity => (
+          {currentItems.map((activity) => (
             <tr key={activity.id}>
               <td>{activity.id}</td>
               <td>{activity.name}</td>
@@ -125,7 +131,10 @@ const Activity = () => {
       </table>
 
       <div className="button-admin">
-        <button className="btn btn-primary" onClick={ () => navigate("/admin/activity/add-activity")}>
+        <button
+          className="btn btn-primary activity-button"
+          onClick={() => navigate("/admin/activity/add-activity")}
+        >
           Add Activity
         </button>
         <button className="btn btn-primary" onClick={ () => navigate("/admin/activity/delete-activity")}>
@@ -133,14 +142,14 @@ const Activity = () => {
         </button>
       </div>
 
-      <ul className="pagination">
-        {Array.from({ length: Math.ceil(filteredActivitys.length / itemsPerPage) }).map(
-          (_, index) => (
-            <li key={index} className={currentPage === index + 1 ? "active" : ""}>
-              <button onClick={() => paginate(index + 1)}>{index + 1}</button>
-            </li>
-          )
-        )}
+      <ul className="activity-pagination">
+        {Array.from({
+          length: Math.ceil(filteredActivitys.length / itemsPerPage),
+        }).map((_, index) => (
+          <li key={index} className={currentPage === index + 1 ? "active" : ""}>
+            <button onClick={() => paginate(index + 1)}>{index + 1}</button>
+          </li>
+        ))}
       </ul>
     </div>
   );

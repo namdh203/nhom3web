@@ -12,16 +12,18 @@ import Alert from "react-bootstrap/Alert";
 import Modal from "react-bootstrap/Modal";
 import CloseButton from "react-bootstrap/CloseButton";
 
-export default function SelectDestinations({ countryId, date, duration }) {
+export default function SelectDestinations() {
   const [query, setQuery] = useState("");
   const [destinations, setDestinations] = useState([]);
   const [itinerary, setItinerary] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const url = new URL(window.location);
-  countryId = url.searchParams.get("country");
-  date = url.searchParams.get("date");
-  // duration = url.searchParams.get("duration");
+  const countryId = url.searchParams.get("country");
+  const date = url.searchParams.get("date");
+  const duration = `${url.searchParams.get("min")}-${url.searchParams.get(
+    "max"
+  )} Days`;
 
   useEffect(() => {
     searchDestination("");
@@ -36,7 +38,7 @@ export default function SelectDestinations({ countryId, date, duration }) {
     }
   }, [itinerary]);
 
-  function searchDestination(query) {
+  function searchDestination() {
     axios
       .post("/destinations/search-destination", { query, countryId })
       .then((response) => {
@@ -56,18 +58,18 @@ export default function SelectDestinations({ countryId, date, duration }) {
   }
 
   function buildItinerary() {
-    var itiList = []
-
+    const itiList = [];
     itinerary.forEach((iti) => {
-      itiList.push(iti.id)
-    })
+      itiList.push(iti.id);
+    });
+    const arrayString = itiList.join(",");
 
-    var arrayString = itiList.join(',');
-
-    var url = "/tour-customize?itiList=" + encodeURIComponent(arrayString) + `&date=${date}` + `&duration=${duration}`;
-
-    window.location.href = url
-
+    const url =
+      "/tour-customize?itiList=" +
+      encodeURIComponent(arrayString) +
+      `&date=${date}` +
+      `&duration=${encodeURIComponent(duration)}`;
+    window.location.href = url;
   }
 
   return (
@@ -98,7 +100,7 @@ export default function SelectDestinations({ countryId, date, duration }) {
       </Row>
 
       <Row>
-        <h5 className="mb-3">
+        <h5 className="mb-3 text-center">
           {query === "" && "Or, start with these popular choices"}
           {query !== "" && `Destinations matching "${query}..."`}
         </h5>
@@ -140,7 +142,9 @@ export default function SelectDestinations({ countryId, date, duration }) {
           >
             Edit
           </Button>
-          <Button variant="success" onClick={() => buildItinerary()}>Build Itinerary</Button>
+          <Button variant="success" onClick={() => buildItinerary()}>
+            Build Itinerary
+          </Button>
         </Alert>
 
         <div style={{ height: "150px" }}></div>

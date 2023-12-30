@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllTransportation } from "./transportationFunction";
-import "./transportation.css"
+import "./transportation.css";
 import { useNavigate } from "react-router-dom";
 
 const Transportation = () => {
@@ -63,17 +63,23 @@ const Transportation = () => {
       )
     : sortedTransportations;
 
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = filteredTransportations.slice(indexOfFirstItem, indexOfLastItem);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredTransportations.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
       <div className="dashboard-header">
         <div className="select-container">
-          <select id="categorySelect" onChange={(e) => handleSort(e.target.value)}>
+          <select
+            id="categorySelect"
+            onChange={(e) => handleSort(e.target.value)}
+          >
             <option value="id">ID</option>
             <option value="type">Type</option>
           </select>
@@ -108,7 +114,7 @@ const Transportation = () => {
           </tr>
         </thead>
         <tbody>
-          {currentItems.map(transportation => (
+          {currentItems.map((transportation) => (
             <tr key={transportation.id}>
               <td>{transportation.id}</td>
               <td>{transportation.destIds.join(", ")}</td>
@@ -121,7 +127,10 @@ const Transportation = () => {
       </table>
 
       <div className="button-admin">
-        <button className="btn btn-primary" onClick={ () => navigate("/admin/transportation/add-transportation")}>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/admin/transportation/add-transportation")}
+        >
           Add Transportation
         </button>
         <button className="btn btn-primary" onClick={ () => navigate("/admin/transportation/delete-transportation")}>
@@ -129,14 +138,14 @@ const Transportation = () => {
         </button>
       </div>
 
-      <ul className="pagination">
-        {Array.from({ length: Math.ceil(filteredTransportations.length / itemsPerPage) }).map(
-          (_, index) => (
-            <li key={index} className={currentPage === index + 1 ? "active" : ""}>
-              <button onClick={() => paginate(index + 1)}>{index + 1}</button>
-            </li>
-          )
-        )}
+      <ul className="transport-pagination">
+        {Array.from({
+          length: Math.ceil(filteredTransportations.length / itemsPerPage),
+        }).map((_, index) => (
+          <li key={index} className={currentPage === index + 1 ? "active" : ""}>
+            <button onClick={() => paginate(index + 1)}>{index + 1}</button>
+          </li>
+        ))}
       </ul>
     </div>
   );

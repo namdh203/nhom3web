@@ -1,122 +1,120 @@
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    padding: 20px 30px;
+.activity-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  padding: 20px 30px;
 }
 
-thead {
-    background-color: #f2f2f2;
+.activity-table thead {
+  background-color: #f2f2f2;
 }
 
-th {
-    padding: 12px;
-    text-align: left;
-    border-right: 1px solid #ddd;
-    text-align: center;
+.activity-table th {
+  padding: 12px;
+  text-align: left;
+  border-right: 1px solid #ddd;
+  text-align: center;
 }
 
-tbody tr {
-    border-bottom: 1px solid #ddd;
+.activity-table tbody tr {
+  border-bottom: 1px solid #ddd;
 }
 
-tbody tr:nth-child(even) {
-    background-color: #feffd0;
+.activity-table tbody tr:nth-child(even) {
+  background-color: #feffd0;
 }
 
-th,
-td {
-    padding: 15px 20px;
-    max-height: 25px;
-    max-width: 100px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+.activity-table th,
+.activity-table td {
+  padding: 15px 20px;
+  max-height: 25px;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-
-button {
-    padding: 5px 10px;
-    margin-right: 5px;
-    cursor: pointer;
+.activity-button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
 }
 
 @media (max-width: 600px) {
-
-    th,
-    td {
-        font-size: 14px;
-        max-height: 25px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
+  .activity-table th,
+  .activity-table td {
+    font-size: 14px;
+    max-height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 .dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .select-container,
 .sort-container,
 .search-container {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 /* Pagination styles */
-.pagination {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
+.activity-pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
 }
 
-.pagination li {
-    margin-right: 5px;
+.activity-pagination li {
+  margin-right: 5px;
 }
 
-.pagination button {
-    padding: 8px 12px;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    background-color: #fff;
-    color: #333;
+.activity-pagination button {
+  padding: 8px 12px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #333;
 }
 
-.pagination button:hover {
-    background-color: #4caf50;
-    color: #fff;
-    border: 1px solid #4caf50;
+.activity-pagination button:hover {
+  background-color: #4caf50;
+  color: #fff;
+  border: 1px solid #4caf50;
 }
 
-.pagination .active button {
-    background-color: #4caf50;
-    color: #fff;
-    border: 1px solid #4caf50;
+.activity-pagination .active button {
+  background-color: #4caf50;
+  color: #fff;
+  border: 1px solid #4caf50;
 }
 
 .button-admin {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
 }
 
 .button-admin button {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .add-activity-detail-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .delete-activity-detail-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
