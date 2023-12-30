@@ -28,7 +28,7 @@
 .restaurant-table td {
   padding: 15px 20px;
   max-height: 25px;
-  max-width: 100px;
+  max-width: 12vw;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -107,13 +107,13 @@
   margin-left: 10px;
 }
 
-.add-account-detail-container {
+.add-restaurant-detail-container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.delete-account-detail-container {
+.delete-restaurant-detail-container {
   display: flex;
   align-items: center;
   justify-content: center;

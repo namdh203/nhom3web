@@ -106,7 +106,7 @@ const Transportation = () => {
       <table className="transportation-table">
         <thead>
           <tr>
-            <th onClick={() => handleSort("type")}> ID</th>
+            <th onClick={() => handleSort("id")}> ID</th>
             <th> Destination IDs</th>
             <th onClick={() => handleSort("type")}>Type</th>
             <th> Addition Info</th>
