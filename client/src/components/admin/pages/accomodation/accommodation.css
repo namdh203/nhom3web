@@ -1,5 +1,5 @@
-.accommodation-table table {
-  width: 100% !important;
+.accommodation-table {
+  width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
   padding: 20px 30px;

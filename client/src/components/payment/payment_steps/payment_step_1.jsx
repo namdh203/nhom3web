@@ -29,10 +29,17 @@ const PaymentStep1 = () => {
       cardNumber: cardNumber,
       expiry: expiry,
       holderName: holderName,
-      cvv: cvv
+      cvv: cvv,
     };
 
-    if (!description || !description.cardType || !description.cardNumber || !description.expiry || !description.holderName || !description.cvv) {
+    if (
+      !description ||
+      !description.cardType ||
+      !description.cardNumber ||
+      !description.expiry ||
+      !description.holderName ||
+      !description.cvv
+    ) {
       alert("Please fill out the form before payment");
       return;
     }
@@ -78,7 +85,7 @@ const PaymentStep1 = () => {
         <div
           className="black-layer"
           style={{
-            "z-index": "9",
+            zIndex: "9",
             display: "flex",
           }}
         ></div>
@@ -122,8 +129,11 @@ const PaymentStep1 = () => {
           {
             // Payment method information
           }
-          <form onSubmit={handleSubmit} style={{ height: "100%", boxSizing: "border-box" }}>
-            <Content className="mx-4" style={{ height: "80%", paddingLeft: 0}}>
+          <form
+            onSubmit={handleSubmit}
+            style={{ height: "100%", boxSizing: "border-box" }}
+          >
+            <Content className="mx-4" style={{ height: "80%", paddingLeft: 0 }}>
               <Title className="my-2" level={5}>
                 Pay Via Cards (Choose one)
               </Title>
@@ -147,14 +157,12 @@ const PaymentStep1 = () => {
                   <Input
                     className="card-info-input m-2 col-8"
                     placeholder="Card number"
-
                     onChange={(e) => setCardNumber(e.target.value)}
                   />
 
                   <Input
                     className="card-info-input mt-2 col-3"
                     placeholder="Expiry"
-
                     onChange={(e) => setExpiry(e.target.value)}
                   />
                 </div>
@@ -163,14 +171,12 @@ const PaymentStep1 = () => {
                   <Input
                     className="card-info-input m-2 col-8"
                     placeholder="Holder's name"
-
                     onChange={(e) => setHolderName(e.target.value)}
                   />
 
                   <Input
                     className="card-info-input mt-2 col-3"
                     placeholder="CVV"
-
                     onChange={(e) => setCVV(e.target.value)}
                   />
                 </div>
@@ -195,11 +201,11 @@ const PaymentStep1 = () => {
                 style={{
                   marginLeft: "3vh",
                   width: "80%",
-                  height: "85%"
+                  height: "85%",
                 }}
                 type="submit"
                 onClick={() => {
-                  window.location.href = "/history"
+                  window.location.href = "/history";
                 }}
               >
                 Pay Now
