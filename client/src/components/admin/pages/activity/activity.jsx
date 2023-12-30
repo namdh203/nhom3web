@@ -106,6 +106,7 @@ const Activity = () => {
             <th> Type</th>
             <th> Description</th>
             <th> Addition Info</th>
+            <th> Demo Image</th>
           </tr>
         </thead>
         <tbody>
@@ -117,6 +118,7 @@ const Activity = () => {
               <td>{activity.type}</td>
               <td>{activity.description}</td>
               <td>{activity.additionInfo}</td>
+              <td>{activity.demoImage}</td>
             </tr>
           ))}
         </tbody>
@@ -125,6 +127,9 @@ const Activity = () => {
       <div className="button-admin">
         <button className="btn btn-primary" onClick={ () => navigate("/admin/activity/add-activity")}>
           Add Activity
+        </button>
+        <button className="btn btn-primary" onClick={ () => navigate("/admin/activity/delete-activity")}>
+          Delete
         </button>
       </div>
 

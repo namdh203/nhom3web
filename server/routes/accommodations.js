@@ -111,7 +111,7 @@ accommodations.post('/admin/deleteAccommodation', async (req, res) => {
         const accommodationToDelete = await Accommodation.findByPk(old_accommodation.id);
 
         if (!accommodationToDelete) {
-            res.status(404).json({ error: 'Accommodation not found'});
+            return res.status(404).json({ error: 'Accommodation not found'});
         }
 
         await accommodationToDelete.destroy();

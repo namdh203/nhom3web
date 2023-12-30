@@ -40,7 +40,7 @@ activities.post('/randomAct', (req, res) => {
             };
             res.json(responseData)
         }
-    }).catch (e => {
+    }).catch(e => {
         res.send("error: " + e);
     })
 })
@@ -50,24 +50,76 @@ activities.post('/admin/getAllActivity', (req, res) => {
     Activity.findAll({
         limit: 50
     })
-    .then(activities => {
-        if (activities) {
-            const responseData = activities.map(activity => ({
-                id: activity.id,
-                name: activity.name,
-                destId: activity.destId,
-                type: activity.type,
-                description: activity.description,
-                additionInfo: activity.additionInfo,
-            }));
-            res.json(responseData);
-        } else {
-            res.status(400).json({ error: 'No activity found' });
+        .then(activities => {
+            if (activities) {
+                const responseData = activities.map(activity => ({
+                    id: activity.id,
+                    name: activity.name,
+                    destId: activity.destId,
+                    type: activity.type,
+                    description: activity.description,
+                    additionInfo: activity.additionInfo,
+                    demoImage: activity.demoImage,
+                }));
+                res.json(responseData);
+            } else {
+                res.status(400).json({ error: 'No activity found' });
+            }
+        })
+        .catch(err => {
+            res.status(500).json({ error: err.message });
+        });
+});
+
+activities.post('/admin/addActivity', async (req, res) => {
+    const new_activity = req.body.new_activity;
+
+    try {
+        const createdActivity = await Activity.create({
+            name: new_activity.name,
+            destId: new_activity.destId,
+            type: new_activity.type,
+            description: new_activity.description,
+            additionInfo: new_activity.additionInfo,
+            demoImage: new_activity.demoImage,
+        });
+
+        res.json({
+            msg: 'Activity added successfully',
+            activity: {
+                id: createdActivity.id,
+                name: createdActivity.name,
+                destId: createdActivity.destId,
+                type: createdActivity.type,
+                description: createdActivity.description,
+                additionInfo: createdActivity.additionInfo,
+                demoImage: createdActivity.demoImage,
+            }
+        });
+    } catch (error) {
+        console.error('Error adding Activity:', error);
+        res.status(400).json({ error: 'Error adding Activity' });
+    }
+});
+
+activities.post('/admin/deleteActivity', async (req, res) => {
+    const old_activity = req.body.old_activity;
+
+    try {
+        const activityToDelete = await Activity.findByPk(old_activity.id);
+
+        if (!activityToDelete) {
+            return res.status(404).json({ error: 'Activity not found' });
         }
-    })
-    .catch(err => {
-        res.status(500).json({ error: err.message });
-    });
-  });
+
+        await activityToDelete.destroy();
+
+        res.json({ msg: 'Activity deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting Activity:', error);
+        res.status(400).json({ error: 'Error deleting Activity' });
+    }
+});
+
 
 module.exports = activities;

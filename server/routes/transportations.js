@@ -76,7 +76,7 @@ router.post('/admin/deleteTransportation', async (req, res) => {
         const transportationToDelete = await Transportation.findByPk(old_transportation.id);
 
         if (!transportationToDelete) {
-            res.status(404).json({ error: 'Transportation not found'});
+            return res.status(404).json({ error: 'Transportation not found'});
         }
 
         await DestTrans.destroy({
