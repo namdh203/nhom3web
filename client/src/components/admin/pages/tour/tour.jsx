@@ -27,6 +27,10 @@ const Tour = () => {
       });
   };
 
+  const onEdit = (tourId) => {
+    navigate(`/admin/tour/edit-tour/${tourId}`);
+  };
+
   useEffect(() => {
     loadTours();
   }, []);
@@ -117,6 +121,7 @@ const Tour = () => {
             <th> Voting</th>
             <th onClick={() => handleSort("type")}>Type</th>
             <th> Demo Image</th>
+            <th> Action </th>
           </tr>
         </thead>
         <tbody>
@@ -133,6 +138,8 @@ const Tour = () => {
               <td>{tour.voting}</td>
               <td>{tour.type}</td>
               <td>{tour.demoImage}</td>
+              <td> <button className="btn btn-secondary" onClick={() => onEdit(tour.id)}> Edit </button>
+              </td>
             </tr>
           ))}
         </tbody>

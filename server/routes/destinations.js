@@ -62,7 +62,7 @@ router.post("/search-destination", async (req, res) => {
 // admin
 router.post("/admin/getAllDestination", (req, res) => {
   Destination.findAll({
-    limit: 50,
+    limit: 300,
   })
     .then((router) => {
       if (router) {
@@ -136,6 +136,49 @@ router.post('/admin/addDestination', async (req, res) => {
   } catch (error) {
     console.error('Error adding tour:', error);
     res.status(400).json({ error: 'Error adding tour' });
+  }
+});
+
+router.post('/admin/deleteDestination', async (req, res) => {
+  const old_destination = req.body.old_destination;
+
+  try {
+    const destinationToDelete = await Destination.findByPk(old_destination.id);
+
+    if (!destinationToDelete) {
+      return res.status(404).json({ error: 'Destination not found' });
+    }
+
+    await DestAccom.destroy({
+      where: {
+        destId: destinationToDelete.id
+      }
+    })
+
+    await DestRest.destroy({
+      where: {
+        destId: destinationToDelete.id
+      }
+    })
+
+    await DestTrans.destroy({
+      where: {
+        destId: destinationToDelete.id
+      }
+    })
+
+    await DestAct.destroy({
+      where: {
+        destId: destinationToDelete.id
+      }
+    })
+
+    await destinationToDelete.destroy();
+
+    res.json({ msg: 'Destination deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting Destination:', error);
+    res.status(400).json({ error: 'Error deleting Destination' });
   }
 });
 

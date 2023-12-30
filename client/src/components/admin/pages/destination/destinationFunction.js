@@ -28,3 +28,18 @@ export const addDestination = (destination) => {
             throw error;
         });
 }
+
+export const deleteDestination = (destination) => {
+    return axios
+        .post('/destinations/admin/deleteDestination', {
+            old_destination: destination
+        })
+        .then(response => {
+            console.log(response.data)
+            return response.data
+        })
+        .catch(error => {
+            console.error('Error fetching destination data:', error);
+            throw error;
+        });
+}

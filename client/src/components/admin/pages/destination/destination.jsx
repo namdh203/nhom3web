@@ -133,6 +133,12 @@ const Destination = () => {
         >
           Add Destination
         </button>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/admin/destination/delete-destination")}
+        >
+          Delete
+        </button>
       </div>
 
       <ul className="destination-pagination">

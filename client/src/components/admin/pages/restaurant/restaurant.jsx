@@ -113,6 +113,7 @@ const Restaurant = () => {
             <th> Telephone</th>
             <th> Description</th>
             <th> Addition Info</th>
+            <th> Demo Image</th>
           </tr>
         </thead>
         <tbody>
@@ -125,6 +126,7 @@ const Restaurant = () => {
               <td>{restaurant.telephone}</td>
               <td>{restaurant.description}</td>
               <td>{restaurant.additionInfo}</td>
+              <td>{restaurant.demoImage}</td>
             </tr>
           ))}
         </tbody>
@@ -133,9 +135,14 @@ const Restaurant = () => {
       <div className="button-admin">
         <button
           className="btn btn-primary"
-          onClick={() => navigate("/admin/dining/add-dining-place")}
+          onClick={() => navigate("/admin/dining/add-restaurant")}
         >
           Add Dining Place
+        </button>
+        <button
+          className="btn btn-primary"
+          onClick={ () => navigate("/admin/dining/delete-restaurant")}>
+          Delete
         </button>
       </div>
 

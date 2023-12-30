@@ -14,6 +14,7 @@ import DeleteAccountForm from '../pages/account/deleteAccountForm';
 
 import AddTourForm from '../pages/tour/addTourForm';
 import DeleteTourForm from '../pages/tour/deleteTourForm';
+import EditTourForm from '../pages/tour/editTourForm';
 
 import AddTransportationForm from '../pages/transportation/addTransportation';
 import DeleteTransportationForm from '../pages/transportation/deleteTransportation';
@@ -25,7 +26,10 @@ import AddActivityForm from '../pages/activity/addActivityForm';
 import DeleteActivityForm from '../pages/activity/deleteActivityForm';
 
 import AddDestinationForm from '../pages/destination/addDestination';
+import DeleteDestinationForm from '../pages/destination/deleteDestination';
 
+import AddRestaurantForm from '../pages/restaurant/addRestaurantForm';
+import DeleteRestaurantForm from '../pages/restaurant/deleteRestaurantForm';
 
 import "./content.css"
 
@@ -40,9 +44,11 @@ function Content() {
                 <Route path="/tour" element={<Tour/>}></Route>
                 <Route path="/tour/add-tour" element={<AddTourForm/>}></Route>
                 <Route path="/tour/delete-tour" element={<DeleteTourForm/>}></Route>
+                <Route path="/tour/edit-tour/:tourId" element={<EditTourForm/>}></Route>
 
                 <Route path="/destination" element={<Destination/>}></Route>
                 <Route path="/destination/add-destination" element={<AddDestinationForm/>}></Route>
+                <Route path="/destination/delete-destination" element={<DeleteDestinationForm/>}></Route>
 
 
                 <Route path="/transportation" element={<Transportation/>}></Route>
@@ -58,6 +64,8 @@ function Content() {
                 <Route path="/activity/delete-activity" element={<DeleteActivityForm/>}></Route>
 
                 <Route path="/dining" element={<Restaurant/>}></Route>
+                <Route path="/dining/add-restaurant" element={<AddRestaurantForm/>}></Route>
+                <Route path="/dining/delete-restaurant" element={<DeleteRestaurantForm/>}></Route>
 
                 <Route path="/payment" element={<Payment />}></Route>
             </Routes>
