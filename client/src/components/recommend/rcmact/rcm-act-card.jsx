@@ -29,8 +29,8 @@ export default class RcmActCard extends React.Component {
             {/* <p className="contact"><i className="fa-solid fa-phone"></i>      {this.props.act.telephone}</p>
                         <p className="contact"><i className="fa-solid fa-envelope"></i>      {this.props.act.contactEmail}</p> */}
             <div className="card-info_addition">
-              {this.props.act.additionInfo.slice(0, 2).map((info) => (
-                <p>
+              {this.props.act.additionInfo.slice(0, 2).map((info, index) => (
+                <p key={index}>
                   <i className="fa-solid fa-check"></i> {info}
                 </p>
               ))}

@@ -1,7 +1,6 @@
 const express = require("express")
 const tours = express.Router();
 const cors = require("cors")
-// const Sequelize = require("sequelize")
 const seedrandom = require("seedrandom")
 const { Op, Sequelize } = require('sequelize');
 

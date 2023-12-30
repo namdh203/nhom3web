@@ -99,8 +99,8 @@ export default class RcmRest extends React.Component {
                     </div>
                     <div className="rcm-main_wrapper row g-4">
                         {this.state.restData.slice((this.state.pagenum - 1) * this.state.card_per_page,
-                        this.state.card_per_page * this.state.pagenum).map(rest => (
-                            <RcmRestCard rest={rest}></RcmRestCard>
+                        this.state.card_per_page * this.state.pagenum).map((rest, index) => (
+                            <RcmRestCard key={index} rest={rest}></RcmRestCard>
                         ))}
                     </div>
 
@@ -111,8 +111,8 @@ export default class RcmRest extends React.Component {
                         <li className="page-item">
                             <a className="page-link" href={`?page_num=${Math.max(this.state.pagenum - 1, 1)}&query=${this.state.query}`}>Previous</a>
                         </li>
-                        {this.state.pagelist.map((page) => (
-                            <li className={`page-item${(this.state.pagenum == page + 1) ? " chosen" : ""}`}><a className="page-link" href={`?page_num=${page + 1}&query=${this.state.query}`}>{page + 1}</a></li>
+                        {this.state.pagelist.map((page, index) => (
+                            <li key={index} className={`page-item${(this.state.pagenum == page + 1) ? " chosen" : ""}`}><a className="page-link" href={`?page_num=${page + 1}&query=${this.state.query}`}>{page + 1}</a></li>
                         ))}
                         <li className="page-item">
                             <a className="page-link" href={`?page_num=${Math.min(this.state.pagenum + 1, this.state.pagelist.length)}&query=${this.state.query}`}>Next</a>

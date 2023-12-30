@@ -108,8 +108,8 @@ export default class TourComment extends React.Component {
         <h1 className="comments-title">
           Comments ({this.state.current_cmt.length})
         </h1>
-        {this.state.current_cmt.map((cmt) => (
-          <div className="be-comment">
+        {this.state.current_cmt.map((cmt, index) => (
+          <div className="be-comment" key={index}>
             <div className="be-img-comment">
               <a href="blog-detail-2.html">
                 <img src={cmt.avatar} alt="" className="be-ava-comment" />
@@ -130,21 +130,9 @@ export default class TourComment extends React.Component {
         ))}
         <form className="form-block">
           <div className="row g-4">
-            {/* <div className="col-xs-12 col-sm-6">
-                                <div className="form-group fl_icon">
-                                    <div className="icon"><i className="fa fa-user"></i></div>
-                                    <input className="form-input" type="text" placeholder="Your name" />
-                                </div>
-                            </div>
-                            <div className="col-xs-12 col-sm-6 fl_icon">
-                                <div className="form-group fl_icon">
-                                    <div className="icon"><i className="fa fa-envelope-o"></i></div>
-                                    <input className="form-input" type="text" placeholder="Your email" />
-                                </div>
-                            </div> */}
             <h2 style={{ fontSize: "24px" }}>Write your comments</h2>
             <div className="col-xs-12">
-              <form className="form-group">
+              <div className="form-group">
                 <textarea
                   id="myTextarea"
                   className="form-input"
@@ -155,7 +143,7 @@ export default class TourComment extends React.Component {
                   placeholder="Write down your comments"
                   onChange={this.onChange}
                 ></textarea>
-              </form>
+              </div>
               <div
                 className="btn btn-primary pull-right"
                 style={{ width: "100%", marginTop: "15px" }}

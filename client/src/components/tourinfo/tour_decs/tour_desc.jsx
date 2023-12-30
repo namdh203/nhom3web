@@ -81,14 +81,6 @@ export default class TourDesc extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* {this.state.clone.map((tour) => (
-                                <tr>
-                                    <td>{this.props.tour.title}</td>
-                                    <td>{this.props.tour.duration}</td>
-                                    <td>{this.props.tour.startDate}</td>
-                                    <td>{this.props.tour.endDate}</td>
-                                </tr>
-                            ))} */}
                         </tbody>
                     </table>
 

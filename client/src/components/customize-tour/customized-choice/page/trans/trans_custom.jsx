@@ -175,9 +175,10 @@ export default class RestCustom extends React.Component {
                 (this.state.pagenum - 1) * this.state.card_per_page,
                 this.state.card_per_page * this.state.pagenum
               )
-              .map((trans) => (
+              .map((trans, index) => (
                 <div
                   className="custom-card col col-6 col-sm-6 col-md-3"
+                  key={index}
                   onClick={() => {
                     if (!this.state.activeList.includes(trans.transId)) {
                       this.setState(
@@ -234,8 +235,9 @@ export default class RestCustom extends React.Component {
                 Previous
               </a>
             </li>
-            {this.state.pagelist.map((page) => (
+            {this.state.pagelist.map((page, index) => (
               <li
+                key={index}
                 className={`page-item${
                   this.state.pagenum == page + 1 ? " chosen" : ""
                 }`}

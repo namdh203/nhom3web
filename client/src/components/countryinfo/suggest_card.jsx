@@ -45,8 +45,8 @@ export default class SuggestCard extends React.Component {
               <label>Addition Info:</label>
               <br />
               <div>
-                {this.props.tour.additionInfo.slice(0, 4).map((info) => (
-                  <p style={{ margin: 0 }}>
+                {this.props.tour.additionInfo.slice(0, 4).map((info, index) => (
+                  <p style={{ margin: 0 }} key={index}>
                     <i
                       className="fa-solid fa-check"
                       style={{ color: "green" }}

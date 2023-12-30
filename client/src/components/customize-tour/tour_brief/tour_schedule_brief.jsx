@@ -69,8 +69,8 @@ class TourBriefSchedule extends React.Component {
         <h1>Brief</h1>
         <div className="schedule brief">
           <div className="brief-dest">Your location</div>
-          {this.props.dest.map((dest) => (
-            <TourDestBrief title={dest.name} trans="train"></TourDestBrief>
+          {this.props.dest.map((dest, index) => (
+            <TourDestBrief key={index} title={dest.name} trans="train"></TourDestBrief>
           ))}
         </div>
         <Link

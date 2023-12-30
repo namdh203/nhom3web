@@ -22,13 +22,14 @@ class TourFullSchedule extends React.Component {
         <div className="schedule-start_wrapper">
           <p className="schedule-start">Your location</p>
         </div>
-        {this.props.dest.map((dest) => (
+        {this.props.dest.map((dest, index) => (
           <TourDestination
             destId={dest.id}
             header={dest.name}
             image={dest.demoImage}
             desc={dest.description}
             trans="train"
+            key={index}
           />
         ))}
 

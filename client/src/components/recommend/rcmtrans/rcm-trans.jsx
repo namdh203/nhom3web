@@ -101,8 +101,8 @@ export default class RcmTrans extends React.Component {
                     </div>
                     <div className="rcm-main_wrapper row gx-4 gy-5">
                         {this.state.transData.slice((this.state.pagenum - 1) * this.state.card_per_page,
-                        this.state.card_per_page * this.state.pagenum).map(trans => (
-                            <RcmTransCard trans={trans}></RcmTransCard>
+                        this.state.card_per_page * this.state.pagenum).map((trans, index) => (
+                            <RcmTransCard trans={trans} key={index}></RcmTransCard>
                         ))}
                     </div>
 
@@ -113,8 +113,8 @@ export default class RcmTrans extends React.Component {
                         <li className="page-item">
                             <a className="page-link" href={`?page_num=${Math.max(this.state.pagenum - 1, 1)}&query=${this.state.query}`}>Previous</a>
                         </li>
-                        {this.state.pagelist.map((page) => (
-                            <li className={`page-item${(this.state.pagenum == page + 1) ? " chosen" : ""}`}><a className="page-link" href={`?page_num=${page + 1}&query=${this.state.query}`}>{page + 1}</a></li>
+                        {this.state.pagelist.map((page, index) => (
+                            <li key={index} className={`page-item${(this.state.pagenum == page + 1) ? " chosen" : ""}`}><a className="page-link" href={`?page_num=${page + 1}&query=${this.state.query}`}>{page + 1}</a></li>
                         ))}
                         <li className="page-item">
                             <a className="page-link" href={`?page_num=${Math.min(this.state.pagenum + 1, this.state.pagelist.length)}&query=${this.state.query}`}>Next</a>
