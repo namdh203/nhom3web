@@ -1,8 +1,12 @@
-.tour-table table {
+.tour-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
   padding: 20px 30px;
+}
+
+.tour-table {
+  width: 100%;
 }
 
 .tour-table thead {
@@ -11,7 +15,7 @@
 
 .tour-table th {
   padding: 12px;
-  text-align: left;
+  /* text-align: ; */
   border-right: 1px solid #ddd;
   text-align: center;
 }
@@ -32,6 +36,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: center;
 }
 
 /* button {
