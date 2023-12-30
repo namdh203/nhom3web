@@ -64,7 +64,7 @@ const PaymentStep1 = () => {
         createPaymentTransaction(newPayment).then((res) => {
           if (res === "Payment transaction created") {
             alert("Payment transaction created successfully!");
-            // window.location.href = `/profile`;
+            window.location.href = `/history`;
           } else {
             alert(
               "Failed to create payment transaction. Please try again later."
