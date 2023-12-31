@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllPayment } from "./HistoryFunction";
 import "./user_history.css";
-// import { useNavigate } from "react-router-dom";
 import { Modal } from "antd";
 
 const Payment = () => {
@@ -26,8 +25,7 @@ const Payment = () => {
   };
 
   const loadPayments = () => {
-    const userId = JSON.parse(localStorage.getItem("user")).id;
-    getAllPayment(userId)
+    getAllPayment()
       .then((data) => {
         if (data.error) {
           console.log(data.error);
