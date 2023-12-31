@@ -20,7 +20,7 @@ function Sidebar() {
   return (
     <div
       className="sidebar-customize"
-      style={{ "border-right": "0.025px solid #333" }}
+      style={{ borderRight: "0.025px solid #333" }}
     >
       <div
         className="back-btn"
@@ -37,7 +37,7 @@ function Sidebar() {
           navigate(key);
         }}
         // theme="dark"
-        style={{ "border-right": "none", paddingTop: "20px" }}
+        style={{ borderRight: "none", paddingTop: "20px" }}
         defaultSelectedKeys={["trans"]}
         items={[
           { label: "Transportations", key: "trans", icon: <CarOutlined /> },

@@ -71,11 +71,13 @@ const Tour = () => {
   });
 
   const filteredPayments = searchTerm
-    ? sortedPayments.filter(
-        (payment) =>
-          payment.title.toLowerCase().includes(searchTerm) ||
-          payment.type.toLowerCase().includes(searchTerm)
-      )
+    ? sortedPayments.filter((payment) => {
+        console.log(payment);
+        console.log(payment);
+        return false;
+        // payment.title.toLowerCase().includes(searchTerm) ||
+        //   payment.type.toLowerCase().includes(searchTerm);
+      })
     : sortedPayments;
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -151,7 +153,7 @@ const Tour = () => {
             type="text"
             placeholder="Search for title or type"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
       </div>
@@ -160,17 +162,10 @@ const Tour = () => {
         <thead>
           <tr>
             <th onClick={() => handleSort("id")}> ID</th>
-            <th onClick={() => handleSort("payDate")}>PayDate</th>
+            <th onClick={() => handleSort("payDate")}>Pay Date</th>
             <th onClick={() => handleSort("amount")}>Amount</th>
             <th> Price Currency</th>
             <th> Description</th>
-            {/* <th> Duration</th>
-            <th> Price</th>
-            <th> Price Currency</th>
-            <th> Addition Info</th>
-            <th> Voting</th>
-            <th onClick={() => handleSort("type")}>Type</th>
-            <th> Demo Image</th> */}
           </tr>
         </thead>
         <tbody>
@@ -188,6 +183,7 @@ const Tour = () => {
                     setOpenModal(true);
                   }
                 }}
+                style={{ cursor: "pointer" }}
               >
                 {payment.description}
               </td>

@@ -25,7 +25,6 @@ export default class CustomizedContent extends React.Component {
 
   async componentDidMount() {
     var destId = JSON.parse(localStorage.getItem("current_dest"));
-    console.log("DestId: ", destId);
 
     try {
       const accomRes = await getAccomSiteData(destId);
@@ -42,7 +41,6 @@ export default class CustomizedContent extends React.Component {
           restData: restsRes,
           actData: activityRes,
         });
-        console.log("RestData: ", this.state.accomData);
       }
     } catch (error) {
       console.error("An error occurred:", error);

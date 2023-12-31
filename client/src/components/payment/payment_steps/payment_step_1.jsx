@@ -23,8 +23,12 @@ const PaymentStep1 = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    let description = {
-      tourId: dataPackage.tourId ? dataPackage.tourId : "none",
+    if (!cardType || !cardNumber || !expiry || !holderName || !cvv) {
+      alert("Please fill out the form before submitting");
+      return;
+    }
+
+    let paymentDetail = {
       cardType: cardType,
       cardNumber: cardNumber,
       expiry: expiry,
@@ -32,33 +36,31 @@ const PaymentStep1 = () => {
       cvv: cvv,
     };
 
-    if (
-      !description ||
-      !description.cardType ||
-      !description.cardNumber ||
-      !description.expiry ||
-      !description.holderName ||
-      !description.cvv
-    ) {
-      alert("Please fill out the form before payment");
-      return;
-    }
-
     // Send data to database and then alert success
     if (localStorage) {
-      // let firstKey = Object.keys(localStorage)[0];
-      // let storage = JSON.parse(localStorage[firstKey]);
-
       let storage = JSON.parse(localStorage.user);
       console.log(storage);
 
       if (storage.id) {
+        const now = new Date();
+        const formattedDate = now.toLocaleString("vi-VN", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        });
+
         const newPayment = {
           userId: storage.id,
-          payDate: new Date().toISOString(),
-          amount: actualCost,
-          currency: "USD",
-          description: JSON.stringify(description),
+          tourDetail: dataPackage.tourName,
+          startDate: dataPackage.startDate,
+          duration: dataPackage.duration,
+          payDate: formattedDate,
+          amount: `$${actualCost}`,
+          paymentDetail,
         };
 
         createPaymentTransaction(newPayment).then((res) => {
@@ -85,7 +87,7 @@ const PaymentStep1 = () => {
         <div
           className="black-layer"
           style={{
-            "z-index": "9",
+            zIndex: "9",
             display: "flex",
           }}
         ></div>
@@ -154,14 +156,12 @@ const PaymentStep1 = () => {
                   <Input
                     className="card-info-input m-2 col-8"
                     placeholder="Card number"
-
                     onChange={(e) => setCardNumber(e.target.value)}
                   />
 
                   <Input
                     className="card-info-input mt-2 col-3"
                     placeholder="Expiry"
-
                     onChange={(e) => setExpiry(e.target.value)}
                   />
                 </div>
@@ -170,14 +170,12 @@ const PaymentStep1 = () => {
                   <Input
                     className="card-info-input m-2 col-8"
                     placeholder="Holder's name"
-
                     onChange={(e) => setHolderName(e.target.value)}
                   />
 
                   <Input
                     className="card-info-input mt-2 col-3"
                     placeholder="CVV"
-
                     onChange={(e) => setCVV(e.target.value)}
                   />
                 </div>

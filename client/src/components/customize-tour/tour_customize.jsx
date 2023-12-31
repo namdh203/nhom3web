@@ -13,7 +13,8 @@ class TourCustomize extends React.Component {
     this.state = {
       destData: null,
       date: new Date(),
-      duration: null,
+      min: null,
+      max: null,
     };
   }
 
@@ -25,7 +26,8 @@ class TourCustomize extends React.Component {
     var itiList = itiListString ? itiListString.split(",") : [];
 
     this.setState({ date: urlParams.get("date") });
-    this.setState({ duration: urlParams.get("duration") });
+    this.setState({ min: urlParams.get("min") });
+    this.setState({ max: urlParams.get("max") });
 
     itiList = itiList.map(function (iti) {
       return parseInt(iti, 10);
@@ -35,7 +37,6 @@ class TourCustomize extends React.Component {
       if (!res) {
         console.log("Get dest id failed");
       } else {
-        // console.log(res)
         this.setState({ destData: res });
       }
     });
@@ -60,7 +61,7 @@ class TourCustomize extends React.Component {
           </div>
           <div className="col col-md-9 col-sm-12 col-12">
             <TourFullSchedule
-              dest={this.state.destData}
+              dests={this.state.destData}
               date={this.state.date}
               duration={this.state.duration}
             ></TourFullSchedule>

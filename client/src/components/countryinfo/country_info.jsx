@@ -86,7 +86,7 @@ export default class CountryInfo extends React.Component {
 
           <div
             className="main-info"
-            style={{ height: "20px", "border-radius": "0 0 5px 5px" }}
+            style={{ height: "20px", borderRadius: "0 0 5px 5px" }}
           ></div>
 
           <div

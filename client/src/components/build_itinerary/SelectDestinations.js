@@ -21,9 +21,8 @@ export default function SelectDestinations() {
   const url = new URL(window.location);
   const countryId = url.searchParams.get("country");
   const date = url.searchParams.get("date");
-  const duration = `${url.searchParams.get("min")}-${url.searchParams.get(
-    "max"
-  )} Days`;
+  const min = url.searchParams.get("min");
+  const max = url.searchParams.get("max");
 
   useEffect(() => {
     searchDestination("");
@@ -68,7 +67,7 @@ export default function SelectDestinations() {
       "/tour-customize?itiList=" +
       encodeURIComponent(arrayString) +
       `&date=${date}` +
-      `&duration=${encodeURIComponent(duration)}`;
+      `&min=${min}&max=${max}`;
     window.location.href = url;
   }
 

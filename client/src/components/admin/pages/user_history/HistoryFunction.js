@@ -1,16 +1,14 @@
-import axios from 'axios'
+import axios from "axios";
 
-export const getAllPayment = (id) => {
-    return axios
-        .post('/payments/getAllPayment', {
-            id: id
-        })
-        .then(response => {
-            console.log(response.data)
-            return response.data
-        })
-        .catch(error => {
-            console.error('Error fetching customer data:', error);
-            throw error;
-        });
-}
+export const getAllPayment = () => {
+  return axios
+    .post("/payments/admin/getPaymentHistory")
+    .then((response) => {
+      console.log(response.data);
+      return response.data;
+    })
+    .catch((error) => {
+      console.error("Error fetching customer data:", error);
+      throw error;
+    });
+};

@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import "../tour_customize.css";
 import TourDestBrief from "./tour_dest_brief/tour_dest_brief";
 import "./tour_schedule_brief.css";
@@ -61,8 +61,7 @@ class TourBriefSchedule extends React.Component {
       totalCost: this.getTotalCost(),
       tourName: tourName,
       startDate: this.props.date,
-      tourId: -1,
-      shortDescription: this.props.dest[0].additionInfo[0],
+      duration: this.props.duration,
     };
     return (
       <div className="schedule-wrapper">
@@ -70,7 +69,11 @@ class TourBriefSchedule extends React.Component {
         <div className="schedule brief">
           <div className="brief-dest">Your location</div>
           {this.props.dest.map((dest, index) => (
-            <TourDestBrief key={index} title={dest.name} trans="train"></TourDestBrief>
+            <TourDestBrief
+              key={index}
+              title={dest.name}
+              trans="train"
+            ></TourDestBrief>
           ))}
         </div>
         <Link

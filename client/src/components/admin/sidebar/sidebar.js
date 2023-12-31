@@ -20,7 +20,7 @@ function Sidebar() {
     <div
       className="sidebar"
       style={{
-        "border-right": "0.025px solid #333",
+        borderRight: "0.025px solid #333",
         backgroundColor: "#001529",
         color: "#fff",
       }}
@@ -45,7 +45,7 @@ function Sidebar() {
           navigate(key);
         }}
         theme="dark"
-        style={{ "border-right": "none" }}
+        style={{ borderRight: "none" }}
         items={[
           { label: "Account", key: "account", icon: <UserOutlined /> },
           { label: "Tour", key: "tour", icon: <ContactsOutlined /> },

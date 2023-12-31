@@ -8,6 +8,7 @@ const Payment = () => {
   const location = useLocation();
   // Extract
   const { dataPackage } = location.state;
+  // console.log("data package: ", dataPackage);
 
   const imageUrl =
     "https://d30w0v1mttprqz.cloudfront.net/img/features/payment/payment-1.svg";

@@ -26,8 +26,7 @@ const Payment = () => {
   };
 
   const loadPayments = () => {
-    const userId = JSON.parse(localStorage.getItem("user")).id;
-    getAllPayment(userId)
+    getAllPayment()
       .then((data) => {
         if (data.error) {
           console.log(data.error);
