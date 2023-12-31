@@ -124,6 +124,7 @@ const PaymentStep1 = () => {
                   height: "70%",
                   whiteSpace: "nowrap",
                 }}
+                alt="App logo"
               />
             </div>
           </div>

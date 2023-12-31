@@ -6,7 +6,6 @@ import {
   getRestSiteData,
   getActSiteData,
 } from "./GetDestSite.js";
-import React from "react";
 
 class TourDestination extends React.Component {
   constructor(props) {

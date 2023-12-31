@@ -88,4 +88,5 @@ payments.post("/admin/getPaymentHistory", (req, res) => {
       res.send("error: " + err);
     });
 });
+
 module.exports = payments;

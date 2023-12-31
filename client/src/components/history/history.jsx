@@ -40,26 +40,6 @@ export default class TourHistory extends React.Component {
     this.setState({ choose: false });
   }
 
-  // onSubmit(e) {
-  //     e.preventDefault()
-
-  //     const newUser = {
-  //         name: this.state.name,
-  //         cardNo: this.state.cardNo,
-  //         address: this.state.address,
-  //         phoneNumber: this.state.phoneNumber,
-  //         email: this.state.email,
-  //         passport: this.state.passport,
-  //         avatar: this.state.avatar
-  //     }
-
-  //     updateCustomer(newUser).then(res => {
-  //         // alert(res.msg)
-  //         this.setState({success: true, openModal: true})
-  //     })
-
-  // }
-
   componentDidMount() {
     const user = JSON.parse(localStorage.getItem("user"));
 
