@@ -33,12 +33,7 @@ const Tour = () => {
         if (data.error) {
           console.log(data.error);
         } else {
-          setPayments(
-            data.map((payment) => ({
-              ...payment,
-              payDate: reformatDate(payment.payDate),
-            }))
-          );
+          setPayments(data);
         }
       })
       .catch((error) => {
@@ -86,7 +81,7 @@ const Tour = () => {
       searchTerm
         ? payments.filter(
             (payment) =>
-              payment.payDate.includes(searchTerm) ||
+              reformatDate(payment.payDate).includes(searchTerm) ||
               (payment.amount + "").includes(searchTerm) ||
               payment.id + "" === searchTerm
           )
@@ -213,7 +208,7 @@ const Tour = () => {
           {currentItems.map((payment, index) => (
             <tr key={payment.id}>
               <td>{payment.id}</td>
-              <td>{payment.payDate}</td>
+              <td>{reformatDate(payment.payDate)}</td>
               <td>{payment.amount}</td>
               <td>{payment.currency}</td>
               <td
