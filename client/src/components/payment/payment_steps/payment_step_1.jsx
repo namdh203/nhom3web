@@ -122,6 +122,7 @@ const PaymentStep1 = () => {
                   height: "70%",
                   whiteSpace: "nowrap",
                 }}
+                alt="App logo"
               />
             </div>
           </div>
@@ -154,14 +155,12 @@ const PaymentStep1 = () => {
                   <Input
                     className="card-info-input m-2 col-8"
                     placeholder="Card number"
-
                     onChange={(e) => setCardNumber(e.target.value)}
                   />
 
                   <Input
                     className="card-info-input mt-2 col-3"
                     placeholder="Expiry"
-
                     onChange={(e) => setExpiry(e.target.value)}
                   />
                 </div>
@@ -170,14 +169,12 @@ const PaymentStep1 = () => {
                   <Input
                     className="card-info-input m-2 col-8"
                     placeholder="Holder's name"
-
                     onChange={(e) => setHolderName(e.target.value)}
                   />
 
                   <Input
                     className="card-info-input mt-2 col-3"
                     placeholder="CVV"
-
                     onChange={(e) => setCVV(e.target.value)}
                   />
                 </div>

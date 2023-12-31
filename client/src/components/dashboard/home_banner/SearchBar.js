@@ -10,6 +10,7 @@ export default function SearchBar() {
       onClick={() => {
         window.location.href = "/build-itinerary/country";
       }}
+      style={{ cursor: "pointer" }}
     >
       <InputGroup.Text id="search-icon">
         <IoSearch />
@@ -19,6 +20,7 @@ export default function SearchBar() {
         placeholder="Where do you want to go?"
         aria-label="Where do you want to go?"
         id="search-field"
+        style={{ cursor: "pointer" }}
       />
     </InputGroup>
   );

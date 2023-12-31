@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { getAllPayment } from "./HistoryFunction";
+import { getAllPayment, reformatDate } from "./HistoryFunction";
 import "./user_history.css";
-// import { useNavigate } from "react-router-dom";
 import { Modal } from "antd";
 
+const itemsPerPage = 8;
 const Tour = () => {
   const [payments, setPayments] = useState([]);
-  const [sortCategory, setSortCategory] = useState("id");
-  const [sortOrder, setSortOrder] = useState("asc");
+  const [sortCategory, setSortCategory] = useState("payDate");
+  const [sortOrder, setSortOrder] = useState("desc");
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(8);
-  const [payDesc, setPayDesc] = useState("");
+  const [selectedPayment, setSelectedPayment] = useState(0);
   const [openModal, setOpenModal] = useState(true);
-  const [descClicked, setDescClicked] = useState(false);
-
-  // const navigate = useNavigate();
+  const [descriptionClicked, setDescriptionClicked] = useState(false);
+  const [filteredPayments, setFilteredPayments] = useState([]);
+  const [indexOfLastItem, setIndexOfLastItem] = useState(0);
+  const [indexOfFirstItem, setIndexOfFirstItem] = useState(0);
+  const [currentItems, setCurrentItems] = useState([]);
 
   const handleOk = () => {
     setOpenModal(false);
@@ -32,7 +33,12 @@ const Tour = () => {
         if (data.error) {
           console.log(data.error);
         } else {
-          setPayments(data);
+          setPayments(
+            data.map((payment) => ({
+              ...payment,
+              payDate: reformatDate(payment.payDate),
+            }))
+          );
         }
       })
       .catch((error) => {
@@ -40,56 +46,65 @@ const Tour = () => {
       });
   };
 
+  const toggleSortOrder = () => {
+    setSortOrder((current) => (current === "asc" ? "desc" : "asc"));
+  };
+
+  const headerClicked = (col) => {
+    if (sortCategory !== col) setSortCategory(col);
+    else toggleSortOrder();
+  };
+
   useEffect(() => {
     loadPayments();
   }, []);
 
-  const handleSort = (category) => {
-    if (sortCategory === category) {
-      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
-    } else {
-      setSortCategory(category);
-      setSortOrder("asc");
-    }
-  };
+  useEffect(() => {
+    setPayments((currentItems) =>
+      [...currentItems].sort((a, b) => {
+        if (sortCategory === "id") {
+          return sortOrder === "asc" ? a.id - b.id : b.id - a.id;
+        } else if (sortCategory === "amount") {
+          return sortOrder === "asc"
+            ? a.amount - b.amount
+            : b.amount - a.amount;
+        }
+        const valueA = a[sortCategory].toLowerCase();
+        const valueB = b[sortCategory].toLowerCase();
 
-  const sortedPayments = payments.sort((a, b) => {
-    if (sortCategory === "id" || sortCategory === "amount") {
-      return sortOrder === "asc" ? a.id - b.id : b.id - a.id;
-    }
-    const valueA = a[sortCategory].toLowerCase();
-    const valueB = b[sortCategory].toLowerCase();
+        if (sortOrder === "asc") {
+          return valueA.localeCompare(valueB);
+        } else {
+          return valueB.localeCompare(valueA);
+        }
+      })
+    );
+  }, [sortCategory, sortOrder, payments]);
 
-    console.log(valueA);
-    console.log(valueB);
+  useEffect(() => {
+    setFilteredPayments(
+      searchTerm
+        ? payments.filter(
+            (payment) =>
+              payment.payDate.includes(searchTerm) ||
+              (payment.amount + "").includes(searchTerm) ||
+              payment.id + "" === searchTerm
+          )
+        : payments
+    );
+  }, [searchTerm, payments]);
 
-    if (sortOrder === "asc") {
-      return valueA.localeCompare(valueB);
-    } else {
-      return valueB.localeCompare(valueA);
-    }
-  });
-
-  const filteredPayments = searchTerm
-    ? sortedPayments.filter(
-        (payment) =>
-          payment.title.toLowerCase().includes(searchTerm) ||
-          payment.type.toLowerCase().includes(searchTerm)
-      )
-    : sortedPayments;
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredPayments.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
+  useEffect(() => {
+    setIndexOfLastItem(currentPage * itemsPerPage);
+    setIndexOfFirstItem(indexOfLastItem - itemsPerPage);
+    setCurrentItems(filteredPayments.slice(indexOfFirstItem, indexOfLastItem));
+  }, [currentPage, filteredPayments, indexOfLastItem, indexOfFirstItem]);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
-      {descClicked ? (
+      {descriptionClicked ? (
         <div>
           <Modal
             open={openModal}
@@ -98,28 +113,34 @@ const Tour = () => {
             zIndex="2000"
           >
             <p className="pay-info">
-              <span className="pay-label">Tour Id:</span>{" "}
-              <span className="pay-desc">{JSON.parse(payDesc).tourId}</span>
-            </p>
-            <p className="pay-info">
               <span className="pay-label">Card Type:</span>{" "}
-              <span className="pay-desc">{JSON.parse(payDesc).cardType}</span>
+              <span className="pay-desc">
+                {JSON.parse(payments[selectedPayment].description).cardType}
+              </span>
             </p>
             <p className="pay-info">
               <span className="pay-label">Card Number:</span>{" "}
-              <span className="pay-desc">{JSON.parse(payDesc).cardNumber}</span>
+              <span className="pay-desc">
+                {JSON.parse(payments[selectedPayment].description).cardNumber}
+              </span>
             </p>
             <p className="pay-info">
               <span className="pay-label">Expiry:</span>{" "}
-              <span className="pay-desc">{JSON.parse(payDesc).expiry}</span>
+              <span className="pay-desc">
+                {JSON.parse(payments[selectedPayment].description).expiry}
+              </span>
             </p>
             <p className="pay-info">
               <span className="pay-label">Holder Name:</span>{" "}
-              <span className="pay-desc">{JSON.parse(payDesc).holderName}</span>
+              <span className="pay-desc">
+                {JSON.parse(payments[selectedPayment].description).holderName}
+              </span>
             </p>
             <p className="pay-info">
               <span className="pay-label">CVV:</span>{" "}
-              <span className="pay-desc">{JSON.parse(payDesc).cvv}</span>
+              <span className="pay-desc">
+                {JSON.parse(payments[selectedPayment].description).cvv}
+              </span>
             </p>
           </Modal>
         </div>
@@ -128,19 +149,25 @@ const Tour = () => {
       )}
       <div className="dashboard-header">
         <div className="select-container">
+          <label htmlFor="categorySelect">Sort by: </label>
           <select
             id="categorySelect"
-            onChange={(e) => handleSort(e.target.value)}
+            onChange={(e) => setSortCategory(e.target.value)}
+            value={sortCategory}
           >
             <option value="id">ID</option>
-            <option value="payDate">PayDate</option>
+            <option value="payDate">Pay Date</option>
             <option value="amount">Amount</option>
           </select>
         </div>
 
         <div className="sort-container">
           <label htmlFor="sortOrder">Sort Order:</label>
-          <select id="sortOrder" onChange={(e) => setSortOrder(e.target.value)}>
+          <select
+            id="sortOrder"
+            onChange={(e) => setSortOrder(e.target.value)}
+            value={sortOrder}
+          >
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>
           </select>
@@ -149,7 +176,7 @@ const Tour = () => {
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search for title or type"
+            placeholder="Search for id, pay date or amount"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
           />
@@ -159,22 +186,31 @@ const Tour = () => {
       <table className="tour-table">
         <thead>
           <tr>
-            <th onClick={() => handleSort("id")}> ID</th>
-            <th onClick={() => handleSort("payDate")}>PayDate</th>
-            <th onClick={() => handleSort("amount")}>Amount</th>
+            <th
+              onClick={() => headerClicked("id")}
+              className="sortable-colhead"
+            >
+              {" "}
+              ID
+            </th>
+            <th
+              onClick={() => headerClicked("payDate")}
+              className="sortable-colhead"
+            >
+              Pay Date
+            </th>
+            <th
+              onClick={() => headerClicked("amount")}
+              className="sortable-colhead"
+            >
+              Amount
+            </th>
             <th> Price Currency</th>
             <th> Description</th>
-            {/* <th> Duration</th>
-            <th> Price</th>
-            <th> Price Currency</th>
-            <th> Addition Info</th>
-            <th> Voting</th>
-            <th onClick={() => handleSort("type")}>Type</th>
-            <th> Demo Image</th> */}
           </tr>
         </thead>
         <tbody>
-          {currentItems.map((payment) => (
+          {currentItems.map((payment, index) => (
             <tr key={payment.id}>
               <td>{payment.id}</td>
               <td>{payment.payDate}</td>
@@ -182,28 +218,24 @@ const Tour = () => {
               <td>{payment.currency}</td>
               <td
                 onClick={() => {
-                  setPayDesc(payment.description);
-                  setDescClicked(true);
+                  setSelectedPayment(index);
+                  setDescriptionClicked(true);
                   if (openModal === false) {
                     setOpenModal(true);
                   }
                 }}
+                style={{
+                  cursor: "pointer",
+                  textDecorationLine: "underline",
+                  color: "green",
+                }}
               >
-                {payment.description}
+                View payment detail
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-
-      {/* <div className="button-admin">
-        <button className="btn btn-primary" onClick={() => navigate("/admin/tour/add-tour")}>
-          Add Tour
-        </button>
-        <button className="btn btn-primary" onClick={() => navigate("/admin/tour/delete-tour")}>
-          Delete
-        </button>
-      </div> */}
 
       <ul className="history-pagination">
         {Array.from({

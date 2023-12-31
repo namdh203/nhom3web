@@ -135,3 +135,7 @@
 .pay-info > span.pay-label {
   width: 500px;
 }
+
+.sortable-colhead {
+  cursor: pointer;
+}
