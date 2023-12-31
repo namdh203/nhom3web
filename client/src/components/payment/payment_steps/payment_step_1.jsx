@@ -45,7 +45,7 @@ const PaymentStep1 = () => {
     }
 
     // Send data to database and then alert success
-    if (localStorage) {
+    if (localStorage.user) {
       // let firstKey = Object.keys(localStorage)[0];
       // let storage = JSON.parse(localStorage[firstKey]);
 
