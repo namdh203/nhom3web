@@ -1,3 +1,16 @@
+## How to run our app on https://int3306.freeddns.org/
+Open a terminal and run the following commands:
+
+    cd server
+    node server
+    
+Then open another terminal and run the following command:
+
+    /etc/jupyter/bin/expose 5000
+    
+The app will then be accessible at http://fall2324w3g3.int3306.freeddns.org/.
+
+
 ## How to run our app:
 
 ### Create Database:
