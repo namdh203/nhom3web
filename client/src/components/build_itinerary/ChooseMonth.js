@@ -89,23 +89,21 @@ export default function ChooseMonth() {
                         <Card.Text
                           className={
                             "mx-auto mt-1 mb-2" +
-                            (monthlyAdvice[monthIndex].adviceCode === 2
+                            (monthlyAdvice[index].adviceCode === 2
                               ? " text-light bg-success bg-gradient border border-success rounded"
                               : " text-light-emphasis")
                           }
                         >
-                          {monthlyAdvice[monthIndex].adviceCode === 2 && (
+                          {monthlyAdvice[index].adviceCode === 2 && (
                             <LuFlagTriangleRight />
                           )}
-                          {translateAdviceCode(
-                            monthlyAdvice[monthIndex].adviceCode
-                          )}
+                          {translateAdviceCode(monthlyAdvice[index].adviceCode)}
                         </Card.Text>
                       </Col>
                       <Col className="d-flex justify-content-center">
                         <Card.Text className="text-secondary mb-3">
-                          {monthlyAdvice[monthIndex].lowTemp} -{" "}
-                          {monthlyAdvice[monthIndex].highTemp}°C
+                          {monthlyAdvice[index].lowTemp} -{" "}
+                          {monthlyAdvice[index].highTemp}°C
                         </Card.Text>
                       </Col>
                     </Row>
