@@ -1,23 +1,25 @@
-## How to run our app on https://int3306.freeddns.org/
+# Travelam - Simple Travel Web App by Nhóm 3
+
+## How to run our app on [int3306 platform](https://int3306.freeddns.org/)
+
 Open a terminal and run the following commands:
 
     cd server
     node server
-    
+
 Then open another terminal and run the following command:
 
     /etc/jupyter/bin/expose 5000
-    
-The app will then be accessible at http://fall2324w3g3.int3306.freeddns.org/.
 
+The app will then be accessible at http://fall2324w3g3.int3306.freeddns.org/.
 
 ## How to run our app:
 
 ### Create Database:
 
-- Import the file [Travelam.sql](Database/Travelam.sql) into your local mysql server to create the database.
-- Grant access to the database `travelgiang` to a mysql account.
-- In the [/server](/server) directory, create an environment file `.env.local` and copy the fields in `.env.example` into `.env.local`. Type in your mysql hostname and the mysql account that has been granted access to the `travelgiang` database.
+- Import the file [final_scripts.sql](Database/final_scripts.sql) into your local mysql server to create the database.
+- Grant access to the database `newtravelnam` to a mysql account.
+- In the [/server](/server) directory, create an environment file `.env.local` and copy the fields in `.env.example` into `.env.local`. Type in your mysql hostname and the mysql account that has been granted access to the `newtravelnam` database.
 
 ### Install packages:
 
@@ -47,15 +49,15 @@ Run website:
 - At root, run command `npm start-root`.
 - If that doesn't work, try run these two commands: `npm start-server` and `npm start-client` in two different terminals.
 
-# Getting Started with Create React App
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+#### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -63,12 +65,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+#### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+#### `npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -78,7 +80,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+#### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
